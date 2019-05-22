@@ -47,7 +47,7 @@ class Ffgs(TethysAppBase):
             UrlMap(
                 name='updateWRF',
                 url='ffgs/data/updateWRF',
-                controller='ffgs.tools.process_new_gfs'
+                controller='ffgs.tools.process_new_wrf'
             ),
         )
 

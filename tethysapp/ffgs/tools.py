@@ -23,7 +23,7 @@ from PyQt5.QtCore import QVariant
 from .options import app_configuration
 
 
-def process_new_wrf():
+def process_new_wrf(request):
     """
     1. Download today's WRF forecast
     """

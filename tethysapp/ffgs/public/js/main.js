@@ -16,24 +16,22 @@ $.ajaxSetup({
 
 
 // ////////////////////////////////////////////////////////////////////////  AJAX FUNCTIONS
-// function getThreddswms() {
-//     $.ajax({
-//         url: '/apps/gldas/ajax/getCustomSettings/',
-//         async: false,
-//         data: '',
-//         dataType: 'json',
-//         contentType: "application/json",
-//         method: 'POST',
-//         success: function (result) {
-//             threddsbase = result['threddsurl'];
-//             geoserverbase = result['geoserverurl']
-//         },
-//     });
-// }
-//
+function getThreddswms() {
+    $.ajax({
+        url: '/apps/ffgs/ajax/getCustomSettings/',
+        async: false,
+        data: '',
+        dataType: 'json',
+        contentType: "application/json",
+        method: 'POST',
+        success: function (result) {
+            threddsbase = result['threddsurl'];
+        },
+    });
+}
+
 // ////////////////////////////////////////////////////////////////////////  LOAD THE MAP
-// let threddsbase;
-// let geoserverbase;
-// getThreddswms();                        // sets the value of threddsbase and geoserverbase
+let threddsbase;
+getThreddswms();                        // sets the value of threddsbase and geoserverbase
 const mapObj = map();                   // used by legend and draw controls
 const basemapObj = basemaps();          // used in the make controls function

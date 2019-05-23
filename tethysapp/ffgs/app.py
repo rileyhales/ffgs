@@ -45,6 +45,11 @@ class Ffgs(TethysAppBase):
                 url='ffgs/data/updateGFS',
                 controller='ffgs.tools.process_new_gfs'
             ),
+            UrlMap(
+                name='updateWRF',
+                url='ffgs/data/updateWRF',
+                controller='ffgs.tools.process_new_wrf'
+            ),
         )
 
         return url_maps
@@ -60,13 +65,13 @@ class Ffgs(TethysAppBase):
             CustomSetting(
                 name='Thredds WMS URL',
                 type=CustomSetting.TYPE_STRING,
-                description="URL to the GLDAS folder on the thredds server (e.g. http://[host]/thredds/gldas/)",
+                description="URL to the FFGS folder on the thredds server (e.g. http://[host]/thredds/ffgs/)",
                 required=True,
             ),
             # CustomSetting(
             #     name='Geoserver Workspace URL',
             #     type=CustomSetting.TYPE_STRING,
-            #     description="URL (wfs) of the workspace on geoserver (e.g. https://[host]/geoserver/gldas/ows). \n"
+            #     description="URL (wfs) of the workspace on geoserver (e.g. https://[host]/geoserver/ffgs/ows). \n"
             #                 "Enter geojson instead of a url if you experience GeoServer problems.",
             #     required=True,
             # ),

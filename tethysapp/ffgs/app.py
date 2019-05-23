@@ -39,15 +39,11 @@ class Ffgs(TethysAppBase):
             ),
 
             # url maps for data processing functions
+
             UrlMap(
-                name='updateWRF',
-                url='ffgs/data/updateWRF',
-                controller='ffgs.tools.process_new_wrf'
-            ),
-            UrlMap(
-                name='updateWRF',
-                url='ffgs/data/updateWRF',
-                controller='ffgs.tools.process_new_wrf'
+                name='updateGFS',
+                url='ffgs/data/updateGFS',
+                controller='ffgs.tools.process_new_gfs'
             ),
         )
 

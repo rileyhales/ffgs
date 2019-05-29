@@ -1,6 +1,6 @@
 BSD 3-Clause License
 
-Copyright (c) 2019, Riley Hales
+Copyright (c) 2019, Riley Hales, Chris Edwards
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

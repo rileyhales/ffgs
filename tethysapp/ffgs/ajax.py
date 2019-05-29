@@ -1,3 +1,5 @@
+import ast
+
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
@@ -11,3 +13,8 @@ def get_customsettings(request):
     Dependencies: app_configuration (options)
     """
     return JsonResponse(app_configuration())
+
+
+def updatedata(request):
+
+    return

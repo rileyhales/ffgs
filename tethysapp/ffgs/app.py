@@ -13,10 +13,13 @@ class Ffgs(TethysAppBase):
     package = 'ffgs'
     root_url = 'ffgs'
     color = '#008080'
-    description = 'An interface for viewing areas at risk for flood based on the FFGS'
+    description = 'An interface for viewing areas at risk for flood based on the FFGS.\n' \
+                  'Uses the GFS and WRF forecasts as inputs for determining precipitation depths.'
     tags = ''
     enable_feedback = False
     feedback_emails = []
+    githublink = 'https://github.com/rileyhales/ffgs'
+    version = 'inital dev - 29 May 2019'
 
     def url_maps(self):
         """
@@ -39,16 +42,10 @@ class Ffgs(TethysAppBase):
             ),
 
             # url maps for data processing functions
-
             UrlMap(
                 name='updateGFS',
-                url='ffgs/data/updateGFS',
-                controller='ffgs.tools.process_new_gfs'
-            ),
-            UrlMap(
-                name='updateWRF',
-                url='ffgs/data/updateWRF',
-                controller='ffgs.tools.process_new_wrf'
+                url='ffgs/updateGFS',
+                controller='ffgs.ajax.updatedata'
             ),
         )
 
@@ -68,12 +65,12 @@ class Ffgs(TethysAppBase):
                 description="URL to the FFGS folder on the thredds server (e.g. http://[host]/thredds/ffgs/)",
                 required=True,
             ),
-            # CustomSetting(
-            #     name='Geoserver Workspace URL',
-            #     type=CustomSetting.TYPE_STRING,
-            #     description="URL (wfs) of the workspace on geoserver (e.g. https://[host]/geoserver/ffgs/ows). \n"
-            #                 "Enter geojson instead of a url if you experience GeoServer problems.",
-            #     required=True,
-            # ),
+            CustomSetting(
+                name='Geoserver Workspace URL',
+                type=CustomSetting.TYPE_STRING,
+                description="URL (wfs) of the workspace on geoserver (e.g. https://[host]/geoserver/ffgs/ows). \n"
+                            "Enter geojson instead of a url if you experience GeoServer problems.",
+                required=True,
+            ),
         )
         return CustomSettings

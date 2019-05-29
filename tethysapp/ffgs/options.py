@@ -11,7 +11,7 @@ def app_configuration():
         'app_wksp_path': os.path.join(App.get_app_workspace().path, ''),
         'threddsdatadir': App.get_custom_setting("Local Thredds Folder Path"),
         'threddsurl': App.get_custom_setting("Thredds WMS URL"),
-        # 'geoserverurl': App.get_custom_setting("Geoserver Workspace URL"),
+        'geoserverurl': App.get_custom_setting("Geoserver Workspace URL"),
     }
 
 
@@ -31,3 +31,17 @@ def wms_colors():
         ('ALG 2', 'alg2'),
         ('Ferret', 'ferret'),
         ]
+
+
+def geojson_colors():
+    return [
+        ('White', '#ffffff'),
+        ('Red', '#ff0000'),
+        ('Green', '#00ff00'),
+        ('Blue', '#0000ff'),
+        ('Black', '#000000'),
+        ('Pink', '#ff69b4'),
+        ('Orange', '#ffa500'),
+        ('Teal', '#008080'),
+        ('Purple', '#800080'),
+    ]

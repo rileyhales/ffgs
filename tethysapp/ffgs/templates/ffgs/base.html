@@ -11,15 +11,60 @@
 {% block app_content %}{% endblock %}
 
 
-{% block header_buttons %}{% endblock %}
-{% block after_app_content %}{% endblock %}
+{% block header_buttons %}
+  <div style="text-align: center; color: white; padding: 8px"><strong>{{ version }}</strong></div>
+  <div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="How To Use This Page">
+    <a data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a>
+  </div>
+  <div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom"
+       title="View Source Code and Documentation">
+    <a href="{{ githublink }}" target="_blank"><span class="glyphicon glyphicon-hdd"></span></a>
+  </div>
+{% endblock %}
+
+{% block after_app_content %}
+  <div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="help-modal-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+          <h5 class="modal-title" id="help-modal-label">How To Use This Page</h5>
+        </div>
+        <div class="modal-body">
+          This is where we'll explain everything about the app
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
 
 {% block app_navigation_items %}
-  <li class="title">Map Controls</li>
+  <li class="title" role="button" id="datatoggle">GFS/WRF Data Controls</li>
+  <div id="datacontrols">
+    {% gizmo select_input forecasts %}
+    <a class="btn btn-default btn-block" role="button" id="updategfsbtn">Check for updated Forecast Data</a>
+{#    <div style="text-align: center; padding: 4px;"><strong>{{ current_gfs_time }}</strong></div>#}
+    <div id="mouse-position" class="well well-sm" style="text-align: center"></div>
+  </div>
+
+  <li class="title" role="button" id="displaytoggle">Display Options</li>
+  <div id="displaycontrols">
+    {% gizmo select_input colorscheme %}
+    {% gizmo range_slider opacity_raster %}
+    {% gizmo select_input colors_geojson %}
+    {% gizmo range_slider opacity_geojson %}
 {% endblock %}
 
 {% block app_actions %}
+  <strong style="color: white; font-size: large">Help and Resources</strong>
+  <a class="btn btn-default" role="button" data-toggle="modal" data-target="#help-modal">How To Use This App</a>
+  <a class="btn btn-default" role="button" href="{{ githublink }}" target="_blank">View Source Code (GitHub)</a>
 {% endblock %}
+
 
 {% block content_dependent_styles %}
   {{ block.super }}

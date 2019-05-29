@@ -1,7 +1,7 @@
 # Flash Flood Guidance System Risk Analyzer
 This is a Tethys 2/3 compatible app that helps determine risk of flooding based on the Flash Flood Guidance System using the GFS and WRF forecasts as inputs for precipitation depths.
 
-© [Riley Hales](http://rileyhales.com) and Chris Edwards, 2019. Based on the [GLDAS Data Visualizer](https://github.com/rileyhales/gldas) and the [GFS Visualization Tool](https://github.com/rileyhales/gfs). Developed at the BYU Hydroinformatics Lab.
+© [Riley Hales](http://rileyhales.com) and [Chris Edwards](https://github.com/chris3edwards3/), 2019. Based on the [GLDAS Data Visualizer](https://github.com/rileyhales/gldas) and the [GFS Visualization Tool](https://github.com/rileyhales/gfs). Developed at the BYU Hydroinformatics Lab.
 
 Before installing this app on your Tethys portal, run the following install commands to install the dependencies.
 ~~~~

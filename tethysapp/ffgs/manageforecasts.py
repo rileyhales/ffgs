@@ -7,11 +7,8 @@ import xarray
 import math
 import numpy
 
-from .options import app_configuration
+from .options import app_configuration, ffgs_regions
 
-
-# todo change the "time" variable to not include hour, only use 00
-# todo add subregion to the url
 
 def setenvironment():
     """
@@ -20,22 +17,11 @@ def setenvironment():
     print('Setting the Environment')
     # determine the most day and hour of the day timestamp of the most recent GFS forecast
     now = datetime.datetime.utcnow()
-    if now.hour > 19:
-        fc_time = '18'
-        timestamp = now.strftime("%Y%m%d") + fc_time
-    elif now.hour > 13:
-        fc_time = '12'
-        timestamp = now.strftime("%Y%m%d") + fc_time
-    elif now.hour > 7:
-        fc_time = '06'
-        timestamp = now.strftime("%Y%m%d") + fc_time
-    elif now.hour > 1:
-        fc_time = '00'
-        timestamp = now.strftime("%Y%m%d") + fc_time
+    if now.hour > 3:
+        timestamp = now.strftime("%Y%m%d") + '00'
     else:
-        fc_time = '18'
         now = now - datetime.timedelta(days=1)
-        timestamp = now.strftime("%Y%m%d") + fc_time
+        timestamp = now.strftime("%Y%m%d") + '00'
     print('determined the timestamp to download: ' + timestamp)
 
     # set folder paths for the environment
@@ -50,23 +36,24 @@ def setenvironment():
 
     # create the file structure for the new data
     print('Creating new file structure')
-    for model in ('gfs', 'wrf'):
-        newdirectory = os.path.join(threddspath, model, timestamp)
-        os.mkdir(newdirectory)
-        os.chmod(newdirectory, 0o777)
-        for filetype in ('gribs', 'netcdfs', 'processed'):
-            newdirectory = os.path.join(threddspath, model, timestamp, filetype)
+    for region in ffgs_regions():
+        for model in ('gfs', 'wrf'):
+            newdirectory = os.path.join(threddspath, region, model, timestamp)
             os.mkdir(newdirectory)
             os.chmod(newdirectory, 0o777)
+            for filetype in ('gribs', 'netcdfs', 'processed'):
+                newdirectory = os.path.join(threddspath, region, model, timestamp, filetype)
+                os.mkdir(newdirectory)
+                os.chmod(newdirectory, 0o777)
 
     print('All done, on to do work')
     return threddspath, timestamp
 
 
-def download_gfs(threddspath, timestamp):
+def download_gfs(threddspath, timestamp, region):
     print('\nStarting GFS Grib Downloads')
     # set filepaths
-    gribsdir = os.path.join(threddspath, 'gfs', timestamp, 'gribs')
+    gribsdir = os.path.join(threddspath, region, 'gfs', timestamp, 'gribs')
 
     # if you already have a folder with data for this timestep, quit this function (you dont need to download it)
     if not os.path.exists(gribsdir):
@@ -87,11 +74,14 @@ def download_gfs(threddspath, timestamp):
                 '174', '180', '186', '192', '198', '204', '210', '216', '222', '228', '234', '240']
 
     # this is where the actual downloads happen. set the url, filepath, then download
+    subregions = {
+        'hispaniola': 'subregion=&leftlon=-75&rightlon=-68&toplat=20&bottomlat=-17'
+    }
     for step in fc_steps:
         # url = "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f" + step + \
         #       "&all_lev=on&var_APCP=on&leftlon=-75&rightlon=-68&toplat=20&bottomlat=17&dir=%2Fgfs." + today_str + "00"
         url = 'https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f' + step + \
-              "&all_lev=on&var_APCP=on&leftlon=-75&rightlon=-68&toplat=20&bottomlat=-17&dir=%2Fgfs." + time + '00'
+              '&all_lev=on&var_APCP=on&' + subregions[region] + '&dir=%2Fgfs.' + time + '00'
         filename = 'gfs_apcp_' + timestamp + '_' + step + '.grb'
         print('downloading the file ' + filename)
         filepath = os.path.join(gribsdir, filename)
@@ -123,7 +113,7 @@ def download_wrf(threddspath, timestamp):
     print('\nStarting WRF Grib Downloads')
 
     # set filepaths
-    gribsdir = os.path.join(threddspath, 'wrf', timestamp, 'gribs')
+    gribsdir = os.path.join(threddspath, 'hispaniola', 'wrf', timestamp, 'gribs')
 
     # modify the timestamp for use in the wrf model
     time = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
@@ -158,14 +148,14 @@ def download_wrf(threddspath, timestamp):
     return
 
 
-def grib_to_netcdf(threddspath, timestamp, model):
+def grib_to_netcdf(threddspath, timestamp, region, model):
     """
     Dependencies: xarray, netcdf4, os, shutil, app_configuration (options)
     """
     print('\nStarting Grib Conversions')
     # setting the environment file paths
-    gribs = os.path.join(threddspath, model, timestamp, 'gribs')
-    netcdfs = os.path.join(threddspath, model, timestamp, 'netcdfs')
+    gribs = os.path.join(threddspath, region, model, timestamp, 'gribs')
+    netcdfs = os.path.join(threddspath, region, model, timestamp, 'netcdfs')
 
     # if you already have gfs netcdfs in the netcdfs folder, quit the function
     if not os.path.exists(gribs):
@@ -197,7 +187,7 @@ def grib_to_netcdf(threddspath, timestamp, model):
     return
 
 
-def nc_georeference(threddspath, timestamp, model):
+def nc_georeference(threddspath, timestamp, region, model):
     """
     Description: Intended to make a THREDDS data server compatible netcdf file out of an incorrectly structured
         netcdf file.
@@ -216,8 +206,8 @@ def nc_georeference(threddspath, timestamp, model):
     print('\nProcessing the netCDF files')
 
     # setting the environment file paths
-    netcdfs = os.path.join(threddspath, model, timestamp, 'netcdfs')
-    processed = os.path.join(threddspath, model, timestamp, 'processed')
+    netcdfs = os.path.join(threddspath, region, model, timestamp, 'netcdfs')
+    processed = os.path.join(threddspath, region, model, timestamp, 'processed')
 
     # if you already have processed netcdfs files, skip this and quit the function
     if not os.path.exists(netcdfs):
@@ -352,10 +342,10 @@ def nc_georeference(threddspath, timestamp, model):
     return
 
 
-def new_ncml(threddspath, timestamp, model):
+def new_ncml(threddspath, timestamp, region, model):
     print('\nWriting a new ncml file for this date')
     # create a new ncml file by filling in the template with the right dates and writing to a file
-    ncml = os.path.join(threddspath, model, 'wms.ncml')
+    ncml = os.path.join(threddspath, region, model, 'wms.ncml')
     date = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
     date = datetime.datetime.strftime(date, "%Y-%m-%d %H:00:00")
     with open(ncml, 'w') as file:
@@ -375,7 +365,7 @@ def new_ncml(threddspath, timestamp, model):
     return
 
 
-def cleanup(threddspath, timestamp, model   ):
+def cleanup(threddspath, timestamp, region, model):
     # write a file with the current timestep triggering the app to start using this data
     config = app_configuration()
     with open(os.path.join(config['app_wksp_path'], 'timestep.txt'), 'w') as file:
@@ -383,7 +373,7 @@ def cleanup(threddspath, timestamp, model   ):
 
     # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
     print('\nGetting rid of old ' + model + ' data folders')
-    path = os.path.join(threddspath, model)
+    path = os.path.join(threddspath, region, model)
     files = os.listdir(path)
     files.remove(timestamp)
     files.remove('wms.ncml')

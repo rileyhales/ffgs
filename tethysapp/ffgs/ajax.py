@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
 from .options import *
-from .newforecasts import *
+from .manageforecasts import *
 from .zonal_statistics import *
 
 
@@ -18,15 +18,12 @@ def get_customsettings(request):
 
 
 # todo grib to netcdf and nc georeferencing dont work with wrf yet
-# forecast models comes from options.py and is a list of tuples used by the button in the app's
-# webpage interface. its this: [('GFS', 'gfs'), ('WRF', 'wrf')]
 def updatedata(request):
     threddspath, timestamp = setenvironment()
     download_gfs(threddspath, timestamp)
-    make_gfs_24hrTiffs(gfs_folder)
+    process_gfs24hrs(gfs_folder)
     download_wrf(threddspath, timestamp)
     for model in forecastmodels():
-
         grib_to_netcdf(threddspath, timestamp, model[1])
         nc_georeference(threddspath, timestamp, model[1])
         new_ncml(threddspath, timestamp, model[1])

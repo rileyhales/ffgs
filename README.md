@@ -5,8 +5,7 @@ This is a Tethys 2/3 compatible app that helps determine risk of flooding based 
 
 Before installing this app on your Tethys portal, run the following install commands to install the dependencies.
 ~~~~
-conda install netCDF4
-conda install datetime
+conda install netCDF4, datetime, xarray 
 conda install -c conda-forge rasterstats
 conda install -c conda-forge rasterio
 ~~~~

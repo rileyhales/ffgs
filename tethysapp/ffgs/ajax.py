@@ -1,11 +1,9 @@
-import ast
-
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
-from .options import *
-from .manageforecasts import *
-from .zonal_statistics import *
+from .data_gfs import *
+from .ffgsworkflow import *
+# from .data_wrf import *
 
 
 @login_required()
@@ -17,7 +15,6 @@ def get_customsettings(request):
     return JsonResponse(app_configuration())
 
 
-# todo grib to netcdf and nc georeferencing dont work with wrf yet
 def updatedata(request):
     threddspath, wrksppath, timestamp = setenvironment()
     for region in ffgs_regions():
@@ -27,11 +24,9 @@ def updatedata(request):
         zonal_statistics(wrksppath, timestamp, region[1])
         # download_wrf(threddspath, timestamp)
         for model in forecastmodels():
-            grib_to_netcdf(threddspath, timestamp, region[1], model[1])
             nc_georeference(threddspath, timestamp, region[1], model[1])
             new_ncml(threddspath, timestamp, region[1], model[1])
             cleanup(threddspath, timestamp, region[1], model[1])
-            # this doesn't work yet
-            # set_wmsbounds(threddspath, timestamp, model[1])
+            set_wmsbounds(threddspath, timestamp, region[1], model[1])
 
     return JsonResponse({'Finished': 'Finished'})

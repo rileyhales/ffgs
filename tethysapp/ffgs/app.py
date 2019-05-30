@@ -2,14 +2,14 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 from tethys_sdk.app_settings import CustomSetting
 
 # ROUGHLY IN ORDER OF IMPORTANCE
-# todo add the zonal statistics functions to the data processing workflow <- Chris start here (see ajax.py)
-# todo make the app send the csv of styling information to the javascript so that the geojson is colored
-# todo update the documentation about shapefiles, filestructure, configuring thredds, etc (copy from GLDAS)
 # todo update the charts in js
 # todo make the map build the right urls based on the model
+# todo update the documentation about shapefiles, filestructure, configuring thredds, etc (copy from GLDAS)
+
+# todo add a check to the workflow to see if the csv already has data for the forecast day so we dont duplicate
+# todo make the app send the csv of styling information to the javascript so that the geojson is colored
 # todo make the update workflow a cron job that we can run each day. put a copy of the script in the app
-# todo we're going to have to redo the entire file structure based on which region you're in (eventually, not soon)
-# todo long term: add capacity to download different regions
+# todo long term: add capacity to download different regions (see data_gfs.py -> downloading)
 
 
 class Ffgs(TethysAppBase):

@@ -14,3 +14,18 @@ The shapefile containing the FFGS watershed boundaries must be in a Geographic C
 
 ## Installing the App
 
+Thredds needs to have the following file structure:
+~~~~
+ffgs
+--->gfs
+	---><folder named for timestamp>
+		--->gribs
+		--->netcdfs
+		--->processed
+--->wrf
+	---><folder named for timestamp>
+		--->gribs
+		--->netcdfs
+		--->processed
+~~~~
+

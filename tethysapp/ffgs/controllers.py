@@ -3,7 +3,7 @@ from django.shortcuts import render
 from tethys_sdk.gizmos import SelectInput, RangeSlider
 
 from .app import Ffgs as App
-from .options import wms_colors, geojson_colors
+from .options import wms_colors, geojson_colors, forecastmodels, ffgs_regions
 
 
 @login_required()
@@ -12,12 +12,20 @@ def home(request):
     Controller for the app home page.
     """
 
-    forecasts = SelectInput(
+    models = SelectInput(
         display_text='Choose a Forecast Model',
-        name='colorscheme',
+        name='model',
         multiple=False,
         original=True,
-        options=[('GFS', 'gfs'), ('WRF', 'wrf')],
+        options=forecastmodels(),
+    )
+
+    ffgsregions = SelectInput(
+        display_text='Choose a FFGS Region',
+        name='region',
+        multiple=False,
+        original=True,
+        options=ffgs_regions(),
     )
 
     colorscheme = SelectInput(
@@ -57,7 +65,8 @@ def home(request):
     )
 
     context = {
-        'forecasts': forecasts,
+        'models': models,
+        'ffgsregions': ffgsregions,
         'colorscheme': colorscheme,
         'opacity_raster': opacity_raster,
         'colors_geojson': colors_geojson,

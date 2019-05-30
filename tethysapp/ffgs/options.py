@@ -45,3 +45,19 @@ def geojson_colors():
         ('Teal', '#008080'),
         ('Purple', '#800080'),
     ]
+
+
+def ffgs_regions():
+    """
+    FFGS regions that the app currently supports
+    """
+    return [
+        ('Hispaniola', 'hispaniola')
+    ]
+
+
+def forecastmodels():
+    return [
+        ('GFS', 'gfs'),
+        ('WRF', 'wrf'),
+    ]

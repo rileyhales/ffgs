@@ -11,74 +11,76 @@ import pprint
 
 from .options import *
 
-def get_region():
-    """
-    Script to determine region of interest    Not Sure the best way to do this
-    :return:
-    """
-    region = 'Hispaniola'
-
-    return region
-
-
-def download_gfs():
-    """
-    Script for downloading the GFS Precipitation forecast for the next 10-days in grib format.
-    Dependencies: os, shutil, datetime, urllib.request
-    :return: filepath where files were downloaded
-    """
-
-    # Specify the directory where the gfs files will be saved
-    threddsdir = app_configuration()['threddsdatadir']
-    print('Thredds Directory = ' + threddsdir)
-    today = datetime.datetime.utcnow()
-    today_str = today.strftime("%Y%m%d")
-    gfs_folder = os.path.join(threddsdir, 'gfs_' + today_str + '_00')
-    print('Download Path = ' + gfs_folder)
-
-    # Create a directory for the newest forecast
-    if os.path.exists(gfs_folder):
-        print('Path already exists and will be deleted.')
-        shutil.rmtree(gfs_folder)
-        os.mkdir(gfs_folder)
-    else:
-        os.mkdir(gfs_folder)
-
-    # List of the desired GFS file extensions (f006, f012, etc.)
-    # file_id_list = ["006", "012", "018", "024"]   # Shortened for Testing
-    file_id_list = ["006", "012", "018", "024", "030", "036", "042", "048",
-                    "054", "060", "066", "072", "078", "084", "090", "096",
-                    "102", "108", "114", "120", "126", "132", "138", "144",
-                    "150", "156", "162", "168", "174", "180", "186", "192",
-                    "198", "204", "210", "216", "222", "228", "234", "240"
-                    ]   # 10-days of 6-hr accumulated precipitation
+###############     moved to options.py
+# def get_region():
+#     """
+#     Script to determine region of interest    Not Sure the best way to do this
+#     :return:
+#     """
+#     region = 'Hispaniola'
+#
+#     return region
 
 
-    # Loop to download and import rasters from the NOMADS database, GFS 0.25 Degree
-    for i in range(len(file_id_list)):
-
-        # Specify the URL to download GFS for various regions:
-
-        # No Subregion, Lat 0 to 360
-        # data_url = "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f" + file_id_list[
-        #     i] + "&all_lev=on&var_APCP=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fgfs." + today_str + "00"
-
-        # Whole Globe, Lat -180 to 180
-        # data_url = "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f" + file_id_list[
-        #     i] + "&all_lev=on&var_APCP=on&subregion=&leftlon=-180&rightlon=180&toplat=90&bottomlat=-90&dir=%2Fgfs." + today_str + "00"
-
-        # Dominican Republic & Haiti (Hispaniola)
-        data_url = "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f" + file_id_list[
-            i] + "&all_lev=on&var_APCP=on&subregion=&leftlon=-75&rightlon=-68&toplat=20&bottomlat=17&dir=%2Fgfs." + today_str + "00"
-
-
-        # Specify the filepath and download the files
-        filename = "gfs_apcp_" + today_str + "_t00_f" + file_id_list[i] + ".grib"
-        download_file_path = gfs_folder + "/" + filename
-        urllib.request.urlretrieve(data_url, download_file_path)
-        print("'" + filename + "' was downloaded.")
-
-    return gfs_folder
+###############     copied to the gfsdata.py workflow
+# def download_gfs():
+#     """
+#     Script for downloading the GFS Precipitation forecast for the next 10-days in grib format.
+#     Dependencies: os, shutil, datetime, urllib.request
+#     :return: filepath where files were downloaded
+#     """
+#
+#     # Specify the directory where the gfs files will be saved
+#     threddsdir = app_configuration()['threddsdatadir']
+#     print('Thredds Directory = ' + threddsdir)
+#     today = datetime.datetime.utcnow()
+#     today_str = today.strftime("%Y%m%d")
+#     gfs_folder = os.path.join(threddsdir, 'gfs_' + today_str + '_00')
+#     print('Download Path = ' + gfs_folder)
+#
+#     # Create a directory for the newest forecast
+#     if os.path.exists(gfs_folder):
+#         print('Path already exists and will be deleted.')
+#         shutil.rmtree(gfs_folder)
+#         os.mkdir(gfs_folder)
+#     else:
+#         os.mkdir(gfs_folder)
+#
+#     # List of the desired GFS file extensions (f006, f012, etc.)
+#     # file_id_list = ["006", "012", "018", "024"]   # Shortened for Testing
+#     file_id_list = ["006", "012", "018", "024", "030", "036", "042", "048",
+#                     "054", "060", "066", "072", "078", "084", "090", "096",
+#                     "102", "108", "114", "120", "126", "132", "138", "144",
+#                     "150", "156", "162", "168", "174", "180", "186", "192",
+#                     "198", "204", "210", "216", "222", "228", "234", "240"
+#                     ]   # 10-days of 6-hr accumulated precipitation
+#
+#
+#     # Loop to download and import rasters from the NOMADS database, GFS 0.25 Degree
+#     for i in range(len(file_id_list)):
+#
+#         # Specify the URL to download GFS for various regions:
+#
+#         # No Subregion, Lat 0 to 360
+#         # data_url = "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f" + file_id_list[
+#         #     i] + "&all_lev=on&var_APCP=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fgfs." + today_str + "00"
+#
+#         # Whole Globe, Lat -180 to 180
+#         # data_url = "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f" + file_id_list[
+#         #     i] + "&all_lev=on&var_APCP=on&subregion=&leftlon=-180&rightlon=180&toplat=90&bottomlat=-90&dir=%2Fgfs." + today_str + "00"
+#
+#         # Dominican Republic & Haiti (Hispaniola)
+#         data_url = "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f" + file_id_list[
+#             i] + "&all_lev=on&var_APCP=on&subregion=&leftlon=-75&rightlon=-68&toplat=20&bottomlat=17&dir=%2Fgfs." + today_str + "00"
+#
+#
+#         # Specify the filepath and download the files
+#         filename = "gfs_apcp_" + today_str + "_t00_f" + file_id_list[i] + ".grib"
+#         download_file_path = gfs_folder + "/" + filename
+#         urllib.request.urlretrieve(data_url, download_file_path)
+#         print("'" + filename + "' was downloaded.")
+#
+#     return gfs_folder
 
 
 def daily_gfs_precip(gfs_folder):

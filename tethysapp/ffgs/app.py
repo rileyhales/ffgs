@@ -43,8 +43,8 @@ class Ffgs(TethysAppBase):
 
             # url maps for data processing functions
             UrlMap(
-                name='updateGFS',
-                url='ffgs/updateGFS',
+                name='updateForecasts',
+                url='ffgs/updateForecasts',
                 controller='ffgs.ajax.updatedata'
             ),
         )

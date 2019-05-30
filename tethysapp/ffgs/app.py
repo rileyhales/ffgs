@@ -1,6 +1,18 @@
 from tethys_sdk.base import TethysAppBase, url_map_maker
 from tethys_sdk.app_settings import CustomSetting
 
+# ROUGHLY IN ORDER OF IMPORTANCE
+# todo rename the hispaniola shapefile to something the app can easily build a file path to eg ffgs_hispaniola.shp
+# todo add the zonal statistics functions to the data processing workflow <- Chris start here (see ajax.py)
+# todo make the app send the csv of styling information to the javascript so that the geojson is colored
+# todo make a new geoserver workspace called ffgs
+# todo put the hispaniola shapefile there
+# todo update the documentation about shapefiles, filestructure, configuring thredds, etc (copy from GLDAS)
+# todo update the charts in js
+# todo make the map build the right urls based on the model
+# todo make the update workflow a cron job that we can run each day. put a copy of the script in the app
+# todo we're going to have to redo the entire file structure based on which region you're in (eventually, not soon)
+
 
 class Ffgs(TethysAppBase):
     """
@@ -13,8 +25,8 @@ class Ffgs(TethysAppBase):
     package = 'ffgs'
     root_url = 'ffgs'
     color = '#008080'
-    description = 'An interface for viewing areas at risk for flood based on the FFGS.\n' \
-                  'Uses the GFS and WRF forecasts as inputs for determining precipitation depths.'
+    description = 'An interface for viewing areas at risk for flood based on the FFGS using the GFS and WRF ' \
+                  'forecasts as inputs for determining precipitation depths.'
     tags = ''
     enable_feedback = False
     feedback_emails = []

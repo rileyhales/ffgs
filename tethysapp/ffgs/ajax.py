@@ -17,16 +17,19 @@ def get_customsettings(request):
     return JsonResponse(app_configuration())
 
 
+# todo grib to netcdf and nc georeferencing dont work with wrf yet
+# forecast models comes from options.py and is a list of tuples used by the button in the app's
+# webpage interface. its this: [('GFS', 'gfs'), ('WRF', 'wrf')]
 def updatedata(request):
     threddspath, timestamp = setenvironment()
     download_gfs(threddspath, timestamp)
     download_wrf(threddspath, timestamp)
-    # todo grib to netcdf and nc georeferencing dont work with wrf yet
     for model in forecastmodels():
         grib_to_netcdf(threddspath, timestamp, model[1])
         nc_georeference(threddspath, timestamp, model[1])
         new_ncml(threddspath, timestamp, model[1])
         cleanup(threddspath, timestamp, model[1])
+        # this doesn't work yet
         # set_wmsbounds(threddspath, timestamp, model[1])
 
     return JsonResponse({'Finished': 'Finished'})

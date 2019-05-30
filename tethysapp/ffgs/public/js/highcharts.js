@@ -14,6 +14,8 @@ Highcharts.setOptions({
 
 let chartdata = null;
 
+// todo the charts we want can be modified from the saldasforecast app and the malaria app. these wont help
+
 // Placeholder chart
 let chart = Highcharts.chart('highchart', {
     title: {

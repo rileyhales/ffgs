@@ -4,6 +4,8 @@ import shutil
 import requests
 import netCDF4
 import xarray
+import math
+import numpy
 
 from .options import app_configuration
 
@@ -25,10 +27,7 @@ def setenvironment():
         fc_time = '06'
         timestamp = now.strftime("%Y%m%d") + fc_time
     elif now.hour > 1:
-        # fc_time = '00'
-        # timestamp = now.strftime("%Y%m%d") + fc_time
-        fc_time = '18'
-        now = now - datetime.timedelta(days=1)
+        fc_time = '00'
         timestamp = now.strftime("%Y%m%d") + fc_time
     else:
         fc_time = '18'

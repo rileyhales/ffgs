@@ -11,6 +11,12 @@ import pprint
 
 from .options import *
 
+# todo add region to resample function
+# todo combine 24hr tiff and netcdf
+# todo put tiffs in workspace
+# todo always append to existing csv, rename the csv without the date
+# todo add resample and zonal_statsistics to ajax.py (or controllers)
+
 def make_gfs_24hrTiffs(gfs_folder):
     """
     Script to combine 6-hr accumulation grib files into 24-hr accumulation geotiffs.

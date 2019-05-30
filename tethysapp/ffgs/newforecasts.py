@@ -10,6 +10,9 @@ import numpy
 from .options import app_configuration
 
 
+# todo change the "time" variable to not include hour, only use 00
+# todo add subregion to the url
+
 def setenvironment():
     """
     Dependencies: os, shutil, datetime, urllib.request, app_configuration (options)

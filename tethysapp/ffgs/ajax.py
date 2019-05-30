@@ -23,8 +23,10 @@ def get_customsettings(request):
 def updatedata(request):
     threddspath, timestamp = setenvironment()
     download_gfs(threddspath, timestamp)
+    make_gfs_24hrTiffs(gfs_folder)
     download_wrf(threddspath, timestamp)
     for model in forecastmodels():
+
         grib_to_netcdf(threddspath, timestamp, model[1])
         nc_georeference(threddspath, timestamp, model[1])
         new_ncml(threddspath, timestamp, model[1])

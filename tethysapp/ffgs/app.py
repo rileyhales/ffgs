@@ -9,6 +9,7 @@ from tethys_sdk.app_settings import CustomSetting
 # todo make the map build the right urls based on the model
 # todo make the update workflow a cron job that we can run each day. put a copy of the script in the app
 # todo we're going to have to redo the entire file structure based on which region you're in (eventually, not soon)
+# todo long term: add capacity to download different regions
 
 
 class Ffgs(TethysAppBase):

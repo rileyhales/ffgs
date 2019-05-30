@@ -11,8 +11,9 @@ from rasterio.enums import Resampling
 
 from .options import *
 
-# todo always append to existing csv, rename the csv without the date
+# todo always append to existing csv, rename the csv without the date (maybe only keep the last 10 days of results?)
 # todo theres a bug in georeferencing the netcdf. it ends up wms-able but not in the right location. zonal stats works
+# todo check on the setwmsbounds function. make sure it works right
 
 
 def setenvironment():
@@ -81,9 +82,6 @@ def resample(wrksppath, timestamp, region):
     """
     Script to resample rasters from .25 o .0025 degree in order for rasterstats to work
     Dependencies: datetime, os, numpy, rasterio
-    :param gfs_folder: folder of raw grib data and other new directories
-    :param daily_folder: folder of 24-hr GeoTIFFs
-    :return: resample_folder: folder of 24-hr resampled GeoTIFFs
     """
     print('\nResampling the rasters for ' + region)
     # Define app workspace and sub-paths
@@ -156,9 +154,6 @@ def zonal_statistics(wrksppath, timestamp, region):
     """
     Script to calculate average precip over FFGS polygon shapefile
     Dependencies: datetime, os, pandas, rasterstats
-    :param region: which shapefile to use
-    :param resample_folder: folder with resampled GeoTIFFs
-    :return: csv file with the zonal statistics
     """
     print('\nDoing Zonal Statistics on ' + region)
     # Define app workspace and sub-paths
@@ -190,7 +185,7 @@ def zonal_statistics(wrksppath, timestamp, region):
 
         today = datetime.datetime.utcnow()
         forecast_date = today.strftime("%m/%d/%Y")
-        timestep = today + datetime.timedelta(days=(i))
+        timestep = today + datetime.timedelta(days=i)
         timestep_str = datetime.datetime.strftime(timestep, "%m/%d/%Y")
 
         # for j in range(3):
@@ -412,15 +407,14 @@ def cleanup(threddspath, timestamp, region, model):
     return
 
 
-# todo make this work
 def set_wmsbounds(threddspath, timestamp, region, model):
-    
-    # Dynamically defines exact boundaries for the legend and wms so that they are synchronized
-    # Dependencies: netcdf4, os, math, numpy
-    
+    """
+    Dynamically defines exact boundaries for the legend and wms so that they are synchronized
+    Dependencies: netcdf4, os, math, numpy
+    """
     print('\nSetting the WMS bounds')
     # get a list of files to
-    ncfolder = os.path.join(threddspath, timestamp, 'processed')
+    ncfolder = os.path.join(threddspath, region, model, timestamp, 'processed')
     ncs = os.listdir(ncfolder)
     files = [file for file in ncs if file.startswith('processed')][0]
 

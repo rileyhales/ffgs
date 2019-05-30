@@ -6,8 +6,10 @@ from tethys_sdk.app_settings import CustomSetting
 # todo make the map build the right urls based on the model
 # todo update the documentation about shapefiles, filestructure, configuring thredds, etc (copy from GLDAS)
 
+# todo make the print statements from the workflow write to a log file instead and do an http response instead of Json
 # todo add a check to the workflow to see if the csv already has data for the forecast day so we dont duplicate
 # todo make the app send the csv of styling information to the javascript so that the geojson is colored
+
 # todo make the update workflow a cron job that we can run each day. put a copy of the script in the app
 # todo long term: add capacity to download different regions (see data_gfs.py -> downloading)
 

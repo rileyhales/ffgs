@@ -1,8 +1,12 @@
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from django.shortcuts import render
 from tethys_sdk.gizmos import SelectInput, RangeSlider
 
 from .app import Ffgs as App
+from .data_gfs import *
+# from .data_wrf import *
+from .ffgsworkflow import *
 from .options import wms_colors, geojson_colors, forecastmodels, ffgs_regions
 
 
@@ -76,3 +80,24 @@ def home(request):
     }
 
     return render(request, 'ffgs/home.html', context)
+
+
+@login_required()
+def run_workflow(request):
+    """
+    The controller for running the workflow to download and .
+    """
+    threddspath, wrksppath, timestamp = setenvironment()
+    for region in ffgs_regions():
+        download_gfs(threddspath, timestamp, region[1])
+        gfs_24hrfiles(threddspath, wrksppath, timestamp, region[1])
+        resample(wrksppath, timestamp, region[1])
+        zonal_statistics(wrksppath, timestamp, region[1])
+        # download_wrf(threddspath, timestamp)
+        for model in forecastmodels():
+            nc_georeference(threddspath, timestamp, region[1], model[1])
+            new_ncml(threddspath, timestamp, region[1], model[1])
+            cleanup(threddspath, timestamp, region[1], model[1])
+            set_wmsbounds(threddspath, timestamp, region[1], model[1])
+
+    return JsonResponse({'Finished': 'Finished'})

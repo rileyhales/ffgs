@@ -14,12 +14,12 @@ dependencies = ['']
 
 setup(
     name=release_package,
-    version='0.0.1',
-    tags='FFGS, GFS, maps',
+    version='development',
+    tags='FFGS, GFS, Flash Floods, Timeseries',
     description='An interface for viewing areas at risk for flood based on the FFGS',
     long_description='',
     keywords='FFGS',
-    author='Riley Hales',
+    author='Riley Hales, Chris Edwards',
     author_email='',
     url='',
     license='BSD 3-Clause',

@@ -2,11 +2,8 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 from tethys_sdk.app_settings import CustomSetting
 
 # ROUGHLY IN ORDER OF IMPORTANCE
-# todo rename the hispaniola shapefile to something the app can easily build a file path to eg ffgs_hispaniola.shp
 # todo add the zonal statistics functions to the data processing workflow <- Chris start here (see ajax.py)
 # todo make the app send the csv of styling information to the javascript so that the geojson is colored
-# todo make a new geoserver workspace called ffgs
-# todo put the hispaniola shapefile there
 # todo update the documentation about shapefiles, filestructure, configuring thredds, etc (copy from GLDAS)
 # todo update the charts in js
 # todo make the map build the right urls based on the model

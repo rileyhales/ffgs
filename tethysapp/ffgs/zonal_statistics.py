@@ -14,7 +14,7 @@ from .options import *
 def make_gfs_24hrTiffs(gfs_folder):
     """
     Script to combine 6-hr accumulation grib files into 24-hr accumulation geotiffs.
-    Dependencies: os, datetime, numpy, rasterio
+    Dependencies: datetime, os, numpy, rasterio
     :param gfs_folder: folder where grib files were downloaded
     :return: folder with daily precipitaion geotiffs
     """
@@ -93,6 +93,7 @@ def make_gfs_24hrTiffs(gfs_folder):
 def resample(gfs_folder, daily_folder):
     """
     Script to resample rasters from .25 o .0025 degree in order for rasterstats to work
+    Dependencies: datetime, os, numpy, rasterio
     :param gfs_folder: folder of raw grib data and other new directories
     :param daily_folder: folder of 24-hr GeoTIFFs
     :return: resample_folder: folder of 24-hr resampled GeoTIFFs
@@ -165,7 +166,9 @@ def resample(gfs_folder, daily_folder):
 def zonal_statistics(region, resample_folder):
     """
     Script to calculate average precip over FFGS polygon shapefile
-    :param resample_folder:
+    Dependencies: datetime, os, pandas, rasterstats
+    :param region: which shapefile to use
+    :param resample_folder: folder with resampled GeoTIFFs
     :return: csv file with the zonal statistics
     """
     # Define app workspace and sub-paths

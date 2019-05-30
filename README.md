@@ -17,15 +17,27 @@ The shapefile containing the FFGS watershed boundaries must be in a Geographic C
 Thredds needs to have the following file structure:
 ~~~~
 ffgs
---->gfs
-	---><folder named for timestamp>
-		--->gribs
-		--->netcdfs
-		--->processed
---->wrf
-	---><folder named for timestamp>
-		--->gribs
-		--->netcdfs
-		--->processed
+--->hispaniola
+	--->gfs
+		---><folder named for timestamp>
+			--->gribs
+			--->netcdfs
+			--->processed
+	--->wrf
+		---><folder named for timestamp>
+			--->gribs
+			--->netcdfs
+			--->processed
+--->centralamerica
+	--->gfs
+		---><folder named for timestamp>
+			--->gribs
+			--->netcdfs
+			--->processed
+	--->other model types?
+		---><folder named for timestamp>
+			--->gribs
+			--->netcdfs
+			--->processed
 ~~~~
 

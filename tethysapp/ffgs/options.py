@@ -59,5 +59,5 @@ def ffgs_regions():
 def forecastmodels():
     return [
         ('GFS', 'gfs'),
-        ('WRF', 'wrf'),
+        # ('WRF', 'wrf'),
     ]

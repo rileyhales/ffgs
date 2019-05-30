@@ -27,27 +27,37 @@ def setenvironment():
     # set folder paths for the environment
     configuration = app_configuration()
     threddspath = configuration['threddsdatadir']
-    wrksp = configuration['app_wksp_path']
+    wrksppath = configuration['app_wksp_path']
 
     # if the file structure already exists, quit
-    if os.path.exists(os.path.join(threddspath, 'gfs', timestamp)):
+    if os.path.exists(os.path.join(threddspath, 'hispaniola', 'gfs', timestamp)):
         print('Looks like you already have the file structure for this timestep, lets see what we need to fill in.')
-        return threddspath, timestamp
+        return threddspath, wrksppath, timestamp
 
     # create the file structure for the new data
-    print('Creating new file structure')
     for region in ffgs_regions():
+        print('Creating new App Workspace GeoTIFF file structure for ' + region[1])
+        newdirectory = os.path.join(wrksppath, region[1], '24_hr_GeoTIFFs')
+        os.mkdir(newdirectory)
+        os.chmod(newdirectory, 0o777)
+        newdirectory = os.path.join(wrksppath, region[1], '24_hr_GeoTIFFs_resampled')
+        os.mkdir(newdirectory)
+        os.chmod(newdirectory, 0o777)
         for model in ('gfs', 'wrf'):
-            newdirectory = os.path.join(threddspath, region, model, timestamp)
+            print('Creating new THREDDS file structure for ' + region[1])
+            newdirectory = os.path.join(threddspath, region[1], model)
+            os.mkdir(newdirectory)
+            os.chmod(newdirectory, 0o777)
+            newdirectory = os.path.join(threddspath, region[1], model, timestamp)
             os.mkdir(newdirectory)
             os.chmod(newdirectory, 0o777)
             for filetype in ('gribs', 'netcdfs', 'processed'):
-                newdirectory = os.path.join(threddspath, region, model, timestamp, filetype)
+                newdirectory = os.path.join(threddspath, region[1], model, timestamp, filetype)
                 os.mkdir(newdirectory)
                 os.chmod(newdirectory, 0o777)
 
     print('All done, on to do work')
-    return threddspath, timestamp
+    return threddspath, wrksppath, timestamp
 
 
 def download_gfs(threddspath, timestamp, region):
@@ -58,6 +68,9 @@ def download_gfs(threddspath, timestamp, region):
     # if you already have a folder with data for this timestep, quit this function (you dont need to download it)
     if not os.path.exists(gribsdir):
         print('There is no download folder, you must have already processed the downloads. Skipping download stage.')
+        return
+    elif len(os.listdir(gribsdir)) >= 40:
+        print('There are already 40 forecast steps in here. Dont need to download them')
         return
     # otherwise, remove anything in the folder before starting (in case there was a partial download)
     else:

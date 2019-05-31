@@ -2,11 +2,11 @@
 function map() {
     // create the map
     return L.map('map', {
-        zoom: 2,
+        zoom: 8.25,
         minZoom: 1.25,
         boxZoom: true,
-        maxBounds: L.latLngBounds(L.latLng(-100.0, -270.0), L.latLng(100.0, 270.0)),
-        center: [20, 0],
+        maxBounds: L.latLngBounds(L.latLng(-100.0,-270.0), L.latLng(100.0, 270.0)),
+        center: [19, -70.6],
         timeDimension: true,
         timeDimensionControl: true,
         timeDimensionControlOptions: {
@@ -36,10 +36,10 @@ function basemaps() {
 
 ////////////////////////////////////////////////////////////////////////  WMS LAYERS FOR GLDAS
 function newLayer() {
-    let wmsurl = threddsbase + $("#dates").val() + '.ncml';
+    let wmsurl = threddsbase + '/' + $("#region").val() + '/' + $("#model").val() + '/' + 'wms.ncml';
     let wmsLayer = L.tileLayer.wms(wmsurl, {
         // version: '1.3.0',
-        layers: $("#variables").val(),
+        layers: 'tp',
         dimension: 'time',
         useCache: true,
         crossOrigin: false,
@@ -48,7 +48,7 @@ function newLayer() {
         opacity: $("#opacity_raster").val(),
         BGCOLOR: '0x000000',
         styles: 'boxfill/' + $('#colorscheme').val(),
-        colorscalerange: bounds[$("#dates").val()][$("#variables").val()],
+        colorscalerange: '0,50'
     });
 
     let timedLayer = L.timeDimension.layer.wms(wmsLayer, {
@@ -66,15 +66,15 @@ function newLayer() {
 let legend = L.control({position: 'topright'});
 legend.onAdd = function (mapObj) {
     let div = L.DomUtil.create('div', 'legend');
-    let url = threddsbase + $("#dates").val() + '.ncml' + "?REQUEST=GetLegendGraphic&LAYER=" + $("#variables").val() + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=" + bounds[$("#dates").val()][$("#variables").val()];
+    let url = threddsbase + '/' + $("#region").val() + '/' + $("#model").val() + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0,50";
     div.innerHTML = '<img src="' + url + '" alt="legend" style="width:100%; float:right;">';
     return div
 };
-/*
+
 ////////////////////////////////////////////////////////////////////////  GEOJSON LAYERS - GEOSERVER + WFS / GEOJSON
 let currentregion = '';              // tracks which region is on the chart for updates not caused by the user picking a new region
 function layerPopups(feature, layer) {
-    let region = feature.properties.name;
+    let region = feature.properties.cat_id;
     layer.bindPopup('<a class="btn btn-default" role="button" onclick="getShapeChart(' + "'" + region + "'" + ')">Get timeseries of averages for ' + region + '</a>');
 }
 
@@ -83,24 +83,11 @@ let jsonparams = {
     onEachFeature: layerPopups,
     style: {color: $("#colors_geojson").val(), opacity: $("#opacity_geojson").val()}
 };
-let africa = L.geoJSON(false, jsonparams);
-let asia = L.geoJSON(false, jsonparams);
-let australia = L.geoJSON(false, jsonparams);
-let centralamerica = L.geoJSON(false, jsonparams);
-let europe = L.geoJSON(false, jsonparams);
-let middleeast = L.geoJSON(false, jsonparams);
-let northamerica = L.geoJSON(false, jsonparams);
-let southamerica = L.geoJSON(false, jsonparams);
+let hispaniola = L.geoJSON(false, jsonparams);
+
 // create this reference array that other functions will build on
 const geojsons = [
-    [africa, 'africa', africa_json],
-    [asia, 'asia', asia_json],
-    [australia, 'australia', australia_json],
-    [centralamerica, 'centralamerica', centralamerica_json],
-    [europe, 'europe', europe_json],
-    [middleeast, 'middleeast', middleeast_json],
-    [northamerica, 'northamerica', northamerica_json],
-    [southamerica, 'southamerica', southamerica_json],
+    [hispaniola, 'ffgs_hispaniola', hispaniola_json],
 ];
 
 // gets the geojson layers from geoserver wfs and updates the layer
@@ -110,7 +97,7 @@ function getWFSData(geoserverlayer, leafletlayer) {
         service: 'WFS',
         version: '1.0.0',
         request: 'GetFeature',
-        typeName: 'gldas:' + geoserverlayer,
+        typeName: 'ffgs:' + geoserverlayer,
         maxFeatures: 10000,
         outputFormat: 'application/json',
         parseResponse: 'getJson',
@@ -158,14 +145,7 @@ function makeControls() {
     return L.control.layers(basemapObj, {
         'GLDAS Layer': layerObj,
         'Drawing': drawnItems,
-        'Europe': europe,
-        'Asia': asia,
-        'Middle East': middleeast,
-        'North America': northamerica,
-        'Central America': centralamerica,
-        'South America': southamerica,
-        'Africa': africa,
-        'Australia': australia,
+        'Hispaniola FFGS': hispaniola,
     }).addTo(mapObj);
 }
 
@@ -182,5 +162,3 @@ function clearMap() {
     // now delete the controls object
     mapObj.removeControl(controlsObj);
 }
-
- */

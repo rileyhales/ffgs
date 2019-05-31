@@ -1,6 +1,7 @@
 import datetime
 import math
 import shutil
+import logging
 
 import netCDF4
 import numpy
@@ -18,9 +19,9 @@ from .options import *
 
 def setenvironment():
     """
-    Dependencies: os, shutil, datetime, urllib.request, app_configuration (options)
+    Dependencies: os, shutil, datetime, urllib.request, app_settings (options)
     """
-    print('\nSetting the Environment')
+    logging.info('Setting the Environment')
     # determine the most day and hour of the day timestamp of the most recent GFS forecast
     now = datetime.datetime.utcnow()
     if now.hour > 3:
@@ -28,10 +29,10 @@ def setenvironment():
     else:
         now = now - datetime.timedelta(days=1)
         timestamp = now.strftime("%Y%m%d") + '00'
-    print('determined the timestamp to download: ' + timestamp)
+    logging.info('determined the timestamp to download: ' + timestamp)
 
     # set folder paths for the environment
-    configuration = app_configuration()
+    configuration = app_settings()
     threddspath = configuration['threddsdatadir']
     wrksppath = configuration['app_wksp_path']
 
@@ -39,12 +40,12 @@ def setenvironment():
     checkthredds = os.path.join(threddspath, 'hispaniola', 'gfs', timestamp)
     checkworkspace = os.path.join(wrksppath, 'hispaniola', '24_hr_GeoTIFFs_resampled')
     if os.path.exists(checkthredds) and os.path.exists(checkworkspace):
-        print('Looks like you already have the file structure for this timestep, lets see what we need to fill in.')
+        logging.info('Looks like you already have file structure for this timestep, lets see what we need to fill in.')
         return threddspath, wrksppath, timestamp
 
     # create the file structure for the new data
     for region in ffgs_regions():
-        print('Creating new App Workspace GeoTIFF file structure for ' + region[1])
+        logging.info('Creating new App Workspace GeoTIFF file structure for ' + region[1])
         new_dir = os.path.join(wrksppath, region[1], '24_hr_GeoTIFFs')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
@@ -55,7 +56,7 @@ def setenvironment():
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
-        print('Creating new THREDDS file structure for ' + region[1])
+        logging.info('Creating new THREDDS file structure for ' + region[1])
         for model in ('gfs', 'wrf'):
             new_dir = os.path.join(threddspath, region[1], model)
             if os.path.exists(new_dir):
@@ -74,7 +75,7 @@ def setenvironment():
                 os.mkdir(new_dir)
                 os.chmod(new_dir, 0o777)
 
-    print('All done, on to do work')
+    logging.info('All done, on to do work')
     return threddspath, wrksppath, timestamp
 
 
@@ -83,14 +84,14 @@ def resample(wrksppath, timestamp, region):
     Script to resample rasters from .25 o .0025 degree in order for rasterstats to work
     Dependencies: datetime, os, numpy, rasterio
     """
-    print('\nResampling the rasters for ' + region)
+    logging.info('\nResampling the rasters for ' + region)
     # Define app workspace and sub-paths
     tiffs = os.path.join(wrksppath, region, '24_hr_GeoTIFFs')
     resampleds = os.path.join(wrksppath, region, '24_hr_GeoTIFFs_resampled')
 
     # Create directory for the resampled GeoTIFFs
     if not os.path.exists(tiffs):
-        print('There is no tiffs folder. You must have already resampled them. Skipping resampling')
+        logging.info('There is no tiffs folder. You must have already resampled them. Skipping resampling')
         return
 
     # List all 10 Resampled GeoTIFFs
@@ -114,7 +115,7 @@ def resample(wrksppath, timestamp, region):
     # Resample each GeoTIFF
     for file in files:
         path = os.path.join(tiffs, file)
-        print(path)
+        logging.info(path)
         with rasterio.open(path) as dataset:
             data = dataset.read(
                 out_shape=(int(dataset.height * 100), int(dataset.width * 100)),
@@ -155,7 +156,7 @@ def zonal_statistics(wrksppath, timestamp, region):
     Script to calculate average precip over FFGS polygon shapefile
     Dependencies: datetime, os, pandas, rasterstats
     """
-    print('\nDoing Zonal Statistics on ' + region)
+    logging.info('\nDoing Zonal Statistics on ' + region)
     # Define app workspace and sub-paths
     resampleds = os.path.join(wrksppath, region, '24_hr_GeoTIFFs_resampled')
     shp_path = os.path.join(wrksppath, region, 'shapefiles', 'ffgs_' + region + '.shp')
@@ -163,7 +164,7 @@ def zonal_statistics(wrksppath, timestamp, region):
 
     # check that there are resampled tiffs to do zonal statistics on
     if not os.path.exists(resampleds):
-        print('There are no resampled tiffs to do zonal statistics on. Skipping Zonal Statistics')
+        logging.info('There are no resampled tiffs to do zonal statistics on. Skipping Zonal Statistics')
         return
 
     # List all 10 Resampled GeoTIFFs
@@ -223,7 +224,7 @@ def nc_georeference(threddspath, timestamp, region, model):
     6. Each variable has the long_name, units, standard_name property values correct
     7. The variable property coordinates = "lat lon" or else is blank/doesn't exist
     """
-    print('\nProcessing the netCDF files')
+    logging.info('\nProcessing the netCDF files')
 
     # setting the environment file paths
     netcdfs = os.path.join(threddspath, region, model, timestamp, 'netcdfs')
@@ -231,7 +232,7 @@ def nc_georeference(threddspath, timestamp, region, model):
 
     # if you already have processed netcdfs files, skip this and quit the function
     if not os.path.exists(netcdfs):
-        print('There are no netcdfs to be converted. Skipping netcdf processing.')
+        logging.info('There are no netcdfs to be converted. Skipping netcdf processing.')
         return
     # otherwise, remove anything in the folder before starting (in case there was a partial processing)
     else:
@@ -242,10 +243,10 @@ def nc_georeference(threddspath, timestamp, region, model):
     # list the files that need to be converted
     net_files = os.listdir(netcdfs)
     files = [file for file in net_files if file.endswith('.nc')]
-    print('There are ' + str(len(files)) + ' compatible files.')
+    logging.info('There are ' + str(len(files)) + ' compatible files.')
 
     # read the first file that we'll copy data from in the next blocks of code
-    print('Preparing the reference file')
+    logging.info('Preparing the reference file')
     path = os.path.join(netcdfs, net_files[0])
     netcdf_obj = netCDF4.Dataset(path, 'r', clobber=False, diskless=True)
 
@@ -272,7 +273,7 @@ def nc_georeference(threddspath, timestamp, region, model):
 
     # this is where the files start getting copied
     for file in files:
-        print('Working on file ' + str(file))
+        logging.info('Working on file ' + str(file))
         openpath = os.path.join(netcdfs, file)
         savepath = os.path.join(processed, 'processed_' + file)
         # open the file to be copied
@@ -358,12 +359,12 @@ def nc_georeference(threddspath, timestamp, region, model):
     # delete the netcdfs now that we're done with them triggering future runs to skip this step
     shutil.rmtree(netcdfs)
 
-    print('Finished File Conversions')
+    logging.info('Finished File Conversions')
     return
 
 
 def new_ncml(threddspath, timestamp, region, model):
-    print('\nWriting a new ncml file for this date')
+    logging.info('\nWriting a new ncml file for this date')
     # create a new ncml file by filling in the template with the right dates and writing to a file
     ncml = os.path.join(threddspath, region, model, 'wms.ncml')
     date = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
@@ -381,18 +382,18 @@ def new_ncml(threddspath, timestamp, region, model):
             '    </aggregation>\n'
             '</netcdf>'
         )
-    print('Wrote New .ncml')
+    logging.info('Wrote New .ncml')
     return
 
 
 def cleanup(threddspath, timestamp, region, model):
     # write a file with the current timestep triggering the app to start using this data
-    config = app_configuration()
+    config = app_settings()
     with open(os.path.join(config['app_wksp_path'], 'timestep.txt'), 'w') as file:
         file.write(timestamp)
 
     # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
-    print('\nGetting rid of old ' + model + ' data folders')
+    logging.info('\nGetting rid of old ' + model + ' data folders')
     path = os.path.join(threddspath, region, model)
     files = os.listdir(path)
     files.remove(timestamp)
@@ -403,7 +404,7 @@ def cleanup(threddspath, timestamp, region, model):
         except:
             os.remove(os.path.join(path, file))
 
-    print('Done')
+    logging.info('Done')
     return
 
 
@@ -412,7 +413,7 @@ def set_wmsbounds(threddspath, timestamp, region, model):
     Dynamically defines exact boundaries for the legend and wms so that they are synchronized
     Dependencies: netcdf4, os, math, numpy
     """
-    print('\nSetting the WMS bounds')
+    logging.info('\nSetting the WMS bounds')
     # get a list of files to
     ncfolder = os.path.join(threddspath, region, model, timestamp, 'processed')
     ncs = os.listdir(ncfolder)
@@ -426,29 +427,29 @@ def set_wmsbounds(threddspath, timestamp, region, model):
 
     path = os.path.join(ncfolder, files)
     dataset = netCDF4.Dataset(path, 'r')
-    print('working on file ' + path)
+    logging.info('working on file ' + path)
 
     for variable in variables:
-        print('checking for variable ' + variable)
+        logging.info('checking for variable ' + variable)
         array = dataset[variables[variable]][:]
         array = array.flatten()
         array = array[~numpy.isnan(array)]
         maximum = math.ceil(max(array))
         if maximum == numpy.nan:
             maximum = 0
-        print('max is ' + str(maximum))
+        logging.info('max is ' + str(maximum))
 
         minimum = math.floor(min(array))
         if minimum == numpy.nan:
             minimum = 0
-        print('min is ' + str(minimum))
+        logging.info('min is ' + str(minimum))
 
         bounds[variables[variable]] = str(minimum) + ',' + str(maximum)
     dataset.close()
 
-    print('done checking for max/min. writing the file')
+    logging.info('done checking for max/min. writing the file')
     boundsfile = os.path.join(os.path.dirname(__file__), 'public', 'js', 'bounds.js')
     with open(boundsfile, 'w') as file:
         file.write('const bounds = ' + str(bounds) + ';')
-    print('wrote the file. all done')
+    logging.info('wrote the file. all done')
     return

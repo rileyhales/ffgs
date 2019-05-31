@@ -2,6 +2,7 @@ import os
 import datetime
 import shutil
 import requests
+import logging
 
 
 def download_wrf(threddspath, timestamp):
@@ -11,14 +12,13 @@ def download_wrf(threddspath, timestamp):
     Modified for tethys implementation by Riley Hales and Chris Edwards May 22 2019
     WRF Data Information:
     URL: https://www.nco.ncep.noaa.gov/pmb/products/hiresw/
-    Model: AWIPS 3.8km Puerto Rico ARW (NCAR Advanced Research WRF, 2.5km doesn't include the DR) (filename says it's 5km)
-    Data Access: GRIB2 via urllib
+    Model: AWIPS 3.8km Puerto Rico ARW (NCAR Advanced Research WRF, 2.5km doesn't include the DR)(filename says its 5km)
     This model runs twice a day, at 6:00 and 18:00. We use the 6:00
     We use the 24- and 48-hr accumulated precipitation in kg/m^2
     Filename eg: hiresw.t06z.arw_5km.f24.pr.grib2
     The variable APCP (Total Precipitation) is stored in Raster Band 282
     """
-    print('\nStarting WRF Grib Downloads')
+    logging.info('\nStarting WRF Grib Downloads')
 
     # set filepaths
     gribsdir = os.path.join(threddspath, 'hispaniola', 'wrf', timestamp, 'gribs')
@@ -29,7 +29,7 @@ def download_wrf(threddspath, timestamp):
 
     # if you already have a folder with data for this timestep, quit this function (you dont need to download it)
     if not os.path.exists(gribsdir):
-        print('There is no download folder, you must have already processed the downloads. Skipping download stage.')
+        logging.info('There is no download folder, you must have already processed them. Skipping download stage.')
         return
     # otherwise, remove anything in the folder before starting (in case there was a partial download)
     else:
@@ -43,7 +43,7 @@ def download_wrf(threddspath, timestamp):
         url = 'https://www.ftp.ncep.noaa.gov/data/nccf/com/hiresw/prod/hiresw.' + time + \
               '/hiresw.t06z.arw_5km.f' + step + '.pr.grib2'
         filename = 'wrf_' + time + '_f' + step + '.grib'
-        print('downloading the file ' + filename)
+        logging.info('downloading the file ' + filename)
         filepath = os.path.join(gribsdir, filename)
         with requests.get(url, stream=True) as r:
             r.raise_for_status()
@@ -52,5 +52,5 @@ def download_wrf(threddspath, timestamp):
                     if chunk:  # filter out keep-alive new chunks
                         f.write(chunk)
 
-    print('Finished Downloads')
+    logging.info('Finished WRF Downloads')
     return

@@ -2,7 +2,7 @@ from .app import Ffgs as App
 import os
 
 
-def app_configuration():
+def app_settings():
     """
     Gets the settings for the app for use in other functions and ajax for leaflet
     Dependencies: os, App (app)
@@ -12,6 +12,7 @@ def app_configuration():
         'threddsdatadir': App.get_custom_setting("Local Thredds Folder Path"),
         'threddsurl': App.get_custom_setting("Thredds WMS URL"),
         'geoserverurl': App.get_custom_setting("Geoserver Workspace URL"),
+        'logfile': os.path.join(App.get_app_workspace().path, 'workflow.log')
     }
 
 

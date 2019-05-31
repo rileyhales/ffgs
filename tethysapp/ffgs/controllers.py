@@ -87,7 +87,11 @@ def run_workflow(request):
     """
     The controller for running the workflow to download and .
     """
+    logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
+
+    # todo add a check here to see if you've already run this workflow today
     threddspath, wrksppath, timestamp = setenvironment()
+
     for region in ffgs_regions():
         download_gfs(threddspath, timestamp, region[1])
         gfs_24hrfiles(threddspath, wrksppath, timestamp, region[1])
@@ -100,4 +104,4 @@ def run_workflow(request):
             cleanup(threddspath, timestamp, region[1], model[1])
             set_wmsbounds(threddspath, timestamp, region[1], model[1])
 
-    return JsonResponse({'Finished': 'Finished'})
+    return JsonResponse({'Status': 'Workflow Completed Successfully'})

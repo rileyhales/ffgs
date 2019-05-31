@@ -2,12 +2,12 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 from tethys_sdk.app_settings import CustomSetting
 
 # ROUGHLY IN ORDER OF IMPORTANCE
-# todo create a second csv with how many times in the next 10 days each cat_id floods which we use to color the map
-
+# todo create a csv with how many times in the next 10 days each cat_id floods which we use to color the map
+# todo decide how to store many days worth of csvs and what naming system to use so the app can read them (append to)
+# todo theres a bug in georeferencing the netcdf. it ends up wms-able but not in the right location.
+# todo check on the setwmsbounds function. make sure it works right. maybe?
 # todo make the map move to the region you choose with the select input buttons (see js todo about region geojsons)
-# todo update the documentation about shapefiles, filestructure, configuring thredds, etc (copy from GLDAS)
 # todo make the update workflow a cron job that we can run each day. put a copy of the script in the app
-# todo long term: add capacity to download different regions/models (see data_gfs.py -> downloading)
 
 
 class Ffgs(TethysAppBase):

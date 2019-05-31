@@ -78,13 +78,16 @@ function layerPopups(feature, layer) {
     layer.on('click', function() {getFloodChart(watershed_id)});
 }
 
-// todo create a json {region name: corresponging geojson obj variable name} for each region, make the update function check this to get the right json to show then make a listener in main.js
-
 // create this reference array that other functions will build on
 let ffgs_watersheds;
+let geojson_sorter = {
+    'hispaniola': hispaniola_json,
+    // 'centralamerica': centralamerica_json,
+    // regionname: regionname_json for each region that is configured
+};
 
 function addFFGSlayer() {
-    ffgs_watersheds = L.geoJSON(hispaniola_json, {
+    ffgs_watersheds = L.geoJSON(geojson_sorter[$("#region").val()], {
         onEachFeature: layerPopups,
         style: (function (feature) {
             switch (true) {

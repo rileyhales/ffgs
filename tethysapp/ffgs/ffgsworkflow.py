@@ -12,10 +12,6 @@ from rasterio.enums import Resampling
 
 from .options import *
 
-# todo always append to existing csv, rename the csv without the date (maybe only keep the last 10 days of results?)
-# todo theres a bug in georeferencing the netcdf. it ends up wms-able but not in the right location. zonal stats works
-# todo check on the setwmsbounds function. make sure it works right
-
 
 def setenvironment():
     """
@@ -57,7 +53,7 @@ def setenvironment():
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
         logging.info('Creating new THREDDS file structure for ' + region[1])
-        for model in ('gfs', 'wrf'):
+        for model in ('gfs',):
             new_dir = os.path.join(threddspath, region[1], model)
             if os.path.exists(new_dir):
                 shutil.rmtree(new_dir)
@@ -187,7 +183,6 @@ def zonal_statistics(wrksppath, timestamp, region):
 
         time = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
         timestep = time + datetime.timedelta(days=i)
-        print(timestep)
 
         # for each stat that you get out, write it to the dataframe
         logging.info('writing the statistics for this file to the dataframe')

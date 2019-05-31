@@ -44,9 +44,7 @@ def get_floodchart(request):
     threshold = df['01FFG2018021312'].values[0]
 
     maximum = max(values)[1]
-    print(maximum)
     if threshold > maximum:
         maximum = threshold
 
-    # todo make this get the threshhold values, where do we get those?
     return JsonResponse({'values': values, 'threshhold': threshold, 'max': maximum})

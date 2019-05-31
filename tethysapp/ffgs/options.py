@@ -40,7 +40,8 @@ def ffgs_regions():
     FFGS regions that the app currently supports
     """
     return [
-        ('Hispaniola', 'hispaniola')
+        ('Hispaniola', 'hispaniola'),
+        ('Central America', 'centralamerica')
     ]
 
 

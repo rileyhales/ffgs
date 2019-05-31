@@ -10,7 +10,7 @@ import logging
 
 
 def download_gfs(threddspath, timestamp, region):
-    logging.info('\nStarting GFS Grib Downloads')
+    logging.info('\nStarting GFS Grib Downloads for ' + region)
     # set filepaths
     gribsdir = os.path.join(threddspath, region, 'gfs', timestamp, 'gribs')
 
@@ -37,7 +37,8 @@ def download_gfs(threddspath, timestamp, region):
 
     # this is where the actual downloads happen. set the url, filepath, then download
     subregions = {
-        'hispaniola': 'subregion=&leftlon=-75&rightlon=-68&toplat=20&bottomlat=-17'
+        'hispaniola': 'subregion=&leftlon=-75&rightlon=-68&toplat=20.5&bottomlat=17',
+        'centralamerica': 'subregion=&leftlon=-94.25&rightlon=-75.5&toplat=21&bottomlat=5.5',
     }
     for step in fc_steps:
         # url = "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f" + step + \

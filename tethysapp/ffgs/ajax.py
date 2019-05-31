@@ -26,9 +26,10 @@ def get_floodchart(request):
     """
     data = ast.literal_eval(request.body.decode('utf-8'))
     id = data['watershedID']
+    wrksppath = app_settings()['app_wksp_path']
 
-    csv = os.path.join(app_settings()['app_wksp_path'], 'zonal_stats_2019053100_00.csv')
-    df = pandas.read_csv(csv)[['cat_id', 'mean', 'Timestep']]
+    results = os.path.join(wrksppath, 'zonal_stats_2019053100_00.csv')
+    df = pandas.read_csv(results)[['cat_id', 'mean', 'Timestep']]
     df = df.query("cat_id == @id")
 
     values = []
@@ -37,5 +38,15 @@ def get_floodchart(request):
         time = calendar.timegm(time.utctimetuple()) * 1000
         values.append([time, row[1]['mean']])
 
+    threshold_table = os.path.join(wrksppath, data['region'], 'ffgs_thresholds.csv')
+    df = pandas.read_csv(threshold_table)[['BASIN', '01FFG2018021312']]
+    df = df.query("BASIN == @id")
+    threshold = df['01FFG2018021312'].values[0]
+
+    maximum = max(values)[1]
+    print(maximum)
+    if threshold > maximum:
+        maximum = threshold
+
     # todo make this get the threshhold values, where do we get those?
-    return JsonResponse({'values': values, 'threshhold': 25})
+    return JsonResponse({'values': values, 'threshhold': threshold, 'max': maximum})

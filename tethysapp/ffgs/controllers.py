@@ -7,7 +7,7 @@ from .app import Ffgs as App
 from .data_gfs import *
 # from .data_wrf import *
 from .ffgsworkflow import *
-from .options import wms_colors, forecastmodels, ffgs_regions
+from .options import wms_colors, forecastmodels, ffgs_regions, get_forecastdate
 
 
 @login_required()
@@ -15,6 +15,8 @@ def home(request):
     """
     Controller for the app home page.
     """
+
+    forecastdate = get_forecastdate()
 
     models = SelectInput(
         display_text='Choose a Forecast Model',
@@ -60,6 +62,7 @@ def home(request):
     )
 
     context = {
+        'forecastdate': forecastdate,
         'models': models,
         'ffgsregions': ffgsregions,
         'colorscheme': colorscheme,

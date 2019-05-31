@@ -1,5 +1,7 @@
-from .app import Ffgs as App
+import datetime
 import os
+
+from .app import Ffgs as App
 
 
 def app_settings():
@@ -47,3 +49,11 @@ def forecastmodels():
         ('GFS', 'gfs'),
         # ('WRF', 'wrf'),
     ]
+
+
+def get_forecastdate():
+    path = os.path.join(App.get_app_workspace().path, 'timestep.txt')
+    with open(path, 'r') as file:
+        time = file.readline()
+        time = datetime.datetime.strptime(time, "%Y%m%d%H")
+        return "This GFS data from " + time.strftime("%b %d, %I%p UTC")

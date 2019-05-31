@@ -51,14 +51,14 @@ function newHighchart() {
         },
         yAxis: {
             title: {text: 'millimeters'},   // should be millimeters
+            max: chartdata['max'],
             plotLines: [{
-                // value: chartdata['threshhold'],
-                value: 25,
+                value: chartdata['threshhold'],
                 color: 'red',
                 dashStyle: 'shortdash',
                 width: 3,
                 label: {
-                    text: 'Flash Flood Threshold Depth'
+                    text: 'Flash Flood Threshold Depth - ' + String(chartdata['max'])
                 }
             }],
         },

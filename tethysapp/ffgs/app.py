@@ -2,14 +2,12 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 from tethys_sdk.app_settings import CustomSetting
 
 # ROUGHLY IN ORDER OF IMPORTANCE
-# todo update the charts in js and add the python functions to read/send the dataframe
-# todo make the app send the csv of styling information to the javascript so that the geojson is colored
-# todo make the map move to the region you choose with the select input buttons (see js todo about region geojsons)
+# todo create a second csv with how many times in the next 10 days each cat_id floods which we use to color the map
 
+# todo make the map move to the region you choose with the select input buttons (see js todo about region geojsons)
 # todo update the documentation about shapefiles, filestructure, configuring thredds, etc (copy from GLDAS)
 # todo make the update workflow a cron job that we can run each day. put a copy of the script in the app
 # todo long term: add capacity to download different regions/models (see data_gfs.py -> downloading)
-# todo the function for setting wms bounds doesn't work still
 
 
 class Ffgs(TethysAppBase):
@@ -57,9 +55,12 @@ class Ffgs(TethysAppBase):
                 url='ffgs/ajax/getCustomSettings',
                 controller='ffgs.ajax.get_customsettings'
             ),
-
+            UrlMap(
+                name='getFloodChart',
+                url='ffgs/ajax/getFloodChart',
+                controller='ffgs.ajax.get_floodchart'
+            ),
         )
-
         return url_maps
 
     def custom_settings(self):
@@ -74,13 +75,6 @@ class Ffgs(TethysAppBase):
                 name='Thredds WMS URL',
                 type=CustomSetting.TYPE_STRING,
                 description="URL to the FFGS folder on the thredds server (e.g. http://[host]/thredds/ffgs/)",
-                required=True,
-            ),
-            CustomSetting(
-                name='Geoserver Workspace URL',
-                type=CustomSetting.TYPE_STRING,
-                description="URL (wfs) of the workspace on geoserver (e.g. https://[host]/geoserver/ffgs/ows). \n"
-                            "Enter geojson instead of a url if you experience GeoServer problems.",
                 required=True,
             ),
         )

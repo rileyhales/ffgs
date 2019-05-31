@@ -7,14 +7,12 @@ Highcharts.setOptions({
         downloadPNG: "Download PNG image",
         downloadSVG: "Download SVG vector image",
         downloadXLS: "Download XLS",
-        loading: "Timeseries loading, please wait...",
-        noData: "No Data Selected. Place a point, draw a polygon, or select a region."
+        loading: "Searching forecast results for this watershed. Please wait...",
+        noData: "No Data Selected. Click on a watershed to see forecast data."
     },
 });
 
 let chartdata = null;
-
-// todo the charts we want can be modified from the saldasforecast app and the malaria app. these wont help
 
 // Placeholder chart
 let chart = Highcharts.chart('highchart', {
@@ -41,23 +39,33 @@ let chart = Highcharts.chart('highchart', {
     },
 });
 
-function newHighchart(data) {
+function newHighchart() {
     chart = Highcharts.chart('highchart', {
         title: {
             align: "center",
-            text: data['name'] + ' v Time ' + data['type'],
+            text: 'Forecasted Precipitation Accumulation v Time ',
         },
         xAxis: {
-            type: 'datetime',
             title: {text: "Time"},
+            type: 'datetime',
         },
         yAxis: {
-            title: {text: data['units']}
+            title: {text: 'millimeters'},   // should be millimeters
+            plotLines: [{
+                // value: chartdata['threshhold'],
+                value: 25,
+                color: 'red',
+                dashStyle: 'shortdash',
+                width: 3,
+                label: {
+                    text: 'Flash Flood Threshold Depth'
+                }
+            }],
         },
         series: [{
-            data: data['values'],
-            type: "line",
-            name: data['name'],
+            data: chartdata['values'],          // the series of data
+            type: 'column',
+            name: 'Accumulated Precipitation per Day',            // the name of the series
             tooltip: {
                 xDateFormat: '%A, %b %e, %Y',
             },
@@ -67,66 +75,24 @@ function newHighchart(data) {
             zoomType: 'xy',
             borderColor: '#000000',
             borderWidth: 2,
-            type: 'area',
-
         },
 
     });
 }
 
-function getDrawnChart(drawnItems) {
-    // if there's nothing to get charts for then quit
-    let geojson = drawnItems.toGeoJSON()['features'];
-    if (geojson.length === 0 && currentregion === '') {
-        return
-    }
+function getFloodChart(ID) {
+    chart.hideNoData();
+    chart.showLoading();
 
-    // if there's geojson data, update that chart
-    if (geojson.length > 0) {
-        chart.hideNoData();
-        chart.showLoading();
-
-        //  Compatibility if user picks something out of normal bounds
-        let coords = geojson[0]['geometry']['coordinates'];
-        for (let i in coords.length) {
-            if (coords[i] < -180) {
-                coords[i] += 360;
-            }
-            if (coords[i] > 180) {
-                coords[i] -= 360;
-            }
+    $.ajax({
+        url: '/apps/ffgs/ajax/getFloodChart/',
+        data: JSON.stringify({region: $("#region").val(), watershedID: ID}),
+        dataType: 'json',
+        contentType: "application/json",
+        method: 'POST',
+        success: function (result) {
+            chartdata = result;
+            newHighchart();
         }
-
-        // setup a parameters json to generate the right timeseries
-        let data = {
-            coords: coords,
-            geojson: geojson[0],
-            variable: $('#variables').val(),
-            time: $("#dates").val(),
-        };
-
-        // decide which ajax url you need based on drawing type
-        let url;
-        let drawtype = geojson[0]['geometry']['type'];
-        if (drawtype === 'Point') {
-            url = '/apps/gldas/ajax/getPointSeries/';
-        } else {
-            url = '/apps/gldas/ajax/getPolygonAverage/';
-        }
-
-        $.ajax({
-            url: url,
-            data: JSON.stringify(data),
-            dataType: 'json',
-            contentType: "application/json",
-            method: 'POST',
-            success: function (result) {
-                chartdata = result;
-                makechart();
-            }
-        })
-        // If there isn't any geojson, then you actually should refresh the shapefile chart (ie the data is the lastregion)
-    } else {
-        getShapeChart('lastregion');
-    }
+    })
 }

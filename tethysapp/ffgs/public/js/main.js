@@ -26,14 +26,12 @@ function getThreddswms() {
         method: 'POST',
         success: function (result) {
             threddsbase = result['threddsurl'];
-            geoserverbase = result['geoserverurl']
         },
     });
 }
 
 ////////////////////////////////////////////////////////////////////////  LOAD THE MAP
 let threddsbase;
-let geoserverbase;
 getThreddswms();                        // sets the value of threddsbase and geoserverbase
 const mapObj = map();                   // used by legend and draw controls
 const basemapObj = basemaps();          // used in the make controls function

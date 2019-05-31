@@ -74,7 +74,8 @@ legend.onAdd = function () {
 ////////////////////////////////////////////////////////////////////////  GEOJSON LAYERS - GEOSERVER + WFS / GEOJSON
 function layerPopups(feature, layer) {
     let watershed_id = feature.properties.cat_id;
-    layer.bindPopup('<a class="btn btn-default" role="button">This is watershed # ' + watershed_id + '</a>');
+    layer.bindPopup('<strong>This is watershed # ' + watershed_id + '</strong>');
+    layer.on('click', function() {getFloodChart(watershed_id)});
 }
 
 // todo create a json {region name: corresponging geojson obj variable name} for each region, make the update function check this to get the right json to show then make a listener in main.js

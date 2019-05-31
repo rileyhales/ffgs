@@ -113,3 +113,4 @@ Log in to your Tethys portal as an admin. Click on the grey GLDAS box and specif
 ## How to add a new model
 1. create a script to download all the timesteps of the forecast model and call it data_modelname.py
 2. make it compatible with the ffgs workflow
+3. add the download script to the controller for the workflow including import statements

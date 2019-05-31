@@ -5,8 +5,8 @@ function map() {
         zoom: 8.25,
         minZoom: 1.25,
         boxZoom: true,
-        maxBounds: L.latLngBounds(L.latLng(-100.0,-270.0), L.latLng(100.0, 270.0)),
-        center: [19, -70.6],
+        maxBounds: L.latLngBounds(L.latLng(-100.0, -270.0), L.latLng(100.0, 270.0)),
+        center: [18.8, -71],
         timeDimension: true,
         timeDimensionControl: true,
         timeDimensionControlOptions: {
@@ -64,7 +64,7 @@ function newLayer() {
 
 ////////////////////////////////////////////////////////////////////////  LEGEND DEFINITIONS
 let legend = L.control({position: 'topright'});
-legend.onAdd = function (mapObj) {
+legend.onAdd = function () {
     let div = L.DomUtil.create('div', 'legend');
     let url = threddsbase + '/' + $("#region").val() + '/' + $("#model").val() + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0,50";
     div.innerHTML = '<img src="' + url + '" alt="legend" style="width:100%; float:right;">';
@@ -72,80 +72,36 @@ legend.onAdd = function (mapObj) {
 };
 
 ////////////////////////////////////////////////////////////////////////  GEOJSON LAYERS - GEOSERVER + WFS / GEOJSON
-let currentregion = '';              // tracks which region is on the chart for updates not caused by the user picking a new region
 function layerPopups(feature, layer) {
-    let region = feature.properties.cat_id;
-    layer.bindPopup('<a class="btn btn-default" role="button" onclick="getShapeChart(' + "'" + region + "'" + ')">Get timeseries of averages for ' + region + '</a>');
+    let watershed_id = feature.properties.cat_id;
+    layer.bindPopup('<a class="btn btn-default" role="button">This is watershed # ' + watershed_id + '</a>');
 }
 
-// declare a placeholder layer for all the geojson layers you want to add
-let jsonparams = {
-    onEachFeature: layerPopups,
-    style: {color: $("#colors_geojson").val(), opacity: $("#opacity_geojson").val()}
-};
-let hispaniola = L.geoJSON(false, jsonparams);
+// todo create a json {region name: corresponging geojson obj variable name} for each region, make the update function check this to get the right json to show then make a listener in main.js
 
 // create this reference array that other functions will build on
-const geojsons = [
-    [hispaniola, 'ffgs_hispaniola', hispaniola_json],
-];
+let ffgs_watersheds;
 
-// gets the geojson layers from geoserver wfs and updates the layer
-function getWFSData(geoserverlayer, leafletlayer) {
-    // http://jsfiddle.net/1f2Lxey4/2/
-    let parameters = L.Util.extend({
-        service: 'WFS',
-        version: '1.0.0',
-        request: 'GetFeature',
-        typeName: 'ffgs:' + geoserverlayer,
-        maxFeatures: 10000,
-        outputFormat: 'application/json',
-        parseResponse: 'getJson',
-        srsName: 'EPSG:4326',
-        crossOrigin: 'anonymous'
-    });
-    $.ajax({
-        async: true,
-        jsonp: false,
-        url: geoserverbase + L.Util.getParamString(parameters),
-        contentType: 'application/json',
-        success: function (data) {
-            leafletlayer.addData(data).addTo(mapObj);
-        },
-    });
-}
-
-function updateGEOJSON() {
-    if (geoserverbase === 'geojson') {
-        for (let i = 0; i < geojsons.length; i++) {
-            geojsons[i][0].addData(geojsons[i][2]).addTo(mapObj);
-        }
-    } else {
-        for (let i = 0; i < geojsons.length; i++) {
-            getWFSData(geojsons[i][1], geojsons[i][0]);
-        }
-    }
-}
-
-function styleGeoJSON() {
-    // determine the styling to apply
-    let style = {
-        color: $("#colors_geojson").val(),
-        opacity: $("#opacity_geojson").val(),
-    };
-    // apply it to all the geojson layers
-    for (let i = 0; i < geojsons.length; i++) {
-        geojsons[i][0].setStyle(style);
-    }
+function addFFGSlayer() {
+    ffgs_watersheds = L.geoJSON(hispaniola_json, {
+        onEachFeature: layerPopups,
+        style: (function (feature) {
+            switch (true) {
+                case feature.properties.cat_id >= 2004701000:
+                    return {color: '#00ff00', opacity: $("#opacity_geojson").val()};
+                case feature.properties.cat_id < 2004701000:
+                    return {color: '#ff00fd', opacity: $("#opacity_geojson").val()};
+            }
+        }),
+    }).addTo(mapObj);
 }
 
 ////////////////////////////////////////////////////////////////////////  MAP CONTROLS AND CLEARING
 // the layers box on the top right of the map
 function makeControls() {
     return L.control.layers(basemapObj, {
-        'GLDAS Layer': layerObj,
-        'Drawing': drawnItems,
-        'Hispaniola FFGS': hispaniola,
+        'Forecast Layer': layerObj,
+        'FFGS Watersheds': ffgs_watersheds,
     }).addTo(mapObj);
 }
 
@@ -154,11 +110,8 @@ function clearMap() {
     // remove the controls for the wms layer then remove it from the map
     controlsObj.removeLayer(layerObj);
     mapObj.removeLayer(layerObj);
-    // now do it for all the geojson layers
-    for (let i = 0; i < geojsons.length; i++) {
-        controlsObj.removeLayer(geojsons[i][0]);
-        mapObj.removeLayer(geojsons[i][0]);
-    }
+    controlsObj.removeLayer(ffgs_watersheds);
+    mapObj.removeLayer(ffgs_watersheds);
     // now delete the controls object
     mapObj.removeControl(controlsObj);
 }

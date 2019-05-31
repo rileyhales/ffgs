@@ -174,8 +174,9 @@ def zonal_statistics(wrksppath, timestamp, region):
 
     stats_df = pd.DataFrame()
 
-    # for i in range(3):
+    # do the zonal statistics for each resampled tiff file
     for i in range(len(files)):
+        logging.info('\nstarting zonal statistics for file ' + files[i])
         ras_path = os.path.join(resampleds, files[i])
         stats = rasterstats.zonal_stats(
             shp_path,
@@ -184,25 +185,28 @@ def zonal_statistics(wrksppath, timestamp, region):
             geojson_out=True
             )
 
-        today = datetime.datetime.utcnow()
-        forecast_date = today.strftime("%m/%d/%Y")
-        timestep = today + datetime.timedelta(days=i)
-        timestep_str = datetime.datetime.strftime(timestep, "%m/%d/%Y")
+        time = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
+        timestep = time + datetime.timedelta(days=i)
+        print(timestep)
 
-        # for j in range(3):
+        # for each stat that you get out, write it to the dataframe
+        logging.info('writing the statistics for this file to the dataframe')
         for j in range(len(stats)):
 
             temp_data = stats[j]['properties']
-            temp_data.update({'Forecast Date': forecast_date})
-            temp_data.update({'Timestep': timestep_str})
+            temp_data.update({'Forecast Date': time.strftime("%m/%d/%Y")})
+            temp_data.update({'Timestep': timestep.strftime("%m/%d/%Y")})
 
             temp_df = pd.DataFrame([temp_data])
             stats_df = stats_df.append(temp_df, ignore_index=True)
+        logging.info('done')
 
     # write the resulting dataframe to a csv
+    logging.info('\ndone with zonal statistics, writing to a csv file')
     stats_df.to_csv(stat_file)
 
     # delete the resampled tiffs now that we dont need them
+    logging.info('deleting the resampled tiffs directory')
     shutil.rmtree(resampleds)
 
     return
@@ -386,10 +390,9 @@ def new_ncml(threddspath, timestamp, region, model):
     return
 
 
-def cleanup(threddspath, timestamp, region, model):
+def cleanup(threddspath, wrksppath, timestamp, region, model):
     # write a file with the current timestep triggering the app to start using this data
-    config = app_settings()
-    with open(os.path.join(config['app_wksp_path'], 'timestep.txt'), 'w') as file:
+    with open(os.path.join(wrksppath, 'timestep.txt'), 'w') as file:
         file.write(timestamp)
 
     # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file

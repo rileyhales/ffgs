@@ -7,7 +7,7 @@ from .app import Ffgs as App
 from .data_gfs import *
 # from .data_wrf import *
 from .ffgsworkflow import *
-from .options import wms_colors, geojson_colors, forecastmodels, ffgs_regions
+from .options import wms_colors, forecastmodels, ffgs_regions
 
 
 @login_required()
@@ -50,22 +50,13 @@ def home(request):
         initial=1,
     )
 
-    colors_geojson = SelectInput(
-        display_text='Boundary Colors',
-        name='colors_geojson',
-        multiple=False,
-        original=True,
-        options=geojson_colors(),
-        initial='#ffffff'
-    )
-
     opacity_geojson = RangeSlider(
-        display_text='Boundary Opacity',
-        name='opacity_geojson',
+        display_text='FFGS Watershed Opacity',
+        name='opacity_ffgs',
         min=.0,
         max=1,
         step=.1,
-        initial=.2,
+        initial=.8,
     )
 
     context = {
@@ -73,7 +64,6 @@ def home(request):
         'ffgsregions': ffgsregions,
         'colorscheme': colorscheme,
         'opacity_raster': opacity_raster,
-        'colors_geojson': colors_geojson,
         'opacity_geojson': opacity_geojson,
         'githublink': App.githublink,
         'version': App.version,
@@ -89,7 +79,7 @@ def run_workflow(request):
     """
     logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
 
-    # todo add a check here to see if you've already run this workflow today
+    # todo add a check here to see if you've already run the workflow for this day
     threddspath, wrksppath, timestamp = setenvironment()
 
     for region in ffgs_regions():
@@ -101,7 +91,7 @@ def run_workflow(request):
         for model in forecastmodels():
             nc_georeference(threddspath, timestamp, region[1], model[1])
             new_ncml(threddspath, timestamp, region[1], model[1])
-            cleanup(threddspath, timestamp, region[1], model[1])
+            cleanup(threddspath, wrksppath, timestamp, region[1], model[1])
             set_wmsbounds(threddspath, timestamp, region[1], model[1])
 
     return JsonResponse({'Status': 'Workflow Completed Successfully'})

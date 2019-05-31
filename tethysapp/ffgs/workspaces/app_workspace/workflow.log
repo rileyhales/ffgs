@@ -1,0 +1,284 @@
+Setting the Environment
+determined the timestamp to download: 2019053100
+Creating new App Workspace GeoTIFF file structure for hispaniola
+Creating new THREDDS file structure for hispaniola
+All done, on to do work
+
+Starting GFS Grib Downloads
+downloading the file gfs_apcp_2019053100_006.grb
+downloading the file gfs_apcp_2019053100_012.grb
+downloading the file gfs_apcp_2019053100_018.grb
+downloading the file gfs_apcp_2019053100_024.grb
+downloading the file gfs_apcp_2019053100_030.grb
+downloading the file gfs_apcp_2019053100_036.grb
+downloading the file gfs_apcp_2019053100_042.grb
+downloading the file gfs_apcp_2019053100_048.grb
+downloading the file gfs_apcp_2019053100_054.grb
+downloading the file gfs_apcp_2019053100_060.grb
+downloading the file gfs_apcp_2019053100_066.grb
+downloading the file gfs_apcp_2019053100_072.grb
+downloading the file gfs_apcp_2019053100_078.grb
+downloading the file gfs_apcp_2019053100_084.grb
+downloading the file gfs_apcp_2019053100_090.grb
+downloading the file gfs_apcp_2019053100_096.grb
+downloading the file gfs_apcp_2019053100_102.grb
+downloading the file gfs_apcp_2019053100_108.grb
+downloading the file gfs_apcp_2019053100_114.grb
+downloading the file gfs_apcp_2019053100_120.grb
+downloading the file gfs_apcp_2019053100_126.grb
+downloading the file gfs_apcp_2019053100_132.grb
+downloading the file gfs_apcp_2019053100_138.grb
+downloading the file gfs_apcp_2019053100_144.grb
+downloading the file gfs_apcp_2019053100_150.grb
+downloading the file gfs_apcp_2019053100_156.grb
+downloading the file gfs_apcp_2019053100_162.grb
+downloading the file gfs_apcp_2019053100_168.grb
+downloading the file gfs_apcp_2019053100_174.grb
+downloading the file gfs_apcp_2019053100_180.grb
+downloading the file gfs_apcp_2019053100_186.grb
+downloading the file gfs_apcp_2019053100_192.grb
+downloading the file gfs_apcp_2019053100_198.grb
+downloading the file gfs_apcp_2019053100_204.grb
+downloading the file gfs_apcp_2019053100_210.grb
+downloading the file gfs_apcp_2019053100_216.grb
+downloading the file gfs_apcp_2019053100_222.grb
+downloading the file gfs_apcp_2019053100_228.grb
+downloading the file gfs_apcp_2019053100_234.grb
+downloading the file gfs_apcp_2019053100_240.grb
+Finished Downloads
+
+Starting to process the GFS gribs into 24 hour files
+working on file gfs_apcp_2019053100_006.grb
+working on file gfs_apcp_2019053100_012.grb
+working on file gfs_apcp_2019053100_018.grb
+working on file gfs_apcp_2019053100_024.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_024.grb
+ecCodes library found using name 'eccodes'.
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_024.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file gfs_apcp_2019053100_030.grb
+working on file gfs_apcp_2019053100_036.grb
+working on file gfs_apcp_2019053100_042.grb
+working on file gfs_apcp_2019053100_048.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_048.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_048.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file gfs_apcp_2019053100_054.grb
+working on file gfs_apcp_2019053100_060.grb
+working on file gfs_apcp_2019053100_066.grb
+working on file gfs_apcp_2019053100_072.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_072.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_072.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file gfs_apcp_2019053100_078.grb
+working on file gfs_apcp_2019053100_084.grb
+working on file gfs_apcp_2019053100_090.grb
+working on file gfs_apcp_2019053100_096.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_096.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_096.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file gfs_apcp_2019053100_102.grb
+working on file gfs_apcp_2019053100_108.grb
+working on file gfs_apcp_2019053100_114.grb
+working on file gfs_apcp_2019053100_120.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_120.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_120.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file gfs_apcp_2019053100_126.grb
+working on file gfs_apcp_2019053100_132.grb
+working on file gfs_apcp_2019053100_138.grb
+working on file gfs_apcp_2019053100_144.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_144.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_144.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file gfs_apcp_2019053100_150.grb
+working on file gfs_apcp_2019053100_156.grb
+working on file gfs_apcp_2019053100_162.grb
+working on file gfs_apcp_2019053100_168.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_168.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_168.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file gfs_apcp_2019053100_174.grb
+working on file gfs_apcp_2019053100_180.grb
+working on file gfs_apcp_2019053100_186.grb
+working on file gfs_apcp_2019053100_192.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_192.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_192.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file gfs_apcp_2019053100_198.grb
+working on file gfs_apcp_2019053100_204.grb
+working on file gfs_apcp_2019053100_210.grb
+working on file gfs_apcp_2019053100_216.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_216.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_216.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file gfs_apcp_2019053100_222.grb
+working on file gfs_apcp_2019053100_228.grb
+working on file gfs_apcp_2019053100_234.grb
+working on file gfs_apcp_2019053100_240.grb
+
+calculated a daily array
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_240.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/gribs/gfs_apcp_2019053100_240.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+
+Resampling the rasters for hispaniola
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs000-024.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs024-048.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs048-072.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs072-096.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs096-120.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs120-144.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs144-168.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs168-192.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs192-216.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs216-240.tif
+
+Doing Zonal Statistics on hispaniola
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs000-024_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs024-048_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs048-072_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs072-096_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs096-120_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs120-144_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs144-168_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs168-192_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs192-216_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file gfs_apcp_2019053100_hrs216-240_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+done with zonal statistics, writing to a csv file
+deleting the resampled tiffs directory
+
+Processing the netCDF files
+There are 10 compatible files.
+Preparing the reference file
+Working on file gfs_apcp_2019053100_144.nc
+Working on file gfs_apcp_2019053100_216.nc
+Working on file gfs_apcp_2019053100_096.nc
+Working on file gfs_apcp_2019053100_024.nc
+Working on file gfs_apcp_2019053100_120.nc
+Working on file gfs_apcp_2019053100_192.nc
+Working on file gfs_apcp_2019053100_240.nc
+Working on file gfs_apcp_2019053100_072.nc
+Working on file gfs_apcp_2019053100_168.nc
+Working on file gfs_apcp_2019053100_048.nc
+Finished File Conversions
+
+Writing a new ncml file for this date
+Wrote New .ncml
+
+Getting rid of old gfs data folders
+Done
+
+Setting the WMS bounds
+working on file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/processed/processed_gfs_apcp_2019053100_144.nc
+done checking for max/min. writing the file
+wrote the file. all done

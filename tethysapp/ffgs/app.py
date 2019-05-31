@@ -1,13 +1,19 @@
-from tethys_sdk.base import TethysAppBase, url_map_maker
 from tethys_sdk.app_settings import CustomSetting
+from tethys_sdk.base import TethysAppBase, url_map_maker
+
 
 # ROUGHLY IN ORDER OF IMPORTANCE
 # todo create a csv with how many times in the next 10 days each cat_id floods which we use to color the map
 # todo decide how to store many days worth of csvs and what naming system to use so the app can read them (append to)
 # todo theres a bug in georeferencing the netcdf. it ends up wms-able but not in the right location.
+
+# todo make a dictionary in leaflet.js for setting the right center and zoom of the map
+# todo add a control to main.js when you change regions, zoom the map to the new place, swap the geojson and wms layers
 # todo check on the setwmsbounds function. make sure it works right. maybe?
 # todo make the map move to the region you choose with the select input buttons (see js todo about region geojsons)
+
 # todo make the update workflow a cron job that we can run each day. put a copy of the script in the app
+# todo discuss making the csv of thresholds update automatically like the reservoir app does from a google sheet?
 
 
 class Ffgs(TethysAppBase):

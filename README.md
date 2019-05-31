@@ -99,3 +99,17 @@ Log in to your Tethys portal as an admin. Click on the grey GLDAS box and specif
 **Local File Path:** This is the full path to the directory named ffgs that you should have created within the thredds data directory during step 2. You can get this by navigating to that folder in the terminal and then using the ```pwd``` command. (example: ```/tomcat/content/thredds/ffgs/```)  
 
 **Thredds Base Address:** This is the base URL to Thredds WMS services that the app uses to build urls for each of the WMS layers generated for the netcdf datasets. If you followed the typical configuration of thredds (these instructions) then your base url will look something like ```yourserver.com/thredds/wms/testAll/ffgs/```. You can verify this by opening the thredds catalog in a web browser (typically at ```yourserver.com/thredds/catalog.html```). Navigate to one of the FFGS netcdf files and click the WMS link. A page showing an xml document should load. Copy the url in the address bar until you get to the ```/ffgs/``` folder in that url. Do not include ```/hispaniola/processed/netcdf.nc``` or the request that comes after. (example: ```https://tethys.byu.edu/thredds/wms/testAll/ffgs/```)
+
+## How to add a new Region
+1. In options.py add to the list of ffgs regions with a new tuple in the format ('Proper name of region', 'shortname')
+2. Add a folder in the thredds directory named the same as the shortname
+3. Add a folder to the app workspace named the same as the shortname
+4. Get a copy of the shapefile for the ffgs boundaries in the new region. Put it in the app workspace folder you just made under a folder called shapefiles. rename the shapefile ffgs_shortname 
+5. Create a new geojson for that shapefile and put it in a new/existing js file. if you make a new one, add it to the list of imports in base.html
+6. create a csv in the app workspace folder called ffgs_thresholds.csv and fill it with the current information. see other files for example format
+6. In leaflet.js, add an entry to the dictionary in the format {'shortname': name of the geojson you just made}
+7. Add the zoom and center information to the leaflet.js json object following the shortname, center, zoom patten
+
+## How to add a new model
+1. create a script to download all the timesteps of the forecast model and call it data_modelname.py
+2. make it compatible with the ffgs workflow

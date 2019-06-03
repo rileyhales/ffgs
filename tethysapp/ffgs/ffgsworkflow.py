@@ -11,6 +11,8 @@ from rasterio.enums import Resampling
 
 from .options import *
 
+# todo only do 6-hr timesteps
+# todo add max to rasterstats calculation
 
 def setenvironment():
     """
@@ -19,11 +21,17 @@ def setenvironment():
     logging.info('\nSetting the Environment')
     # determine the most day and hour of the day timestamp of the most recent GFS forecast
     now = datetime.datetime.utcnow()
-    if now.hour > 3:
+    if now.hour > 21:
+        timestamp = now.strftime("%Y%m%d") + '18'
+    elif now.hour > 15:
+        timestamp = now.strftime("%Y%m%d") + '12'
+    elif now.hour > 9:
+        timestamp = now.strftime("%Y%m%d") + '06'
+    elif now.hour > 3:
         timestamp = now.strftime("%Y%m%d") + '00'
     else:
         now = now - datetime.timedelta(days=1)
-        timestamp = now.strftime("%Y%m%d") + '00'
+        timestamp = now.strftime("%Y%m%d") + '18'
     logging.info('determined the timestamp to download: ' + timestamp)
 
     # set folder paths for the environment
@@ -44,7 +52,7 @@ def setenvironment():
 
     # if the file structure already exists, quit
     checkthredds = os.path.join(threddspath, 'hispaniola', 'gfs', timestamp)
-    checkworkspace = os.path.join(wrksppath, 'hispaniola', '24_hr_GeoTIFFs_resampled')
+    checkworkspace = os.path.join(wrksppath, 'hispaniola', 'GeoTIFFs_resampled')
     if os.path.exists(checkthredds) and os.path.exists(checkworkspace):
         logging.info('You have a file structure for this timestep but didnt complete the workflow, analyzing...')
         return threddspath, wrksppath, timestamp, redundant
@@ -52,12 +60,12 @@ def setenvironment():
     # create the file structure for the new data
     for region in ffgs_regions():
         logging.info('Creating new App Workspace GeoTIFF file structure for ' + region[1])
-        new_dir = os.path.join(wrksppath, region[1], '24_hr_GeoTIFFs')
+        new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFS')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
-        new_dir = os.path.join(wrksppath, region[1], '24_hr_GeoTIFFs_resampled')
+        new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFs_resampled')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
@@ -92,15 +100,15 @@ def resample(wrksppath, timestamp, region):
     """
     logging.info('\nResampling the rasters for ' + region)
     # Define app workspace and sub-paths
-    tiffs = os.path.join(wrksppath, region, '24_hr_GeoTIFFs')
-    resampleds = os.path.join(wrksppath, region, '24_hr_GeoTIFFs_resampled')
+    tiffs = os.path.join(wrksppath, region, 'GeoTIFFS')
+    resampleds = os.path.join(wrksppath, region, 'GeoTIFFs_resampled')
 
     # Create directory for the resampled GeoTIFFs
     if not os.path.exists(tiffs):
         logging.info('There is no tiffs folder. You must have already resampled them. Skipping resampling')
         return
 
-    # List all 10 Resampled GeoTIFFs
+    # List all Resampled GeoTIFFs
     files = os.listdir(tiffs)
     files = [tif for tif in files if tif.endswith('.tif')]
     files.sort()
@@ -115,7 +123,7 @@ def resample(wrksppath, timestamp, region):
     lat_min = raster_dim.bounds.bottom
     lat_max = raster_dim.bounds.top
 
-    # Geotransform for each 24-hr resampled raster (east, south, west, north, width, height)
+    # Geotransform for each resampled raster (east, south, west, north, width, height)
     geotransform_res = rasterio.transform.from_bounds(lon_min, lat_min, lon_max, lat_max, width * 100, height * 100)
 
     # Resample each GeoTIFF
@@ -133,7 +141,7 @@ def resample(wrksppath, timestamp, region):
         data = numpy.squeeze(data, axis=0)
 
         # Specify the filepath of the resampled raster
-        resample_filename = 'gfs_apcp_' + timestamp + '_hrs' + file[-11:-4] + '_resampled.tif'
+        resample_filename = file.replace('.tif', '_resampled.tif')
         resample_filepath = os.path.join(resampleds, resample_filename)
 
         # Save the GeoTIFF
@@ -164,8 +172,9 @@ def zonal_statistics(wrksppath, timestamp, region, model):
     """
     logging.info('\nDoing Zonal Statistics on ' + region)
     # Define app workspace and sub-paths
-    resampleds = os.path.join(wrksppath, region, '24_hr_GeoTIFFs_resampled')
+    resampleds = os.path.join(wrksppath, region, 'GeoTIFFs_resampled')
     shp_path = os.path.join(wrksppath, region, 'shapefiles', 'ffgs_' + region + '.shp')
+
     stat_file = os.path.join(wrksppath, region, model + 'results.csv')
 
     # check that there are resampled tiffs to do zonal statistics on
@@ -173,7 +182,7 @@ def zonal_statistics(wrksppath, timestamp, region, model):
         logging.info('There are no resampled tiffs to do zonal statistics on. Skipping Zonal Statistics')
         return
 
-    # List all 10 Resampled GeoTIFFs
+    # List all Resampled GeoTIFFs
     files = os.listdir(resampleds)
     files = [tif for tif in files if tif.endswith('.tif')]
     files.sort()
@@ -187,20 +196,19 @@ def zonal_statistics(wrksppath, timestamp, region, model):
         stats = rasterstats.zonal_stats(
             shp_path,
             ras_path,
-            stats=['mean'],
+            stats=['count','mean', 'max'],
             geojson_out=True
             )
 
-        time = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
-        timestep = time + datetime.timedelta(days=i)
+        timestep = files[i][:10]
 
         # for each stat that you get out, write it to the dataframe
         logging.info('writing the statistics for this file to the dataframe')
         for j in range(len(stats)):
 
             temp_data = stats[j]['properties']
-            temp_data.update({'Forecast Date': time.strftime("%m/%d/%Y")})
-            temp_data.update({'Timestep': timestep.strftime("%m/%d/%Y")})
+            temp_data.update({'Timestamp': timestamp})
+            temp_data.update({'Timestep': timestep})
 
             temp_df = pd.DataFrame([temp_data])
             stats_df = stats_df.append(temp_df, ignore_index=True)

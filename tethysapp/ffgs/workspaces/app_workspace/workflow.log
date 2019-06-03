@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 Workflow initiated on 06/03/19 at 18:44
 
@@ -25,6 +26,139 @@ TypeError: expected str, bytes or os.PathLike object, not NoneType
 "GET /apps/ffgs/runWorkflow/ HTTP/1.1" 500 94247
 
 Workflow initiated on 06/03/19 at 18:44
+=======
+Setting the Environment
+determined the timestamp to download: 2019060312
+Looks like you already have file structure for this timestep, lets see what we need to fill in.
+
+Starting GFS Grib Downloads for hispaniola
+There is no download folder, you must have already processed them. Skipping download stage.
+
+Starting to process the GFS gribs into GeoTIFFs
+There is no gribs folder, you must have already run this step. Skipping conversions
+
+Resampling the rasters for hispaniola
+There is no tiffs folder. You must have already resampled them. Skipping resampling
+
+Doing Zonal Statistics on hispaniola
+
+starting zonal statistics for file 2019060318_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060400_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060406_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060412_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060418_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060500_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060506_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060512_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060518_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060600_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060606_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060612_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060618_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060700_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060706_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060712_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060718_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060800_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060806_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060812_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060818_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060900_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060906_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060912_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060918_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019061000_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019061006_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019061012_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+done with zonal statistics, writing to a csv file
+
+Processing the netCDF files
+There are no netcdfs to be converted. Skipping netcdf processing.
+>>>>>>> Stashed changes
 
 Setting the Environment
 determined the timestamp to download: 2019060300
@@ -32,6 +166,7 @@ Creating new App Workspace GeoTIFF file structure for hispaniola
 Creating new THREDDS file structure for hispaniola
 All done, on to do work
 
+<<<<<<< Updated upstream
 Starting GFS Grib Downloads for hispaniola
 downloading the file 2019060300_006.grb
 downloading the file 2019060300_012.grb
@@ -224,23 +359,231 @@ Working on file 2019060300_096.nc
 Working on file 2019060300_024.nc
 Working on file 2019060300_144.nc
 Finished File Conversions
+=======
+Getting rid of old gfs data folders
+Done
+
+Setting the WMS bounds
+working on file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019060312/processed/processed_2019060818.nc
+done checking for max/min. writing the file
+wrote the file. all done
+Setting the Environment
+determined the timestamp to download: 2019060312
+Looks like you already have file structure for this timestep, lets see what we need to fill in.
+
+Starting GFS Grib Downloads for hispaniola
+There is no download folder, you must have already processed them. Skipping download stage.
+
+Starting to process the GFS gribs into GeoTIFFs
+There is no gribs folder, you must have already run this step. Skipping conversions
+
+Resampling the rasters for hispaniola
+There is no tiffs folder. You must have already resampled them. Skipping resampling
+
+Doing Zonal Statistics on hispaniola
+
+starting zonal statistics for file 2019060318_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060400_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060406_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060412_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060418_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060500_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060506_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060512_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060518_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060600_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060606_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060612_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060618_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060700_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060706_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060712_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060718_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060800_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060806_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060812_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060818_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060900_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060906_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060912_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060918_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019061000_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019061006_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019061012_resampled.tif
+writing the statistics for this file to the dataframe
+done
+
+done with zonal statistics, writing to a csv file
+
+Processing the netCDF files
+There are no netcdfs to be converted. Skipping netcdf processing.
+>>>>>>> Stashed changes
 
 Writing a new ncml file for this date
 Wrote New .ncml
 
+<<<<<<< Updated upstream
 Generating a new color scale csv for the gfs results
 Internal Server Error: /apps/ffgs/runWorkflow/
+=======
+Getting rid of old gfs data folders
+Done
+
+Setting the WMS bounds
+working on file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019060312/processed/processed_2019060818.nc
+done checking for max/min. writing the file
+wrote the file. all done
+Internal Server Error: /apps/ffgs/ajax/getFloodChart/
 Traceback (most recent call last):
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
     response = self._get_response(request)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
     response = self.process_exception_by_middleware(e, request)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
     return view_func(request, *args, **kwargs)
+  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/ajax.py", line 32, in get_floodchart
+    df = pandas.read_csv(results)[['cat_id', 'mean', 'Timestep']]
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 702, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 429, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 895, in __init__
+    self._make_engine(self.engine)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1122, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1853, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 387, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 705, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv' does not exist: b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv'
+"POST /apps/ffgs/ajax/getFloodChart/ HTTP/1.1" 500 19768
+Internal Server Error: /apps/ffgs/ajax/getFloodChart/
+Traceback (most recent call last):
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/ajax.py", line 32, in get_floodchart
+    df = pandas.read_csv(results)[['cat_id', 'mean', 'Timestep']]
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 702, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 429, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 895, in __init__
+    self._make_engine(self.engine)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1122, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1853, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 387, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 705, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv' does not exist: b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv'
+"POST /apps/ffgs/ajax/getFloodChart/ HTTP/1.1" 500 19768
+Internal Server Error: /apps/ffgs/ajax/getFloodChart/
+>>>>>>> Stashed changes
+Traceback (most recent call last):
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+<<<<<<< Updated upstream
   File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/controllers.py", line 100, in run_workflow
     new_colorscales(wrksppath, region[1], model[1])
   File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/ffgsworkflow.py", line 399, in new_colorscales
@@ -255,3 +598,122 @@ Traceback (most recent call last):
     raise KeyError("{} not in index".format(not_found))
 KeyError: "['max'] not in index"
 "GET /apps/ffgs/runWorkflow/ HTTP/1.1" 500 119016
+=======
+  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/ajax.py", line 32, in get_floodchart
+    df = pandas.read_csv(results)[['cat_id', 'mean', 'Timestep']]
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 702, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 429, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 895, in __init__
+    self._make_engine(self.engine)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1122, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1853, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 387, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 705, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] File b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv' does not exist: b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv'
+"POST /apps/ffgs/ajax/getFloodChart/ HTTP/1.1" 500 19768
+Setting the Environment
+determined the timestamp to download: 2019060312
+Looks like you already have file structure for this timestep, lets see what we need to fill in.
+
+Starting GFS Grib Downloads for hispaniola
+There is no download folder, you must have already processed them. Skipping download stage.
+
+Starting to process the GFS gribs into GeoTIFFs
+There is no gribs folder, you must have already run this step. Skipping conversions
+
+Resampling the rasters for hispaniola
+There is no tiffs folder. You must have already resampled them. Skipping resampling
+
+Doing Zonal Statistics on hispaniola
+
+starting zonal statistics for file 2019060318_resampled.tif
+writing the statistics for this file to the dataframe
+Setting the Environment
+determined the timestamp to download: 2019060312
+Looks like you already have file structure for this timestep, lets see what we need to fill in.
+
+Starting GFS Grib Downloads for hispaniola
+There is no download folder, you must have already processed them. Skipping download stage.
+
+Starting to process the GFS gribs into GeoTIFFs
+There is no gribs folder, you must have already run this step. Skipping conversions
+
+Resampling the rasters for hispaniola
+There is no tiffs folder. You must have already resampled them. Skipping resampling
+
+Doing Zonal Statistics on hispaniola
+
+starting zonal statistics for file 2019060318_resampled.tif
+done
+
+starting zonal statistics for file 2019060400_resampled.tif
+writing the statistics for this file to the dataframe
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060400_resampled.tif
+done
+
+starting zonal statistics for file 2019060406_resampled.tif
+writing the statistics for this file to the dataframe
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060406_resampled.tif
+done
+
+starting zonal statistics for file 2019060412_resampled.tif
+writing the statistics for this file to the dataframe
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060412_resampled.tif
+done
+
+starting zonal statistics for file 2019060418_resampled.tif
+writing the statistics for this file to the dataframe
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060418_resampled.tif
+done
+
+starting zonal statistics for file 2019060500_resampled.tif
+writing the statistics for this file to the dataframe
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060500_resampled.tif
+done
+
+starting zonal statistics for file 2019060506_resampled.tif
+writing the statistics for this file to the dataframe
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060506_resampled.tif
+done
+
+starting zonal statistics for file 2019060512_resampled.tif
+writing the statistics for this file to the dataframe
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060512_resampled.tif
+done
+
+starting zonal statistics for file 2019060518_resampled.tif
+writing the statistics for this file to the dataframe
+writing the statistics for this file to the dataframe
+done
+
+starting zonal statistics for file 2019060518_resampled.tif
+done
+
+starting zonal statistics for file 2019060600_resampled.tif
+writing the statistics for this file to the dataframe
+>>>>>>> Stashed changes

@@ -89,7 +89,7 @@ def run_workflow(request):
 
     for region in ffgs_regions():
         download_gfs(threddspath, timestamp, region[1])
-        gfs_24hrfiles(threddspath, wrksppath, timestamp, region[1])
+        gfs_tiffs(threddspath, wrksppath, timestamp, region[1])
         resample(wrksppath, timestamp, region[1])
         for model in forecastmodels():
             # the geoprocessing functions

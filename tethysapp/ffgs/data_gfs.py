@@ -1,12 +1,13 @@
-import shutil
-import os
 import datetime
-import requests
-import netCDF4
-import rasterio
-import numpy
-import xarray
 import logging
+import os
+import shutil
+
+import netCDF4
+import numpy
+import rasterio
+import requests
+import xarray
 
 
 def download_gfs(threddspath, timestamp, region):
@@ -32,8 +33,7 @@ def download_gfs(threddspath, timestamp, region):
 
     # This is the List of forecast timesteps for 5 days (6-hr increments). download them all
     fc_steps = ['006', '012', '018', '024', '030', '036', '042', '048', '054', '060', '066', '072', '078', '084',
-                '090', '096', '102', '108', '114', '120', '126', '132', '138', '144', '150', '156', '162', '168',
-                '174', '180', '186', '192', '198', '204', '210', '216', '222', '228', '234', '240']
+                '090', '096', '102', '108', '114', '120', '126', '132', '138', '144', '150', '156', '162', '168']
 
     # this is where the actual downloads happen. set the url, filepath, then download
     subregions = {

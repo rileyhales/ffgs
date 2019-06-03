@@ -388,16 +388,22 @@ def new_ncml(threddspath, timestamp, region, model):
 
 
 def new_colorscales(wrksppath, region, model):
+    # set the environment
     logging.info('\nGenerating a new color scale csv for the ' + model + ' results')
     colorscales = os.path.join(wrksppath, region, model + 'colorscales.csv')
     results = os.path.join(wrksppath, region, model + 'results.csv')
+    answers = pd.DataFrame(columns=['cat_id', 'mean', 'max'])
 
+    # read the dataframe and extract the values
     res_df = pd.read_csv(results)[['cat_id', 'mean', 'max']]
     ids = res_df.cat_id.unique()
     for catid in ids:
         df = res_df.query("cat_id == @catid")
-        print(df)
-        print(df.values)
+        mean = max(df['mean'].values)
+        maximum = max(df['max'].values)
+        answers.append({'cat_id': catid, 'mean': mean, 'max': maximum})
+
+    answers.to_csv(colorscales)
 
     return
 

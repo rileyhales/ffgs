@@ -121,7 +121,7 @@ def gfs_24hrfiles(threddspath, wrksppath, timestamp, region):
         logging.info('opening grib file ' + path)
         obj = xarray.open_dataset(path, engine='cfgrib', backend_kwargs={'filter_by_keys': {'typeOfLevel': 'surface'}})
         logging.info('converting it to a netcdf')
-        ncname = i[j].replace('.grb', '') + '.nc'
+        ncname = i[j].replace('.grb', '.nc')
         logging.info('saving it to the path ' + path)
         ncpath = os.path.join(netcdfs, ncname)
         obj.to_netcdf(ncpath, mode='w')

@@ -1,8 +1,7 @@
 import ast
-import pandas
 import calendar
-import datetime
 
+import pandas
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
@@ -34,7 +33,7 @@ def get_floodchart(request):
 
     values = []
     for row in df.iterrows():
-        time = datetime.datetime.strptime(row[1]['Timestep'], "%m/%d/%Y")
+        time = datetime.datetime.strptime(row[1]['Timestep'], "%Y%m%d%H")
         time = calendar.timegm(time.utctimetuple()) * 1000
         values.append([time, row[1]['mean']])
 

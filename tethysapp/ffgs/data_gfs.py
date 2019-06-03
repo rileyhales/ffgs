@@ -41,11 +41,9 @@ def download_gfs(threddspath, timestamp, region):
         'centralamerica': 'subregion=&leftlon=-94.25&rightlon=-75.5&toplat=21&bottomlat=5.5',
     }
     for step in fc_steps:
-        # url = "https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f" + step + \
-        #       "&all_lev=on&var_APCP=on&leftlon=-75&rightlon=-68&toplat=20&bottomlat=17&dir=%2Fgfs." + today_str + "00"
         url = 'https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t00z.pgrb2.0p25.f' + step + \
               '&all_lev=on&var_APCP=on&' + subregions[region] + '&dir=%2Fgfs.' + time + '00'
-        filename = 'gfs_apcp_' + timestamp + '_' + step + '.grb'
+        filename = timestamp + '_' + step + '.grb'
         logging.info('downloading the file ' + filename)
         filepath = os.path.join(gribsdir, filename)
         with requests.get(url, stream=True) as r:

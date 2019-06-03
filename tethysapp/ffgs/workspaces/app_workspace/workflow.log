@@ -1,5 +1,8 @@
+
+Workflow initiated on 06/03/19 at 18:00
+
 Setting the Environment
-determined the timestamp to download: 2019053100
+determined the timestamp to download: 2019060300
 Looks like you already have file structure for this timestep, lets see what we need to fill in.
 
 Starting GFS Grib Downloads for hispaniola
@@ -13,43 +16,31 @@ There is no tiffs folder. You must have already resampled them. Skipping resampl
 
 Doing Zonal Statistics on hispaniola
 
-starting zonal statistics for file gfs_apcp_2019053100_hrs000-024_resampled.tif
+starting zonal statistics for file gfs_apcp_2019060300_hrs000-024_resampled.tif
 writing the statistics for this file to the dataframe
 done
 
-starting zonal statistics for file gfs_apcp_2019053100_hrs024-048_resampled.tif
+starting zonal statistics for file gfs_apcp_2019060300_hrs024-048_resampled.tif
 writing the statistics for this file to the dataframe
 done
 
-starting zonal statistics for file gfs_apcp_2019053100_hrs048-072_resampled.tif
+starting zonal statistics for file gfs_apcp_2019060300_hrs048-072_resampled.tif
 writing the statistics for this file to the dataframe
 done
 
-starting zonal statistics for file gfs_apcp_2019053100_hrs072-096_resampled.tif
+starting zonal statistics for file gfs_apcp_2019060300_hrs072-096_resampled.tif
 writing the statistics for this file to the dataframe
 done
 
-starting zonal statistics for file gfs_apcp_2019053100_hrs096-120_resampled.tif
+starting zonal statistics for file gfs_apcp_2019060300_hrs096-120_resampled.tif
 writing the statistics for this file to the dataframe
 done
 
-starting zonal statistics for file gfs_apcp_2019053100_hrs120-144_resampled.tif
+starting zonal statistics for file gfs_apcp_2019060300_hrs120-144_resampled.tif
 writing the statistics for this file to the dataframe
 done
 
-starting zonal statistics for file gfs_apcp_2019053100_hrs144-168_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file gfs_apcp_2019053100_hrs168-192_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file gfs_apcp_2019053100_hrs192-216_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file gfs_apcp_2019053100_hrs216-240_resampled.tif
+starting zonal statistics for file gfs_apcp_2019060300_hrs144-168_resampled.tif
 writing the statistics for this file to the dataframe
 done
 
@@ -57,258 +48,22 @@ done with zonal statistics, writing to a csv file
 deleting the resampled tiffs directory
 
 Processing the netCDF files
-There are 10 compatible files.
+There are 7 compatible files.
 Preparing the reference file
-Working on file gfs_apcp_2019053100_144.nc
-Working on file gfs_apcp_2019053100_216.nc
-Working on file gfs_apcp_2019053100_096.nc
-Working on file gfs_apcp_2019053100_024.nc
-Working on file gfs_apcp_2019053100_120.nc
-Working on file gfs_apcp_2019053100_192.nc
-Working on file gfs_apcp_2019053100_240.nc
-Working on file gfs_apcp_2019053100_072.nc
-Working on file gfs_apcp_2019053100_168.nc
-Working on file gfs_apcp_2019053100_048.nc
+Working on file 2019060300_048.nc
+Working on file 2019060300_168.nc
+Working on file 2019060300_072.nc
+Working on file 2019060300_120.nc
+Working on file 2019060300_096.nc
+Working on file 2019060300_024.nc
+Working on file 2019060300_144.nc
 Finished File Conversions
 
 Writing a new ncml file for this date
 Wrote New .ncml
 
-Getting rid of old gfs data folders
-Done
-
-Setting the WMS bounds
-working on file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019053100/processed/processed_gfs_apcp_2019053100_144.nc
-done checking for max/min. writing the file
-wrote the file. all done
-
-Starting GFS Grib Downloads for centralamerica
-downloading the file gfs_apcp_2019053100_006.grb
-downloading the file gfs_apcp_2019053100_012.grb
-downloading the file gfs_apcp_2019053100_018.grb
-downloading the file gfs_apcp_2019053100_024.grb
-downloading the file gfs_apcp_2019053100_030.grb
-downloading the file gfs_apcp_2019053100_036.grb
-downloading the file gfs_apcp_2019053100_042.grb
-downloading the file gfs_apcp_2019053100_048.grb
-downloading the file gfs_apcp_2019053100_054.grb
-downloading the file gfs_apcp_2019053100_060.grb
-downloading the file gfs_apcp_2019053100_066.grb
-downloading the file gfs_apcp_2019053100_072.grb
-downloading the file gfs_apcp_2019053100_078.grb
-downloading the file gfs_apcp_2019053100_084.grb
-downloading the file gfs_apcp_2019053100_090.grb
-downloading the file gfs_apcp_2019053100_096.grb
-downloading the file gfs_apcp_2019053100_102.grb
-downloading the file gfs_apcp_2019053100_108.grb
-downloading the file gfs_apcp_2019053100_114.grb
-downloading the file gfs_apcp_2019053100_120.grb
-downloading the file gfs_apcp_2019053100_126.grb
-downloading the file gfs_apcp_2019053100_132.grb
-downloading the file gfs_apcp_2019053100_138.grb
-downloading the file gfs_apcp_2019053100_144.grb
-downloading the file gfs_apcp_2019053100_150.grb
-downloading the file gfs_apcp_2019053100_156.grb
-downloading the file gfs_apcp_2019053100_162.grb
-downloading the file gfs_apcp_2019053100_168.grb
-downloading the file gfs_apcp_2019053100_174.grb
-downloading the file gfs_apcp_2019053100_180.grb
-downloading the file gfs_apcp_2019053100_186.grb
-downloading the file gfs_apcp_2019053100_192.grb
-downloading the file gfs_apcp_2019053100_198.grb
-downloading the file gfs_apcp_2019053100_204.grb
-downloading the file gfs_apcp_2019053100_210.grb
-downloading the file gfs_apcp_2019053100_216.grb
-downloading the file gfs_apcp_2019053100_222.grb
-downloading the file gfs_apcp_2019053100_228.grb
-downloading the file gfs_apcp_2019053100_234.grb
-downloading the file gfs_apcp_2019053100_240.grb
-Finished Downloads
-
-Starting to process the GFS gribs into 24 hour files
-working on file gfs_apcp_2019053100_006.grb
-working on file gfs_apcp_2019053100_012.grb
-working on file gfs_apcp_2019053100_018.grb
-working on file gfs_apcp_2019053100_024.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_024.grb
-ecCodes library found using name 'eccodes'.
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_024.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file gfs_apcp_2019053100_030.grb
-working on file gfs_apcp_2019053100_036.grb
-working on file gfs_apcp_2019053100_042.grb
-working on file gfs_apcp_2019053100_048.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_048.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_048.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file gfs_apcp_2019053100_054.grb
-working on file gfs_apcp_2019053100_060.grb
-working on file gfs_apcp_2019053100_066.grb
-working on file gfs_apcp_2019053100_072.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_072.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_072.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file gfs_apcp_2019053100_078.grb
-working on file gfs_apcp_2019053100_084.grb
-working on file gfs_apcp_2019053100_090.grb
-working on file gfs_apcp_2019053100_096.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_096.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_096.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file gfs_apcp_2019053100_102.grb
-working on file gfs_apcp_2019053100_108.grb
-working on file gfs_apcp_2019053100_114.grb
-working on file gfs_apcp_2019053100_120.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_120.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_120.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file gfs_apcp_2019053100_126.grb
-working on file gfs_apcp_2019053100_132.grb
-working on file gfs_apcp_2019053100_138.grb
-working on file gfs_apcp_2019053100_144.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_144.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_144.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file gfs_apcp_2019053100_150.grb
-working on file gfs_apcp_2019053100_156.grb
-working on file gfs_apcp_2019053100_162.grb
-working on file gfs_apcp_2019053100_168.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_168.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_168.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file gfs_apcp_2019053100_174.grb
-working on file gfs_apcp_2019053100_180.grb
-working on file gfs_apcp_2019053100_186.grb
-working on file gfs_apcp_2019053100_192.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_192.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_192.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file gfs_apcp_2019053100_198.grb
-working on file gfs_apcp_2019053100_204.grb
-working on file gfs_apcp_2019053100_210.grb
-working on file gfs_apcp_2019053100_216.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_216.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_216.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file gfs_apcp_2019053100_222.grb
-working on file gfs_apcp_2019053100_228.grb
-working on file gfs_apcp_2019053100_234.grb
-working on file gfs_apcp_2019053100_240.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_240.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019053100/gribs/gfs_apcp_2019053100_240.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-
-Resampling the rasters for centralamerica
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs000-024.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs024-048.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs048-072.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs072-096.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs096-120.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs120-144.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs144-168.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs168-192.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs192-216.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/24_hr_GeoTIFFs/gfs_apcp_2019053100_hrs216-240.tif
-
-Doing Zonal Statistics on centralamerica
-
-starting zonal statistics for file gfs_apcp_2019053100_hrs000-024_resampled.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/shapefiles/ffgs_centralamerica.shp: No such file or directory
-ParseException: Unknown type: '/USERS/RILEYHALES/TETHYS/SRC/TETHYS_APPS/TETHYSAPP/FFGS/WORKSPACES/APP_WORKSPACE/CENTRALAMERICA/SHAPEFILES/FFGS_CENTRALAMERICA.SHP'
+Generating a new color scale csv for the gfs results
 Internal Server Error: /apps/ffgs/runWorkflow/
-Traceback (most recent call last):
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/rasterstats/io.py", line 99, in read_features
-    mapping = json.loads(obj)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/json/__init__.py", line 354, in loads
-    return _default_decoder.decode(s)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/json/decoder.py", line 339, in decode
-    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/json/decoder.py", line 357, in raw_decode
-    raise JSONDecodeError("Expecting value", s, err.value) from None
-json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
-
-During handling of the above exception, another exception occurred:
-
 Traceback (most recent call last):
   File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
@@ -320,19 +75,17 @@ Traceback (most recent call last):
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
   File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
     return view_func(request, *args, **kwargs)
-  File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/controllers.py", line 92, in run_workflow
-    zonal_statistics(wrksppath, timestamp, region[1])
-  File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/ffgsworkflow.py", line 185, in zonal_statistics
-    geojson_out=True
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/rasterstats/main.py", line 31, in zonal_stats
-    return list(gen_zonal_stats(*args, **kwargs))
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/rasterstats/main.py", line 146, in gen_zonal_stats
-    features_iter = read_features(vectors, layer)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/rasterstats/io.py", line 106, in read_features
-    features_iter = [parse_feature(obj)]
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/rasterstats/io.py", line 79, in parse_feature
-    raise ValueError("Can't parse %s as a geojson Feature object" % obj)
-ValueError: Can't parse /Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/shapefiles/ffgs_centralamerica.shp as a geojson Feature object
-"GET /apps/ffgs/runWorkflow/ HTTP/1.1" 500 152946
-Not Found: /favicon.ico
-"GET /favicon.ico HTTP/1.1" 404 3621
+  File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/controllers.py", line 99, in run_workflow
+    new_colorscales(wrksppath, region[1], model[1])
+  File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/ffgsworkflow.py", line 396, in new_colorscales
+    res_df = pd.read_csv(results)[['cat_id', 'mean', 'max']]
+  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/core/frame.py", line 2934, in __getitem__
+    raise_missing=True)
+  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/core/indexing.py", line 1354, in _convert_to_indexer
+    return self._get_listlike_indexer(obj, axis, **kwargs)[1]
+  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/core/indexing.py", line 1161, in _get_listlike_indexer
+    raise_missing=raise_missing)
+  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/core/indexing.py", line 1252, in _validate_read_indexer
+    raise KeyError("{} not in index".format(not_found))
+KeyError: "['max'] not in index"
+"GET /apps/ffgs/runWorkflow/ HTTP/1.1" 500 118605

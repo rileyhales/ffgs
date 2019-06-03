@@ -4,7 +4,6 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 
 # ROUGHLY IN ORDER OF IMPORTANCE
 # todo create a csv with how many times in the next 10 days each cat_id floods which we use to color the map
-# todo decide how to store many days worth of csvs and what naming system to use so the app can read them (append to)
 # todo theres a bug in georeferencing the netcdf. it ends up wms-able but not in the right location.
 # todo make the wrf model downloads work?
 

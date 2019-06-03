@@ -1,7 +1,6 @@
-import datetime
+import logging
 import math
 import shutil
-import logging
 
 import netCDF4
 import numpy
@@ -17,7 +16,7 @@ def setenvironment():
     """
     Dependencies: os, shutil, datetime, urllib.request, app_settings (options)
     """
-    logging.info('Setting the Environment')
+    logging.info('\nSetting the Environment')
     # determine the most day and hour of the day timestamp of the most recent GFS forecast
     now = datetime.datetime.utcnow()
     if now.hour > 3:
@@ -32,12 +31,23 @@ def setenvironment():
     threddspath = configuration['threddsdatadir']
     wrksppath = configuration['app_wksp_path']
 
+    # perform a redundancy check, if the last timestamp is the same as current, abort the workflow
+    timefile = os.path.join(wrksppath, 'timestamp.txt')
+    with open(timefile, 'r') as file:
+        lasttime = file.readline()
+        if lasttime == timestamp:
+            redundant = True
+            logging.info('The last recorded timestamp is the timestamp we determined, aborting workflow')
+            return threddspath, wrksppath, timestamp, redundant
+        else:
+            redundant = False
+
     # if the file structure already exists, quit
     checkthredds = os.path.join(threddspath, 'hispaniola', 'gfs', timestamp)
     checkworkspace = os.path.join(wrksppath, 'hispaniola', '24_hr_GeoTIFFs_resampled')
     if os.path.exists(checkthredds) and os.path.exists(checkworkspace):
-        logging.info('Looks like you already have file structure for this timestep, lets see what we need to fill in.')
-        return threddspath, wrksppath, timestamp
+        logging.info('You have a file structure for this timestep but didnt complete the workflow, analyzing...')
+        return threddspath, wrksppath, timestamp, redundant
 
     # create the file structure for the new data
     for region in ffgs_regions():
@@ -72,7 +82,7 @@ def setenvironment():
                 os.chmod(new_dir, 0o777)
 
     logging.info('All done, on to do work')
-    return threddspath, wrksppath, timestamp
+    return threddspath, wrksppath, timestamp, redundant
 
 
 def resample(wrksppath, timestamp, region):
@@ -147,7 +157,7 @@ def resample(wrksppath, timestamp, region):
     return
 
 
-def zonal_statistics(wrksppath, timestamp, region):
+def zonal_statistics(wrksppath, timestamp, region, model):
     """
     Script to calculate average precip over FFGS polygon shapefile
     Dependencies: datetime, os, pandas, rasterstats
@@ -156,7 +166,7 @@ def zonal_statistics(wrksppath, timestamp, region):
     # Define app workspace and sub-paths
     resampleds = os.path.join(wrksppath, region, '24_hr_GeoTIFFs_resampled')
     shp_path = os.path.join(wrksppath, region, 'shapefiles', 'ffgs_' + region + '.shp')
-    stat_file = os.path.join(wrksppath, 'zonal_stats_' + timestamp + '_00.csv')
+    stat_file = os.path.join(wrksppath, region, model + 'results.csv')
 
     # check that there are resampled tiffs to do zonal statistics on
     if not os.path.exists(resampleds):
@@ -213,15 +223,7 @@ def nc_georeference(threddspath, timestamp, region, model):
         netcdf file.
     Author: Riley Hales, 2019
     Dependencies: netCDF4, os, datetime
-    THREDDS Documentation specifies that an appropriately georeferenced file should
-    1. 2 Coordinate Dimensions, lat and lon. Their size is the number of steps across the grid.
-    2. 2 Coordinate Variables, lat and lon, whose arrays contain the lat/lon values of the grid points.
-        These variables only require the corresponding lat or lon dimension.
-    3. 1 time dimension whose length is the number of time steps
-    4. 1 time variable whose array contains the difference in time between steps using the units given in the metadata.
-    5. Each variable requires the the time and Coordinate Dimensions, in that order (time, lat, lon)
-    6. Each variable has the long_name, units, standard_name property values correct
-    7. The variable property coordinates = "lat lon" or else is blank/doesn't exist
+    see github/rileyhales/datatools for more details
     """
     logging.info('\nProcessing the netCDF files')
 
@@ -385,24 +387,18 @@ def new_ncml(threddspath, timestamp, region, model):
     return
 
 
-def cleanup(threddspath, wrksppath, timestamp, region, model):
-    # write a file with the current timestep triggering the app to start using this data
-    with open(os.path.join(wrksppath, 'timestep.txt'), 'w') as file:
-        file.write(timestamp)
+def new_colorscales(wrksppath, region, model):
+    logging.info('\nGenerating a new color scale csv for the ' + model + ' results')
+    colorscales = os.path.join(wrksppath, region, model + 'colorscales.csv')
+    results = os.path.join(wrksppath, region, model + 'results.csv')
 
-    # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
-    logging.info('\nGetting rid of old ' + model + ' data folders')
-    path = os.path.join(threddspath, region, model)
-    files = os.listdir(path)
-    files.remove(timestamp)
-    files.remove('wms.ncml')
-    for file in files:
-        try:
-            shutil.rmtree(os.path.join(path, file))
-        except:
-            os.remove(os.path.join(path, file))
+    res_df = pd.read_csv(results)[['cat_id', 'mean', 'max']]
+    ids = res_df.cat_id.unique()
+    for catid in ids:
+        df = res_df.query("cat_id == @catid")
+        print(df)
+        print(df.values)
 
-    logging.info('Done')
     return
 
 
@@ -449,5 +445,28 @@ def set_wmsbounds(threddspath, timestamp, region, model):
     boundsfile = os.path.join(os.path.dirname(__file__), 'public', 'js', 'bounds.js')
     with open(boundsfile, 'w') as file:
         file.write('const bounds = ' + str(bounds) + ';')
-    logging.info('wrote the file. all done')
+    logging.info('wrote the js file')
+    return
+
+
+def cleanup(threddspath, wrksppath, timestamp, region, model):
+    # write a file with the current timestep triggering the app to start using this data
+    logging.info('\nPerforming file cleanup')
+    logging.info('writing the timestamp used for this run to a textfile')
+    with open(os.path.join(wrksppath, 'timestamp.txt'), 'w') as file:
+        file.write(timestamp)
+
+    # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
+    logging.info('Getting rid of old ' + model + ' data folders')
+    path = os.path.join(threddspath, region, model)
+    files = os.listdir(path)
+    files.remove(timestamp)
+    files.remove('wms.ncml')
+    for file in files:
+        try:
+            shutil.rmtree(os.path.join(path, file))
+        except:
+            os.remove(os.path.join(path, file))
+
+    logging.info('Done')
     return

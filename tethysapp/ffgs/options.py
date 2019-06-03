@@ -53,7 +53,7 @@ def forecastmodels():
 
 
 def get_forecastdate():
-    path = os.path.join(App.get_app_workspace().path, 'timestep.txt')
+    path = os.path.join(App.get_app_workspace().path, 'timestamp.txt')
     with open(path, 'r') as file:
         time = file.readline()
         time = datetime.datetime.strptime(time, "%Y%m%d%H")

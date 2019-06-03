@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from tethys_sdk.gizmos import SelectInput, RangeSlider
 
-from .app import Ffgs as App
 from .data_gfs import *
 # from .data_wrf import *
 from .ffgsworkflow import *
@@ -78,23 +77,31 @@ def home(request):
 @login_required()
 def run_workflow(request):
     """
-    The controller for running the workflow to download and .
+    The controller for running the workflow to download and process data
     """
     logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
+    logging.info('\nWorkflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
-    # todo add a check here to see if you've already run the workflow for this day
-    threddspath, wrksppath, timestamp = setenvironment()
+    threddspath, wrksppath, timestamp, redundant = setenvironment()
+    if redundant:
+        logging.info('\nWorkflow aborted on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+        return JsonResponse({'Status': 'Workflow Aborted: already run for most recent data'})
 
     for region in ffgs_regions():
         download_gfs(threddspath, timestamp, region[1])
         gfs_24hrfiles(threddspath, wrksppath, timestamp, region[1])
         resample(wrksppath, timestamp, region[1])
-        zonal_statistics(wrksppath, timestamp, region[1])
-        # download_wrf(threddspath, timestamp)
         for model in forecastmodels():
+            # the geoprocessing functions
+            zonal_statistics(wrksppath, timestamp, region[1], model[1])
             nc_georeference(threddspath, timestamp, region[1], model[1])
+            # generate color scales and ncml aggregation files
             new_ncml(threddspath, timestamp, region[1], model[1])
-            cleanup(threddspath, wrksppath, timestamp, region[1], model[1])
+            new_colorscales(wrksppath, region[1], model[1])
             set_wmsbounds(threddspath, timestamp, region[1], model[1])
+            # cleanup the workspace by removing old files
+            cleanup(threddspath, wrksppath, timestamp, region[1], model[1])
 
-    return JsonResponse({'Status': 'Workflow Completed Successfully'})
+    logging.info('\nWorkflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+
+    return JsonResponse({'Status': 'Workflow Completed: normal finish'})

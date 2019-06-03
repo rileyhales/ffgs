@@ -74,8 +74,10 @@ legend.onAdd = function () {
 ////////////////////////////////////////////////////////////////////////  GEOJSON LAYERS - GEOSERVER + WFS / GEOJSON
 function layerPopups(feature, layer) {
     let watershed_id = feature.properties.cat_id;
-    layer.bindPopup('<strong>This is watershed # ' + watershed_id + '</strong>');
-    layer.on('click', function() {getFloodChart(watershed_id)});
+    // layer.bindPopup('<strong>This is watershed #' + watershed_id + '</strong>');
+    layer.on('click', function () {
+        getFloodChart(watershed_id)
+    });
 }
 
 // create this reference array that other functions will build on
@@ -87,17 +89,39 @@ let geojson_sorter = {
 };
 
 function addFFGSlayer() {
-    ffgs_watersheds = L.geoJSON(geojson_sorter[$("#region").val()], {
-        onEachFeature: layerPopups,
-        style: (function (feature) {
-            switch (true) {
-                case feature.properties.cat_id >= 2004701000:
-                    return {color: '#00ff00', opacity: $("#opacity_geojson").val()};
-                case feature.properties.cat_id < 2004701000:
-                    return {color: '#ff00fd', opacity: $("#opacity_geojson").val()};
-            }
-        }),
-    }).addTo(mapObj);
+    $.ajax({
+        url: '/apps/ffgs/ajax/getColorScales/',
+        async: false,
+        data: JSON.stringify({region: $("#region").val(), model: $("#model").val()}),
+        dataType: 'json',
+        contentType: "application/json",
+        method: 'POST',
+        success: function (result) {
+            ffgs_watersheds = L.geoJSON(geojson_sorter[$("#region").val()], {
+                onEachFeature: layerPopups,
+                style: (function (feature) {
+                    let id = feature.properties.cat_id;
+                    switch (true) {
+                        case result[id + '.0']['max'] >= 30:
+                            return {color: '#0012ff', opacity: $("#opacity_geojson").val()};
+                        case result[id + '.0']['max'] >= 25:
+                            return {color: '#00deff', opacity: $("#opacity_geojson").val()};
+                        case result[id + '.0']['max'] >= 20:
+                            return {color: '#00ff00', opacity: $("#opacity_geojson").val()};
+                        case result[id + '.0']['max'] >= 15:
+                            return {color: '#fffc00', opacity: $("#opacity_geojson").val()};
+                        case result[id + '.0']['max'] >= 10:
+                            return {color: '#ff7700', opacity: $("#opacity_geojson").val()};
+                        case result[id + '.0']['max'] >= 5:
+                            return {color: '#ff000f', opacity: $("#opacity_geojson").val()};
+                        case result[id + '.0']['max'] < 5:
+                            return {color: 'rgba(75,76,80,0.53)', opacity: $("#opacity_geojson").val()};
+                    }
+                }),
+            }).addTo(mapObj);
+        }
+    });
+
 }
 
 ////////////////////////////////////////////////////////////////////////  MAP CONTROLS AND CLEARING

@@ -11,8 +11,6 @@ from rasterio.enums import Resampling
 
 from .options import *
 
-# todo only do 6-hr timesteps
-# todo add max to rasterstats calculation
 
 def setenvironment():
     """
@@ -93,7 +91,7 @@ def setenvironment():
     return threddspath, wrksppath, timestamp, redundant
 
 
-def resample(wrksppath, timestamp, region):
+def resample(wrksppath, region):
     """
     Script to resample rasters from .25 o .0025 degree in order for rasterstats to work
     Dependencies: datetime, os, numpy, rasterio
@@ -191,12 +189,12 @@ def zonal_statistics(wrksppath, timestamp, region, model):
 
     # do the zonal statistics for each resampled tiff file
     for i in range(len(files)):
-        logging.info('\nstarting zonal statistics for file ' + files[i])
+        logging.info('starting zonal statistics for ' + files[i])
         ras_path = os.path.join(resampleds, files[i])
         stats = rasterstats.zonal_stats(
             shp_path,
             ras_path,
-            stats=['count','mean', 'max'],
+            stats=['count', 'mean', 'max'],
             geojson_out=True
             )
 
@@ -382,9 +380,9 @@ def new_ncml(threddspath, timestamp, region, model):
         file.write(
             '<netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2">\n'
             '    <variable name="time" type="int" shape="time">\n'
-            '        <attribute name="units" value="days since ' + date + '"/>\n'
+            '        <attribute name="units" value="hours since ' + date + '"/>\n'
             '        <attribute name="_CoordinateAxisType" value="Time" />\n'
-            '        <values start="0" increment="1" />\n'
+                                                                           '        <values start="6" increment="6" />\n'
             '    </variable>\n'
             '    <aggregation dimName="time" type="joinExisting" recheckEvery="1 hour">\n'
             '        <scan location="' + timestamp + '/processed/"/>\n'
@@ -402,17 +400,16 @@ def new_colorscales(wrksppath, region, model):
     results = os.path.join(wrksppath, region, model + 'results.csv')
     answers = pd.DataFrame(columns=['cat_id', 'mean', 'max'])
 
-    # read the dataframe and extract the values
     res_df = pd.read_csv(results)[['cat_id', 'mean', 'max']]
     ids = res_df.cat_id.unique()
     for catid in ids:
         df = res_df.query("cat_id == @catid")
         mean = max(df['mean'].values)
         maximum = max(df['max'].values)
-        answers.append({'cat_id': catid, 'mean': mean, 'max': maximum})
+        answers = answers.append({'cat_id': catid, 'mean': mean, 'max': maximum}, ignore_index=True)
 
-    answers.to_csv(colorscales)
-
+    answers.to_csv(colorscales, mode='w')
+    logging.info('Wrote new rules to csv')
     return
 
 

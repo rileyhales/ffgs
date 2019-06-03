@@ -115,19 +115,18 @@ def gfs_tiffs(threddspath, wrksppath, timestamp, region):
         logging.info('opening grib file ' + path)
         obj = xarray.open_dataset(path, engine='cfgrib', backend_kwargs={'filter_by_keys': {'typeOfLevel': 'surface'}})
         logging.info('converting it to a netcdf')
-        ncname = i.replace('.grb', '') + '.nc'      ########### Changed
+        ncname = i.replace('.grb', '.nc')
         logging.info('saving it to the path ' + path)
         ncpath = os.path.join(netcdfs, ncname)
         obj.to_netcdf(ncpath, mode='w')
         logging.info('converted')
         logging.info('writing the correct values to the tp array')
         nc = netCDF4.Dataset(ncpath, 'a')
-        nc['tp'][:] = file_array                   ########### Changed
+        nc['tp'][:] = file_array
         nc.close()
         logging.info('created a netcdf')
 
         # Specify the GeoTIFF filepath
-
         tif_filename = i.replace('grb', 'tif')
         tif_filepath = os.path.join(tiffs, tif_filename)
 

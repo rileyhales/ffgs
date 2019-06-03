@@ -80,17 +80,21 @@ def run_workflow(request):
     The controller for running the workflow to download and process data
     """
     logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
-    logging.info('\nWorkflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
+    # start the workflow by setting the environment
     threddspath, wrksppath, timestamp, redundant = setenvironment()
+
+    # if this has already been done for the most recent forecast, abort the workflow
     if redundant:
         logging.info('\nWorkflow aborted on ' + datetime.datetime.utcnow().strftime("%D at %R"))
         return JsonResponse({'Status': 'Workflow Aborted: already run for most recent data'})
 
+    # run the workflow for each region, for each model in that region
     for region in ffgs_regions():
         download_gfs(threddspath, timestamp, region[1])
         gfs_tiffs(threddspath, wrksppath, timestamp, region[1])
-        resample(wrksppath, timestamp, region[1])
+        resample(wrksppath, region[1])
         for model in forecastmodels():
             # the geoprocessing functions
             zonal_statistics(wrksppath, timestamp, region[1], model[1])

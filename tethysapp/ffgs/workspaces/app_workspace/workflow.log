@@ -1,44 +1,354 @@
-<<<<<<< Updated upstream
+Workflow initiated on 06/03/19 at 21:25
 
-Workflow initiated on 06/03/19 at 18:44
-
-Setting the Environment
-determined the timestamp to download: 2019060300
-Internal Server Error: /apps/ffgs/runWorkflow/
-Traceback (most recent call last):
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
-    response = get_response(request)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
-    response = self._get_response(request)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/controllers.py", line 85, in run_workflow
-    threddspath, wrksppath, timestamp, redundant = setenvironment()
-  File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/ffgsworkflow.py", line 47, in setenvironment
-    checkthredds = os.path.join(threddspath, 'hispaniola', 'gfs', timestamp)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/posixpath.py", line 80, in join
-    a = os.fspath(a)
-TypeError: expected str, bytes or os.PathLike object, not NoneType
-"GET /apps/ffgs/runWorkflow/ HTTP/1.1" 500 94247
-
-Workflow initiated on 06/03/19 at 18:44
-=======
 Setting the Environment
 determined the timestamp to download: 2019060312
-Looks like you already have file structure for this timestep, lets see what we need to fill in.
+Creating new App Workspace GeoTIFF file structure for hispaniola
+Creating new THREDDS file structure for hispaniola
+All done, on to do work
 
 Starting GFS Grib Downloads for hispaniola
-There is no download folder, you must have already processed them. Skipping download stage.
+downloading the file 2019060318.grb
+downloading the file 2019060400.grb
+downloading the file 2019060406.grb
+downloading the file 2019060412.grb
+downloading the file 2019060418.grb
+downloading the file 2019060500.grb
+downloading the file 2019060506.grb
+downloading the file 2019060512.grb
+downloading the file 2019060518.grb
+downloading the file 2019060600.grb
+downloading the file 2019060606.grb
+downloading the file 2019060612.grb
+downloading the file 2019060618.grb
+downloading the file 2019060700.grb
+downloading the file 2019060706.grb
+downloading the file 2019060712.grb
+downloading the file 2019060718.grb
+downloading the file 2019060800.grb
+downloading the file 2019060806.grb
+downloading the file 2019060812.grb
+downloading the file 2019060818.grb
+downloading the file 2019060900.grb
+downloading the file 2019060906.grb
+downloading the file 2019060912.grb
+downloading the file 2019060918.grb
+downloading the file 2019061000.grb
+downloading the file 2019061006.grb
+downloading the file 2019061012.grb
+Finished Downloads
 
 Starting to process the GFS gribs into GeoTIFFs
-There is no gribs folder, you must have already run this step. Skipping conversions
+working on file 2019060318.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060318.grb
+ecCodes library found using name 'eccodes'.
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060318.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060400.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060400.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060400.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060406.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060406.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060406.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060412.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060412.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060412.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060418.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060418.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060418.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060500.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060500.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060500.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060506.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060506.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060506.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060512.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060512.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060512.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060518.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060518.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060518.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060600.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060600.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060600.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060606.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060606.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060606.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060612.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060612.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060612.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060618.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060618.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060618.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060700.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060700.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060700.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060706.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060706.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060706.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060712.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060712.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060712.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060718.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060718.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060718.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060800.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060800.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060800.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060806.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060806.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060806.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060812.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060812.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060812.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060818.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060818.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060818.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060900.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060900.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060900.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060906.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060906.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060906.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060912.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060912.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060912.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019060918.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060918.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019060918.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019061000.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019061000.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019061000.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019061006.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019061006.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019061006.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019061012.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019061012.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/gribs/2019061012.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
 
 Resampling the rasters for hispaniola
-There is no tiffs folder. You must have already resampled them. Skipping resampling
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060318.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060400.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060406.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060412.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060418.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060500.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060506.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060512.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060518.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060600.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060606.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060612.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060618.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060700.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060706.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060712.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060718.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060800.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060806.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060812.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060818.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060900.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060906.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060912.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019060918.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019061000.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019061006.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFS/2019061012.tif
 
 Doing Zonal Statistics on hispaniola
 
@@ -151,197 +461,6 @@ writing the statistics for this file to the dataframe
 done
 
 starting zonal statistics for file 2019061012_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-done with zonal statistics, writing to a csv file
-
-Processing the netCDF files
-There are no netcdfs to be converted. Skipping netcdf processing.
->>>>>>> Stashed changes
-
-Setting the Environment
-determined the timestamp to download: 2019060300
-Creating new App Workspace GeoTIFF file structure for hispaniola
-Creating new THREDDS file structure for hispaniola
-All done, on to do work
-
-<<<<<<< Updated upstream
-Starting GFS Grib Downloads for hispaniola
-downloading the file 2019060300_006.grb
-downloading the file 2019060300_012.grb
-downloading the file 2019060300_018.grb
-downloading the file 2019060300_024.grb
-downloading the file 2019060300_030.grb
-downloading the file 2019060300_036.grb
-downloading the file 2019060300_042.grb
-downloading the file 2019060300_048.grb
-downloading the file 2019060300_054.grb
-downloading the file 2019060300_060.grb
-downloading the file 2019060300_066.grb
-downloading the file 2019060300_072.grb
-downloading the file 2019060300_078.grb
-downloading the file 2019060300_084.grb
-downloading the file 2019060300_090.grb
-downloading the file 2019060300_096.grb
-downloading the file 2019060300_102.grb
-downloading the file 2019060300_108.grb
-downloading the file 2019060300_114.grb
-downloading the file 2019060300_120.grb
-downloading the file 2019060300_126.grb
-downloading the file 2019060300_132.grb
-downloading the file 2019060300_138.grb
-downloading the file 2019060300_144.grb
-downloading the file 2019060300_150.grb
-downloading the file 2019060300_156.grb
-downloading the file 2019060300_162.grb
-downloading the file 2019060300_168.grb
-Finished Downloads
-
-Starting to process the GFS gribs into 24 hour files
-working on file 2019060300_006.grb
-working on file 2019060300_012.grb
-working on file 2019060300_018.grb
-working on file 2019060300_024.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_024.grb
-ecCodes library found using name 'eccodes'.
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_024.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019060300_030.grb
-working on file 2019060300_036.grb
-working on file 2019060300_042.grb
-working on file 2019060300_048.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_048.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_048.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019060300_054.grb
-working on file 2019060300_060.grb
-working on file 2019060300_066.grb
-working on file 2019060300_072.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_072.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_072.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019060300_078.grb
-working on file 2019060300_084.grb
-working on file 2019060300_090.grb
-working on file 2019060300_096.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_096.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_096.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019060300_102.grb
-working on file 2019060300_108.grb
-working on file 2019060300_114.grb
-working on file 2019060300_120.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_120.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_120.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019060300_126.grb
-working on file 2019060300_132.grb
-working on file 2019060300_138.grb
-working on file 2019060300_144.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_144.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_144.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019060300_150.grb
-working on file 2019060300_156.grb
-working on file 2019060300_162.grb
-working on file 2019060300_168.grb
-
-calculated a daily array
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_168.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060300/gribs/2019060300_168.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-
-Resampling the rasters for hispaniola
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019060300_hrs000-024.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019060300_hrs024-048.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019060300_hrs048-072.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019060300_hrs072-096.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019060300_hrs096-120.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019060300_hrs120-144.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/24_hr_GeoTIFFs/gfs_apcp_2019060300_hrs144-168.tif
-
-Doing Zonal Statistics on hispaniola
-
-starting zonal statistics for file gfs_apcp_2019060300_hrs000-024_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file gfs_apcp_2019060300_hrs024-048_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file gfs_apcp_2019060300_hrs048-072_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file gfs_apcp_2019060300_hrs072-096_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file gfs_apcp_2019060300_hrs096-120_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file gfs_apcp_2019060300_hrs120-144_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file gfs_apcp_2019060300_hrs144-168_resampled.tif
 writing the statistics for this file to the dataframe
 done
 
@@ -349,371 +468,52 @@ done with zonal statistics, writing to a csv file
 deleting the resampled tiffs directory
 
 Processing the netCDF files
-There are 7 compatible files.
+There are 28 compatible files.
 Preparing the reference file
-Working on file 2019060300_048.nc
-Working on file 2019060300_168.nc
-Working on file 2019060300_072.nc
-Working on file 2019060300_120.nc
-Working on file 2019060300_096.nc
-Working on file 2019060300_024.nc
-Working on file 2019060300_144.nc
+Working on file 2019060512.nc
+Working on file 2019060906.nc
+Working on file 2019060318.nc
+Working on file 2019060700.nc
+Working on file 2019060912.nc
+Working on file 2019060506.nc
+Working on file 2019060406.nc
+Working on file 2019060600.nc
+Working on file 2019060812.nc
+Working on file 2019061000.nc
+Working on file 2019060806.nc
+Working on file 2019060412.nc
+Working on file 2019060518.nc
+Working on file 2019060918.nc
+Working on file 2019060818.nc
+Working on file 2019060418.nc
+Working on file 2019060718.nc
+Working on file 2019060618.nc
+Working on file 2019060712.nc
+Working on file 2019060900.nc
+Working on file 2019060706.nc
+Working on file 2019060500.nc
+Working on file 2019060400.nc
+Working on file 2019060606.nc
+Working on file 2019061006.nc
+Working on file 2019061012.nc
+Working on file 2019060612.nc
+Working on file 2019060800.nc
 Finished File Conversions
-=======
-Getting rid of old gfs data folders
-Done
-
-Setting the WMS bounds
-working on file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019060312/processed/processed_2019060818.nc
-done checking for max/min. writing the file
-wrote the file. all done
-Setting the Environment
-determined the timestamp to download: 2019060312
-Looks like you already have file structure for this timestep, lets see what we need to fill in.
-
-Starting GFS Grib Downloads for hispaniola
-There is no download folder, you must have already processed them. Skipping download stage.
-
-Starting to process the GFS gribs into GeoTIFFs
-There is no gribs folder, you must have already run this step. Skipping conversions
-
-Resampling the rasters for hispaniola
-There is no tiffs folder. You must have already resampled them. Skipping resampling
-
-Doing Zonal Statistics on hispaniola
-
-starting zonal statistics for file 2019060318_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060400_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060406_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060412_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060418_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060500_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060506_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060512_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060518_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060600_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060606_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060612_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060618_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060700_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060706_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060712_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060718_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060800_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060806_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060812_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060818_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060900_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060906_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060912_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060918_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019061000_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019061006_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019061012_resampled.tif
-writing the statistics for this file to the dataframe
-done
-
-done with zonal statistics, writing to a csv file
-
-Processing the netCDF files
-There are no netcdfs to be converted. Skipping netcdf processing.
->>>>>>> Stashed changes
 
 Writing a new ncml file for this date
 Wrote New .ncml
 
-<<<<<<< Updated upstream
 Generating a new color scale csv for the gfs results
-Internal Server Error: /apps/ffgs/runWorkflow/
-=======
+Wrote new rules to csv
+
+Setting the WMS bounds
+working on file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019060312/processed/processed_2019060818.nc
+done checking for max/min. writing the file
+wrote the js file
+
+Performing file cleanup
+writing the timestamp used for this run to a textfile
 Getting rid of old gfs data folders
 Done
 
-Setting the WMS bounds
-working on file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019060312/processed/processed_2019060818.nc
-done checking for max/min. writing the file
-wrote the file. all done
-Internal Server Error: /apps/ffgs/ajax/getFloodChart/
-Traceback (most recent call last):
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
-    response = get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
-    response = self._get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/ajax.py", line 32, in get_floodchart
-    df = pandas.read_csv(results)[['cat_id', 'mean', 'Timestep']]
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 702, in parser_f
-    return _read(filepath_or_buffer, kwds)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 429, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 895, in __init__
-    self._make_engine(self.engine)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1122, in _make_engine
-    self._engine = CParserWrapper(self.f, **self.options)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1853, in __init__
-    self._reader = parsers.TextReader(src, **kwds)
-  File "pandas/_libs/parsers.pyx", line 387, in pandas._libs.parsers.TextReader.__cinit__
-  File "pandas/_libs/parsers.pyx", line 705, in pandas._libs.parsers.TextReader._setup_parser_source
-FileNotFoundError: [Errno 2] File b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv' does not exist: b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv'
-"POST /apps/ffgs/ajax/getFloodChart/ HTTP/1.1" 500 19768
-Internal Server Error: /apps/ffgs/ajax/getFloodChart/
-Traceback (most recent call last):
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
-    response = get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
-    response = self._get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/ajax.py", line 32, in get_floodchart
-    df = pandas.read_csv(results)[['cat_id', 'mean', 'Timestep']]
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 702, in parser_f
-    return _read(filepath_or_buffer, kwds)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 429, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 895, in __init__
-    self._make_engine(self.engine)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1122, in _make_engine
-    self._engine = CParserWrapper(self.f, **self.options)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1853, in __init__
-    self._reader = parsers.TextReader(src, **kwds)
-  File "pandas/_libs/parsers.pyx", line 387, in pandas._libs.parsers.TextReader.__cinit__
-  File "pandas/_libs/parsers.pyx", line 705, in pandas._libs.parsers.TextReader._setup_parser_source
-FileNotFoundError: [Errno 2] File b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv' does not exist: b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv'
-"POST /apps/ffgs/ajax/getFloodChart/ HTTP/1.1" 500 19768
-Internal Server Error: /apps/ffgs/ajax/getFloodChart/
->>>>>>> Stashed changes
-Traceback (most recent call last):
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
-    response = get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
-    response = self._get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-<<<<<<< Updated upstream
-  File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/controllers.py", line 100, in run_workflow
-    new_colorscales(wrksppath, region[1], model[1])
-  File "/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/ffgsworkflow.py", line 399, in new_colorscales
-    res_df = pd.read_csv(results)[['cat_id', 'mean', 'max']]
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/core/frame.py", line 2934, in __getitem__
-    raise_missing=True)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/core/indexing.py", line 1354, in _convert_to_indexer
-    return self._get_listlike_indexer(obj, axis, **kwargs)[1]
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/core/indexing.py", line 1161, in _get_listlike_indexer
-    raise_missing=raise_missing)
-  File "/Users/rileyhales/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/core/indexing.py", line 1252, in _validate_read_indexer
-    raise KeyError("{} not in index".format(not_found))
-KeyError: "['max'] not in index"
-"GET /apps/ffgs/runWorkflow/ HTTP/1.1" 500 119016
-=======
-  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/ajax.py", line 32, in get_floodchart
-    df = pandas.read_csv(results)[['cat_id', 'mean', 'Timestep']]
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 702, in parser_f
-    return _read(filepath_or_buffer, kwds)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 429, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 895, in __init__
-    self._make_engine(self.engine)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1122, in _make_engine
-    self._engine = CParserWrapper(self.f, **self.options)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/pandas/io/parsers.py", line 1853, in __init__
-    self._reader = parsers.TextReader(src, **kwds)
-  File "pandas/_libs/parsers.pyx", line 387, in pandas._libs.parsers.TextReader.__cinit__
-  File "pandas/_libs/parsers.pyx", line 705, in pandas._libs.parsers.TextReader._setup_parser_source
-FileNotFoundError: [Errno 2] File b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv' does not exist: b'/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/zonal_stats_2019053100_00.csv'
-"POST /apps/ffgs/ajax/getFloodChart/ HTTP/1.1" 500 19768
-Setting the Environment
-determined the timestamp to download: 2019060312
-Looks like you already have file structure for this timestep, lets see what we need to fill in.
-
-Starting GFS Grib Downloads for hispaniola
-There is no download folder, you must have already processed them. Skipping download stage.
-
-Starting to process the GFS gribs into GeoTIFFs
-There is no gribs folder, you must have already run this step. Skipping conversions
-
-Resampling the rasters for hispaniola
-There is no tiffs folder. You must have already resampled them. Skipping resampling
-
-Doing Zonal Statistics on hispaniola
-
-starting zonal statistics for file 2019060318_resampled.tif
-writing the statistics for this file to the dataframe
-Setting the Environment
-determined the timestamp to download: 2019060312
-Looks like you already have file structure for this timestep, lets see what we need to fill in.
-
-Starting GFS Grib Downloads for hispaniola
-There is no download folder, you must have already processed them. Skipping download stage.
-
-Starting to process the GFS gribs into GeoTIFFs
-There is no gribs folder, you must have already run this step. Skipping conversions
-
-Resampling the rasters for hispaniola
-There is no tiffs folder. You must have already resampled them. Skipping resampling
-
-Doing Zonal Statistics on hispaniola
-
-starting zonal statistics for file 2019060318_resampled.tif
-done
-
-starting zonal statistics for file 2019060400_resampled.tif
-writing the statistics for this file to the dataframe
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060400_resampled.tif
-done
-
-starting zonal statistics for file 2019060406_resampled.tif
-writing the statistics for this file to the dataframe
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060406_resampled.tif
-done
-
-starting zonal statistics for file 2019060412_resampled.tif
-writing the statistics for this file to the dataframe
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060412_resampled.tif
-done
-
-starting zonal statistics for file 2019060418_resampled.tif
-writing the statistics for this file to the dataframe
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060418_resampled.tif
-done
-
-starting zonal statistics for file 2019060500_resampled.tif
-writing the statistics for this file to the dataframe
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060500_resampled.tif
-done
-
-starting zonal statistics for file 2019060506_resampled.tif
-writing the statistics for this file to the dataframe
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060506_resampled.tif
-done
-
-starting zonal statistics for file 2019060512_resampled.tif
-writing the statistics for this file to the dataframe
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060512_resampled.tif
-done
-
-starting zonal statistics for file 2019060518_resampled.tif
-writing the statistics for this file to the dataframe
-writing the statistics for this file to the dataframe
-done
-
-starting zonal statistics for file 2019060518_resampled.tif
-done
-
-starting zonal statistics for file 2019060600_resampled.tif
-writing the statistics for this file to the dataframe
->>>>>>> Stashed changes
+Workflow completed successfully on 06/03/19 at 21:27

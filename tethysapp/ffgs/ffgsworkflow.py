@@ -212,7 +212,8 @@ def zonal_statistics(wrksppath, timestamp, region, model):
         logging.info('done')
 
     # write the resulting dataframe to a csv
-    logging.info('\ndone with zonal statistics, writing to a csv file')
+    logging.info('\ndone with zonal statistics, rounding values, writing to a csv file')
+    stats_df = stats_df.round({'max': 1, 'mean': 1})
     stats_df.to_csv(stat_file, index=False)
 
     # delete the resampled tiffs now that we dont need them

@@ -110,61 +110,19 @@ function addFFGSlayer() {
                     let opacity = $("#opacity_geojson").val();
                     switch (true) {
                         case result[id + '.0']['mean'] >= 30:
-                            return {
-                                color: 'rgba(0,0,0,0.0)',
-                                opacity: 0,
-                                weight: 0,
-                                fillColor: '#0012ff',
-                                fillOpacity: opacity
-                            };
+                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#0012ff', fillOpacity: opacity};
                         case result[id + '.0']['mean'] >= 25:
-                            return {
-                                color: 'rgba(0,0,0,0.0)',
-                                opacity: 0,
-                                weight: 0,
-                                fillColor: '#00deff',
-                                fillOpacity: opacity
-                            };
+                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#00deff', fillOpacity: opacity};
                         case result[id + '.0']['mean'] >= 20:
-                            return {
-                                color: 'rgba(0,0,0,0.0)',
-                                opacity: 0,
-                                weight: 0,
-                                fillColor: '#00ff00',
-                                fillOpacity: opacity
-                            };
+                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#00ff00', fillOpacity: opacity};
                         case result[id + '.0']['mean'] >= 15:
-                            return {
-                                color: 'rgba(0,0,0,0.0)',
-                                opacity: 0,
-                                weight: 0,
-                                fillColor: '#fffc00',
-                                fillOpacity: opacity
-                            };
+                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#fffc00', fillOpacity: opacity};
                         case result[id + '.0']['mean'] >= 10:
-                            return {
-                                color: 'rgba(0,0,0,0.0)',
-                                opacity: 0,
-                                weight: 0,
-                                fillColor: '#ff7700',
-                                fillOpacity: opacity
-                            };
+                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#ff7700', fillOpacity: opacity};
                         case result[id + '.0']['mean'] >= 5:
-                            return {
-                                color: 'rgba(0,0,0,0.0)',
-                                opacity: 0,
-                                weight: 0,
-                                fillColor: '#ff000f',
-                                fillOpacity: opacity
-                            };
+                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#ff000f', fillOpacity: opacity};
                         case result[id + '.0']['mean'] < 5:
-                            return {
-                                color: 'rgba(0,0,0,0.0)',
-                                opacity: 0,
-                                weight: 0,
-                                fillColor: 'rgba(119,120,124,0.53)',
-                                fillOpacity: opacity
-                            };
+                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: 'rgba(119,120,124,0.53)', fillOpacity: opacity};
                     }
                 }),
             }).addTo(mapObj);
@@ -192,7 +150,7 @@ function makeControls() {
     return L.control.layers(basemapObj, {
         'Forecast Layer': layerObj,
         'Colored Watersheds': watersheds_colors,
-        'FFGS Watersheds': watersheds,
+        'Watershed Boundaries': watersheds,
     }).addTo(mapObj);
 }
 

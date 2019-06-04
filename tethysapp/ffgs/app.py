@@ -14,9 +14,9 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 
 # todo make a dictionary in leaflet.js for setting the right center and zoom of the map
 # todo add a control to main.js when you change regions, zoom the map to the new place, swap the geojson and wms layers
-# todo check on the setwmsbounds function. make sure it works right. maybe?
 
-# todo make the update workflow a cron job that we can run each day. put a copy of the script in the app
+# todo check on the setwmsbounds function. make sure it works right. maybe?
+# todo make the update workflow a cron job that we can run each day? 6 hours? put a copy of the script in the app
 # todo discuss making the csv of thresholds update automatically like the reservoir app does from a google sheet?
 # todo make the wrf model downloads work?
 

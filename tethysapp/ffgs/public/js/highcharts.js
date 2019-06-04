@@ -51,15 +51,9 @@ function newHighchart() {
             text: 'Catchment ID: ' + id,
         },
         xAxis: {
-            title: {text: "Time"},
+            title: {text: "Time (in UTC +0:00)"},
             type: 'datetime',
-            units: [[
-                      'hour',
-                      [6, 12, 18]
-                  ], [
-                      'day',
-                      [1]
-                  ]],
+            units: [['hour', [6, 12, 18]], ['day', [1]]],
         },
         yAxis: {
             title: {text: 'millimeters'},   // should be millimeters
@@ -105,15 +99,9 @@ function newCumHighchart() {
             text: 'Catchment ID: ' + id,
         },
         xAxis: {
-            title: {text: "Time"},
+            title: {text: "Time (in UTC +0:00)"},
             type: 'datetime',
-            units: [[
-                      'hour',
-                      [6, 12, 18]
-                  ], [
-                      'day',
-                      [1]
-                  ]],
+            units: [['hour', [6, 12, 18]], ['day', [1]]],
         },
         yAxis: {
             title: {text: 'millimeters'},   // should be millimeters
@@ -183,11 +171,11 @@ function getCumFloodChart(ID) {
 }
 
 function updateChart(ID) {
-    if ($("#chartoptions").val() === 'intervals'){
-        getFloodChart(ID)
+    let type = $("#chartoptions").val();
+    if (type === 'intervals'){
+        getFloodChart(ID);
     }
-    if ($("#chartoptions").val() === 'cumulative'){
-        getCumFloodChart(ID)
+    if (type === 'cumulative'){
+        getCumFloodChart(ID);
     }
-
 }

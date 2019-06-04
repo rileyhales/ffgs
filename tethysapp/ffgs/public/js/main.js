@@ -70,3 +70,7 @@ $("#datatoggle").click(function() {
 $("#displaytoggle").click(function() {
     $("#displaycontrols").toggle();
 });
+
+$("#chartoptions").change(function () {
+    updateChart(id);
+});

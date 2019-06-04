@@ -74,10 +74,10 @@ legend.onAdd = function () {
 ////////////////////////////////////////////////////////////////////////  GEOJSON LAYERS - GEOSERVER + WFS / GEOJSON
 function layerPopups(feature, layer) {
     let watershed_id = feature.properties.cat_id;
-    // layer.bindPopup('<strong>This is watershed #' + watershed_id + '</strong>');
+    layer.bindPopup('<strong>Catchment ID: ' + watershed_id + '</strong>');
     layer.on('click', function () {
-        // getFloodChart(watershed_id)
-        getCumFloodChart(watershed_id)
+        id = watershed_id;
+        updateChart(watershed_id);
     });
 }
 

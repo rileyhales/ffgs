@@ -13,6 +13,7 @@ Highcharts.setOptions({
 });
 
 let chartdata = null;
+let id;
 
 // Placeholder chart
 let chart = Highcharts.chart('highchart', {
@@ -47,7 +48,7 @@ function newHighchart() {
         },
         subtitle: {
             align: "center",
-            text: 'Catchment ID: ' + chartdata['id'],
+            text: 'Catchment ID: ' + id,
         },
         xAxis: {
             title: {text: "Time"},
@@ -101,7 +102,7 @@ function newCumHighchart() {
         },
         subtitle: {
             align: "center",
-            text: 'Catchment ID: ' + chartdata['id'],
+            text: 'Catchment ID: ' + id,
         },
         xAxis: {
             title: {text: "Time"},
@@ -179,4 +180,14 @@ function getCumFloodChart(ID) {
             newCumHighchart();
         }
     })
+}
+
+function updateChart(ID) {
+    if ($("#chartoptions").val() === 'intervals'){
+        getFloodChart(ID)
+    }
+    if ($("#chartoptions").val() === 'cumulative'){
+        getCumFloodChart(ID)
+    }
+
 }

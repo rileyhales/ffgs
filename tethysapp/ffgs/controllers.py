@@ -33,6 +33,14 @@ def home(request):
         options=ffgs_regions(),
     )
 
+    chartoptions = SelectInput(
+        display_text='Choose a Chart Type',
+        name='chartoptions',
+        multiple=False,
+        original=True,
+        options=chart_options(),
+    )
+
     colorscheme = SelectInput(
         display_text='Raster Color Scheme',
         name='colorscheme',
@@ -64,6 +72,7 @@ def home(request):
         'forecastdate': forecastdate,
         'models': models,
         'ffgsregions': ffgsregions,
+        'chartoptions': chartoptions,
         'colorscheme': colorscheme,
         'opacity_raster': opacity_raster,
         'opacity_geojson': opacity_geojson,

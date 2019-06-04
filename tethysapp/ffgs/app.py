@@ -3,17 +3,15 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 
 
 # ROUGHLY IN ORDER OF IMPORTANCE
-# todo theres a bug in georeferencing the netcdf. it ends up wms-able but not in the right location.
-
 # todo Two separate layers: boundaries and color fill
-# todo Switch between options for chart: interval and cumulative
-# todo Show when FFGS thresholds were last updated
+# todo Add a legend of what the colors mean
+
+# todo there's a bug in georeferencing the netcdf. it ends up wms-able but not in the right location.
 
 # todo Update Readme
 # todo Update how to use the app
 
-# todo Show cat_id on pop up
-# todo Add a legend of what the colors mean
+# todo Show when FFGS thresholds were last updated
 
 # todo make a dictionary in leaflet.js for setting the right center and zoom of the map
 # todo add a control to main.js when you change regions, zoom the map to the new place, swap the geojson and wms layers

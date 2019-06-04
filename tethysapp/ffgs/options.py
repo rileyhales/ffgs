@@ -52,6 +52,16 @@ def forecastmodels():
     ]
 
 
+def chart_options():
+    """
+    Chart options: cumulative or unique intervals
+    """
+    return [
+        ('6-hr Intervals', 'intervals'),
+        ('Cumulative', 'cumulative')
+    ]
+
+
 def get_forecastdate():
     path = os.path.join(App.get_app_workspace().path, 'timestamp.txt')
     with open(path, 'r') as file:

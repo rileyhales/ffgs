@@ -6,23 +6,23 @@ This is a Tethys 2/3 compatible app that helps determine risk of flooding based 
 ## Methodology
 This application allows the user to view risks of flash floods in near-real-time using the Flash Flood Guidance System (FFGS) and a variety of forecast models which vary by region. Each region where the FFGS is established can use the GFS model's results in addition to other models that may be configured on a case-by-case basis. 
 
-The primary workflow of the app is to:
+### The primary workflow of the app
 1. Download the GFS/Forecast Model's most recent results for the Accumulated Precipitation variable (short name acpc in the grib file). GFS data are GRIB type.
 1. Process the forecast data into a usable formats, namely GeoTiff files for geoprocessing and to netCDF files for time animated map generation.
 1. Perform Geoprocessing on the GeoTiff files:
-	* Resample the tif files to about 100x their resolution to facilitate geoprocessing relatively coarse forecasted raster data with very small watershed boundaries derived from the FFGS.
-	* Perform zonal statistics on the resampled rasters within the boundaries of each of the FFGS watershed polygons. The statistics computed are the average precipitation value and the maximum precipitation value for the raster cells within the watershed polygons.
-	* Compare the average and maximum value with the most recently generated FFGS threshold values.
-	* Create a file containing these zonal statistics results which get used to style the map and chart in the user interface.
+1. Resample the tif files to about 100x their resolution to facilitate geoprocessing relatively coarse forecasted raster data with very small watershed boundaries derived from the FFGS.
+1. Perform zonal statistics on the resampled rasters within the boundaries of each of the FFGS watershed polygons. The statistics computed are the average precipitation value and the maximum precipitation value for the raster cells within the watershed polygons.
+1. Compare the average and maximum value with the most recently generated FFGS threshold values.
+1. Create a file containing these zonal statistics results which get used to style the map and chart in the user interface.
 1. Generate a netCDF Markup Language file which will aggregate the netCDF files across their time steps and make the data viewable on the map and animate it vs time.
 1. Delete the intermediate files generated.
 
-### Discussion of limitations and error
+### Accuracy limitations
 The accuracy of this application is limited by:
 1. The resolution and accuracy of the forecasting models being used
 1. The accuracy of the thresholds for flood values determined by the FFGS models
 
-Possible sources of error and disclaimers include:
+### Possible error and disclaimers:
 1. The charts and maps show only the values of precipitation accumulation from the forecast models. No attempt is made to account for losses to hydrologic factors such as evaporation, infiltration to groundwater, initial abstraction/storage, and so forth
 1. No attempts are made to route the water to the drainage line or further down stream to determine the time of the flood. The charts indicate how long until enough water has accumulated to meet the threshold for precipitation given by the FFGS. They do not indicate that the flood will occur at the time the cumulative accumulation exceeds the threshold or determine if that is within the time constraints of the flash flood thresholds. The hydrologic losses, distribution of storm precipitation, and timing of flow will cause a difference between the chart's time and the actual event time, assuming the forecasted values occur. 
 

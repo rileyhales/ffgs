@@ -408,7 +408,7 @@ def new_colorscales(wrksppath, region, model):
         maximum = max(df['max'].values)
         answers = answers.append({'cat_id': catid, 'mean': mean, 'max': maximum}, ignore_index=True)
 
-    answers.to_csv(colorscales, mode='w')
+    answers.to_csv(colorscales, mode='w', index=False)
     logging.info('Wrote new rules to csv')
     return
 

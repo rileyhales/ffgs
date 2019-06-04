@@ -58,7 +58,7 @@ def setenvironment():
     # create the file structure and their permissions for the new data
     for region in ffgs_regions():
         logging.info('Creating App Workspace GeoTIFF file structure for ' + region[1])
-        new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFS')
+        new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFs')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)

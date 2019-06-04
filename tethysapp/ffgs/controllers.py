@@ -88,6 +88,7 @@ def run_workflow(request):
     """
     The controller for running the workflow to download and process data
     """
+    # enable logging to track the progress of the workflow and for debugging
     logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
     logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
@@ -101,6 +102,8 @@ def run_workflow(request):
 
     # run the workflow for each region, for each model in that region
     for region in ffgs_regions():
+        logging.info('\nBeginning to process ' + region[1] + ' on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+        # download each forecast model, convert them to netcdfs and tiffs
         download_gfs(threddspath, timestamp, region[1])
         gfs_tiffs(threddspath, wrksppath, timestamp, region[1])
         resample(wrksppath, region[1])

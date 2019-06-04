@@ -55,9 +55,9 @@ def setenvironment():
         logging.info('You have a file structure for this timestep but didnt complete the workflow, analyzing...')
         return threddspath, wrksppath, timestamp, redundant
 
-    # create the file structure for the new data
+    # create the file structure and their permissions for the new data
     for region in ffgs_regions():
-        logging.info('Creating new App Workspace GeoTIFF file structure for ' + region[1])
+        logging.info('Creating App Workspace GeoTIFF file structure for ' + region[1])
         new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFS')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
@@ -68,7 +68,7 @@ def setenvironment():
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
-        logging.info('Creating new THREDDS file structure for ' + region[1])
+        logging.info('Creating THREDDS file structure for ' + region[1])
         for model in ('gfs',):
             new_dir = os.path.join(threddspath, region[1], model)
             if os.path.exists(new_dir):
@@ -185,9 +185,8 @@ def zonal_statistics(wrksppath, timestamp, region, model):
     files = [tif for tif in files if tif.endswith('.tif')]
     files.sort()
 
+    # do zonal statistics for each resampled tiff file and put it in the stats dataframe
     stats_df = pd.DataFrame()
-
-    # do the zonal statistics for each resampled tiff file
     for i in range(len(files)):
         logging.info('starting zonal statistics for ' + files[i])
         ras_path = os.path.join(resampleds, files[i])

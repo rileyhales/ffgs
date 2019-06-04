@@ -60,7 +60,7 @@ $('#colorscheme').change(function () {
 });
 
 $("#opacity_geojson").change(function () {
-    ffgs_watersheds.setStyle({opacity: $("#opacity_geojson").val()});
+    watersheds.setStyle({opacity: $("#opacity_geojson").val()});
 });
 
 $("#datatoggle").click(function() {

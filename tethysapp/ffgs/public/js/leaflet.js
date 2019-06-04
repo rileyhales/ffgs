@@ -82,46 +82,107 @@ function layerPopups(feature, layer) {
 }
 
 // create this reference array that other functions will build on
-let ffgs_watersheds;
+let watersheds;
+let watersheds_colors;
 let geojson_sorter = {
     'hispaniola': hispaniola_json,
     // 'centralamerica': centralamerica_json,
+    // 'nepal', nepal_json,
     // regionname: regionname_json for each region that is configured
 };
 
 function addFFGSlayer() {
+    let region = $("#region").val();
+
+    // add the color-coordinated watersheds layer
     $.ajax({
         url: '/apps/ffgs/ajax/getColorScales/',
         async: false,
-        data: JSON.stringify({region: $("#region").val(), model: $("#model").val()}),
+        data: JSON.stringify({region: region, model: $("#model").val()}),
         dataType: 'json',
         contentType: "application/json",
         method: 'POST',
         success: function (result) {
-            ffgs_watersheds = L.geoJSON(geojson_sorter[$("#region").val()], {
+            watersheds_colors = L.geoJSON(geojson_sorter[region], {
                 onEachFeature: layerPopups,
                 style: (function (feature) {
                     let id = feature.properties.cat_id;
+                    let opacity = $("#opacity_geojson").val();
                     switch (true) {
                         case result[id + '.0']['mean'] >= 30:
-                            return {color: '#0012ff', opacity: $("#opacity_geojson").val()};
+                            return {
+                                color: 'rgba(0,0,0,0.0)',
+                                opacity: 0,
+                                weight: 0,
+                                fillColor: '#0012ff',
+                                fillOpacity: opacity
+                            };
                         case result[id + '.0']['mean'] >= 25:
-                            return {color: '#00deff', opacity: $("#opacity_geojson").val()};
+                            return {
+                                color: 'rgba(0,0,0,0.0)',
+                                opacity: 0,
+                                weight: 0,
+                                fillColor: '#00deff',
+                                fillOpacity: opacity
+                            };
                         case result[id + '.0']['mean'] >= 20:
-                            return {color: '#00ff00', opacity: $("#opacity_geojson").val()};
+                            return {
+                                color: 'rgba(0,0,0,0.0)',
+                                opacity: 0,
+                                weight: 0,
+                                fillColor: '#00ff00',
+                                fillOpacity: opacity
+                            };
                         case result[id + '.0']['mean'] >= 15:
-                            return {color: '#fffc00', opacity: $("#opacity_geojson").val()};
+                            return {
+                                color: 'rgba(0,0,0,0.0)',
+                                opacity: 0,
+                                weight: 0,
+                                fillColor: '#fffc00',
+                                fillOpacity: opacity
+                            };
                         case result[id + '.0']['mean'] >= 10:
-                            return {color: '#ff7700', opacity: $("#opacity_geojson").val()};
+                            return {
+                                color: 'rgba(0,0,0,0.0)',
+                                opacity: 0,
+                                weight: 0,
+                                fillColor: '#ff7700',
+                                fillOpacity: opacity
+                            };
                         case result[id + '.0']['mean'] >= 5:
-                            return {color: '#ff000f', opacity: $("#opacity_geojson").val()};
+                            return {
+                                color: 'rgba(0,0,0,0.0)',
+                                opacity: 0,
+                                weight: 0,
+                                fillColor: '#ff000f',
+                                fillOpacity: opacity
+                            };
                         case result[id + '.0']['mean'] < 5:
-                            return {color: 'rgba(119,120,124,0.53)', opacity: $("#opacity_geojson").val()};
+                            return {
+                                color: 'rgba(0,0,0,0.0)',
+                                opacity: 0,
+                                weight: 0,
+                                fillColor: 'rgba(119,120,124,0.53)',
+                                fillOpacity: opacity
+                            };
                     }
                 }),
             }).addTo(mapObj);
         }
     });
+
+    // add the watershed boundaries layer
+    watersheds = L.geoJSON(geojson_sorter[region], {
+        onEachFeature: layerPopups,
+        style: {
+            color: '#000000',
+            weight: 1,
+            opacity: 1,
+            fillColor: 'rgba(0,0,0,0.0)',
+            fillOpacity: 0,
+            // dashArray: '3',
+        }
+    }).addTo(mapObj);
 
 }
 
@@ -130,7 +191,8 @@ function addFFGSlayer() {
 function makeControls() {
     return L.control.layers(basemapObj, {
         'Forecast Layer': layerObj,
-        'FFGS Watersheds': ffgs_watersheds,
+        'Colored Watersheds': watersheds_colors,
+        'FFGS Watersheds': watersheds,
     }).addTo(mapObj);
 }
 
@@ -139,8 +201,10 @@ function clearMap() {
     // remove the controls for the wms layer then remove it from the map
     controlsObj.removeLayer(layerObj);
     mapObj.removeLayer(layerObj);
-    controlsObj.removeLayer(ffgs_watersheds);
-    mapObj.removeLayer(ffgs_watersheds);
+    controlsObj.removeLayer(watersheds);
+    mapObj.removeLayer(watersheds);
+    controlsObj.removeLayer(watersheds_colors);
+    mapObj.removeLayer(watersheds_colors);
     // now delete the controls object
     mapObj.removeControl(controlsObj);
 }

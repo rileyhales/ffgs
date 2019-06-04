@@ -7,6 +7,7 @@ from django.http import JsonResponse
 
 from .options import *
 
+
 @login_required()
 def get_customsettings(request):
     """
@@ -22,26 +23,31 @@ def get_floodchart(request):
     creates the bar chart for the watershedID in the request by reading the csv files of data
     Dependencies: app_settings (options), ast, pandas, calendar
     """
+    # read the values sent from the javascript request
     data = ast.literal_eval(request.body.decode('utf-8'))
     id = data['watershedID']
     region = data['region']
     wrksppath = app_settings()['app_wksp_path']
 
+    # read the csv of results from the last workflow run
     results = os.path.join(wrksppath, region, 'gfsresults.csv')
     df = pandas.read_csv(results)[['cat_id', 'mean', 'max', 'Timestep']]
     df = df.query("cat_id == @id")
 
+    # get the timeseries values from the dataframe
     values = []
     for row in df.iterrows():
         time = datetime.datetime.strptime(str(int(row[1]['Timestep'])), "%Y%m%d%H")
         time = calendar.timegm(time.utctimetuple()) * 1000
         values.append([time, row[1]['mean']])
 
+    # extract the threshold value from it's csv file
     threshold_table = os.path.join(wrksppath, region, 'ffgs_thresholds.csv')
     df = pandas.read_csv(threshold_table)[['BASIN', '01FFG2018021312']]
     df = df.query("BASIN == @id")
     threshold = df['01FFG2018021312'].values[0]
 
+    # determine the max value the chart should be zoomed to
     maximum = max(values)[1]
     if threshold > maximum:
         maximum = threshold
@@ -55,15 +61,18 @@ def get_cum_floodchart(request):
     creates the bar chart for the watershedID in the request by reading the csv files of data
     Dependencies: app_settings (options), ast, pandas, calendar
     """
+    # read the values sent from the javascript request
     data = ast.literal_eval(request.body.decode('utf-8'))
     id = data['watershedID']
     region = data['region']
     wrksppath = app_settings()['app_wksp_path']
 
+    # read the csv of results from the last workflow run
     results = os.path.join(wrksppath, region, 'gfsresults.csv')
     df = pandas.read_csv(results)[['cat_id', 'mean', 'max', 'Timestep']]
     df = df.query("cat_id == @id")
 
+    # get the timeseries values from the dataframe
     values = []
     cum_values = 0
     for row in df.iterrows():
@@ -72,11 +81,13 @@ def get_cum_floodchart(request):
         cum_values = cum_values + row[1]['mean']
         values.append([time, cum_values])
 
+    # extract the threshold value from it's csv file
     threshold_table = os.path.join(wrksppath, region, 'ffgs_thresholds.csv')
     df = pandas.read_csv(threshold_table)[['BASIN', '01FFG2018021312']]
     df = df.query("BASIN == @id")
     threshold = df['01FFG2018021312'].values[0]
 
+    # determine the max value the chart should be zoomed to
     maximum = max(values)[1]
     if threshold > maximum:
         maximum = threshold

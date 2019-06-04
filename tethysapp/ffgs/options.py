@@ -42,6 +42,7 @@ def ffgs_regions():
     return [
         ('Hispaniola', 'hispaniola'),
         # ('Central America', 'centralamerica')
+        # ('Nepal', 'nepal')
     ]
 
 

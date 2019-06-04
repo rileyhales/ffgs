@@ -3,7 +3,6 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 
 
 # ROUGHLY IN ORDER OF IMPORTANCE
-# todo Two separate layers: boundaries and color fill
 # todo Add a legend of what the colors mean
 
 # todo there's a bug in georeferencing the netcdf. it ends up wms-able but not in the right location.

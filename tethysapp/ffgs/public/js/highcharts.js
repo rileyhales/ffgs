@@ -59,12 +59,12 @@ function newHighchart() {
             title: {text: 'millimeters'},   // should be millimeters
             max: chartdata['max'],
             plotLines: [{
-                value: chartdata['threshhold'],
+                value: chartdata['threshold'],
                 color: 'red',
                 dashStyle: 'shortdash',
                 width: 2,
                 label: {
-                    text: 'Flash Flood Threshold Depth: ' + String(chartdata['max'])
+                    text: 'Flash Flood Threshold Depth: ' + String(chartdata['threshold'])
                 },
                 zIndex: 4,
             }],
@@ -107,12 +107,12 @@ function newCumHighchart() {
             title: {text: 'millimeters'},   // should be millimeters
             max: chartdata['max'],
             plotLines: [{
-                value: chartdata['threshhold'],
+                value: chartdata['threshold'],
                 color: 'red',
                 dashStyle: 'shortdash',
                 width: 2,
                 label: {
-                    text: 'Flash Flood Threshold Depth: ' + String(chartdata['max'])
+                    text: 'Flash Flood Threshold Depth: ' + String(chartdata['threshold'])
                 },
                 zIndex: 4,
             }],

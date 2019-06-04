@@ -52,7 +52,7 @@ def get_floodchart(request):
     if threshold > maximum:
         maximum = threshold
 
-    return JsonResponse({'values': values, 'threshhold': threshold, 'max': maximum})
+    return JsonResponse({'values': values, 'threshold': threshold, 'max': maximum})
 
 
 @login_required()
@@ -92,7 +92,7 @@ def get_cum_floodchart(request):
     if threshold > maximum:
         maximum = threshold
 
-    return JsonResponse({'values': values, 'threshhold': threshold, 'max': maximum})
+    return JsonResponse({'values': values, 'threshold': threshold, 'max': maximum})
 
 
 @login_required()

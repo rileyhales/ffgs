@@ -153,7 +153,7 @@ function addFFGSlayer() {
     }).addTo(mapObj);
 
     let ffgsLegend = L.control({position: 'bottomleft'});
-	ffgsLegend.onAdd = function (mapObj) {
+	ffgsLegend.onAdd = function () {
 		let div = L.DomUtil.create('div', 'info legend'),
 			grades = [0, 5, 10, 15, 20, 25, 30],
 			labels = [];
@@ -173,7 +173,7 @@ function addFFGSlayer() {
 // the layers box on the top right of the map
 function makeControls() {
     return L.control.layers(basemapObj, {
-        'Forecast Layer': layerObj,
+        // 'Forecast Layer': layerObj,
         'Colored Watersheds': watersheds_colors,
         'Watershed Boundaries': watersheds,
     }).addTo(mapObj);

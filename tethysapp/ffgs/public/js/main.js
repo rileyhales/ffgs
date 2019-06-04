@@ -41,27 +41,27 @@ mapObj.on("mousemove", function (event) {
     $("#mouse-position").html('Lat: ' + event.latlng.lat.toFixed(5) + ', Lon: ' + event.latlng.lng.toFixed(5));
 });
 
-let layerObj = newLayer();              // adds the wms raster layer
+    // let layerObj = newLayer();              // adds the wms raster layer
 addFFGSlayer();                         // adds the ffgs watershed layer chosen by the user
 let controlsObj = makeControls();       // the layer toggle controls top-right corner
-forecastLegend.addTo(mapObj);                   // add the legend graphic to the map
+    // forecastLegend.addTo(mapObj);                   // add the legend graphic to the map
 
 ////////////////////////////////////////////////////////////////////////  EVENT LISTENERS
-$("#opacity_raster").change(function () {
-    layerObj.setOpacity($('#opacity_raster').val());
-});
+    // $("#opacity_raster").change(function () {
+    //     layerObj.setOpacity($('#opacity_raster').val());
+    // });
 
 $('#colorscheme').change(function () {
     clearMap();
     addFFGSlayer();
     layerObj = newLayer();
     controlsObj = makeControls();
-    forecastLegend.addTo(mapObj);
+        // forecastLegend.addTo(mapObj);
 });
 
-$("#opacity_geojson").change(function () {
-    watersheds.setStyle({opacity: $("#opacity_geojson").val()});
-});
+    // $("#opacity_geojson").change(function () {
+    //     watersheds.setStyle({opacity: $("#opacity_geojson").val()});
+    // });
 
 $("#datatoggle").click(function() {
     $("#datacontrols").toggle();

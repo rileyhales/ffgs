@@ -39,13 +39,13 @@ def get_floodchart(request):
     for row in df.iterrows():
         time = datetime.datetime.strptime(str(int(row[1]['Timestep'])), "%Y%m%d%H")
         time = calendar.timegm(time.utctimetuple()) * 1000
-        values.append([time, row[1]['mean']])
+        values.append([time, round(row[1]['mean'], 1)])
 
     # extract the threshold value from it's csv file
     threshold_table = os.path.join(wrksppath, region, 'ffgs_thresholds.csv')
     df = pandas.read_csv(threshold_table)[['BASIN', '01FFG2018021312']]
     df = df.query("BASIN == @id")
-    threshold = df['01FFG2018021312'].values[0]
+    threshold = round(df['01FFG2018021312'].values[0], 1)
 
     # determine the max value the chart should be zoomed to
     maximum = max(values)[1]
@@ -78,14 +78,14 @@ def get_cum_floodchart(request):
     for row in df.iterrows():
         time = datetime.datetime.strptime(str(int(row[1]['Timestep'])), "%Y%m%d%H")
         time = calendar.timegm(time.utctimetuple()) * 1000
-        cum_values = cum_values + row[1]['mean']
+        cum_values = round(cum_values + row[1]['mean'], 1)
         values.append([time, cum_values])
 
     # extract the threshold value from it's csv file
     threshold_table = os.path.join(wrksppath, region, 'ffgs_thresholds.csv')
     df = pandas.read_csv(threshold_table)[['BASIN', '01FFG2018021312']]
     df = df.query("BASIN == @id")
-    threshold = df['01FFG2018021312'].values[0]
+    threshold = round(df['01FFG2018021312'].values[0], 1)
 
     # determine the max value the chart should be zoomed to
     maximum = max(values)[1]

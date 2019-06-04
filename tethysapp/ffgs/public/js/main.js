@@ -44,7 +44,7 @@ mapObj.on("mousemove", function (event) {
 let layerObj = newLayer();              // adds the wms raster layer
 addFFGSlayer();                         // adds the ffgs watershed layer chosen by the user
 let controlsObj = makeControls();       // the layer toggle controls top-right corner
-legend.addTo(mapObj);                   // add the legend graphic to the map
+forecastLegend.addTo(mapObj);                   // add the legend graphic to the map
 
 ////////////////////////////////////////////////////////////////////////  EVENT LISTENERS
 $("#opacity_raster").change(function () {
@@ -56,7 +56,7 @@ $('#colorscheme').change(function () {
     addFFGSlayer();
     layerObj = newLayer();
     controlsObj = makeControls();
-    legend.addTo(mapObj);
+    forecastLegend.addTo(mapObj);
 });
 
 $("#opacity_geojson").change(function () {

@@ -51,20 +51,18 @@ function newLayer() {
         colorscalerange: '0,50'
     });
 
-    let timedLayer = L.timeDimension.layer.wms(wmsLayer, {
+    return L.timeDimension.layer.wms(wmsLayer, {
         name: 'time',
         requestTimefromCapabilities: true,
         updateTimeDimension: true,
         updateTimeDimensionMode: 'replace',
         cache: 20,
     }).addTo(mapObj);
-
-    return timedLayer
 }
 
 ////////////////////////////////////////////////////////////////////////  LEGEND DEFINITIONS
-let legend = L.control({position: 'topright'});
-legend.onAdd = function () {
+let forecastLegend = L.control({position: 'bottomright'});
+forecastLegend.onAdd = function () {
     let div = L.DomUtil.create('div', 'legend');
     let url = threddsbase + '/' + $("#region").val() + '/' + $("#model").val() + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0,50";
     div.innerHTML = '<img src="' + url + '" alt="legend" style="width:100%; float:right;">';
@@ -91,9 +89,31 @@ let geojson_sorter = {
     // regionname: regionname_json for each region that is configured
 };
 
+function colorScale(value) {
+    return value > 30 ? '#0c2c84' :
+        value > 25  ? '#225ea8' :
+        value > 20  ? '#1d91c0' :
+        value > 15  ? '#41b6c4' :
+        value > 10   ? '#7fcdbb' :
+        value > 5   ? '#c7e9b4' :
+        value >= 0   ? '#ffffcc':
+        ''
+}
+
+function setColor(rules, number) {
+    return rules[number + '.0']['mean'] > 30 ? colorScale(30) :
+        rules[number + '.0']['mean'] > 25 ? colorScale(25) :
+        rules[number + '.0']['mean'] > 20 ? colorScale(20) :
+        rules[number + '.0']['mean'] > 15 ? colorScale(15) :
+        rules[number + '.0']['mean'] > 10 ? colorScale(10) :
+        rules[number + '.0']['mean'] > 5 ? colorScale(5) :
+        rules[number + '.0']['mean'] >= 0 ? colorScale(0) :
+        '';
+}
+
+
 function addFFGSlayer() {
     let region = $("#region").val();
-
     // add the color-coordinated watersheds layer
     $.ajax({
         url: '/apps/ffgs/ajax/getColorScales/',
@@ -102,27 +122,17 @@ function addFFGSlayer() {
         dataType: 'json',
         contentType: "application/json",
         method: 'POST',
-        success: function (result) {
+        success: function (rules) {
             watersheds_colors = L.geoJSON(geojson_sorter[region], {
                 onEachFeature: layerPopups,
                 style: (function (feature) {
-                    let id = feature.properties.cat_id;
-                    let opacity = $("#opacity_geojson").val();
-                    switch (true) {
-                        case result[id + '.0']['mean'] >= 30:
-                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#0012ff', fillOpacity: opacity};
-                        case result[id + '.0']['mean'] >= 25:
-                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#00deff', fillOpacity: opacity};
-                        case result[id + '.0']['mean'] >= 20:
-                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#00ff00', fillOpacity: opacity};
-                        case result[id + '.0']['mean'] >= 15:
-                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#fffc00', fillOpacity: opacity};
-                        case result[id + '.0']['mean'] >= 10:
-                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#ff7700', fillOpacity: opacity};
-                        case result[id + '.0']['mean'] >= 5:
-                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: '#ff000f', fillOpacity: opacity};
-                        case result[id + '.0']['mean'] < 5:
-                            return {color: 'rgba(0,0,0,0.0)', opacity: 0, weight: 0, fillColor: 'rgba(119,120,124,0.53)', fillOpacity: opacity};
+                    let number = feature.properties.cat_id;
+                    return {
+                        color: 'rgba(0,0,0,0.0)',
+                        opacity: 0,
+                        weight: 0,
+                        fillColor: setColor(rules, number),
+                        fillOpacity: $("#opacity_geojson").val()
                     }
                 }),
             }).addTo(mapObj);
@@ -142,6 +152,21 @@ function addFFGSlayer() {
         }
     }).addTo(mapObj);
 
+    let ffgsLegend = L.control({position: 'bottomleft'});
+	ffgsLegend.onAdd = function (mapObj) {
+		let div = L.DomUtil.create('div', 'info legend'),
+			grades = [0, 5, 10, 15, 20, 25, 30],
+			labels = [];
+		labels.push('<b>Precipitation (mm)</b>');
+		for (let i = 0; i < grades.length; i++) {
+			let from = grades[i];
+			let to = grades[i + 1];
+			labels.push('<i style="background:' + colorScale(from) + '"></i> ' + from + (to ? '&ndash;' + to : '+'));
+		}
+		div.innerHTML = labels.join('<br>');
+		return div;
+	};
+	ffgsLegend.addTo(mapObj);
 }
 
 ////////////////////////////////////////////////////////////////////////  MAP CONTROLS AND CLEARING

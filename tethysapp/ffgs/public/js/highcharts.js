@@ -87,6 +87,56 @@ function newHighchart() {
     });
 }
 
+
+function newCumHighchart() {
+    chart = Highcharts.chart('highchart', {
+        title: {
+            align: "center",
+            text: 'Forecasted Precipitation (Cumulative) vs. Time ',
+        },
+        xAxis: {
+            title: {text: "Time"},
+            type: 'datetime',
+            units: [[
+                      'hour',
+                      [6, 12, 18]
+                  ], [
+                      'day',
+                      [1]
+                  ]],
+        },
+        yAxis: {
+            title: {text: 'millimeters'},   // should be millimeters
+            max: chartdata['max'],
+            plotLines: [{
+                value: chartdata['threshhold'],
+                color: 'red',
+                dashStyle: 'shortdash',
+                width: 3,
+                label: {
+                    text: 'Flash Flood Threshold Depth: ' + String(chartdata['max'])
+                }
+            }],
+        },
+        series: [{
+            data: chartdata['values'],          // the series of data
+            type: 'column',
+            name: 'Avg. Basin Precipitation (Cumulative)',            // the name of the series
+            tooltip: {
+                xDateFormat: '%a, %b %e, %Y %H:%M'
+            },
+        }],
+        chart: {
+            animation: true,
+            zoomType: 'xy',
+            borderColor: '#000000',
+            borderWidth: 2,
+        },
+
+    });
+}
+
+
 function getFloodChart(ID) {
     chart.hideNoData();
     chart.showLoading();
@@ -100,6 +150,23 @@ function getFloodChart(ID) {
         success: function (result) {
             chartdata = result;
             newHighchart();
+        }
+    })
+}
+
+function getCumFloodChart(ID) {
+    chart.hideNoData();
+    chart.showLoading();
+
+    $.ajax({
+        url: '/apps/ffgs/ajax/getCumFloodChart/',
+        data: JSON.stringify({region: $("#region").val(), watershedID: ID}),
+        dataType: 'json',
+        contentType: "application/json",
+        method: 'POST',
+        success: function (result) {
+            chartdata = result;
+            newCumHighchart();
         }
     })
 }

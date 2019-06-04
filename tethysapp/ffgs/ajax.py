@@ -52,6 +52,43 @@ def get_floodchart(request):
 
 
 @login_required()
+def get_cum_floodchart(request):
+    """
+    creates the bar chart for the watershedID in the request by reading the csv files of data
+    Dependencies: app_settings (options), ast, pandas, calendar
+    """
+    data = ast.literal_eval(request.body.decode('utf-8'))
+    id = data['watershedID']
+    region = data['region']
+    wrksppath = app_settings()['app_wksp_path']
+
+    results = os.path.join(wrksppath, region, 'gfsresults.csv')
+    df = pandas.read_csv(results)[['cat_id', 'mean', 'max', 'Timestep']]
+    df = df.query("cat_id == @id")
+
+    values = []
+    cum_values = 0
+    for row in df.iterrows():
+        time = datetime.datetime.strptime(str(int(row[1]['Timestep'])), "%Y%m%d%H")
+        time = calendar.timegm(time.utctimetuple()) * 1000
+        cum_values = cum_values + row[1]['mean']
+        values.append([time, cum_values])
+
+    threshold_table = os.path.join(wrksppath, region, 'ffgs_thresholds.csv')
+    df = pandas.read_csv(threshold_table)[['BASIN', '01FFG2018021312']]
+    df = df.query("BASIN == @id")
+    threshold = df['01FFG2018021312'].values[0]
+
+    maximum = max(values)[1]
+    if threshold > maximum:
+        maximum = threshold
+
+    print(values)
+
+    return JsonResponse({'values': values, 'threshhold': threshold, 'max': maximum})
+
+
+@login_required()
 def get_colorscales(request):
     """
     creates the bar chart for the watershedID in the request by reading the csv files of data

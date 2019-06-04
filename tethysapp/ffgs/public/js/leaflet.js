@@ -76,7 +76,8 @@ function layerPopups(feature, layer) {
     let watershed_id = feature.properties.cat_id;
     // layer.bindPopup('<strong>This is watershed #' + watershed_id + '</strong>');
     layer.on('click', function () {
-        getFloodChart(watershed_id)
+        // getFloodChart(watershed_id)
+        getCumFloodChart(watershed_id)
     });
 }
 

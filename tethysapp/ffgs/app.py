@@ -76,6 +76,11 @@ class Ffgs(TethysAppBase):
                 controller='ffgs.ajax.get_floodchart'
             ),
             UrlMap(
+                name='getCumFloodChart',
+                url='ffgs/ajax/getCumFloodChart',
+                controller='ffgs.ajax.get_cum_floodchart'
+            ),
+            UrlMap(
                 name='getColorScales',
                 url='ffgs/ajax/getColorScales',
                 controller='ffgs.ajax.get_colorscales'

@@ -15,6 +15,12 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 # todo discuss making the csv of thresholds update automatically like the reservoir app does from a google sheet?
 # todo make the wrf model downloads work?
 
+"""
+GENERAL NOTES
+when we add more models, make the setenvironment function create tiff folders for all of them, then make the functions
+use the right folder paths based on the model
+"""
+
 
 class Ffgs(TethysAppBase):
     """

@@ -10,10 +10,10 @@ The primary workflow of the app is to:
 1. Download the GFS/Forecast Model's most recent results for the Accumulated Precipitation variable (short name acpc in the grib file). GFS data are GRIB type.
 1. Process the forecast data into a usable formats, namely GeoTiff files for geoprocessing and to netCDF files for time animated map generation.
 1. Perform Geoprocessing on the GeoTiff files:
-	1. Resample the tif files to about 100x their resolution to facilitate geoprocessing relatively coarse forecasted raster data with very small watershed boundaries derived from the FFGS.
-	1. Perform zonal statistics on the resampled rasters within the boundaries of each of the FFGS watershed polygons. The statistics computed are the average precipitation value and the maximum precipitation value for the raster cells within the watershed polygons.
-	1. Compare the average and maximum value with the most recently generated FFGS threshold values.
-	1. Create a file containing these zonal statistics results which get used to style the map and chart in the user interface.
+	* Resample the tif files to about 100x their resolution to facilitate geoprocessing relatively coarse forecasted raster data with very small watershed boundaries derived from the FFGS.
+	* Perform zonal statistics on the resampled rasters within the boundaries of each of the FFGS watershed polygons. The statistics computed are the average precipitation value and the maximum precipitation value for the raster cells within the watershed polygons.
+	* Compare the average and maximum value with the most recently generated FFGS threshold values.
+	* Create a file containing these zonal statistics results which get used to style the map and chart in the user interface.
 1. Generate a netCDF Markup Language file which will aggregate the netCDF files across their time steps and make the data viewable on the map and animate it vs time.
 1. Delete the intermediate files generated.
 

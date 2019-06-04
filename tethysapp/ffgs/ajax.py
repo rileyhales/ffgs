@@ -7,7 +7,6 @@ from django.http import JsonResponse
 
 from .options import *
 
-
 @login_required()
 def get_customsettings(request):
     """
@@ -29,7 +28,7 @@ def get_floodchart(request):
     wrksppath = app_settings()['app_wksp_path']
 
     results = os.path.join(wrksppath, region, 'gfsresults.csv')
-    df = pandas.read_csv(results)[['cat_id', 'mean', 'Timestep']]
+    df = pandas.read_csv(results)[['cat_id', 'mean', 'max', 'Timestep']]
     df = df.query("cat_id == @id")
 
     values = []

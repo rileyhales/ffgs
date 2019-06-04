@@ -43,11 +43,18 @@ function newHighchart() {
     chart = Highcharts.chart('highchart', {
         title: {
             align: "center",
-            text: 'Forecasted Precipitation Accumulation v Time ',
+            text: 'Forecasted Precipitation Accumulation vs. Time ',
         },
         xAxis: {
             title: {text: "Time"},
             type: 'datetime',
+            units: [[
+                      'hour',
+                      [6, 12, 18]
+                  ], [
+                      'day',
+                      [1]
+                  ]],
         },
         yAxis: {
             title: {text: 'millimeters'},   // should be millimeters
@@ -58,16 +65,16 @@ function newHighchart() {
                 dashStyle: 'shortdash',
                 width: 3,
                 label: {
-                    text: 'Flash Flood Threshold Depth - ' + String(chartdata['max'])
+                    text: 'Flash Flood Threshold Depth: ' + String(chartdata['max'])
                 }
             }],
         },
         series: [{
             data: chartdata['values'],          // the series of data
             type: 'column',
-            name: 'Accumulated Precipitation per Day',            // the name of the series
+            name: 'Avg. 6-hr Accumulated Precipitation',            // the name of the series
             tooltip: {
-                xDateFormat: '%A, %b %e, %Y',
+                xDateFormat: '%a, %b %e, %Y %H:%M'
             },
         }],
         chart: {

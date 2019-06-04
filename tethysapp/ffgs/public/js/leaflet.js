@@ -115,7 +115,7 @@ function addFFGSlayer() {
                         case result[id + '.0']['max'] >= 5:
                             return {color: '#ff000f', opacity: $("#opacity_geojson").val()};
                         case result[id + '.0']['max'] < 5:
-                            return {color: 'rgba(75,76,80,0.53)', opacity: $("#opacity_geojson").val()};
+                            return {color: 'rgba(119,120,124,0.53)', opacity: $("#opacity_geojson").val()};
                     }
                 }),
             }).addTo(mapObj);

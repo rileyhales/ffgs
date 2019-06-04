@@ -5,6 +5,10 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 # ROUGHLY IN ORDER OF IMPORTANCE
 # todo theres a bug in georeferencing the netcdf. it ends up wms-able but not in the right location.
 
+# todo Decide whether to plot the mean or max precipitation. Color scheme should probably match the plot.
+# todo Is it possible to show the cat_id on the chart? or highlight the basin you clicked on?
+# todo Add a legend of what the colors mean?
+
 # todo make a dictionary in leaflet.js for setting the right center and zoom of the map
 # todo add a control to main.js when you change regions, zoom the map to the new place, swap the geojson and wms layers
 # todo check on the setwmsbounds function. make sure it works right. maybe?

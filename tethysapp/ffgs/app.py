@@ -6,14 +6,13 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 # todo theres a bug in georeferencing the netcdf. it ends up wms-able but not in the right location.
 
 # todo Two separate layers: boundaries and color fill
-# todo Options for chart: interval and cummulative
+# todo Switch between options for chart: interval and cumulative
 # todo Show when FFGS thresholds were last updated
 
 # todo Update Readme
 # todo Update how to use the app
 
-# todo Decide whether to plot the mean or max precipitation. Color scheme should probably match the plot.
-# todo Show the cat_id on the chart and show pop up
+# todo Show cat_id on pop up
 # todo Add a legend of what the colors mean
 
 # todo make a dictionary in leaflet.js for setting the right center and zoom of the map

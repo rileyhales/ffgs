@@ -45,6 +45,10 @@ function newHighchart() {
             align: "center",
             text: 'Forecasted Precipitation Accumulation vs. Time ',
         },
+        subtitle: {
+            align: "center",
+            text: 'Catchment ID: ' + chartdata['id'],
+        },
         xAxis: {
             title: {text: "Time"},
             type: 'datetime',
@@ -63,10 +67,11 @@ function newHighchart() {
                 value: chartdata['threshhold'],
                 color: 'red',
                 dashStyle: 'shortdash',
-                width: 3,
+                width: 2,
                 label: {
                     text: 'Flash Flood Threshold Depth: ' + String(chartdata['max'])
-                }
+                },
+                zIndex: 20,
             }],
         },
         series: [{
@@ -94,6 +99,10 @@ function newCumHighchart() {
             align: "center",
             text: 'Forecasted Precipitation (Cumulative) vs. Time ',
         },
+        subtitle: {
+            align: "center",
+            text: 'Catchment ID: ' + chartdata['id'],
+        },
         xAxis: {
             title: {text: "Time"},
             type: 'datetime',
@@ -112,16 +121,17 @@ function newCumHighchart() {
                 value: chartdata['threshhold'],
                 color: 'red',
                 dashStyle: 'shortdash',
-                width: 3,
+                width: 2,
                 label: {
                     text: 'Flash Flood Threshold Depth: ' + String(chartdata['max'])
-                }
+                },
+                zIndex: 20,
             }],
         },
         series: [{
             data: chartdata['values'],          // the series of data
             type: 'column',
-            name: 'Avg. Basin Precipitation (Cumulative)',            // the name of the series
+            name: 'Cumulative Basin-Avg. Precipitation',            // the name of the series
             tooltip: {
                 xDateFormat: '%a, %b %e, %Y %H:%M'
             },

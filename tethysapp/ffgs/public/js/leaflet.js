@@ -103,19 +103,19 @@ function addFFGSlayer() {
                 style: (function (feature) {
                     let id = feature.properties.cat_id;
                     switch (true) {
-                        case result[id + '.0']['max'] >= 30:
+                        case result[id + '.0']['mean'] >= 30:
                             return {color: '#0012ff', opacity: $("#opacity_geojson").val()};
-                        case result[id + '.0']['max'] >= 25:
+                        case result[id + '.0']['mean'] >= 25:
                             return {color: '#00deff', opacity: $("#opacity_geojson").val()};
-                        case result[id + '.0']['max'] >= 20:
+                        case result[id + '.0']['mean'] >= 20:
                             return {color: '#00ff00', opacity: $("#opacity_geojson").val()};
-                        case result[id + '.0']['max'] >= 15:
+                        case result[id + '.0']['mean'] >= 15:
                             return {color: '#fffc00', opacity: $("#opacity_geojson").val()};
-                        case result[id + '.0']['max'] >= 10:
+                        case result[id + '.0']['mean'] >= 10:
                             return {color: '#ff7700', opacity: $("#opacity_geojson").val()};
-                        case result[id + '.0']['max'] >= 5:
+                        case result[id + '.0']['mean'] >= 5:
                             return {color: '#ff000f', opacity: $("#opacity_geojson").val()};
-                        case result[id + '.0']['max'] < 5:
+                        case result[id + '.0']['mean'] < 5:
                             return {color: 'rgba(119,120,124,0.53)', opacity: $("#opacity_geojson").val()};
                     }
                 }),

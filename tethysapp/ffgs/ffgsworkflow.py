@@ -194,7 +194,7 @@ def zonal_statistics(wrksppath, timestamp, region, model):
         stats = rasterstats.zonal_stats(
             shp_path,
             ras_path,
-            stats=['count', 'mean', 'max'],
+            stats=['count', 'max', 'mean'],
             geojson_out=True
             )
 
@@ -205,7 +205,7 @@ def zonal_statistics(wrksppath, timestamp, region, model):
         for j in range(len(stats)):
 
             temp_data = stats[j]['properties']
-            temp_data.update({'Timestamp': timestamp})
+            temp_data.update({'Forecast Timestamp': timestamp})
             temp_data.update({'Timestep': timestep})
 
             temp_df = pd.DataFrame([temp_data])
@@ -214,7 +214,7 @@ def zonal_statistics(wrksppath, timestamp, region, model):
 
     # write the resulting dataframe to a csv
     logging.info('\ndone with zonal statistics, writing to a csv file')
-    stats_df.to_csv(stat_file)
+    stats_df.to_csv(stat_file, index=False)
 
     # delete the resampled tiffs now that we dont need them
     logging.info('deleting the resampled tiffs directory')

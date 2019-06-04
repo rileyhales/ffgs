@@ -66,13 +66,13 @@ function newHighchart() {
                 label: {
                     text: 'Flash Flood Threshold Depth: ' + String(chartdata['max'])
                 },
-                zIndex: 20,
+                zIndex: 4,
             }],
         },
         series: [{
             data: chartdata['values'],          // the series of data
             type: 'column',
-            name: 'Avg. 6-hr Accumulated Precipitation',            // the name of the series
+            name: '6-hr Accumulated Precipitation',            // the name of the series
             tooltip: {
                 xDateFormat: '%a, %b %e, %Y %H:%M'
             },
@@ -114,7 +114,7 @@ function newCumHighchart() {
                 label: {
                     text: 'Flash Flood Threshold Depth: ' + String(chartdata['max'])
                 },
-                zIndex: 20,
+                zIndex: 4,
             }],
         },
         series: [{

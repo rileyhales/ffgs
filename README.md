@@ -21,6 +21,7 @@ This application allows the user to view risks of flash floods in near-real-time
 The accuracy of this application is limited by:
 1. The resolution and accuracy of the forecasting models being used
 1. The accuracy of the thresholds for flood values determined by the FFGS models
+1. The potential difference between FFGS and Precipitation Forecast time-intervals
 
 ### Possible error and disclaimers:
 1. The charts and maps show only the values of precipitation accumulation from the forecast models. No attempt is made to account for losses to hydrologic factors such as evaporation, infiltration to groundwater, initial abstraction/storage, and so forth
@@ -40,6 +41,7 @@ The accuracy of this application is limited by:
 1. create a script to download all the timesteps of the forecast model and call it data_modelname.py
 2. make it compatible with the ffgs workflow
 3. add the download script to the controller for the workflow including import statements
+
 
 ## Installation Instructions
 ### 1 Install the Tethys App
@@ -146,3 +148,18 @@ Log in to your Tethys portal as an admin. Click on the grey GLDAS box and specif
 
 **Thredds Base Address:** This is the base URL to Thredds WMS services that the app uses to build urls for each of the WMS layers generated for the netcdf datasets. If you followed the typical configuration of thredds (these instructions) then your base url will look something like ```yourserver.com/thredds/wms/testAll/ffgs/```. You can verify this by opening the thredds catalog in a web browser (typically at ```yourserver.com/thredds/catalog.html```). Navigate to one of the FFGS netcdf files and click the WMS link. A page showing an xml document should load. Copy the url in the address bar until you get to the ```/ffgs/``` folder in that url. Do not include ```/hispaniola/processed/netcdf.nc``` or the request that comes after. (example: ```https://tethys.byu.edu/thredds/wms/testAll/ffgs/```)
 
+
+## Data References
+
+### Flash Flood Guidance System (FFGS)
+* www.wmo.int/ffgs
+* http://www.wmo.int/pages/prog/hwrp/flood/ffgs/documents/2017-ffgs-brochure-en.pdf
+
+### Global Forecast System (GFS)
+Data Set: GFS 0.25 Degree
+* https://nomads.ncep.noaa.gov/
+* https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs
+
+### Weather Research and Forecasting (WRF)
+Description: AWIPS 3.8km Puerto Rico ARW (NCAR Advanced Research WRF)
+* https://www.nco.ncep.noaa.gov/pmb/products/hiresw/

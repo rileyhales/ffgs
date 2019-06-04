@@ -98,7 +98,7 @@ def resample(wrksppath, region):
     """
     logging.info('\nResampling the rasters for ' + region)
     # Define app workspace and sub-paths
-    tiffs = os.path.join(wrksppath, region, 'GeoTIFFS')
+    tiffs = os.path.join(wrksppath, region, 'GeoTIFFs')
     resampleds = os.path.join(wrksppath, region, 'GeoTIFFs_resampled')
 
     # Create directory for the resampled GeoTIFFs
@@ -398,9 +398,10 @@ def new_colorscales(wrksppath, region, model):
     logging.info('\nGenerating a new color scale csv for the ' + model + ' results')
     colorscales = os.path.join(wrksppath, region, model + 'colorscales.csv')
     results = os.path.join(wrksppath, region, model + 'results.csv')
+    logging.info(results)
     answers = pd.DataFrame(columns=['cat_id', 'mean', 'max'])
 
-    res_df = pd.read_csv(results)[['cat_id', 'mean', 'max']]
+    res_df = pd.read_csv(results, index_col=False)[['cat_id', 'mean', 'max']]
     ids = res_df.cat_id.unique()
     for catid in ids:
         df = res_df.query("cat_id == @catid")

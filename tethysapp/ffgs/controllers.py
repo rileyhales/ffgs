@@ -17,20 +17,20 @@ def home(request):
 
     forecastdate = get_forecastdate()
 
-    models = SelectInput(
-        display_text='Choose a Forecast Model',
-        name='model',
-        multiple=False,
-        original=True,
-        options=forecastmodels(),
-    )
-
     ffgsregions = SelectInput(
         display_text='Choose a FFGS Region',
         name='region',
         multiple=False,
         original=True,
         options=ffgs_regions(),
+    )
+
+    models = SelectInput(
+        display_text='Choose a Forecast Model',
+        name='model',
+        multiple=False,
+        original=True,
+        options=forecastmodels(),
     )
 
     chartoptions = SelectInput(

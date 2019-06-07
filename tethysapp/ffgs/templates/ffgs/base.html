@@ -31,9 +31,21 @@
                   aria-hidden="true">&times;</span></button>
           <h5 class="modal-title" id="help-modal-label">How To Use This Page</h5>
         </div>
+
         <div class="modal-body">
-          This is where we'll explain everything about the app
+          <h6>Directions:</h6>
+          1. On the left menu, select region of interest <br>
+          2. Select forecasting model <br>
+          3. Click on a catchment to generate a time-series <br>
+          <h6>Notes:</h6>
+            <ul style="padding-left:18px" type = "circle">
+              <li>Precipitation amounts are the calculated average over the catchment area.</li>
+              <li>The user can change the plot type from unique-interval to cumulative.</li>
+              <li>Catchments are colored based on the highest 6-hr precipitation interval within the duration of the forecast.</li>
+              <li>Complete documentation can be found <a href="https://rileyhales.github.io/ffgs/" target="_blank">here</a>.</li>
+            </ul>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
         </div>
@@ -43,10 +55,10 @@
 {% endblock %}
 
 {% block app_navigation_items %}
-  <li class="title" role="button" id="datatoggle">GFS/WRF Data Controls</li>
+  <li class="title" role="button" id="datatoggle">Region/Model Controls</li>
   <div id="datacontrols">
-    {% gizmo select_input models %}
     {% gizmo select_input ffgsregions %}
+    {% gizmo select_input models %}
     <div style="text-align: center; padding: 4px;"><strong>{{ forecastdate }}</strong></div>
     <div id="mouse-position" class="well well-sm" style="text-align: center"></div>
   </div>

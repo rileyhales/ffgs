@@ -152,14 +152,14 @@ Log in to your Tethys portal as an admin. Click on the grey GLDAS box and specif
 ## Data References
 
 ### Flash Flood Guidance System (FFGS)
-* www.wmo.int/ffgs
-* http://www.wmo.int/pages/prog/hwrp/flood/ffgs/documents/2017-ffgs-brochure-en.pdf
+* [www.wmo.int/ffgs](www.wmo.int/ffgs)
+* [http://www.wmo.int/pages/prog/hwrp/flood/ffgs/documents/2017-ffgs-brochure-en.pdf](http://www.wmo.int/pages/prog/hwrp/flood/ffgs/documents/2017-ffgs-brochure-en.pdf)
 
 ### Global Forecast System (GFS)
 Data Set: GFS 0.25 Degree
-* https://nomads.ncep.noaa.gov/
-* https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs
+* [https://nomads.ncep.noaa.gov/](https://nomads.ncep.noaa.gov/)
+* [https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs)
 
 ### Weather Research and Forecasting (WRF)
 Description: AWIPS 3.8km Puerto Rico ARW (NCAR Advanced Research WRF)
-* https://www.nco.ncep.noaa.gov/pmb/products/hiresw/
+* [https://www.nco.ncep.noaa.gov/pmb/products/hiresw/](https://www.nco.ncep.noaa.gov/pmb/products/hiresw/)

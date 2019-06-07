@@ -1,12 +1,19 @@
 ////////////////////////////////////////////////////////////////////////  MAP FUNCTIONS
+const zoomOpts = {
+    // 'region name': [zoom, [lat_center, lon_center]]
+    'hispaniola': [8.25, [18.8, -71]],
+    'centralamerica': [5, [12.5, -86]]
+};
+
 function map() {
     // create the map
+    let opts = zoomOpts[$("#region").val()];
     return L.map('map', {
-        zoom: 8.25,
+        zoom: opts[0],
         minZoom: 1.25,
         boxZoom: true,
         maxBounds: L.latLngBounds(L.latLng(-100.0, -270.0), L.latLng(100.0, 270.0)),
-        center: [18.8, -71],
+        center: opts[1],
         timeDimension: true,
         timeDimensionControl: true,
         timeDimensionControlOptions: {
@@ -84,7 +91,7 @@ let watersheds;
 let watersheds_colors;
 let geojson_sorter = {
     'hispaniola': hispaniola_json,
-    // 'centralamerica': centralamerica_json,
+    'centralamerica': centralamerica_json,
     // 'nepal', nepal_json,
     // regionname: regionname_json for each region that is configured
 };
@@ -110,7 +117,6 @@ function setColor(rules, number) {
         rules[number + '.0']['mean'] >= 0 ? colorScale(0) :
         '';
 }
-
 
 function addFFGSlayer() {
     let region = $("#region").val();
@@ -152,21 +158,6 @@ function addFFGSlayer() {
         }
     }).addTo(mapObj);
 
-    let ffgsLegend = L.control({position: 'bottomleft'});
-	ffgsLegend.onAdd = function () {
-		let div = L.DomUtil.create('div', 'info legend'),
-			grades = [0, 5, 10, 15, 20, 25, 30],
-			labels = [];
-		labels.push('<b>Precipitation (mm)</b>');
-		for (let i = 0; i < grades.length; i++) {
-			let from = grades[i];
-			let to = grades[i + 1];
-			labels.push('<i style="background:' + colorScale(from) + '"></i> ' + from + (to ? '&ndash;' + to : '+'));
-		}
-		div.innerHTML = labels.join('<br>');
-		return div;
-	};
-	ffgsLegend.addTo(mapObj);
 }
 
 ////////////////////////////////////////////////////////////////////////  MAP CONTROLS AND CLEARING
@@ -182,8 +173,8 @@ function makeControls() {
 // you need to remove layers when you make changes so duplicates dont persist and accumulate
 function clearMap() {
     // remove the controls for the wms layer then remove it from the map
-    controlsObj.removeLayer(layerObj);
-    mapObj.removeLayer(layerObj);
+    // controlsObj.removeLayer(layerObj);
+    // mapObj.removeLayer(layerObj);
     controlsObj.removeLayer(watersheds);
     mapObj.removeLayer(watersheds);
     controlsObj.removeLayer(watersheds_colors);

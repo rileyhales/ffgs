@@ -32,9 +32,9 @@ The accuracy of this application is limited by:
 3. Add a folder to the app workspace named the same as the shortname
 4. Get a copy of the shapefile for the ffgs boundaries in the new region. Put it in the app workspace folder you just made under a folder called shapefiles. rename the shapefile ffgs_shortname 
 5. Create a new geojson for that shapefile and put it in a new/existing js file. if you make a new one, add it to the list of imports in base.html
-6. create a csv in the app workspace folder called ffgs_thresholds.csv and fill it with the current information. see other files for example format
-6. In leaflet.js, add an entry to the dictionary in the format {'shortname': name of the geojson you just made}
-7. Add the zoom and center information to the leaflet.js json object following the shortname, center, zoom patten
+6. Create a csv in the app workspace folder called ffgs_thresholds.csv and fill it with the current information. see other files for example format
+7. In leaflet.js, add an entry to the geojson_sorter JSON in the format ```{'shortname': name of the geojson you just made}```
+8. In leaflet.js, add an entry to the zoomOpts JSON in the format ```{'shortname': [zoom level, [center_lat, center_lon]]}```
 
 ### How to add a new model
 1. create a script to download all the timesteps of the forecast model and call it data_modelname.py

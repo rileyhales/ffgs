@@ -118,6 +118,10 @@ def run_workflow(request):
             # cleanup the workspace by removing old files
             cleanup(threddspath, wrksppath, timestamp, region[1], model[1])
 
+    logging.info('\n        All regions and models finished- writing the timestamp used on this run to a txt file')
+    with open(os.path.join(wrksppath, 'timestamp.txt'), 'w') as file:
+        file.write(timestamp)
+
     logging.info('\nWorkflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
     return JsonResponse({'Status': 'Workflow Completed: normal finish'})

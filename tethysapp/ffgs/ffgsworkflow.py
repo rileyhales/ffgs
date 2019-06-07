@@ -49,15 +49,15 @@ def setenvironment():
             redundant = False
 
     # if the file structure already exists, quit
-    checkthredds = os.path.join(threddspath, 'hispaniola', 'gfs', timestamp)
-    checkworkspace = os.path.join(wrksppath, 'hispaniola', 'GeoTIFFs_resampled')
-    if os.path.exists(checkthredds) and os.path.exists(checkworkspace):
+    chk_hisp = os.path.join(wrksppath, 'hispaniola', 'GeoTIFFs_resampled')
+    chk_centr = os.path.join(wrksppath, 'centralamerica', 'GeoTIFFs_resampled')
+    if os.path.exists(chk_hisp) and os.path.exists(chk_centr):
         logging.info('You have a file structure for this timestep but didnt complete the workflow, analyzing...')
         return threddspath, wrksppath, timestamp, redundant
 
     # create the file structure and their permissions for the new data
     for region in ffgs_regions():
-        logging.info('Creating App Workspace GeoTIFF file structure for ' + region[1])
+        logging.info('Creating APP WORKSPACE (GeoTIFF) file structure for ' + region[1])
         new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFs')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
@@ -209,7 +209,6 @@ def zonal_statistics(wrksppath, timestamp, region, model):
 
             temp_df = pd.DataFrame([temp_data])
             stats_df = stats_df.append(temp_df, ignore_index=True)
-        logging.info('done')
 
     # write the resulting dataframe to a csv
     logging.info('\ndone with zonal statistics, rounding values, writing to a csv file')
@@ -463,10 +462,6 @@ def set_wmsbounds(threddspath, timestamp, region, model):
 
 def cleanup(threddspath, wrksppath, timestamp, region, model):
     # write a file with the current timestep triggering the app to start using this data
-    logging.info('\nPerforming file cleanup')
-    logging.info('writing the timestamp used for this run to a textfile')
-    with open(os.path.join(wrksppath, 'timestamp.txt'), 'w') as file:
-        file.write(timestamp)
 
     # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
     logging.info('Getting rid of old ' + model + ' data folders')

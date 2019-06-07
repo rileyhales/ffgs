@@ -44,24 +44,31 @@ mapObj.on("mousemove", function (event) {
     // let layerObj = newLayer();              // adds the wms raster layer
 addFFGSlayer();                         // adds the ffgs watershed layer chosen by the user
 let controlsObj = makeControls();       // the layer toggle controls top-right corner
-    // forecastLegend.addTo(mapObj);                   // add the legend graphic to the map
+
+let ffgsLegend = L.control({position: 'bottomleft'});
+ffgsLegend.onAdd = function () {
+    let div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 5, 10, 15, 20, 25, 30],
+        labels = [];
+    labels.push('<b>Precipitation (mm)</b>');
+    for (let i = 0; i < grades.length; i++) {
+        let from = grades[i];
+        let to = grades[i + 1];
+        labels.push('<i style="background:' + colorScale(from) + '"></i> ' + from + (to ? '&ndash;' + to : '+'));
+    }
+    div.innerHTML = labels.join('<br>');
+    return div;
+};
+ffgsLegend.addTo(mapObj);
 
 ////////////////////////////////////////////////////////////////////////  EVENT LISTENERS
-    // $("#opacity_raster").change(function () {
-    //     layerObj.setOpacity($('#opacity_raster').val());
-    // });
-
 $('#colorscheme').change(function () {
     clearMap();
     addFFGSlayer();
-    layerObj = newLayer();
+    // layerObj = newLayer();
     controlsObj = makeControls();
         // forecastLegend.addTo(mapObj);
 });
-
-    // $("#opacity_geojson").change(function () {
-    //     watersheds.setStyle({opacity: $("#opacity_geojson").val()});
-    // });
 
 $("#datatoggle").click(function() {
     $("#datacontrols").toggle();
@@ -73,4 +80,14 @@ $("#displaytoggle").click(function() {
 
 $("#chartoptions").change(function () {
     updateChart(id);
+});
+
+$("#region").change(function () {
+    let opts = zoomOpts[$("#region").val()];
+    clearMap();
+    mapObj.setView(opts[1], opts[0]);
+    // mapObj.panTo();
+    addFFGSlayer();
+    // layerObj = newLayer();
+    controlsObj = makeControls();
 });

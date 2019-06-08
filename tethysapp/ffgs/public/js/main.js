@@ -41,7 +41,7 @@ mapObj.on("mousemove", function (event) {
     $("#mouse-position").html('Lat: ' + event.latlng.lat.toFixed(5) + ', Lon: ' + event.latlng.lng.toFixed(5));
 });
 
-    // let layerObj = newLayer();              // adds the wms raster layer
+    let layerObj = newLayer();              // adds the wms raster layer
 addFFGSlayer();                         // adds the ffgs watershed layer chosen by the user
 let controlsObj = makeControls();       // the layer toggle controls top-right corner
 
@@ -65,9 +65,13 @@ ffgsLegend.addTo(mapObj);
 $('#colorscheme').change(function () {
     clearMap();
     addFFGSlayer();
-    // layerObj = newLayer();
+    layerObj = newLayer();
     controlsObj = makeControls();
-        // forecastLegend.addTo(mapObj);
+    forecastLegend.addTo(mapObj);
+});
+
+$("#opacity_raster").change(function () {
+    layerObj.setOpacity($("#opacity_raster").val())
 });
 
 $("#datatoggle").click(function() {
@@ -86,8 +90,7 @@ $("#region").change(function () {
     let opts = zoomOpts[$("#region").val()];
     clearMap();
     mapObj.setView(opts[1], opts[0]);
-    // mapObj.panTo();
     addFFGSlayer();
-    // layerObj = newLayer();
+    layerObj = newLayer();
     controlsObj = makeControls();
 });

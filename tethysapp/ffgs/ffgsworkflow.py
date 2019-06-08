@@ -297,10 +297,8 @@ def nc_georeference(threddspath, timestamp, region, model):
         duplicate.createVariable(varname='lon', datatype='f4', dimensions='lon')
 
         # create the lat and lon values as a 1D array
-        lat_list = [lat_min + i * lat_step for i in range(dimensions['lat'])]
-        lon_list = [lon_min + i * lon_step for i in range(dimensions['lon'])]
-        duplicate['lat'][:] = lat_list
-        duplicate['lon'][:] = lon_list
+        duplicate['lat'][:] = original['latitude'][:]
+        duplicate['lon'][:] = original['longitude'][:]
 
         # set the attributes for lat and lon (except fill value, you just can't copy it)
         for attr in original['latitude'].__dict__:
@@ -381,7 +379,7 @@ def new_ncml(threddspath, timestamp, region, model):
             '    <variable name="time" type="int" shape="time">\n'
             '        <attribute name="units" value="hours since ' + date + '"/>\n'
             '        <attribute name="_CoordinateAxisType" value="Time" />\n'
-                                                                           '        <values start="6" increment="6" />\n'
+            '        <values start="6" increment="6" />\n'
             '    </variable>\n'
             '    <aggregation dimName="time" type="joinExisting" recheckEvery="1 hour">\n'
             '        <scan location="' + timestamp + '/processed/"/>\n'

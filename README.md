@@ -152,7 +152,7 @@ Log in to your Tethys portal as an admin. Click on the grey GLDAS box and specif
 ## Data References
 
 ### Flash Flood Guidance System (FFGS)
-* [www.wmo.int/ffgs](www.wmo.int/ffgs)
+* [http://www.wmo.int/ffgs](http://www.wmo.int/ffgs)
 * [http://www.wmo.int/pages/prog/hwrp/flood/ffgs/documents/2017-ffgs-brochure-en.pdf](http://www.wmo.int/pages/prog/hwrp/flood/ffgs/documents/2017-ffgs-brochure-en.pdf)
 
 ### Global Forecast System (GFS)

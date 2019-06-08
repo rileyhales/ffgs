@@ -38,7 +38,7 @@ def download_gfs(threddspath, timestamp, region):
     # this is where the actual downloads happen. set the url, filepath, then download
     subregions = {
         'hispaniola': 'subregion=&leftlon=-75&rightlon=-68&toplat=20.5&bottomlat=17',
-        'centralamerica': 'subregion=&leftlon=-94.25&rightlon=-75.5&toplat=21&bottomlat=5.5',
+        'centralamerica': 'subregion=&leftlon=-94.25&rightlon=-75.5&toplat=19.5&bottomlat=5.5',
     }
     for step in fc_steps:
         url = 'https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t' + time + 'z.pgrb2.0p25.f' + step + \

@@ -66,9 +66,8 @@
   <li class="title" role="button" id="displaytoggle">Display Options</li>
   <div id="displaycontrols">
     {% gizmo select_input chartoptions %}
-{#    {% gizmo select_input colorscheme %}#}
-{#    {% gizmo range_slider opacity_raster %}#}
-{#    {% gizmo range_slider opacity_geojson %}#}
+    {% gizmo select_input colorscheme %}
+    {% gizmo range_slider opacity_raster %}
   </div>
   <div id="testing"></div>
 {% endblock %}
@@ -78,7 +77,6 @@
   <a class="btn btn-default" role="button" data-toggle="modal" data-target="#help-modal">How To Use This App</a>
   <a class="btn btn-default" role="button" href="{{ githublink }}" target="_blank">View Source Code (GitHub)</a>
 {% endblock %}
-
 
 {% block content_dependent_styles %}
   {{ block.super }}

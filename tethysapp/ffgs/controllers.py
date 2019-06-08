@@ -53,19 +53,10 @@ def home(request):
     opacity_raster = RangeSlider(
         display_text='Raster Opacity',
         name='opacity_raster',
-        min=.5,
+        min=0,
         max=1,
         step=.05,
-        initial=1,
-    )
-
-    opacity_geojson = RangeSlider(
-        display_text='FFGS Watershed Opacity',
-        name='opacity_ffgs',
-        min=.0,
-        max=1,
-        step=.1,
-        initial=.8,
+        initial=.5,
     )
 
     context = {
@@ -75,7 +66,6 @@ def home(request):
         'chartoptions': chartoptions,
         'colorscheme': colorscheme,
         'opacity_raster': opacity_raster,
-        'opacity_geojson': opacity_geojson,
         'githublink': App.githublink,
         'version': App.version,
     }

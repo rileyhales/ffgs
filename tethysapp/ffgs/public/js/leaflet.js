@@ -138,7 +138,7 @@ function addFFGSlayer() {
                         opacity: 0,
                         weight: 0,
                         fillColor: setColor(rules, number),
-                        fillOpacity: $("#opacity_geojson").val()
+                        fillOpacity: 1,
                     }
                 }),
             }).addTo(mapObj);
@@ -173,8 +173,8 @@ function makeControls() {
 // you need to remove layers when you make changes so duplicates dont persist and accumulate
 function clearMap() {
     // remove the controls for the wms layer then remove it from the map
-    // controlsObj.removeLayer(layerObj);
-    // mapObj.removeLayer(layerObj);
+    controlsObj.removeLayer(layerObj);
+    mapObj.removeLayer(layerObj);
     controlsObj.removeLayer(watersheds);
     mapObj.removeLayer(watersheds);
     controlsObj.removeLayer(watersheds_colors);

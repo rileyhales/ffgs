@@ -68,12 +68,29 @@ function newLayer() {
 }
 
 ////////////////////////////////////////////////////////////////////////  LEGEND DEFINITIONS
+// the forecast layer raster legend
 let forecastLegend = L.control({position: 'bottomright'});
 forecastLegend.onAdd = function () {
     let div = L.DomUtil.create('div', 'legend');
     let url = threddsbase + '/' + $("#region").val() + '/' + $("#model").val() + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0,50";
     div.innerHTML = '<img src="' + url + '" alt="legend" style="width:100%; float:right;">';
     return div
+};
+
+// the geojson legend
+let ffgsLegend = L.control({position: 'bottomleft'});
+ffgsLegend.onAdd = function () {
+    let div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 5, 10, 15, 20, 25, 30],
+        labels = [];
+    labels.push('<b>Precipitation (mm)</b>');
+    for (let i = 0; i < grades.length; i++) {
+        let from = grades[i];
+        let to = grades[i + 1];
+        labels.push('<i style="background:' + colorScale(from) + '"></i> ' + from + (to ? '&ndash;' + to : '+'));
+    }
+    div.innerHTML = labels.join('<br>');
+    return div;
 };
 
 ////////////////////////////////////////////////////////////////////////  GEOJSON LAYERS - GEOSERVER + WFS / GEOJSON

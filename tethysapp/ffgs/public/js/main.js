@@ -41,25 +41,12 @@ mapObj.on("mousemove", function (event) {
     $("#mouse-position").html('Lat: ' + event.latlng.lat.toFixed(5) + ', Lon: ' + event.latlng.lng.toFixed(5));
 });
 
-    let layerObj = newLayer();              // adds the wms raster layer
+let layerObj = newLayer();              // adds the wms raster layer
 addFFGSlayer();                         // adds the ffgs watershed layer chosen by the user
 let controlsObj = makeControls();       // the layer toggle controls top-right corner
 
-let ffgsLegend = L.control({position: 'bottomleft'});
-ffgsLegend.onAdd = function () {
-    let div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 5, 10, 15, 20, 25, 30],
-        labels = [];
-    labels.push('<b>Precipitation (mm)</b>');
-    for (let i = 0; i < grades.length; i++) {
-        let from = grades[i];
-        let to = grades[i + 1];
-        labels.push('<i style="background:' + colorScale(from) + '"></i> ' + from + (to ? '&ndash;' + to : '+'));
-    }
-    div.innerHTML = labels.join('<br>');
-    return div;
-};
-ffgsLegend.addTo(mapObj);
+forecastLegend.addTo(mapObj);           // add the legend for the WMS forecast layer
+ffgsLegend.addTo(mapObj);               // add the legend for the colored geojson layer
 
 ////////////////////////////////////////////////////////////////////////  EVENT LISTENERS
 $('#colorscheme').change(function () {

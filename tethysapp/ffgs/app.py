@@ -1,18 +1,12 @@
 from tethys_sdk.app_settings import CustomSetting
 from tethys_sdk.base import TethysAppBase, url_map_maker
 
-
 # ROUGHLY IN ORDER OF IMPORTANCE
-# todo fix the georeferencing netcdf bug, the setwmsbounds function, re-add the controls for color/opacity
-
+# todo update the set_wmsbounds function
 # todo Update how to use the app
-# todo Show when FFGS thresholds were last updated
-
-# todo make a dictionary in leaflet.js for setting the right center and zoom of the map
-# todo add a control to main.js when you change regions, zoom the map to the new place, swap the geojson and wms layers
 
 # todo make the update workflow a cron job that we can run each day? 6 hours? put a copy of the script in the app
-# todo discuss making the csv of thresholds update automatically like the reservoir app does from a google sheet?
+# todo make the csv of thresholds update automatically like the reservoir app, print the threshold date on the UI
 # todo make the wrf model downloads work?
 
 """

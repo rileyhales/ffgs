@@ -55,8 +55,8 @@
 {% endblock %}
 
 {% block app_navigation_items %}
-  <li class="title" role="button" id="datatoggle">Region/Model Controls</li>
-  <div id="datacontrols">
+  <li class="title" role="button" id="regiontoggle">Region/Model Controls</li>
+  <div id="regioncontrols">
     {% gizmo select_input ffgsregions %}
     {% gizmo select_input models %}
     <div style="text-align: center; padding: 4px;"><strong>{{ forecastdate }}</strong></div>
@@ -69,7 +69,6 @@
     {% gizmo select_input colorscheme %}
     {% gizmo range_slider opacity_raster %}
   </div>
-  <div id="testing"></div>
 {% endblock %}
 
 {% block app_actions %}

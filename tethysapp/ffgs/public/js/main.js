@@ -38,7 +38,7 @@ const basemapObj = basemaps();          // used in the make controls function
 
 ////////////////////////////////////////////////////////////////////////  LAYER CONTROLS, MAP EVENTS, LEGEND
 mapObj.on("mousemove", function (event) {
-    $("#mouse-position").html('Lat: ' + event.latlng.lat.toFixed(5) + ', Lon: ' + event.latlng.lng.toFixed(5));
+    $("#mouse-position").html('Lat: ' + event.latlng.lat.toFixed(4) + ', Lon: ' + event.latlng.lng.toFixed(4));
 });
 
 let layerObj = newLayer();              // adds the wms raster layer
@@ -48,7 +48,29 @@ let controlsObj = makeControls();       // the layer toggle controls top-right c
 forecastLegend.addTo(mapObj);           // add the legend for the WMS forecast layer
 ffgsLegend.addTo(mapObj);               // add the legend for the colored geojson layer
 
-////////////////////////////////////////////////////////////////////////  EVENT LISTENERS
+////////////////////////////////////////////////////////////////////////  LISTENERS FOR CONTROLS ON THE MENU
+$("#regiontoggle").click(function() {
+    $("#regioncontrols").toggle();
+});
+
+$("#region").change(function () {
+    let opts = zoomOpts[$("#region").val()];
+    clearMap();
+    mapObj.setView(opts[1], opts[0]);
+    addFFGSlayer();
+    layerObj = newLayer();
+    controlsObj = makeControls();
+});
+
+
+$("#displaytoggle").click(function() {
+    $("#displaycontrols").toggle();
+});
+
+$("#chartoptions").change(function () {
+    updateChart(id);
+});
+
 $('#colorscheme').change(function () {
     clearMap();
     addFFGSlayer();
@@ -59,25 +81,4 @@ $('#colorscheme').change(function () {
 
 $("#opacity_raster").change(function () {
     layerObj.setOpacity($("#opacity_raster").val())
-});
-
-$("#datatoggle").click(function() {
-    $("#datacontrols").toggle();
-});
-
-$("#displaytoggle").click(function() {
-    $("#displaycontrols").toggle();
-});
-
-$("#chartoptions").change(function () {
-    updateChart(id);
-});
-
-$("#region").change(function () {
-    let opts = zoomOpts[$("#region").val()];
-    clearMap();
-    mapObj.setView(opts[1], opts[0]);
-    addFFGSlayer();
-    layerObj = newLayer();
-    controlsObj = makeControls();
 });

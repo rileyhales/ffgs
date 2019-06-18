@@ -1,4 +1,4 @@
-Workflow initiated on 06/18/19 at 18:38
+Workflow initiated on 06/18/19 at 19:02
 
 Setting the Environment
 determined the timestamp to download: 2019061812
@@ -6,33 +6,9 @@ Creating APP WORKSPACE (GeoTIFF) file structure for hispaniola
 Creating THREDDS file structure for hispaniola
 Creating APP WORKSPACE (GeoTIFF) file structure for centralamerica
 Creating THREDDS file structure for centralamerica
-Internal Server Error: /apps/ffgs/runWorkflow/
-Traceback (most recent call last):
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
-    response = get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
-    response = self._get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/controllers.py", line 86, in run_workflow
-    threddspath, wrksppath, timestamp, redundant = setenvironment()
-  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/ffgsworkflow.py", line 76, in setenvironment
-    os.mkdir(new_dir)
-FileNotFoundError: [Errno 2] No such file or directory: '/Users/chrisedwards/thredds/ffgs/centralamerica/gfs'
-"GET /apps/ffgs/runWorkflow/ HTTP/1.1" 500 89542
-Not Found: /favicon.ico
-"GET /favicon.ico HTTP/1.1" 404 3621
-Workflow initiated on 06/18/19 at 18:39
+All done, on to do work
 
-Setting the Environment
-determined the timestamp to download: 2019061812
-You have a file structure for this timestep but didnt complete the workflow, analyzing...
-
-Beginning to process hispaniola on 06/18/19 at 18:39
+Beginning to process hispaniola on 06/18/19 at 19:02
 
 Starting GFS Grib Downloads for hispaniola
 downloading the file 2019061818.grb
@@ -67,337 +43,281 @@ Finished Downloads
 
 Starting to process the GFS gribs into GeoTIFFs
 working on file 2019061818.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061818.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061818.grb
 ecCodes library found using name 'eccodes'.
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061818.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061818.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019061900.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061900.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061900.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061900.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061900.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019061906.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061906.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061906.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061906.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061906.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019061912.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061912.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061912.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061912.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061912.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019061918.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061918.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061918.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061918.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019061918.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062000.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062000.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062000.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062000.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062000.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062006.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062006.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062006.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062006.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062006.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062012.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062012.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062012.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062012.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062012.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062018.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062018.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062018.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062018.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062018.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062100.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062100.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062100.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062100.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062100.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062106.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062106.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062106.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062106.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062106.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062112.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062112.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062112.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062112.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062112.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062118.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062118.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062118.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062118.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062118.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062200.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062200.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062200.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062200.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062200.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062206.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062206.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062206.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062206.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062206.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062212.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062212.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062212.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062212.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062212.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062218.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062218.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062218.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062218.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062218.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062300.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062300.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062300.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062300.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062300.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062306.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062306.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062306.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062306.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062306.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062312.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062312.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062312.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062312.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062312.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062318.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062318.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062318.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062318.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062318.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062400.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062400.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062400.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062400.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062400.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062406.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062406.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062406.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062406.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062406.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062412.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062412.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062412.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062412.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062412.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062418.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062418.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062418.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062418.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062418.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062500.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062500.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062500.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062500.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062500.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062506.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062506.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062506.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062506.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062506.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062512.grb
-opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062512.grb
+opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062512.grb
 missing from GRIB stream: 'number'
-missing from GRIB stream: 'directionNumber'
-missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062512.grb
+saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/gribs/2019062512.grb
 converted
 writing the correct values to the tp array
 created a netcdf
@@ -405,34 +325,34 @@ wrote it to a GeoTIFF
 
 
 Resampling the rasters for hispaniola
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061818.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061900.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061906.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061912.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061918.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062000.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062006.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062012.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062018.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062100.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062106.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062112.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062118.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062200.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062206.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062212.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062218.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062300.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062306.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062312.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062318.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062400.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062406.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062412.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062418.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062500.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062506.tif
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062512.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061818.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061900.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061906.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061912.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019061918.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062000.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062006.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062012.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062018.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062100.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062106.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062112.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062118.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062200.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062206.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062212.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062218.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062300.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062306.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062312.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062318.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062400.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062406.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062412.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062418.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062500.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062506.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/GeoTIFFs/2019062512.tif
 
 Doing Zonal Statistics on hispaniola
 starting zonal statistics for 2019061818_resampled.tif
@@ -532,42 +452,471 @@ Writing a new ncml file for this date
 Wrote New .ncml
 
 Generating a new color scale csv for the gfs results
-/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/gfsresults.csv
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/gfsresults.csv
 Wrote new rules to csv
 
 Setting the WMS bounds
-working on file /Users/chrisedwards/thredds/ffgs/hispaniola/gfs/2019061812/processed/processed_2019062000.nc
+working on file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019061812/processed/processed_2019062000.nc
 done checking for max/min. writing the file
 wrote the js file
 Getting rid of old gfs data folders
 Done
 
-Beginning to process centralamerica on 06/18/19 at 18:44
+Beginning to process centralamerica on 06/18/19 at 19:05
 
 Starting GFS Grib Downloads for centralamerica
-There is no download folder, you must have already processed them. Skipping download stage.
+downloading the file 2019061818.grb
+downloading the file 2019061900.grb
+downloading the file 2019061906.grb
+downloading the file 2019061912.grb
+downloading the file 2019061918.grb
+downloading the file 2019062000.grb
+downloading the file 2019062006.grb
+downloading the file 2019062012.grb
+downloading the file 2019062018.grb
+downloading the file 2019062100.grb
+downloading the file 2019062106.grb
+downloading the file 2019062112.grb
+downloading the file 2019062118.grb
+downloading the file 2019062200.grb
+downloading the file 2019062206.grb
+downloading the file 2019062212.grb
+downloading the file 2019062218.grb
+downloading the file 2019062300.grb
+downloading the file 2019062306.grb
+downloading the file 2019062312.grb
+downloading the file 2019062318.grb
+downloading the file 2019062400.grb
+downloading the file 2019062406.grb
+downloading the file 2019062412.grb
+downloading the file 2019062418.grb
+downloading the file 2019062500.grb
+downloading the file 2019062506.grb
+downloading the file 2019062512.grb
+Finished Downloads
 
 Starting to process the GFS gribs into GeoTIFFs
-There is no gribs folder, you must have already run this step. Skipping conversions
+working on file 2019061818.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061818.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061818.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019061900.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061900.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061900.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019061906.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061906.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061906.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019061912.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061912.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061912.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019061918.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061918.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019061918.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062000.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062000.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062000.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062006.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062006.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062006.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062012.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062012.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062012.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062018.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062018.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062018.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062100.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062100.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062100.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062106.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062106.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062106.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062112.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062112.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062112.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062118.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062118.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062118.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062200.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062200.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062200.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062206.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062206.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062206.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062212.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062212.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062212.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062218.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062218.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062218.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062300.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062300.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062300.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062306.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062306.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062306.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062312.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062312.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062312.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062318.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062318.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062318.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062400.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062400.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062400.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062406.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062406.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062406.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062412.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062412.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062412.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062418.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062418.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062418.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062500.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062500.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062500.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062506.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062506.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062506.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
+working on file 2019062512.grb
+opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062512.grb
+missing from GRIB stream: 'number'
+converting it to a netcdf
+saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/gribs/2019062512.grb
+converted
+writing the correct values to the tp array
+created a netcdf
+wrote it to a GeoTIFF
+
 
 Resampling the rasters for centralamerica
-Internal Server Error: /apps/ffgs/runWorkflow/
-Traceback (most recent call last):
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/exception.py", line 41, in inner
-    response = get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
-    response = self._get_response(request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 187, in _get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/core/handlers/base.py", line 185, in _get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/Users/chrisedwards/tethys/miniconda/envs/tethys/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
-    return view_func(request, *args, **kwargs)
-  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/controllers.py", line 99, in run_workflow
-    resample(wrksppath, region[1])
-  File "/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/ffgsworkflow.py", line 115, in resample
-    path = os.path.join(tiffs, files[0])
-IndexError: list index out of range
-"GET /apps/ffgs/runWorkflow/ HTTP/1.1" 500 87947
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019061818.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019061900.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019061906.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019061912.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019061918.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062000.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062006.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062012.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062018.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062100.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062106.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062112.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062118.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062200.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062206.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062212.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062218.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062300.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062306.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062312.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062318.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062400.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062406.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062412.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062418.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062500.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062506.tif
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062512.tif
+
+Doing Zonal Statistics on centralamerica
+starting zonal statistics for 2019061818_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019061900_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019061906_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019061912_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019061918_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062000_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062006_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062012_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062018_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062100_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062106_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062112_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062118_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062200_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062206_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062212_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062218_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062300_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062306_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062312_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062318_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062400_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062406_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062412_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062418_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062500_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062506_resampled.tif
+writing the statistics for this file to the dataframe
+starting zonal statistics for 2019062512_resampled.tif
+writing the statistics for this file to the dataframe
+
+done with zonal statistics, rounding values, writing to a csv file
+deleting the resampled tiffs directory
+
+Processing the netCDF files
+There are 28 compatible files.
+Preparing the reference file
+Working on file 2019061918.nc
+Working on file 2019062506.nc
+Working on file 2019062318.nc
+Working on file 2019062512.nc
+Working on file 2019062412.nc
+Working on file 2019062218.nc
+Working on file 2019062406.nc
+Working on file 2019061818.nc
+Working on file 2019061912.nc
+Working on file 2019062312.nc
+Working on file 2019062306.nc
+Working on file 2019062100.nc
+Working on file 2019061906.nc
+Working on file 2019062418.nc
+Working on file 2019062000.nc
+Working on file 2019062206.nc
+Working on file 2019062212.nc
+Working on file 2019062112.nc
+Working on file 2019062300.nc
+Working on file 2019062106.nc
+Working on file 2019061900.nc
+Working on file 2019062006.nc
+Working on file 2019062200.nc
+Working on file 2019062012.nc
+Working on file 2019062118.nc
+Working on file 2019062500.nc
+Working on file 2019062400.nc
+Working on file 2019062018.nc
+Finished File Conversions
+
+Writing a new ncml file for this date
+Wrote New .ncml
+
+Generating a new color scale csv for the gfs results
+/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/gfsresults.csv
+Wrote new rules to csv
+
+Setting the WMS bounds
+working on file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019061812/processed/processed_2019062000.nc
+done checking for max/min. writing the file
+wrote the js file
+Getting rid of old gfs data folders
+Done
+
+        All regions and models finished- writing the timestamp used on this run to a txt file
+
+Workflow completed successfully on 06/18/19 at 19:09
 Not Found: /favicon.ico
 "GET /favicon.ico HTTP/1.1" 404 3621

@@ -23,7 +23,7 @@ function map() {
             backwardButton: true,
             forwardButton: true,
             timeSliderDragUpdate: true,
-            minSpeed: 1,
+            minSpeed: 2,
             maxSpeed: 6,
             speedStep: 1,
         },
@@ -55,7 +55,7 @@ function newLayer() {
         opacity: $("#opacity_raster").val(),
         BGCOLOR: '0x000000',
         styles: 'boxfill/' + $('#colorscheme').val(),
-        colorscalerange: '0,50'
+        colorscalerange: '0,35'
     });
 
     return L.timeDimension.layer.wms(wmsLayer, {
@@ -72,12 +72,13 @@ function newLayer() {
 let forecastLegend = L.control({position: 'bottomright'});
 forecastLegend.onAdd = function () {
     let div = L.DomUtil.create('div', 'legend');
-    let url = threddsbase + '/' + $("#region").val() + '/' + $("#model").val() + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0,50";
+    let url = threddsbase + '/' + $("#region").val() + '/' + $("#model").val() + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0,35";
     div.innerHTML = '<img src="' + url + '" alt="legend" style="width:100%; float:right;">';
     return div
 };
 
-// the geojson legend
+
+// the geojson (colored watersheds) legend
 let ffgsLegend = L.control({position: 'bottomleft'});
 ffgsLegend.onAdd = function () {
     let div = L.DomUtil.create('div', 'info legend'),
@@ -92,7 +93,6 @@ ffgsLegend.onAdd = function () {
     div.innerHTML = labels.join('<br>');
     return div;
 };
-
 ////////////////////////////////////////////////////////////////////////  GEOJSON LAYERS - GEOSERVER + WFS / GEOJSON
 function layerPopups(feature, layer) {
     let watershed_id = feature.properties.cat_id;
@@ -107,10 +107,10 @@ function layerPopups(feature, layer) {
 let watersheds;
 let watersheds_colors;
 let geojson_sorter = {
+    // regionname: regionname_json for each region that is configured
     'hispaniola': hispaniola_json,
     'centralamerica': centralamerica_json,
     // 'nepal', nepal_json,
-    // regionname: regionname_json for each region that is configured
 };
 
 function colorScale(value) {

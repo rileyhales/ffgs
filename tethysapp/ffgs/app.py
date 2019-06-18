@@ -3,11 +3,9 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 
 # ROUGHLY IN ORDER OF IMPORTANCE
 # todo update the set_wmsbounds function
-# todo Update how to use the app
-
-# todo make the update workflow a cron job that we can run each day? 6 hours? put a copy of the script in the app
 # todo make the csv of thresholds update automatically like the reservoir app, print the threshold date on the UI
 # todo make the wrf model downloads work?
+# todo add a clobber option to the workflow so that if clobber is true, delete everything and force a workflow run
 
 """
 GENERAL NOTES
@@ -33,7 +31,7 @@ class Ffgs(TethysAppBase):
     enable_feedback = False
     feedback_emails = []
     githublink = 'https://github.com/rileyhales/ffgs'
-    version = 'inital dev - 29 May 2019'
+    version = 'v1.0 - 18 June 2019'
 
     def url_maps(self):
         """

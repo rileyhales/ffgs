@@ -30,6 +30,7 @@ def download_gfs(threddspath, timestamp, region):
 
     # # get the parts of the timestamp to put into the url
     time = datetime.datetime.strptime(timestamp, "%Y%m%d%H").strftime("%H")
+    fc_date = datetime.datetime.strptime(timestamp, "%Y%m%d%H").strftime("%Y%m%d")
 
     # This is the List of forecast timesteps for 5 days (6-hr increments). download them all
     fc_steps = ['006', '012', '018', '024', '030', '036', '042', '048', '054', '060', '066', '072', '078', '084',
@@ -42,7 +43,7 @@ def download_gfs(threddspath, timestamp, region):
     }
     for step in fc_steps:
         url = 'https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t' + time + 'z.pgrb2.0p25.f' + step + \
-              '&all_lev=on&var_APCP=on&' + subregions[region] + '&dir=%2Fgfs.' + timestamp
+              '&all_lev=on&var_APCP=on&' + subregions[region] + '&dir=%2Fgfs.' + fc_date + '%2F' + time
 
         fc_timestamp = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
         file_timestep = fc_timestamp + datetime.timedelta(hours=int(step))

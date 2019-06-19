@@ -134,13 +134,23 @@ def download_gfs(threddspath, timestamp, region):
         filename = filename_timestep + '.grb'
         logging.info('downloading the file ' + filename)
         filepath = os.path.join(gribsdir, filename)
-        with requests.get(url, stream=True) as r:
-            r.raise_for_status()
-            with open(filepath, 'wb') as f:
-                for chunk in r.iter_content(chunk_size=8192):
-                    if chunk:  # filter out keep-alive new chunks
-                        f.write(chunk)
-
+        try:
+            with requests.get(url, stream=True) as r:
+                r.raise_for_status()
+                with open(filepath, 'wb') as f:
+                    for chunk in r.iter_content(chunk_size=8192):
+                        if chunk:  # filter out keep-alive new chunks
+                            f.write(chunk)
+        except requests.HTTPError as e:
+            errorcode = e.response.status_code
+            logging.info('\nHTTPError ' + str(errorcode) + ' downloading ' + filename + ' from\n' + url)
+            if errorcode == 404:
+                logging.info('The file was not found on the server, trying an older forecast time')
+                # todo get next newest timestamp, if not same as current then delete files/folders + restart workflow
+            elif errorcode == 500:
+                logging.info('Probably a problem with the URL. Check the log and try the link')
+                # todo handle this error by making the controller handle a false response
+            return False
     logging.info('Finished Downloads')
     return
 
@@ -229,7 +239,7 @@ def gfs_tiffs(threddspath, wrksppath, timestamp, region):
             dst.write(file_array, 1)
         logging.info('wrote it to a GeoTIFF\n')
 
-    # # clear the gribs folder now that we're done with this
+    # clear the gribs folder now that we're done with this
     shutil.rmtree(gribs)
 
     return
@@ -415,10 +425,6 @@ def nc_georeference(threddspath, timestamp, region):
     variables = variables.keys()
 
     # min lat and lon and the interval between values (these are static values
-    lat_min = -90
-    lon_min = -180
-    lat_step = .25
-    lon_step = .25
     netcdf_obj.close()
 
     # this is where the files start getting copied
@@ -602,9 +608,7 @@ def set_wmsbounds(threddspath, timestamp, region):
     return
 
 
-def cleanup(threddspath, wrksppath, timestamp, region):
-    # write a file with the current timestep triggering the app to start using this data
-
+def cleanup(threddspath, timestamp, region):
     # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
     logging.info('Getting rid of old gfs data folders')
     path = os.path.join(threddspath, region, 'gfs')
@@ -652,9 +656,9 @@ def run_gfs_workflow():
         new_colorscales(wrksppath, region[1])
         set_wmsbounds(threddspath, timestamp, region[1])
         # cleanup the workspace by removing old files
-        cleanup(threddspath, wrksppath, timestamp, region[1])
+        cleanup(threddspath, timestamp, region[1])
 
-    logging.info('\n        All regions and models finished- writing the timestamp used on this run to a txt file')
+    logging.info('\n        All regions finished- writing the timestamp used on this run to a txt file')
     with open(os.path.join(wrksppath, 'timestamp.txt'), 'w') as file:
         file.write(timestamp)
 

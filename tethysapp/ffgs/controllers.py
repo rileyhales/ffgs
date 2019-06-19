@@ -3,10 +3,10 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from tethys_sdk.gizmos import SelectInput, RangeSlider
 
-from .data_gfs import *
+from .app import Ffgs as App
 # from .data_wrf import *
-from .ffgsworkflow import *
-from .options import wms_colors, forecastmodels, ffgs_regions, get_forecastdate
+from .gfsworkflow import run_gfs_workflow
+from .options import wms_colors, forecastmodels, ffgs_regions, get_forecastdate, chart_options
 
 
 @login_required()
@@ -78,40 +78,10 @@ def run_workflow(request):
     """
     The controller for running the workflow to download and process data
     """
-    # enable logging to track the progress of the workflow and for debugging
-    logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
-    logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    gfs_status = run_gfs_workflow()
+    wrf_status = 'Not run yet'
 
-    # start the workflow by setting the environment
-    threddspath, wrksppath, timestamp, redundant = setenvironment()
-
-    # if this has already been done for the most recent forecast, abort the workflow
-    if redundant:
-        logging.info('\nWorkflow aborted on ' + datetime.datetime.utcnow().strftime("%D at %R"))
-        return JsonResponse({'Status': 'Workflow Aborted: already run for most recent data'})
-
-    # run the workflow for each region, for each model in that region
-    for region in ffgs_regions():
-        logging.info('\nBeginning to process ' + region[1] + ' on ' + datetime.datetime.utcnow().strftime("%D at %R"))
-        # download each forecast model, convert them to netcdfs and tiffs
-        download_gfs(threddspath, timestamp, region[1])
-        gfs_tiffs(threddspath, wrksppath, timestamp, region[1])
-        resample(wrksppath, region[1])
-        for model in forecastmodels():
-            # the geoprocessing functions
-            zonal_statistics(wrksppath, timestamp, region[1], model[1])
-            nc_georeference(threddspath, timestamp, region[1], model[1])
-            # generate color scales and ncml aggregation files
-            new_ncml(threddspath, timestamp, region[1], model[1])
-            new_colorscales(wrksppath, region[1], model[1])
-            set_wmsbounds(threddspath, timestamp, region[1], model[1])
-            # cleanup the workspace by removing old files
-            cleanup(threddspath, wrksppath, timestamp, region[1], model[1])
-
-    logging.info('\n        All regions and models finished- writing the timestamp used on this run to a txt file')
-    with open(os.path.join(wrksppath, 'timestamp.txt'), 'w') as file:
-        file.write(timestamp)
-
-    logging.info('\nWorkflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
-
-    return JsonResponse({'Status': 'Workflow Completed: normal finish'})
+    return JsonResponse({
+        'gfs status': gfs_status,
+        'wrf status': wrf_status,
+    })

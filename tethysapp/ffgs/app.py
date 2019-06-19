@@ -31,7 +31,7 @@ class Ffgs(TethysAppBase):
     enable_feedback = False
     feedback_emails = []
     githublink = 'https://github.com/rileyhales/ffgs'
-    version = 'v1.0 - 18 June 2019'
+    version = '1.1 testing - 19 June 2019'
 
     def url_maps(self):
         """

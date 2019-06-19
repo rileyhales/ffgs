@@ -1,8 +1,9 @@
-import os
 import datetime
-import shutil
-import requests
 import logging
+import os
+import shutil
+
+import requests
 
 
 def download_wrf(threddspath, timestamp):

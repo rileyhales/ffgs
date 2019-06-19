@@ -46,10 +46,19 @@ def ffgs_regions():
     ]
 
 
+def wrfpr_regions():
+    """
+    Regions that the app currently supports for WRF Puerto Rico
+    """
+    return [
+        ('Hispaniola', 'hispaniola'),
+    ]
+
+
 def forecastmodels():
     return [
         ('GFS', 'gfs'),
-        # ('WRF', 'wrf'),
+        # ('WRF-PR', 'wrfpr'),
     ]
 
 

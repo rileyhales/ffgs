@@ -48,9 +48,14 @@ class Ffgs(TethysAppBase):
 
             # url maps for data processing functions
             UrlMap(
-                name='runWorkflow',
-                url='ffgs/runWorkflow',
-                controller='ffgs.controllers.run_workflow'
+                name='runGFS',
+                url='ffgs/runGFS',
+                controller='ffgs.controllers.run_gfs'
+            ),
+            UrlMap(
+                name='runWRFPR',
+                url='ffgs/runWRFPR',
+                controller='ffgs.controllers.run_wrfpr'
             ),
 
             # url maps for ajax calls

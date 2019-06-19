@@ -6,6 +6,8 @@ from tethys_sdk.gizmos import SelectInput, RangeSlider
 from .app import Ffgs as App
 # from .data_wrf import *
 from .gfsworkflow import run_gfs_workflow
+from .wrfprworkflow import run_wrfpr_workflow
+
 from .options import wms_colors, forecastmodels, ffgs_regions, get_forecastdate, chart_options
 
 
@@ -74,14 +76,23 @@ def home(request):
 
 
 @login_required()
-def run_workflow(request):
+def run_gfs(request):
     """
     The controller for running the workflow to download and process data
     """
     gfs_status = run_gfs_workflow()
-    wrf_status = 'Not run yet'
 
     return JsonResponse({
         'gfs status': gfs_status,
+    })
+
+@login_required()
+def run_wrfpr(request):
+    """
+    The controller for running the workflow to download and process data
+    """
+    wrf_status = run_wrfpr_workflow()
+
+    return JsonResponse({
         'wrf status': wrf_status,
     })

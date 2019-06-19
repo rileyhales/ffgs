@@ -13,22 +13,19 @@ from rasterio.enums import Resampling
 
 from .options import *
 
+# TODO NetCDF's are not generating correctly
 
 def setenvironment():
     """
     Dependencies: os, shutil, datetime, urllib.request, app_settings (options)
     """
     logging.info('\nSetting the Environment')
-    # determine the most day and hour of the day timestamp of the most recent GFS forecast
+    # determine the most day and hour of the day timestamp of the most recent WRF-PR forecast
     now = datetime.datetime.utcnow()
-    if now.hour > 19:
+    if now.hour > 20:
         timestamp = now.strftime("%Y%m%d") + '18'
-    elif now.hour > 13:
-        timestamp = now.strftime("%Y%m%d") + '12'
-    elif now.hour > 7:
+    elif now.hour > 8:
         timestamp = now.strftime("%Y%m%d") + '06'
-    elif now.hour > 1:
-        timestamp = now.strftime("%Y%m%d") + '00'
     else:
         now = now - datetime.timedelta(days=1)
         timestamp = now.strftime("%Y%m%d") + '18'
@@ -40,7 +37,7 @@ def setenvironment():
     wrksppath = configuration['app_wksp_path']
 
     # perform a redundancy check, if the last timestamp is the same as current, abort the workflow
-    timefile = os.path.join(wrksppath, 'timestamp.txt')
+    timefile = os.path.join(wrksppath, 'timestamp_wrfpr.txt')
     with open(timefile, 'r') as file:
         lasttime = file.readline()
         if lasttime == timestamp:
@@ -51,38 +48,38 @@ def setenvironment():
             redundant = False
 
     # if the file structure already exists, quit
-    chk_hisp = os.path.join(wrksppath, 'hispaniola', 'GeoTIFFs_resampled')
-    chk_centr = os.path.join(wrksppath, 'centralamerica', 'GeoTIFFs_resampled')
-    if os.path.exists(chk_hisp) and os.path.exists(chk_centr):
+    chk_hisp = os.path.join(wrksppath, 'hispaniola', 'wrfpr_GeoTIFFs_resampled')
+
+    if os.path.exists(chk_hisp):
         logging.info('You have a file structure for this timestep but didnt complete the workflow, analyzing...')
         return threddspath, wrksppath, timestamp, redundant
 
     # create the file structure and their permissions for the new data
     for region in wrfpr_regions():
         logging.info('Creating APP WORKSPACE (GeoTIFF) file structure for ' + region[1])
-        new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFs')
+        new_dir = os.path.join(wrksppath, region[1], 'wrfpr_GeoTIFFs')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
-        new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFs_resampled')
+        new_dir = os.path.join(wrksppath, region[1], 'wrfpr_GeoTIFFs_resampled')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
         logging.info('Creating THREDDS file structure for ' + region[1])
-        new_dir = os.path.join(threddspath, region[1], 'gfs')
+        new_dir = os.path.join(threddspath, region[1], 'wrfpr')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
-        new_dir = os.path.join(threddspath, region[1], 'gfs', timestamp)
+        new_dir = os.path.join(threddspath, region[1], 'wrfpr', timestamp)
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
         for filetype in ('gribs', 'netcdfs', 'processed'):
-            new_dir = os.path.join(threddspath, region[1], 'gfs', timestamp, filetype)
+            new_dir = os.path.join(threddspath, region[1], 'wrfpr', timestamp, filetype)
             if os.path.exists(new_dir):
                 shutil.rmtree(new_dir)
             os.mkdir(new_dir)
@@ -92,17 +89,21 @@ def setenvironment():
     return threddspath, wrksppath, timestamp, redundant
 
 
-def download_gfs(threddspath, timestamp, region):
-    logging.info('\nStarting GFS Grib Downloads for ' + region)
+def download_wrfpr(threddspath, timestamp, region):
+    """
+    Script to download WRF-PuertoRico Grib Files.
+    Dependencies: datetime, os, requests, shutil
+    """
+    logging.info('\nStarting WRF-PR Grib Downloads')
     # set filepaths
-    gribsdir = os.path.join(threddspath, region, 'gfs', timestamp, 'gribs')
+    gribsdir = os.path.join(threddspath, region, 'wrfpr', timestamp, 'gribs')
 
     # if you already have a folder with data for this timestep, quit this function (you dont need to download it)
     if not os.path.exists(gribsdir):
         logging.info('There is no download folder, you must have already processed them. Skipping download stage.')
         return
-    elif len(os.listdir(gribsdir)) >= 40:
-        logging.info('There are already 40 forecast steps in here. Dont need to download them')
+    elif len(os.listdir(gribsdir)) >= 48:
+        logging.info('There are already 48 forecast steps in here. Dont need to download them')
         return
     # otherwise, remove anything in the folder before starting (in case there was a partial download)
     else:
@@ -115,17 +116,15 @@ def download_gfs(threddspath, timestamp, region):
     fc_date = datetime.datetime.strptime(timestamp, "%Y%m%d%H").strftime("%Y%m%d")
 
     # This is the List of forecast timesteps for 5 days (6-hr increments). download them all
-    fc_steps = ['006', '012', '018', '024', '030', '036', '042', '048', '054', '060', '066', '072', '078', '084',
-                '090', '096', '102', '108', '114', '120', '126', '132', '138', '144', '150', '156', '162', '168']
+    fc_steps = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12',
+                '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24',
+                '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36',
+                '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48']
 
     # this is where the actual downloads happen. set the url, filepath, then download
-    subregions = {
-        'hispaniola': 'subregion=&leftlon=-75&rightlon=-68&toplat=20.5&bottomlat=17',
-        'centralamerica': 'subregion=&leftlon=-94.25&rightlon=-75.5&toplat=19.5&bottomlat=5.5',
-    }
     for step in fc_steps:
-        url = 'https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t' + time + 'z.pgrb2.0p25.f' + step + \
-              '&all_lev=on&var_APCP=on&' + subregions[region] + '&dir=%2Fgfs.' + fc_date + '%2F' + time
+        url = 'https://www.ftp.ncep.noaa.gov/data/nccf/com/hiresw/prod/hiresw.' + \
+              fc_date + '/hiresw.t' + time + 'z.arw_5km.f' + step + '.pr.grib2'
 
         fc_timestamp = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
         file_timestep = fc_timestamp + datetime.timedelta(hours=int(step))
@@ -155,18 +154,18 @@ def download_gfs(threddspath, timestamp, region):
     return
 
 
-def gfs_tiffs(threddspath, wrksppath, timestamp, region):
+def wrfpr_tiffs(threddspath, wrksppath, timestamp, region):
     """
-    Script to combine 6-hr accumulation grib files into 24-hr accumulation geotiffs.
-    Dependencies: datetime, os, numpy, rasterio
+    Script to convert grib files with multiple variables to Total Accumulated Precipitation GeoTIFFs.
+    Dependencies: datetime, os, shutil, numpy, rasterio
     """
-    logging.info('\nStarting to process the GFS gribs into GeoTIFFs')
+    logging.info('\nStarting to process the WRF-PR gribs into GeoTIFFs')
     # declare the environment
-    tiffs = os.path.join(wrksppath, region, 'GeoTIFFs')
-    gribs = os.path.join(threddspath, region, 'gfs', timestamp, 'gribs')
-    netcdfs = os.path.join(threddspath, region, 'gfs', timestamp, 'netcdfs')
+    tiffs = os.path.join(wrksppath, region, 'wrfpr_GeoTIFFs')
+    gribs = os.path.join(threddspath, region, 'wrfpr', timestamp, 'gribs')
+    netcdfs = os.path.join(threddspath, region, 'wrfpr', timestamp, 'netcdfs')
 
-    # if you already have gfs netcdfs in the netcdfs folder, quit the function
+    # if you already have wrf-pr netcdfs in the netcdfs folder, quit the function
     if not os.path.exists(gribs):
         logging.info('There is no gribs folder, you must have already run this step. Skipping conversions')
         return
@@ -179,7 +178,7 @@ def gfs_tiffs(threddspath, wrksppath, timestamp, region):
         os.mkdir(tiffs)
         os.chmod(tiffs, 0o777)
 
-    # create a list of all the files of type grib and convert to a list of their file paths
+    # create a list of all the files of type "grb" and convert to a list of their file paths
     files = os.listdir(gribs)
     files = [grib for grib in files if grib.endswith('.grb')]
     files.sort()
@@ -197,12 +196,23 @@ def gfs_tiffs(threddspath, wrksppath, timestamp, region):
     # Geotransform for each 24-hr raster (east, south, west, north, width, height)
     geotransform = rasterio.transform.from_bounds(lon_min, lat_min, lon_max, lat_max, width, height)
 
-    # Add rasters together to form 24-hr raster
-    for i in files:
+    # Create 1-hr GeoTIFFs and NetCDFs
+    for i, j in zip(files, range(len(files))):
         logging.info('working on file ' + i)
-        path = os.path.join(gribs, i)
-        src = rasterio.open(path)
-        file_array = src.read(1)
+        if j == 0:
+            path = os.path.join(gribs, i)
+            src = rasterio.open(path)
+            file_array = src.read(284)
+        else:
+            cum_file = os.path.join(gribs, i)
+            cum_src = rasterio.open(cum_file)
+            cum_array = cum_src.read(284)
+
+            past_file = os.path.join(gribs, files[j-1])
+            past_src = rasterio.open(past_file)
+            past_array = past_src.read(284)
+
+            file_array = cum_array - past_array
 
         # using the last grib file for the day (path) convert it to a netcdf and set the variable to file_array
         logging.info('opening grib file ' + path)
@@ -239,21 +249,21 @@ def gfs_tiffs(threddspath, wrksppath, timestamp, region):
             dst.write(file_array, 1)
         logging.info('wrote it to a GeoTIFF\n')
 
-    # clear the gribs folder now that we're done with this
-    shutil.rmtree(gribs)
+    # # clear the gribs folder now that we're done with this
+    # shutil.rmtree(gribs)
 
     return
 
 
 def resample(wrksppath, region):
     """
-    Script to resample rasters from .25 o .0025 degree in order for rasterstats to work
+    Script to resample rasters to 20x the original resolution in order for rasterstats to work
     Dependencies: datetime, os, numpy, rasterio
     """
     logging.info('\nResampling the rasters for ' + region)
     # Define app workspace and sub-paths
-    tiffs = os.path.join(wrksppath, region, 'GeoTIFFs')
-    resampleds = os.path.join(wrksppath, region, 'GeoTIFFs_resampled')
+    tiffs = os.path.join(wrksppath, region, 'wrfpr_GeoTIFFs')
+    resampleds = os.path.join(wrksppath, region, 'wrfpr_GeoTIFFs_resampled')
 
     # Create directory for the resampled GeoTIFFs
     if not os.path.exists(tiffs):
@@ -276,7 +286,7 @@ def resample(wrksppath, region):
     lat_max = raster_dim.bounds.top
 
     # Geotransform for each resampled raster (east, south, west, north, width, height)
-    geotransform_res = rasterio.transform.from_bounds(lon_min, lat_min, lon_max, lat_max, width * 100, height * 100)
+    geotransform_res = rasterio.transform.from_bounds(lon_min, lat_min, lon_max, lat_max, width * 20, height * 20)
 
     # Resample each GeoTIFF
     for file in files:
@@ -284,8 +294,7 @@ def resample(wrksppath, region):
         logging.info(path)
         with rasterio.open(path) as dataset:
             data = dataset.read(
-                out_shape=(int(dataset.height * 100), int(dataset.width * 100)),
-                # Reduce 100 to 10 if using the whole globe
+                out_shape=(int(dataset.height * 20), int(dataset.width * 20)),
                 resampling=Resampling.nearest
             )
 
@@ -312,7 +321,7 @@ def resample(wrksppath, region):
             dst.write(data, 1)
 
     # delete the non-resampled tiffs now that we dont need them
-    shutil.rmtree(tiffs)
+    # shutil.rmtree(tiffs)
 
     return
 
@@ -324,10 +333,10 @@ def zonal_statistics(wrksppath, timestamp, region):
     """
     logging.info('\nDoing Zonal Statistics on ' + region)
     # Define app workspace and sub-paths
-    resampleds = os.path.join(wrksppath, region, 'GeoTIFFs_resampled')
+    resampleds = os.path.join(wrksppath, region, 'wrfpr_GeoTIFFs_resampled')
     shp_path = os.path.join(wrksppath, region, 'shapefiles', 'ffgs_' + region + '.shp')
 
-    stat_file = os.path.join(wrksppath, region, 'gfsresults.csv')
+    stat_file = os.path.join(wrksppath, region, 'wrfprresults.csv')
 
     # check that there are resampled tiffs to do zonal statistics on
     if not os.path.exists(resampleds):
@@ -371,7 +380,7 @@ def zonal_statistics(wrksppath, timestamp, region):
 
     # delete the resampled tiffs now that we dont need them
     logging.info('deleting the resampled tiffs directory')
-    shutil.rmtree(resampleds)
+    # shutil.rmtree(resampleds)
 
     return
 
@@ -387,8 +396,8 @@ def nc_georeference(threddspath, timestamp, region):
     logging.info('\nProcessing the netCDF files')
 
     # setting the environment file paths
-    netcdfs = os.path.join(threddspath, region, 'gfs', timestamp, 'netcdfs')
-    processed = os.path.join(threddspath, region, 'gfs', timestamp, 'processed')
+    netcdfs = os.path.join(threddspath, region, 'wrfpr', timestamp, 'netcdfs')
+    processed = os.path.join(threddspath, region, 'wrfpr', timestamp, 'processed')
 
     # if you already have processed netcdfs files, skip this and quit the function
     if not os.path.exists(netcdfs):
@@ -425,6 +434,10 @@ def nc_georeference(threddspath, timestamp, region):
     variables = variables.keys()
 
     # min lat and lon and the interval between values (these are static values
+    lat_min = -90
+    lon_min = -180
+    lat_step = .25
+    lon_step = .25
     netcdf_obj.close()
 
     # this is where the files start getting copied
@@ -520,7 +533,7 @@ def nc_georeference(threddspath, timestamp, region):
 def new_ncml(threddspath, timestamp, region):
     logging.info('\nWriting a new ncml file for this date')
     # create a new ncml file by filling in the template with the right dates and writing to a file
-    ncml = os.path.join(threddspath, region, 'gfs', 'wms.ncml')
+    ncml = os.path.join(threddspath, region, 'wrfpr', 'wms.ncml')
     date = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
     date = datetime.datetime.strftime(date, "%Y-%m-%d %H:00:00")
     with open(ncml, 'w') as file:
@@ -542,9 +555,9 @@ def new_ncml(threddspath, timestamp, region):
 
 def new_colorscales(wrksppath, region):
     # set the environment
-    logging.info('\nGenerating a new color scale csv for the gfs results')
-    colorscales = os.path.join(wrksppath, region, 'gfscolorscales.csv')
-    results = os.path.join(wrksppath, region, 'gfsresults.csv')
+    logging.info('\nGenerating a new color scale csv for the WRF-PR results')
+    colorscales = os.path.join(wrksppath, region, 'wrfprcolorscales.csv')
+    results = os.path.join(wrksppath, region, 'wrfprresults.csv')
     logging.info(results)
     answers = pd.DataFrame(columns=['cat_id', 'mean', 'max'])
 
@@ -568,13 +581,13 @@ def set_wmsbounds(threddspath, timestamp, region):
     """
     logging.info('\nSetting the WMS bounds')
     # get a list of files to
-    ncfolder = os.path.join(threddspath, region, 'gfs', timestamp, 'processed')
+    ncfolder = os.path.join(threddspath, region, 'wrfpr', timestamp, 'processed')
     ncs = os.listdir(ncfolder)
     files = [file for file in ncs if file.startswith('processed')][0]
 
     # setup the dictionary of values to return
     bounds = {}
-    variables = {}  # gfs_variables()
+    variables = {}  # wrfpr_variables()
     for variable in variables:
         bounds[variables[variable]] = ''
 
@@ -608,10 +621,12 @@ def set_wmsbounds(threddspath, timestamp, region):
     return
 
 
-def cleanup(threddspath, timestamp, region):
+def cleanup(threddspath, wrksppath, timestamp, region):
+    # write a file with the current timestep triggering the app to start using this data
+
     # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
-    logging.info('Getting rid of old gfs data folders')
-    path = os.path.join(threddspath, region, 'gfs')
+    logging.info('Getting rid of old WRF-PR data folders')
+    path = os.path.join(threddspath, region, 'wrfpr')
     files = os.listdir(path)
     files.remove(timestamp)
     files.remove('wms.ncml')
@@ -625,7 +640,7 @@ def cleanup(threddspath, timestamp, region):
     return
 
 
-def run_gfs_workflow():
+def run_wrfpr_workflow():
     """
     The controller for running the workflow to download and process data
     """
@@ -645,8 +660,8 @@ def run_gfs_workflow():
     for region in wrfpr_regions():
         logging.info('\nBeginning to process ' + region[1] + ' on ' + datetime.datetime.utcnow().strftime("%D at %R"))
         # download each forecast model, convert them to netcdfs and tiffs
-        download_gfs(threddspath, timestamp, region[1])
-        gfs_tiffs(threddspath, wrksppath, timestamp, region[1])
+        download_wrfpr(threddspath, timestamp, region[1])
+        wrfpr_tiffs(threddspath, wrksppath, timestamp, region[1])
         resample(wrksppath, region[1])
         # the geoprocessing functions
         zonal_statistics(wrksppath, timestamp, region[1])
@@ -656,12 +671,12 @@ def run_gfs_workflow():
         new_colorscales(wrksppath, region[1])
         set_wmsbounds(threddspath, timestamp, region[1])
         # cleanup the workspace by removing old files
-        cleanup(threddspath, timestamp, region[1])
+        cleanup(threddspath, wrksppath, timestamp, region[1])
 
-    logging.info('\n        All regions finished- writing the timestamp used on this run to a txt file')
-    with open(os.path.join(wrksppath, 'timestamp.txt'), 'w') as file:
+    logging.info('\n        All regions and models finished- writing the timestamp used on this run to a txt file')
+    with open(os.path.join(wrksppath, 'timestamp_wrfpr.txt'), 'w') as file:
         file.write(timestamp)
 
-    logging.info('\nGFS Workflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    logging.info('\nWRF-PR Workflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
-    return 'GFS Workflow Completed: Normal Finish'
+    return 'WRF-PR Workflow Completed: Normal Finish'

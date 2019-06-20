@@ -42,7 +42,7 @@ function basemaps() {
 }
 
 ////////////////////////////////////////////////////////////////////////  WMS LAYERS FOR GLDAS
-function newLayer() {
+function newForecastLayer() {
     let regionmodel = get_regionmodel();
     let region = regionmodel[0];
     let model = regionmodel[1];
@@ -74,8 +74,11 @@ function newLayer() {
 // the forecast layer raster legend
 let forecastLegend = L.control({position: 'bottomright'});
 forecastLegend.onAdd = function () {
+    let regionmodel = get_regionmodel();
+    let region = regionmodel[0];
+    let model = regionmodel[1];
     let div = L.DomUtil.create('div', 'legend');
-    let url = threddsbase + '/' + $("#region").val() + '/' + $("#model").val() + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0,35";
+    let url = threddsbase + '/' + region + '/' + model + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0,35";
     div.innerHTML = '<img src="' + url + '" alt="legend" style="width:100%; float:right;">';
     return div
 };
@@ -194,8 +197,8 @@ function makeControls() {
 // you need to remove layers when you make changes so duplicates dont persist and accumulate
 function clearMap() {
     // remove the controls for the wms layer then remove it from the map
-    controlsObj.removeLayer(layerObj);
-    mapObj.removeLayer(layerObj);
+    controlsObj.removeLayer(forecastLayerObj);
+    mapObj.removeLayer(forecastLayerObj);
     controlsObj.removeLayer(watersheds);
     mapObj.removeLayer(watersheds);
     controlsObj.removeLayer(watersheds_colors);

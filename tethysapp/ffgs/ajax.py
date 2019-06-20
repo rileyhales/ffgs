@@ -26,11 +26,12 @@ def get_floodchart(request):
     # read the values sent from the javascript request
     data = ast.literal_eval(request.body.decode('utf-8'))
     id = data['watershedID']
+    model = data['model']
     region = data['region']
     wrksppath = app_settings()['app_wksp_path']
 
     # read the csv of results from the last workflow run
-    results = os.path.join(wrksppath, region, 'gfsresults.csv')
+    results = os.path.join(wrksppath, region, model + 'results.csv')
     df = pandas.read_csv(results)[['cat_id', 'mean', 'max', 'Timestep']]
     df = df.query("cat_id == @id")
 
@@ -64,11 +65,12 @@ def get_cum_floodchart(request):
     # read the values sent from the javascript request
     data = ast.literal_eval(request.body.decode('utf-8'))
     id = data['watershedID']
+    model = data['model']
     region = data['region']
     wrksppath = app_settings()['app_wksp_path']
 
     # read the csv of results from the last workflow run
-    results = os.path.join(wrksppath, region, 'gfsresults.csv')
+    results = os.path.join(wrksppath, region, model + 'results.csv')
     df = pandas.read_csv(results)[['cat_id', 'mean', 'max', 'Timestep']]
     df = df.query("cat_id == @id")
 

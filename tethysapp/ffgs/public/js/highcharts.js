@@ -13,32 +13,35 @@ Highcharts.setOptions({
 });
 
 let chartdata = null;
-let id;
+let id = null;
 
 // Placeholder chart
-let chart = Highcharts.chart('highchart', {
-    title: {
-        align: "center",
-        text: "Timeseries Data Chart Placeholder",
-    },
-    series: [{
-        data: [],
-    }],
-    chart: {
-        animation: true,
-        zoomType: 'x',
-        borderColor: '#000000',
-        borderWidth: 2,
-        type: 'area',
-    },
-    noData: {
-        style: {
-            fontWeight: 'bold',
-            fontSize: '15px',
-            color: '#303030'
-        }
-    },
-});
+function placeholderChart() {
+    return Highcharts.chart('highchart', {
+        title: {
+            align: "center",
+            text: "Timeseries Data Chart Placeholder",
+        },
+        series: [{
+            data: [],
+        }],
+        chart: {
+            animation: true,
+            zoomType: 'x',
+            borderColor: '#000000',
+            borderWidth: 2,
+            type: 'area',
+        },
+        noData: {
+            style: {
+                fontWeight: 'bold',
+                fontSize: '15px',
+                color: '#303030'
+            }
+        },
+    });
+}
+let chart = placeholderChart();
 
 function newHighchart() {
     chart = Highcharts.chart('highchart', {
@@ -140,9 +143,13 @@ function getFloodChart(ID) {
     chart.hideNoData();
     chart.showLoading();
 
+    let regionmodel = get_regionmodel();
+    let region = regionmodel[0];
+    let model = regionmodel[1];
+
     $.ajax({
         url: '/apps/ffgs/ajax/getFloodChart/',
-        data: JSON.stringify({region: $("#region").val(), watershedID: ID}),
+        data: JSON.stringify({region: region, model: model, watershedID: ID}),
         dataType: 'json',
         contentType: "application/json",
         method: 'POST',
@@ -157,9 +164,13 @@ function getCumFloodChart(ID) {
     chart.hideNoData();
     chart.showLoading();
 
+    let regionmodel = get_regionmodel();
+    let region = regionmodel[0];
+    let model = regionmodel[1];
+
     $.ajax({
         url: '/apps/ffgs/ajax/getCumFloodChart/',
-        data: JSON.stringify({region: $("#region").val(), watershedID: ID}),
+        data: JSON.stringify({region: region, model: model, watershedID: ID}),
         dataType: 'json',
         contentType: "application/json",
         method: 'POST',
@@ -172,10 +183,12 @@ function getCumFloodChart(ID) {
 
 function updateChart(ID) {
     let type = $("#chartoptions").val();
-    if (type === 'intervals'){
-        getFloodChart(ID);
-    }
-    if (type === 'cumulative'){
-        getCumFloodChart(ID);
+    if (ID !== null) {
+        if (type === 'intervals') {
+            getFloodChart(ID);
+        }
+        if (type === 'cumulative') {
+            getCumFloodChart(ID);
+        }
     }
 }

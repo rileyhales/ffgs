@@ -52,7 +52,7 @@ mapObj.on("mousemove", function (event) {
     $("#mouse-position").html('Lat: ' + event.latlng.lat.toFixed(4) + ', Lon: ' + event.latlng.lng.toFixed(4));
 });
 
-let layerObj = newLayer();              // adds the wms raster layer
+let forecastLayerObj = newForecastLayer();              // adds the wms raster layer
 addFFGSlayer();                         // adds the ffgs watershed layer chosen by the user
 let controlsObj = makeControls();       // the layer toggle controls top-right corner
 
@@ -60,6 +60,15 @@ forecastLegend.addTo(mapObj);           // add the legend for the WMS forecast l
 ffgsLegend.addTo(mapObj);               // add the legend for the colored geojson layer
 
 ////////////////////////////////////////////////////////////////////////  LISTENERS FOR CONTROLS ON THE MENU
+function changemap() {
+    clearMap();
+    addFFGSlayer();
+    forecastLayerObj = newForecastLayer();
+    controlsObj = makeControls();
+    forecastLegend.addTo(mapObj);
+    updateChart(id);
+}
+
 $("#region").change(function () {
     let region = this.options[this.selectedIndex].value;
     if (region === 'hispaniola') {
@@ -78,8 +87,18 @@ $("#region").change(function () {
     clearMap();
     mapObj.setView(opts[1], opts[0]);
     addFFGSlayer();
-    layerObj = newLayer();
+    forecastLayerObj = newForecastLayer();
     controlsObj = makeControls();
+    forecastLegend.addTo(mapObj);
+    chart = placeholderChart();
+});
+
+$("#hisp_models").change(function () {
+    changemap()
+});
+
+$("#central_models").change(function () {
+    changemap()
 });
 
 
@@ -92,13 +111,9 @@ $("#chartoptions").change(function () {
 });
 
 $('#colorscheme').change(function () {
-    clearMap();
-    addFFGSlayer();
-    layerObj = newLayer();
-    controlsObj = makeControls();
-    forecastLegend.addTo(mapObj);
+    changemap()
 });
 
 $("#opacity_raster").change(function () {
-    layerObj.setOpacity($("#opacity_raster").val())
+    forecastLayerObj.setOpacity($("#opacity_raster").val())
 });

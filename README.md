@@ -28,19 +28,73 @@ The accuracy of this application is limited by:
 1. No attempts are made to route the water to the drainage line or further down stream to determine the time of the flood. The charts indicate how long until enough water has accumulated to meet the threshold for precipitation given by the FFGS. They do not indicate that the flood will occur at the time the cumulative accumulation exceeds the threshold or determine if that is within the time constraints of the flash flood thresholds. The hydrologic losses, distribution of storm precipitation, and timing of flow will cause a difference between the chart's time and the actual event time, assuming the forecasted values occur. 
 
 ### How to add a new Region
-1. In options.py add to the list of ffgs regions with a new tuple in the format ('Proper name of region', 'shortname')
-2. Add a folder in the thredds directory named the same as the shortname
-3. Add a folder to the app workspace named the same as the shortname
-4. Get a copy of the shapefile for the ffgs boundaries in the new region. Put it in the app workspace folder you just made under a folder called shapefiles. rename the shapefile ffgs_shortname 
-5. Create a new geojson for that shapefile and put it in a new/existing js file. if you make a new one, add it to the list of imports in base.html
+1. In options.py add to the list of ffgs regions with a new tuple in the format ```('Proper name of region', 'shortname')```
+2. Also add a new function called ```shortname_models``` that returns a list of tuples with each of the models that region uses in the format ```[('GFS', 'gfs'), ('Other Model Proper Name', 'shortname')]```
+3. In the thredds directory, make a new, empty directory named the same as the shortname
+4. In the app workspace, make a new, empty directory named the same as the shortname
+5. Get a copy of the shapefile for the ffgs boundaries in the new region in the WGS 1984 Geographic Coordinate System. Put it in the app workspace folder you just made under a folder called shapefiles. rename the shapefile ffgs_shortname 
 6. Create a csv in the app workspace folder called ffgs_thresholds.csv and fill it with the current information. see other files for example format
-7. In leaflet.js, add an entry to the geojson_sorter JSON in the format ```{'shortname': name of the geojson you just made}```
-8. In leaflet.js, add an entry to the zoomOpts JSON in the format ```{'shortname': [zoom level, [center_lat, center_lon]]}```
+7. (Optional but recommended) Create a new geojson for that shapefile and put it in a new/existing js file. If you make a new one, add it to the list of imports in base.html
+8. In leaflet.js, add an entry to the geojson_sorter JSON in the format ```{'shortname': name of the geojson you just made}```
+9. In leaflet.js, add an entry to the zoomOpts JSON in the format ```{'shortname': [zoom level, [center_lat, center_lon]]}```
 
 ### How to add a new model
-1. create a script to download all the timesteps of the forecast model and call it data_modelname.py
-2. make it compatible with the ffgs workflow
-3. add the download script to the controller for the workflow including import statements
+1. Create a script that follow sthe general format of the gfsworkflow.py that will download and perform the geoprocessing on that region. Refer to "The Primary Workflow of the App" section of this document.
+2. Add return messages to the function as a status updater that will be returned to the user and then call that function in controllers.py with the rest of the models in the run_workflows function.
+
+Your new function must:
+* Follow the folder structure and naming conventions used by this app. Refer to the installation instructions for diagrams of the necessary folders.
+* Use the python logging module to print logging.info messages about the progress of your application.
+* Return some kind of status message, whether or not the workflow run was finished successfully.
+* Be region specific.
+
+
+## File Structure and Naming Convention References
+The file structure used by THREDDS should look like the following:
+~~~~
+ffgs
+--->hispaniola (You are responsible for creating this folder when you install the application)
+	--->gfs (created for every region)
+		---><directory named for timestamp of the forecast>
+			--->wms.ncml (what the app calls to retrieve the time animated raster maps)
+			--->gribs (Directory, automatically created and deleted)
+			--->netcdfs (Directory, automatically created and deleted)
+			--->processed
+	--->wrfpr (example of another model, your new model's workflow creates and fills this folder)
+		---><directory named for timestamp of the forecast>
+			--->wms.ncml (what the app calls to retrieve the time animated raster maps)
+			--->gribs (Directory, automatically created and deleted)
+			--->netcdfs (Directory, automatically created and deleted)
+			--->processed
+--->centralamerica (You are responsible for creating this folder when you install the application)
+	--->gfs (created for every region)
+		---><directory named for timestamp of the forecast>
+			--->wms.ncml (what the app calls to retrieve the time animated raster maps)
+			--->gribs (Directory, automatically created and deleted)
+			--->netcdfs (Directory, automatically created and deleted)
+			--->processed
+	etc...
+~~~~
+
+The App Workspace should look like the following:
+~~~~
+ffgs
+--->hispaniola (You are responsible for creating this folder when you install the application)
+	--->shapefiles (Directory, fill this with the ffgs polygons shapefile in the WGS1984 GCS)
+		--->ffgs_hispaniola.shp
+		--->ffgs_hispaniola.prj
+		--->ffgs_hispaniola.dbf
+		etc...
+	--->ffgs_thresholds.csv (needs to be updated regularly with the most recent ffgs values
+	--->gfsresults.csv (automatically created/updated in the workflow, contains average precipitation in each ffgs watershed)
+	--->gfscolorscales.csv (automatically created/updated in the workflow, contains the values used to color the geojsons on the map)
+	--->other csv results and colorscales files for other models
+	
+	--->GeoTIFFs (directory, automatically created/filled/deleted in the workflow)	
+		--->time_of_forecast_step.tif for each forecast step downloaded
+	--->GeoTIFFs_resampled (directory, automatically created/filled/deleted in the workflow)	
+		--->time_of_forecast_step.tif resampled for correct geoprocessing
+~~~~
 
 
 ## Installation Instructions
@@ -78,32 +132,7 @@ ffgs
 --->centralamerica
 	---><empty directory>
 ~~~~
-The app will automatically create a file structure for each region and fill it with data. That file structure looks like the following:
-~~~~
-ffgs
---->hispaniola
-	--->gfs
-		---><named for timestamp of the forecast>
-			--->gribs (automatically created and deleted)
-			--->netcdfs (automatically created and deleted)
-			--->processed
-	--->wrf
-		---><named for timestamp of the forecast>
-			--->gribs (automatically created and deleted)
-			--->netcdfs (automatically created and deleted)
-			--->processed
---->centralamerica
-	--->gfs
-		---><named for timestamp of the forecast>
-			--->gribs  (automatically created and deleted)
-			--->netcdfs (automatically created and deleted)
-			--->processed
-	--->other models used
-		---><named for timestamp of the forecast>
-			--->gribs (automatically created and deleted)
-			--->netcdfs (automatically created and deleted)
-			--->processed
-~~~~
+The app will automatically create a file structure for each region and fill it with data. Refer to the "File Structure and Naming Convention Reference" for more information
 #### Configure Thredds' settings (if you haven't previously)
 You will also need to modify Thredds' settings files to enable WMS services and support for netCDF files on your server. In the folder where you installed Thredds, there should be a file called ```catalog.xml```. 
 ~~~~

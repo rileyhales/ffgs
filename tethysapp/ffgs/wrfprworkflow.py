@@ -656,7 +656,9 @@ def run_wrfpr_workflow():
     region = 'hispaniola'
     logging.info('\nBeginning to process ' + region + ' on ' + datetime.datetime.utcnow().strftime("%D at %R"))
     # download each forecast model, convert them to netcdfs and tiffs
-    download_wrfpr(threddspath, timestamp, region)
+    succeeded = download_wrfpr(threddspath, timestamp, region)
+    if not succeeded:
+        return 'Workflow Aborted- Downloading Errors Occurred'
     wrfpr_tiffs(threddspath, wrksppath, timestamp, region)
     resample(wrksppath, region)
     # the geoprocessing functions
@@ -676,4 +678,4 @@ def run_wrfpr_workflow():
     logging.info('WRF-PR Workflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
     logging.info('If there are other model workflows to be processed, they will follow.\n\n\n')
 
-    return 'WRF-PR Workflow Completed: Normal Finish'
+    return 'WRF-PR Workflow Completed- Normal Finish'

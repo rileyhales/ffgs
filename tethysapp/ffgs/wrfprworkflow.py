@@ -14,9 +14,6 @@ from rasterio.enums import Resampling
 from .options import *
 
 
-# TODO NetCDF's are not generating correctly
-
-
 def setenvironment():
     """
     Dependencies: os, shutil, datetime, urllib.request, app_settings (options)
@@ -643,6 +640,8 @@ def run_wrfpr_workflow():
     # enable logging to track the progress of the workflow and for debugging
     # logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
     # logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+
+    # todo netcdfs might not be generating correctly (dont match tiffs?)
 
     # start the workflow by setting the environment
     threddspath, wrksppath, timestamp, redundant = setenvironment()

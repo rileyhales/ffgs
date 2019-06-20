@@ -4,14 +4,7 @@ from tethys_sdk.base import TethysAppBase, url_map_maker
 # ROUGHLY IN ORDER OF IMPORTANCE
 # todo update the set_wmsbounds function
 # todo make the csv of thresholds update automatically like the reservoir app, print the threshold date on the UI
-# todo make the wrf model downloads work?
 # todo add a clobber option to the workflow so that if clobber is true, delete everything and force a workflow run
-
-"""
-GENERAL NOTES
-when we add more models, make the setenvironment function create tiff folders for all of them, then make the functions
-use the right folder paths based on the model
-"""
 
 
 class Ffgs(TethysAppBase):

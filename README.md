@@ -39,6 +39,7 @@ The accuracy of this application is limited by:
 7. In main.js, create a new change listener for the model selection gizmo you've added. It is near the listener for the regions gizmo and should be next to the other model listeners.  
 
 ***Create placeholder folders and documents***
+
 8. In the thredds directory, make a new, empty directory named the same as the shortname
 9. In the app workspace, make a new, empty directory named the same as the shortname
 10. Get a copy of the shapefile for the ffgs boundaries in the new region in the WGS 1984 Geographic Coordinate System. Put it in the app workspace folder you just made under a folder called shapefiles. rename the shapefile ffgs_shortname 
@@ -50,6 +51,7 @@ The accuracy of this application is limited by:
 ### How to add a new model
 1. Create a script that follow sthe general format of the gfsworkflow.py that will download and perform the geoprocessing on that region. Refer to "The Primary Workflow of the App" section of this document.
 2. Add return messages to the function as a status updater that will be returned to the user and then call that function in controllers.py with the rest of the models in the run_workflows function.
+3. Add an additional line to the get_forecastdates function in options.py to get the timestamp out of your new model. Appropriately modify where that gets used in controllers.py, add the new timestamp to the context, and put the django variable with the rest of the timestamps grouped by region in base.html (under app navigation).
 
 Your new function must:
 * Follow the folder structure and naming conventions used by this app. Refer to the installation instructions for diagrams of the necessary folders.

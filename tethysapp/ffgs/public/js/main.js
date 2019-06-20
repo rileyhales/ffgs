@@ -15,7 +15,7 @@ $.ajaxSetup({
 });
 
 
-////////////////////////////////////////////////////////////////////////  AJAX FUNCTIONS
+////////////////////////////////////////////////////////////////////////  FUNCTIONS FOR GETTING VARIABLES
 function getThreddswms() {
     $.ajax({
         url: '/apps/ffgs/ajax/getCustomSettings/',
@@ -28,6 +28,17 @@ function getThreddswms() {
             threddsbase = result['threddsurl'];
         },
     });
+}
+
+function get_regionmodel() {
+    let region = $("#region").val();
+    let model;
+    if (region === 'hispaniola') {
+        model = $("#hisp_models").val()
+    } else if (region === 'centralamerica') {
+        model = $("#central_models").val()
+    }
+    return [region, model]
 }
 
 ////////////////////////////////////////////////////////////////////////  LOAD THE MAP
@@ -49,11 +60,20 @@ forecastLegend.addTo(mapObj);           // add the legend for the WMS forecast l
 ffgsLegend.addTo(mapObj);               // add the legend for the colored geojson layer
 
 ////////////////////////////////////////////////////////////////////////  LISTENERS FOR CONTROLS ON THE MENU
-$("#regiontoggle").click(function() {
-    $("#regioncontrols").toggle();
-});
-
 $("#region").change(function () {
+    let region = this.options[this.selectedIndex].value;
+    if (region === 'hispaniola') {
+        $("#hisp_models_wrapper").show();
+        $("#hisp_dates_wrapper").show();
+        $("#central_models_wrapper").hide();
+        $("#central_dates_wrapper").hide();
+    } else if (region === 'centralamerica') {
+        $("#hisp_models_wrapper").hide();
+        $("#hisp_dates_wrapper").hide();
+        $("#central_models_wrapper").show();
+        $("#central_dates_wrapper").show();
+    }
+
     let opts = zoomOpts[$("#region").val()];
     clearMap();
     mapObj.setView(opts[1], opts[0]);

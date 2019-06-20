@@ -43,7 +43,10 @@ function basemaps() {
 
 ////////////////////////////////////////////////////////////////////////  WMS LAYERS FOR GLDAS
 function newLayer() {
-    let wmsurl = threddsbase + '/' + $("#region").val() + '/' + $("#model").val() + '/' + 'wms.ncml';
+    let regionmodel = get_regionmodel();
+    let region = regionmodel[0];
+    let model = regionmodel[1];
+    let wmsurl = threddsbase + '/' + region + '/' + model + '/' + 'wms.ncml';
     let wmsLayer = L.tileLayer.wms(wmsurl, {
         // version: '1.3.0',
         layers: 'tp',
@@ -76,7 +79,6 @@ forecastLegend.onAdd = function () {
     div.innerHTML = '<img src="' + url + '" alt="legend" style="width:100%; float:right;">';
     return div
 };
-
 
 // the geojson (colored watersheds) legend
 let ffgsLegend = L.control({position: 'bottomleft'});
@@ -136,12 +138,14 @@ function setColor(rules, number) {
 }
 
 function addFFGSlayer() {
-    let region = $("#region").val();
+    let regionmodel = get_regionmodel();
+    let region = regionmodel[0];
+    let model = regionmodel[1];
     // add the color-coordinated watersheds layer
     $.ajax({
         url: '/apps/ffgs/ajax/getColorScales/',
         async: false,
-        data: JSON.stringify({region: region, model: $("#model").val()}),
+        data: JSON.stringify({region: region, model: model}),
         dataType: 'json',
         contentType: "application/json",
         method: 'POST',

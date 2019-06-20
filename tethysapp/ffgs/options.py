@@ -42,23 +42,22 @@ def ffgs_regions():
     return [
         ('Hispaniola', 'hispaniola'),
         ('Central America', 'centralamerica')
-        # ('Nepal', 'nepal')
     ]
 
 
-def wrfpr_regions():
+def hispaniola_models():
     """
     Regions that the app currently supports for WRF Puerto Rico
     """
     return [
-        ('Hispaniola', 'hispaniola'),
+        ('GFS', 'gfs'),
+        ('WRF-PR', 'wrfpr'),
     ]
 
 
-def forecastmodels():
+def centralamerica_models():
     return [
         ('GFS', 'gfs'),
-        # ('WRF-PR', 'wrfpr'),
     ]
 
 
@@ -72,9 +71,23 @@ def chart_options():
     ]
 
 
-def get_forecastdate():
-    path = os.path.join(App.get_app_workspace().path, 'timestamp.txt')
+def get_forecastdates():
+    path = os.path.join(App.get_app_workspace().path, 'gfs_timestamp.txt')
     with open(path, 'r') as file:
         time = file.readline()
-        time = datetime.datetime.strptime(time, "%Y%m%d%H")
-        return "This GFS data from " + time.strftime("%b %d, %I%p UTC")
+        if len(time) == 0:
+            gfs_date = 'No GFS Timestamp Detected'
+        else:
+            time = datetime.datetime.strptime(time, "%Y%m%d%H")
+            gfs_date = "GFS data from " + time.strftime("%b %d, %I%p UTC")
+
+    path = os.path.join(App.get_app_workspace().path, 'wrfpr_timestamp.txt')
+    with open(path, 'r') as file:
+        time = file.readline()
+        if len(time) == 0:
+            wrfpr_date = 'No WRFPR Timestamp Detected'
+        else:
+            time = datetime.datetime.strptime(time, "%Y%m%d%H")
+            wrfpr_date = "WRF-PR data from " + time.strftime("%b %d, %I%p UTC")
+
+    return gfs_date, wrfpr_date

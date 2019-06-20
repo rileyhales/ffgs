@@ -18,16 +18,16 @@ def setenvironment():
     """
     Dependencies: os, shutil, datetime, urllib.request, app_settings (options)
     """
-    logging.info('\nSetting the Environment')
+    logging.info('\nSetting the Environment for GFS Workflow')
     # determine the most day and hour of the day timestamp of the most recent GFS forecast
     now = datetime.datetime.utcnow()
-    if now.hour > 19:
+    if now.hour > 20:
         timestamp = now.strftime("%Y%m%d") + '18'
-    elif now.hour > 13:
+    elif now.hour > 14:
         timestamp = now.strftime("%Y%m%d") + '12'
-    elif now.hour > 7:
+    elif now.hour > 8:
         timestamp = now.strftime("%Y%m%d") + '06'
-    elif now.hour > 1:
+    elif now.hour > 2:
         timestamp = now.strftime("%Y%m%d") + '00'
     else:
         now = now - datetime.timedelta(days=1)
@@ -40,7 +40,7 @@ def setenvironment():
     wrksppath = configuration['app_wksp_path']
 
     # perform a redundancy check, if the last timestamp is the same as current, abort the workflow
-    timefile = os.path.join(wrksppath, 'timestamp.txt')
+    timefile = os.path.join(wrksppath, 'gfs_timestamp.txt')
     with open(timefile, 'r') as file:
         lasttime = file.readline()
         if lasttime == timestamp:
@@ -58,7 +58,7 @@ def setenvironment():
         return threddspath, wrksppath, timestamp, redundant
 
     # create the file structure and their permissions for the new data
-    for region in wrfpr_regions():
+    for region in ffgs_regions():
         logging.info('Creating APP WORKSPACE (GeoTIFF) file structure for ' + region[1])
         new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFs')
         if os.path.exists(new_dir):
@@ -100,10 +100,10 @@ def download_gfs(threddspath, timestamp, region):
     # if you already have a folder with data for this timestep, quit this function (you dont need to download it)
     if not os.path.exists(gribsdir):
         logging.info('There is no download folder, you must have already processed them. Skipping download stage.')
-        return
-    elif len(os.listdir(gribsdir)) >= 40:
-        logging.info('There are already 40 forecast steps in here. Dont need to download them')
-        return
+        return True
+    elif len(os.listdir(gribsdir)) >= 28:
+        logging.info('There are already 28 forecast steps in here. Dont need to download them')
+        return True
     # otherwise, remove anything in the folder before starting (in case there was a partial download)
     else:
         shutil.rmtree(gribsdir)
@@ -125,7 +125,7 @@ def download_gfs(threddspath, timestamp, region):
     }
     for step in fc_steps:
         url = 'https://nomads.ncep.noaa.gov/cgi-bin/filter_gfs_0p25.pl?file=gfs.t' + time + 'z.pgrb2.0p25.f' + step + \
-              '&all_lev=on&var_APCP=on&' + subregions[region] + '&dir=%2Fgfs.' + fc_date + '%2F' + time
+              '&lev_surface=on&var_APCP=on&' + subregions[region] + '&dir=%2Fgfs.' + fc_date + '%2F' + time
 
         fc_timestamp = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
         file_timestep = fc_timestamp + datetime.timedelta(hours=int(step))
@@ -146,13 +146,11 @@ def download_gfs(threddspath, timestamp, region):
             logging.info('\nHTTPError ' + str(errorcode) + ' downloading ' + filename + ' from\n' + url)
             if errorcode == 404:
                 logging.info('The file was not found on the server, trying an older forecast time')
-                # todo get next newest timestamp, if not same as current then delete files/folders + restart workflow
             elif errorcode == 500:
                 logging.info('Probably a problem with the URL. Check the log and try the link')
-                # todo handle this error by making the controller handle a false response
             return False
     logging.info('Finished Downloads')
-    return
+    return True
 
 
 def gfs_tiffs(threddspath, wrksppath, timestamp, region):
@@ -630,8 +628,8 @@ def run_gfs_workflow():
     The controller for running the workflow to download and process data
     """
     # enable logging to track the progress of the workflow and for debugging
-    logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
-    logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    # logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
+    # logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
     # start the workflow by setting the environment
     threddspath, wrksppath, timestamp, redundant = setenvironment()
@@ -639,13 +637,15 @@ def run_gfs_workflow():
     # if this has already been done for the most recent forecast, abort the workflow
     if redundant:
         logging.info('\nWorkflow aborted on ' + datetime.datetime.utcnow().strftime("%D at %R"))
-        return 'Workflow Aborted: already run for most recent data'
+        return 'Workflow Aborted- already run for most recent data'
 
     # run the workflow for each region, for each model in that region
-    for region in wrfpr_regions():
+    for region in ffgs_regions():
         logging.info('\nBeginning to process ' + region[1] + ' on ' + datetime.datetime.utcnow().strftime("%D at %R"))
         # download each forecast model, convert them to netcdfs and tiffs
-        download_gfs(threddspath, timestamp, region[1])
+        succeeded = download_gfs(threddspath, timestamp, region[1])
+        if not succeeded:
+            return 'Workflow Aborted- Downloading Errors Occurred'
         gfs_tiffs(threddspath, wrksppath, timestamp, region[1])
         resample(wrksppath, region[1])
         # the geoprocessing functions
@@ -658,10 +658,11 @@ def run_gfs_workflow():
         # cleanup the workspace by removing old files
         cleanup(threddspath, timestamp, region[1])
 
-    logging.info('\n        All regions finished- writing the timestamp used on this run to a txt file')
-    with open(os.path.join(wrksppath, 'timestamp.txt'), 'w') as file:
+    logging.info('\nAll regions finished- writing the timestamp used on this run to a txt file')
+    with open(os.path.join(wrksppath, 'gfs_timestamp.txt'), 'w') as file:
         file.write(timestamp)
 
-    logging.info('\nGFS Workflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    logging.info('\n\nGFS Workflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    logging.info('If you have configured other models, they will begin processing now.\n\n\n')
 
-    return 'GFS Workflow Completed: Normal Finish'
+    return 'GFS Workflow Completed- Normal Finish'

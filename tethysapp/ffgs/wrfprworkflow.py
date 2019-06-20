@@ -13,7 +13,9 @@ from rasterio.enums import Resampling
 
 from .options import *
 
+
 # TODO NetCDF's are not generating correctly
+
 
 def setenvironment():
     """
@@ -37,7 +39,7 @@ def setenvironment():
     wrksppath = configuration['app_wksp_path']
 
     # perform a redundancy check, if the last timestamp is the same as current, abort the workflow
-    timefile = os.path.join(wrksppath, 'timestamp_wrfpr.txt')
+    timefile = os.path.join(wrksppath, 'wrfpr_timestamp.txt')
     with open(timefile, 'r') as file:
         lasttime = file.readline()
         if lasttime == timestamp:
@@ -55,35 +57,35 @@ def setenvironment():
         return threddspath, wrksppath, timestamp, redundant
 
     # create the file structure and their permissions for the new data
-    for region in wrfpr_regions():
-        logging.info('Creating APP WORKSPACE (GeoTIFF) file structure for ' + region[1])
-        new_dir = os.path.join(wrksppath, region[1], 'wrfpr_GeoTIFFs')
+    region = 'hispaniola'
+    logging.info('Creating APP WORKSPACE (GeoTIFF) file structure for ' + region)
+    new_dir = os.path.join(wrksppath, region, 'wrfpr_GeoTIFFs')
+    if os.path.exists(new_dir):
+        shutil.rmtree(new_dir)
+    os.mkdir(new_dir)
+    os.chmod(new_dir, 0o777)
+    new_dir = os.path.join(wrksppath, region, 'wrfpr_GeoTIFFs_resampled')
+    if os.path.exists(new_dir):
+        shutil.rmtree(new_dir)
+    os.mkdir(new_dir)
+    os.chmod(new_dir, 0o777)
+    logging.info('Creating THREDDS file structure for ' + region)
+    new_dir = os.path.join(threddspath, region, 'wrfpr')
+    if os.path.exists(new_dir):
+        shutil.rmtree(new_dir)
+    os.mkdir(new_dir)
+    os.chmod(new_dir, 0o777)
+    new_dir = os.path.join(threddspath, region, 'wrfpr', timestamp)
+    if os.path.exists(new_dir):
+        shutil.rmtree(new_dir)
+    os.mkdir(new_dir)
+    os.chmod(new_dir, 0o777)
+    for filetype in ('gribs', 'netcdfs', 'processed'):
+        new_dir = os.path.join(threddspath, region, 'wrfpr', timestamp, filetype)
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
-        new_dir = os.path.join(wrksppath, region[1], 'wrfpr_GeoTIFFs_resampled')
-        if os.path.exists(new_dir):
-            shutil.rmtree(new_dir)
-        os.mkdir(new_dir)
-        os.chmod(new_dir, 0o777)
-        logging.info('Creating THREDDS file structure for ' + region[1])
-        new_dir = os.path.join(threddspath, region[1], 'wrfpr')
-        if os.path.exists(new_dir):
-            shutil.rmtree(new_dir)
-        os.mkdir(new_dir)
-        os.chmod(new_dir, 0o777)
-        new_dir = os.path.join(threddspath, region[1], 'wrfpr', timestamp)
-        if os.path.exists(new_dir):
-            shutil.rmtree(new_dir)
-        os.mkdir(new_dir)
-        os.chmod(new_dir, 0o777)
-        for filetype in ('gribs', 'netcdfs', 'processed'):
-            new_dir = os.path.join(threddspath, region[1], 'wrfpr', timestamp, filetype)
-            if os.path.exists(new_dir):
-                shutil.rmtree(new_dir)
-            os.mkdir(new_dir)
-            os.chmod(new_dir, 0o777)
 
     logging.info('All done setting up folders, on to do work')
     return threddspath, wrksppath, timestamp, redundant
@@ -101,10 +103,10 @@ def download_wrfpr(threddspath, timestamp, region):
     # if you already have a folder with data for this timestep, quit this function (you dont need to download it)
     if not os.path.exists(gribsdir):
         logging.info('There is no download folder, you must have already processed them. Skipping download stage.')
-        return
+        return True
     elif len(os.listdir(gribsdir)) >= 48:
         logging.info('There are already 48 forecast steps in here. Dont need to download them')
-        return
+        return True
     # otherwise, remove anything in the folder before starting (in case there was a partial download)
     else:
         shutil.rmtree(gribsdir)
@@ -145,13 +147,11 @@ def download_wrfpr(threddspath, timestamp, region):
             logging.info('\nHTTPError ' + str(errorcode) + ' downloading ' + filename + ' from\n' + url)
             if errorcode == 404:
                 logging.info('The file was not found on the server, trying an older forecast time')
-                # todo get next newest timestamp, if not same as current then delete files/folders + restart workflow
             elif errorcode == 500:
                 logging.info('Probably a problem with the URL. Check the log and try the link')
-                # todo handle this error by making the controller handle a false response
             return False
     logging.info('Finished Downloads')
-    return
+    return True
 
 
 def wrfpr_tiffs(threddspath, wrksppath, timestamp, region):
@@ -250,7 +250,7 @@ def wrfpr_tiffs(threddspath, wrksppath, timestamp, region):
         logging.info('wrote it to a GeoTIFF\n')
 
     # # clear the gribs folder now that we're done with this
-    # shutil.rmtree(gribs)
+    shutil.rmtree(gribs)
 
     return
 
@@ -321,7 +321,7 @@ def resample(wrksppath, region):
             dst.write(data, 1)
 
     # delete the non-resampled tiffs now that we dont need them
-    # shutil.rmtree(tiffs)
+    shutil.rmtree(tiffs)
 
     return
 
@@ -380,7 +380,7 @@ def zonal_statistics(wrksppath, timestamp, region):
 
     # delete the resampled tiffs now that we dont need them
     logging.info('deleting the resampled tiffs directory')
-    # shutil.rmtree(resampleds)
+    shutil.rmtree(resampleds)
 
     return
 
@@ -434,10 +434,6 @@ def nc_georeference(threddspath, timestamp, region):
     variables = variables.keys()
 
     # min lat and lon and the interval between values (these are static values
-    lat_min = -90
-    lon_min = -180
-    lat_step = .25
-    lon_step = .25
     netcdf_obj.close()
 
     # this is where the files start getting copied
@@ -645,8 +641,8 @@ def run_wrfpr_workflow():
     The controller for running the workflow to download and process data
     """
     # enable logging to track the progress of the workflow and for debugging
-    logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
-    logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    # logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
+    # logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
     # start the workflow by setting the environment
     threddspath, wrksppath, timestamp, redundant = setenvironment()
@@ -657,26 +653,27 @@ def run_wrfpr_workflow():
         return 'Workflow Aborted: already run for most recent data'
 
     # run the workflow for each region, for each model in that region
-    for region in wrfpr_regions():
-        logging.info('\nBeginning to process ' + region[1] + ' on ' + datetime.datetime.utcnow().strftime("%D at %R"))
-        # download each forecast model, convert them to netcdfs and tiffs
-        download_wrfpr(threddspath, timestamp, region[1])
-        wrfpr_tiffs(threddspath, wrksppath, timestamp, region[1])
-        resample(wrksppath, region[1])
-        # the geoprocessing functions
-        zonal_statistics(wrksppath, timestamp, region[1])
-        nc_georeference(threddspath, timestamp, region[1])
-        # generate color scales and ncml aggregation files
-        new_ncml(threddspath, timestamp, region[1])
-        new_colorscales(wrksppath, region[1])
-        set_wmsbounds(threddspath, timestamp, region[1])
-        # cleanup the workspace by removing old files
-        cleanup(threddspath, wrksppath, timestamp, region[1])
+    region = 'hispaniola'
+    logging.info('\nBeginning to process ' + region + ' on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    # download each forecast model, convert them to netcdfs and tiffs
+    download_wrfpr(threddspath, timestamp, region)
+    wrfpr_tiffs(threddspath, wrksppath, timestamp, region)
+    resample(wrksppath, region)
+    # the geoprocessing functions
+    zonal_statistics(wrksppath, timestamp, region)
+    nc_georeference(threddspath, timestamp, region)
+    # generate color scales and ncml aggregation files
+    new_ncml(threddspath, timestamp, region)
+    new_colorscales(wrksppath, region)
+    set_wmsbounds(threddspath, timestamp, region)
+    # cleanup the workspace by removing old files
+    cleanup(threddspath, wrksppath, timestamp, region)
 
-    logging.info('\n        All regions and models finished- writing the timestamp used on this run to a txt file')
-    with open(os.path.join(wrksppath, 'timestamp_wrfpr.txt'), 'w') as file:
+    logging.info('\nAll regions and models finished- writing the timestamp used on this run to a txt file')
+    with open(os.path.join(wrksppath, 'wrfpr_timestamp.txt'), 'w') as file:
         file.write(timestamp)
 
-    logging.info('\nWRF-PR Workflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    logging.info('WRF-PR Workflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    logging.info('If there are other model workflows to be processed, they will follow.\n\n\n')
 
     return 'WRF-PR Workflow Completed: Normal Finish'

@@ -1,14 +1,14 @@
+import logging
+
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 from tethys_sdk.gizmos import SelectInput, RangeSlider
 
 from .app import Ffgs as App
-# from .data_wrf import *
 from .gfsworkflow import run_gfs_workflow
+from .options import *
 from .wrfprworkflow import run_wrfpr_workflow
-
-from .options import wms_colors, forecastmodels, ffgs_regions, get_forecastdate, chart_options
 
 
 @login_required()
@@ -17,7 +17,7 @@ def home(request):
     Controller for the app home page.
     """
 
-    forecastdate = get_forecastdate()
+    gfs_date, wrfpr_date = get_forecastdates()
 
     ffgsregions = SelectInput(
         display_text='Choose a FFGS Region',
@@ -27,12 +27,20 @@ def home(request):
         options=ffgs_regions(),
     )
 
-    models = SelectInput(
+    hisp_models = SelectInput(
         display_text='Choose a Forecast Model',
-        name='model',
+        name='hisp_models',
         multiple=False,
         original=True,
-        options=forecastmodels(),
+        options=hispaniola_models(),
+    )
+
+    central_models = SelectInput(
+        display_text='Choose a Forecast Model',
+        name='central_models',
+        multiple=False,
+        original=True,
+        options=centralamerica_models(),
     )
 
     chartoptions = SelectInput(
@@ -62,8 +70,10 @@ def home(request):
     )
 
     context = {
-        'forecastdate': forecastdate,
-        'models': models,
+        'gfs_forecastdate': gfs_date,
+        'wrfpr_forecastdate': wrfpr_date,
+        'hisp_models': hisp_models,
+        'central_models': central_models,
         'ffgsregions': ffgsregions,
         'chartoptions': chartoptions,
         'colorscheme': colorscheme,
@@ -76,23 +86,19 @@ def home(request):
 
 
 @login_required()
-def run_gfs(request):
+def run_workflows(request):
     """
     The controller for running the workflow to download and process data
     """
+    # enable logging to track the progress of the workflow and for debugging
+    logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
+    logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+
+    # todo make the workflows handle http errors better???
     gfs_status = run_gfs_workflow()
-
-    return JsonResponse({
-        'gfs status': gfs_status,
-    })
-
-@login_required()
-def run_wrfpr(request):
-    """
-    The controller for running the workflow to download and process data
-    """
     wrf_status = run_wrfpr_workflow()
 
     return JsonResponse({
+        'gfs status': gfs_status,
         'wrf status': wrf_status,
     })

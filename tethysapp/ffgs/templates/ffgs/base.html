@@ -55,20 +55,27 @@
 {% endblock %}
 
 {% block app_navigation_items %}
-  <li class="title" role="button" id="regiontoggle">Region/Model Controls</li>
-  <div id="regioncontrols">
-    {% gizmo select_input ffgsregions %}
-    {% gizmo select_input models %}
-    <div style="text-align: center; padding: 4px;"><strong>{{ forecastdate }}</strong></div>
-    <div id="mouse-position" class="well well-sm" style="text-align: center"></div>
-  </div>
+  <li class="title">Region/Model Controls</li>
+  {% gizmo select_input ffgsregions %}
+  <div id="hisp_models_wrapper">{% gizmo select_input hisp_models %}</div>
+  <div id="central_models_wrapper" style="display: none;">{% gizmo select_input central_models %}</div>
 
-  <li class="title" role="button" id="displaytoggle">Display Options</li>
-  <div id="displaycontrols">
-    {% gizmo select_input chartoptions %}
-    {% gizmo select_input colorscheme %}
-    {% gizmo range_slider opacity_raster %}
+  <div id="gfsdate" style="text-align: center; padding: 4px;"><strong>{{ gfs_forecastdate }}</strong></div>
+  {# Extra models to show for hispaniola #}
+  <div id="hisp_dates_wrapper">
+    <div style="text-align: center; padding: 4px;"><strong>{{ wrfpr_forecastdate }}</strong></div>
   </div>
+  {# Extra models to show for central america #}
+  <div id="central_dates_wrapper" style="display: none;">
+{#    <div style="text-align: center; padding: 4px;"><strong>{{ wrfpr_forecastdate }}</strong></div>#}
+  </div>
+  <div id="mouse-position" class="well well-sm" style="text-align: center"></div>
+
+  <li class="title">Display Options</li>
+  {% gizmo select_input chartoptions %}
+  {% gizmo select_input colorscheme %}
+  {% gizmo range_slider opacity_raster %}
+
 {% endblock %}
 
 {% block app_actions %}

@@ -36,7 +36,8 @@ function basemaps() {
     let Esri_WorldTerrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}', {maxZoom: 13});
     let Esri_Imagery_Labels = L.esri.basemapLayer('ImageryLabels');
     return {
-        "ESRI Imagery": L.layerGroup([Esri_WorldImagery, Esri_Imagery_Labels]).addTo(mapObj),
+        "ESRI Imagery with Labels": L.layerGroup([Esri_WorldImagery, Esri_Imagery_Labels]).addTo(mapObj),
+        "ESRI Imagery": L.layerGroup([Esri_WorldImagery]),
         "ESRI Terrain": L.layerGroup([Esri_WorldTerrain, Esri_Imagery_Labels])
     }
 }
@@ -72,7 +73,7 @@ function newForecastLayer() {
 
 ////////////////////////////////////////////////////////////////////////  LEGEND DEFINITIONS
 // the forecast layer raster legend
-let forecastLegend = L.control({position: 'bottomright'});
+let forecastLegend = L.control({position: 'topright'});
 forecastLegend.onAdd = function () {
     let regionmodel = get_regionmodel();
     let region = regionmodel[0];

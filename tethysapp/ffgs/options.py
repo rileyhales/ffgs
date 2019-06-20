@@ -50,14 +50,14 @@ def hispaniola_models():
     Regions that the app currently supports for WRF Puerto Rico
     """
     return [
-        ('GFS', 'gfs'),
-        ('WRF-PR', 'wrfpr'),
+        ('GFS (6-hr steps, 7 days)', 'gfs'),
+        ('WRF-PR (1-hr steps, 2 days)', 'wrfpr'),
     ]
 
 
 def centralamerica_models():
     return [
-        ('GFS', 'gfs'),
+        ('GFS (6-hr steps, 7 days)', 'gfs'),
     ]
 
 
@@ -66,8 +66,8 @@ def chart_options():
     Chart options: cumulative or unique intervals
     """
     return [
-        ('6-hr Intervals', 'intervals'),
-        ('Cumulative', 'cumulative')
+        ('Cumulative', 'cumulative'),
+        ('Forecast Interval', 'intervals')
     ]
 
 

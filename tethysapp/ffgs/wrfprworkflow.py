@@ -535,7 +535,7 @@ def new_ncml(threddspath, timestamp, region):
             '    <variable name="time" type="int" shape="time">\n'
             '        <attribute name="units" value="hours since ' + date + '"/>\n'
             '        <attribute name="_CoordinateAxisType" value="Time" />\n'
-            '        <values start="6" increment="6" />\n'
+            '        <values start="1" increment="1" />\n'
             '    </variable>\n'
             '    <aggregation dimName="time" type="joinExisting" recheckEvery="1 hour">\n'
             '        <scan location="' + timestamp + '/processed/"/>\n'

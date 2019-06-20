@@ -122,8 +122,8 @@ def download_wrfpr(threddspath, timestamp, region):
 
     # this is where the actual downloads happen. set the url, filepath, then download
     for step in fc_steps:
-        url = 'https://www.ftp.ncep.noaa.gov/data/nccf/com/hiresw/prod/hiresw.' + \
-              fc_date + '/hiresw.t' + time + 'z.arw_5km.f' + step + '.pr.grib2'
+        url = 'https://nomads.ncep.noaa.gov/cgi-bin/filter_hirespr.pl?file=hiresw.t' + time + 'z.arw_5km.f' + step + \
+              '.pr.grib2&lev_surface=on&var_APCP=on&leftlon=0&rightlon=360&toplat=90&bottomlat=-90&dir=%2Fhiresw.' + fc_date
 
         fc_timestamp = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
         file_timestep = fc_timestamp + datetime.timedelta(hours=int(step))
@@ -199,15 +199,15 @@ def wrfpr_tiffs(threddspath, wrksppath, timestamp, region):
         if j == 0:
             path = os.path.join(gribs, i)
             src = rasterio.open(path)
-            file_array = src.read(284)
+            file_array = src.read(1)
         else:
             cum_file = os.path.join(gribs, i)
             cum_src = rasterio.open(cum_file)
-            cum_array = cum_src.read(284)
+            cum_array = cum_src.read(1)
 
             past_file = os.path.join(gribs, files[j-1])
             past_src = rasterio.open(past_file)
-            past_array = past_src.read(284)
+            past_array = past_src.read(1)
 
             file_array = cum_array - past_array
 

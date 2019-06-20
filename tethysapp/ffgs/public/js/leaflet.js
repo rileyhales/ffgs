@@ -188,7 +188,7 @@ function addFFGSlayer() {
 // the layers box on the top right of the map
 function makeControls() {
     return L.control.layers(basemapObj, {
-        // 'Forecast Layer': layerObj,
+        'Forecast Layer': forecastLayerObj,
         'Colored Watersheds': watersheds_colors,
         'Watershed Boundaries': watersheds,
     }).addTo(mapObj);

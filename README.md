@@ -27,16 +27,25 @@ The accuracy of this application is limited by:
 1. The charts and maps show only the values of precipitation accumulation from the forecast models. No attempt is made to account for losses to hydrologic factors such as evaporation, infiltration to groundwater, initial abstraction/storage, and so forth
 1. No attempts are made to route the water to the drainage line or further down stream to determine the time of the flood. The charts indicate how long until enough water has accumulated to meet the threshold for precipitation given by the FFGS. They do not indicate that the flood will occur at the time the cumulative accumulation exceeds the threshold or determine if that is within the time constraints of the flash flood thresholds. The hydrologic losses, distribution of storm precipitation, and timing of flow will cause a difference between the chart's time and the actual event time, assuming the forecasted values occur. 
 
-### How to add a new Region
-1. In options.py add to the list of ffgs regions with a new tuple in the format ```('Proper name of region', 'shortname')```
-2. Also add a new function called ```shortname_models``` that returns a list of tuples with each of the models that region uses in the format ```[('GFS', 'gfs'), ('Other Model Proper Name', 'shortname')]```
-3. In the thredds directory, make a new, empty directory named the same as the shortname
-4. In the app workspace, make a new, empty directory named the same as the shortname
-5. Get a copy of the shapefile for the ffgs boundaries in the new region in the WGS 1984 Geographic Coordinate System. Put it in the app workspace folder you just made under a folder called shapefiles. rename the shapefile ffgs_shortname 
-6. Create a csv in the app workspace folder called ffgs_thresholds.csv and fill it with the current information. see other files for example format
-7. (Optional but recommended) Create a new geojson for that shapefile and put it in a new/existing js file. If you make a new one, add it to the list of imports in base.html
-8. In leaflet.js, add an entry to the geojson_sorter JSON in the format ```{'shortname': name of the geojson you just made}```
-9. In leaflet.js, add an entry to the zoomOpts JSON in the format ```{'shortname': [zoom level, [center_lat, center_lon]]}```
+## Adding New Regions and Models to the App
+### New Regions
+***Modify some code:***
+1. In options.py, add to the list of ffgs regions with a new tuple in the format ```('Proper name of region', 'shortname')```.
+2. In options.py, add a new function called ```shortname_models``` that returns a list of tuples with each of the models that region uses in the format ```[('GFS', 'gfs'), ('Other Model Proper Name', 'shortname')]```.
+3. In controllers.py, add a new SelectInput gizmo function and to the context variable that uses the function of available models you created.
+4. In base.html, find the app navigation section and add the new gizmo you created beneath the ffgs_regions gizmo, (near the other model selection gizmos). Set the display style to none for now.
+5. In main.js, modify the get_regionmodel function to filter the correct model options based on your choice of region.
+6. In main.js, modify the change listener to the region gizmo (near the bottom of the script). Change the If/Else logic section to appropriately show/hide the other regions.
+7. In main.js, create a new change listener for the model selection gizmo you've added. It is near the listener for the regions gizmo and should be next to the other model listeners.  
+
+***Create placeholder folders and documents***
+8. In the thredds directory, make a new, empty directory named the same as the shortname
+9. In the app workspace, make a new, empty directory named the same as the shortname
+10. Get a copy of the shapefile for the ffgs boundaries in the new region in the WGS 1984 Geographic Coordinate System. Put it in the app workspace folder you just made under a folder called shapefiles. rename the shapefile ffgs_shortname 
+11. Create a csv in the app workspace folder called ffgs_thresholds.csv and fill it with the current information. see other files for example format
+12. (Optional but recommended) Create a new geojson for that shapefile and put it in a new/existing js file. If you make a new one, add it to the list of imports in base.html
+13. In leaflet.js, add an entry to the geojson_sorter JSON in the format ```{'shortname': name of the geojson you just made}```
+14. In leaflet.js, add an entry to the zoomOpts JSON in the format ```{'shortname': [zoom level, [center_lat, center_lon]]}```
 
 ### How to add a new model
 1. Create a script that follow sthe general format of the gfsworkflow.py that will download and perform the geoprocessing on that region. Refer to "The Primary Workflow of the App" section of this document.

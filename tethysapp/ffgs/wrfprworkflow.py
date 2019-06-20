@@ -614,9 +614,7 @@ def set_wmsbounds(threddspath, timestamp, region):
     return
 
 
-def cleanup(threddspath, wrksppath, timestamp, region):
-    # write a file with the current timestep triggering the app to start using this data
-
+def cleanup(threddspath, timestamp, region):
     # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
     logging.info('Getting rid of old WRF-PR data folders')
     path = os.path.join(threddspath, region, 'wrfpr')
@@ -668,7 +666,7 @@ def run_wrfpr_workflow():
     new_colorscales(wrksppath, region)
     set_wmsbounds(threddspath, timestamp, region)
     # cleanup the workspace by removing old files
-    cleanup(threddspath, wrksppath, timestamp, region)
+    cleanup(threddspath, timestamp, region)
 
     logging.info('\nAll regions and models finished- writing the timestamp used on this run to a txt file')
     with open(os.path.join(wrksppath, 'wrfpr_timestamp.txt'), 'w') as file:

@@ -552,15 +552,16 @@ def new_colorscales(wrksppath, region):
     colorscales = os.path.join(wrksppath, region, 'wrfprcolorscales.csv')
     results = os.path.join(wrksppath, region, 'wrfprresults.csv')
     logging.info(results)
-    answers = pd.DataFrame(columns=['cat_id', 'mean', 'max'])
+    answers = pd.DataFrame(columns=['cat_id', 'cum_mean', 'mean', 'max'])
 
     res_df = pd.read_csv(results, index_col=False)[['cat_id', 'mean', 'max']]
     ids = res_df.cat_id.unique()
     for catid in ids:
         df = res_df.query("cat_id == @catid")
+        cum_mean = round(sum(df['mean'].values), 1)
         mean = max(df['mean'].values)
         maximum = max(df['max'].values)
-        answers = answers.append({'cat_id': catid, 'mean': mean, 'max': maximum}, ignore_index=True)
+        answers = answers.append({'cat_id': catid, 'cum_mean': cum_mean, 'mean': mean, 'max': maximum}, ignore_index=True)
 
     answers.to_csv(colorscales, mode='w', index=False)
     logging.info('Wrote new rules to csv')
@@ -638,8 +639,6 @@ def run_wrfpr_workflow():
     # enable logging to track the progress of the workflow and for debugging
     # logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
     # logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
-
-    # todo netcdfs might not be generating correctly (dont match tiffs?)
 
     # start the workflow by setting the environment
     threddspath, wrksppath, timestamp, redundant = setenvironment()

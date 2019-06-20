@@ -111,6 +111,6 @@ def get_colorscales(request):
 
     # read the color scale csv
     csv = os.path.join(wrksppath, region, model + 'colorscales.csv')
-    df = pandas.read_csv(csv, usecols=['cat_id', 'mean', 'max'], index_col=0)
+    df = pandas.read_csv(csv, usecols=['cat_id', 'cum_mean', 'mean', 'max'], index_col=0)
 
     return JsonResponse(df.to_dict(orient='index'))

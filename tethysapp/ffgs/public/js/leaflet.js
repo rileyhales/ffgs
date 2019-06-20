@@ -130,13 +130,13 @@ function colorScale(value) {
 }
 
 function setColor(rules, number) {
-    return rules[number + '.0']['mean'] > 30 ? colorScale(30) :
-        rules[number + '.0']['mean'] > 25 ? colorScale(25) :
-        rules[number + '.0']['mean'] > 20 ? colorScale(20) :
-        rules[number + '.0']['mean'] > 15 ? colorScale(15) :
-        rules[number + '.0']['mean'] > 10 ? colorScale(10) :
-        rules[number + '.0']['mean'] > 5 ? colorScale(5) :
-        rules[number + '.0']['mean'] >= 0 ? colorScale(0) :
+    return rules[number + '.0']['cum_mean'] > 30 ? colorScale(30) :
+        rules[number + '.0']['cum_mean'] > 25 ? colorScale(25) :
+        rules[number + '.0']['cum_mean'] > 20 ? colorScale(20) :
+        rules[number + '.0']['cum_mean'] > 15 ? colorScale(15) :
+        rules[number + '.0']['cum_mean'] > 10 ? colorScale(10) :
+        rules[number + '.0']['cum_mean'] > 5 ? colorScale(5) :
+        rules[number + '.0']['cum_mean'] >= 0 ? colorScale(0) :
         '';
 }
 

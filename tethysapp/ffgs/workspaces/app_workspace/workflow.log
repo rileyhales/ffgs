@@ -1,590 +1,4 @@
-Workflow initiated on 06/20/19 at 17:28
-
-Setting the Environment for GFS Workflow
-determined the timestamp to download: 2019062012
-You have a file structure for this timestep but didnt complete the workflow, analyzing...
-
-Beginning to process hispaniola on 06/20/19 at 17:28
-
-Starting GFS Grib Downloads for hispaniola
-There is no download folder, you must have already processed them. Skipping download stage.
-
-Starting to process the GFS gribs into GeoTIFFs
-There is no gribs folder, you must have already run this step. Skipping conversions
-
-Resampling the rasters for hispaniola
-There is no tiffs folder. You must have already resampled them. Skipping resampling
-
-Doing Zonal Statistics on hispaniola
-starting zonal statistics for 2019062018_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062100_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062106_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062112_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062118_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062200_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062206_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062212_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062218_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062300_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062306_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062312_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062318_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062400_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062406_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062412_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062418_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062500_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062506_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062512_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062518_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062600_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062606_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062612_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062618_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062700_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062706_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062712_resampled.tif
-writing the statistics for this file to the dataframe
-
-done with zonal statistics, rounding values, writing to a csv file
-deleting the resampled tiffs directory
-
-Processing the netCDF files
-There are 28 compatible files.
-Preparing the reference file
-Working on file 2019062506.nc
-Working on file 2019062700.nc
-Working on file 2019062318.nc
-Working on file 2019062512.nc
-Working on file 2019062412.nc
-Working on file 2019062218.nc
-Working on file 2019062600.nc
-Working on file 2019062406.nc
-Working on file 2019062312.nc
-Working on file 2019062306.nc
-Working on file 2019062100.nc
-Working on file 2019062518.nc
-Working on file 2019062418.nc
-Working on file 2019062206.nc
-Working on file 2019062212.nc
-Working on file 2019062112.nc
-Working on file 2019062300.nc
-Working on file 2019062106.nc
-Working on file 2019062200.nc
-Working on file 2019062618.nc
-Working on file 2019062118.nc
-Working on file 2019062500.nc
-Working on file 2019062706.nc
-Working on file 2019062712.nc
-Working on file 2019062612.nc
-Working on file 2019062606.nc
-Working on file 2019062400.nc
-Working on file 2019062018.nc
-Finished File Conversions
-
-Writing a new ncml file for this date
-Wrote New .ncml
-
-Generating a new color scale csv for the gfs results
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/gfsresults.csv
-Wrote new rules to csv
-
-Setting the WMS bounds
-working on file /Users/rileyhales/thredds/ffgs/hispaniola/gfs/2019062012/processed/processed_2019062418.nc
-done checking for max/min. writing the file
-wrote the js file
-Getting rid of old gfs data folders
-Done
-
-Beginning to process centralamerica on 06/20/19 at 17:30
-
-Starting GFS Grib Downloads for centralamerica
-downloading the file 2019062018.grb
-downloading the file 2019062100.grb
-downloading the file 2019062106.grb
-downloading the file 2019062112.grb
-downloading the file 2019062118.grb
-downloading the file 2019062200.grb
-downloading the file 2019062206.grb
-downloading the file 2019062212.grb
-downloading the file 2019062218.grb
-downloading the file 2019062300.grb
-downloading the file 2019062306.grb
-downloading the file 2019062312.grb
-downloading the file 2019062318.grb
-downloading the file 2019062400.grb
-downloading the file 2019062406.grb
-downloading the file 2019062412.grb
-downloading the file 2019062418.grb
-downloading the file 2019062500.grb
-downloading the file 2019062506.grb
-downloading the file 2019062512.grb
-downloading the file 2019062518.grb
-downloading the file 2019062600.grb
-downloading the file 2019062606.grb
-downloading the file 2019062612.grb
-downloading the file 2019062618.grb
-downloading the file 2019062700.grb
-downloading the file 2019062706.grb
-downloading the file 2019062712.grb
-Finished Downloads
-
-Starting to process the GFS gribs into GeoTIFFs
-working on file 2019062018.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062018.grb
-ecCodes library found using name 'eccodes'.
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062018.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062100.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062100.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062100.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062106.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062106.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062106.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062112.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062112.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062112.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062118.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062118.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062118.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062200.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062200.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062200.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062206.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062206.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062206.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062212.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062212.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062212.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062218.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062218.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062218.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062300.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062300.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062300.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062306.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062306.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062306.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062312.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062312.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062312.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062318.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062318.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062318.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062400.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062400.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062400.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062406.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062406.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062406.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062412.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062412.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062412.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062418.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062418.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062418.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062500.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062500.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062500.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062506.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062506.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062506.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062512.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062512.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062512.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062518.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062518.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062518.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062600.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062600.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062600.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062606.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062606.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062606.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062612.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062612.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062612.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062618.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062618.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062618.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062700.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062700.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062700.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062706.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062706.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062706.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-working on file 2019062712.grb
-opening grib file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062712.grb
-missing from GRIB stream: 'number'
-converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/gribs/2019062712.grb
-converted
-writing the correct values to the tp array
-created a netcdf
-wrote it to a GeoTIFF
-
-
-Resampling the rasters for centralamerica
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062018.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062100.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062106.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062112.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062118.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062200.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062206.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062212.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062218.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062300.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062306.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062312.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062318.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062400.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062406.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062412.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062418.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062500.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062506.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062512.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062518.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062600.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062606.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062612.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062618.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062700.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062706.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/GeoTIFFs/2019062712.tif
-
-Doing Zonal Statistics on centralamerica
-starting zonal statistics for 2019062018_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062100_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062106_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062112_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062118_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062200_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062206_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062212_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062218_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062300_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062306_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062312_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062318_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062400_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062406_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062412_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062418_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062500_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062506_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062512_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062518_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062600_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062606_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062612_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062618_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062700_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062706_resampled.tif
-writing the statistics for this file to the dataframe
-starting zonal statistics for 2019062712_resampled.tif
-writing the statistics for this file to the dataframe
-
-done with zonal statistics, rounding values, writing to a csv file
-deleting the resampled tiffs directory
-
-Processing the netCDF files
-There are 28 compatible files.
-Preparing the reference file
-Working on file 2019062506.nc
-Working on file 2019062700.nc
-Working on file 2019062318.nc
-Working on file 2019062512.nc
-Working on file 2019062412.nc
-Working on file 2019062218.nc
-Working on file 2019062600.nc
-Working on file 2019062406.nc
-Working on file 2019062312.nc
-Working on file 2019062306.nc
-Working on file 2019062100.nc
-Working on file 2019062518.nc
-Working on file 2019062418.nc
-Working on file 2019062206.nc
-Working on file 2019062212.nc
-Working on file 2019062112.nc
-Working on file 2019062300.nc
-Working on file 2019062106.nc
-Working on file 2019062200.nc
-Working on file 2019062618.nc
-Working on file 2019062118.nc
-Working on file 2019062500.nc
-Working on file 2019062706.nc
-Working on file 2019062712.nc
-Working on file 2019062612.nc
-Working on file 2019062606.nc
-Working on file 2019062400.nc
-Working on file 2019062018.nc
-Finished File Conversions
-
-Writing a new ncml file for this date
-Wrote New .ncml
-
-Generating a new color scale csv for the gfs results
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/centralamerica/gfsresults.csv
-Wrote new rules to csv
-
-Setting the WMS bounds
-working on file /Users/rileyhales/thredds/ffgs/centralamerica/gfs/2019062012/processed/processed_2019062418.nc
-done checking for max/min. writing the file
-wrote the js file
-Getting rid of old gfs data folders
-Done
-
-All regions finished- writing the timestamp used on this run to a txt file
-
-
-GFS Workflow completed successfully on 06/20/19 at 17:35
-If you have configured other models, they will begin processing now.
-
-
-
+Workflow initiated on 06/20/19 at 19:58
 
 Setting the Environment
 determined the timestamp to download: 2019062006
@@ -592,7 +6,7 @@ Creating APP WORKSPACE (GeoTIFF) file structure for hispaniola
 Creating THREDDS file structure for hispaniola
 All done setting up folders, on to do work
 
-Beginning to process hispaniola on 06/20/19 at 17:35
+Beginning to process hispaniola on 06/20/19 at 19:58
 
 Starting WRF-PR Grib Downloads
 downloading the file 2019062007.grb
@@ -647,1248 +61,2881 @@ Finished Downloads
 
 Starting to process the WRF-PR gribs into GeoTIFFs
 working on file 2019062007.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+ecCodes library found using name 'eccodes'.
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062008.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062009.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062010.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062011.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062012.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062013.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062014.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062015.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062016.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062017.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062018.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062019.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062020.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062021.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062022.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062023.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062100.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062101.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062102.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062103.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062104.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062105.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062106.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062107.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062108.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062109.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062110.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062111.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062112.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062113.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062114.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062115.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062116.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062117.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062118.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062119.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062120.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062121.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062122.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062123.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062200.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062201.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062202.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062203.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062204.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062205.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
 wrote it to a GeoTIFF
 
 working on file 2019062206.grb
-opening grib file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+opening grib file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 missing from GRIB stream: 'number'
+missing from GRIB stream: 'directionNumber'
+missing from GRIB stream: 'frequencyNumber'
 converting it to a netcdf
-saving it to the path /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
+saving it to the path /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/gribs/2019062007.grb
 converted
 writing the correct values to the tp array
 created a netcdf
@@ -1896,54 +2943,54 @@ wrote it to a GeoTIFF
 
 
 Resampling the rasters for hispaniola
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062007.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062008.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062009.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062010.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062011.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062012.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062013.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062014.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062015.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062016.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062017.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062018.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062019.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062020.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062021.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062022.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062023.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062100.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062101.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062102.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062103.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062104.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062105.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062106.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062107.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062108.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062109.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062110.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062111.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062112.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062113.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062114.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062115.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062116.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062117.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062118.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062119.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062120.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062121.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062122.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062123.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062200.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062201.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062202.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062203.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062204.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062205.tif
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062206.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062007.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062008.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062009.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062010.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062011.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062012.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062013.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062014.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062015.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062016.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062017.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062018.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062019.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062020.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062021.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062022.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062023.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062100.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062101.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062102.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062103.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062104.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062105.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062106.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062107.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062108.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062109.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062110.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062111.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062112.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062113.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062114.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062115.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062116.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062117.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062118.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062119.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062120.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062121.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062122.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062123.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062200.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062201.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062202.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062203.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062204.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062205.tif
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfpr_GeoTIFFs/2019062206.tif
 
 Doing Zonal Statistics on hispaniola
 starting zonal statistics for 2019062007_resampled.tif
@@ -2103,19 +3150,21 @@ Writing a new ncml file for this date
 Wrote New .ncml
 
 Generating a new color scale csv for the WRF-PR results
-/Users/rileyhales/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfprresults.csv
+/Users/chrisedwards/tethys/src/tethys_apps/tethysapp/ffgs/workspaces/app_workspace/hispaniola/wrfprresults.csv
 Wrote new rules to csv
 
 Setting the WMS bounds
-working on file /Users/rileyhales/thredds/ffgs/hispaniola/wrfpr/2019062006/processed/processed_2019062111.nc
+working on file /Users/chrisedwards/thredds/ffgs/hispaniola/wrfpr/2019062006/processed/processed_2019062111.nc
 done checking for max/min. writing the file
 wrote the js file
 Getting rid of old WRF-PR data folders
 Done
 
 All regions and models finished- writing the timestamp used on this run to a txt file
-WRF-PR Workflow completed successfully on 06/20/19 at 17:44
+WRF-PR Workflow completed successfully on 06/20/19 at 20:07
 If there are other model workflows to be processed, they will follow.
 
 
 
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 3621

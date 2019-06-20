@@ -544,15 +544,16 @@ def new_colorscales(wrksppath, region):
     colorscales = os.path.join(wrksppath, region, 'gfscolorscales.csv')
     results = os.path.join(wrksppath, region, 'gfsresults.csv')
     logging.info(results)
-    answers = pd.DataFrame(columns=['cat_id', 'mean', 'max'])
+    answers = pd.DataFrame(columns=['cat_id', 'cum_mean', 'mean', 'max'])
 
     res_df = pd.read_csv(results, index_col=False)[['cat_id', 'mean', 'max']]
     ids = res_df.cat_id.unique()
     for catid in ids:
         df = res_df.query("cat_id == @catid")
+        cum_mean = round(sum(df['mean'].values), 1)
         mean = max(df['mean'].values)
         maximum = max(df['max'].values)
-        answers = answers.append({'cat_id': catid, 'mean': mean, 'max': maximum}, ignore_index=True)
+        answers = answers.append({'cat_id': catid, 'cum_mean': cum_mean, 'mean': mean, 'max': maximum}, ignore_index=True)
 
     answers.to_csv(colorscales, mode='w', index=False)
     logging.info('Wrote new rules to csv')

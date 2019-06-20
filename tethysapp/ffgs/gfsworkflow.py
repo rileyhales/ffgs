@@ -18,7 +18,7 @@ def setenvironment():
     """
     Dependencies: os, shutil, datetime, urllib.request, app_settings (options)
     """
-    logging.info('\nSetting the Environment for GFS Workflow')
+    logging.info('\nSetting the Environment for the GFS Workflow')
     # determine the most day and hour of the day timestamp of the most recent GFS forecast
     now = datetime.datetime.utcnow()
     if now.hour > 20:
@@ -60,12 +60,12 @@ def setenvironment():
     # create the file structure and their permissions for the new data
     for region in ffgs_regions():
         logging.info('Creating APP WORKSPACE (GeoTIFF) file structure for ' + region[1])
-        new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFs')
+        new_dir = os.path.join(wrksppath, region[1], 'gfs_GeoTIFFs')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
         os.chmod(new_dir, 0o777)
-        new_dir = os.path.join(wrksppath, region[1], 'GeoTIFFs_resampled')
+        new_dir = os.path.join(wrksppath, region[1], 'gfs_GeoTIFFs_resampled')
         if os.path.exists(new_dir):
             shutil.rmtree(new_dir)
         os.mkdir(new_dir)
@@ -92,10 +92,10 @@ def setenvironment():
     return threddspath, wrksppath, timestamp, redundant
 
 
-def download_gfs(threddspath, timestamp, region):
-    logging.info('\nStarting GFS Grib Downloads for ' + region)
+def download_gfs(threddspath, timestamp, region, model):
+    logging.info('\nStarting GFS grib Downloads for ' + region)
     # set filepaths
-    gribsdir = os.path.join(threddspath, region, 'gfs', timestamp, 'gribs')
+    gribsdir = os.path.join(threddspath, region, model, timestamp, 'gribs')
 
     # if you already have a folder with data for this timestep, quit this function (you dont need to download it)
     if not os.path.exists(gribsdir):
@@ -153,16 +153,16 @@ def download_gfs(threddspath, timestamp, region):
     return True
 
 
-def gfs_tiffs(threddspath, wrksppath, timestamp, region):
+def gfs_tiffs(threddspath, wrksppath, timestamp, region, model):
     """
     Script to combine 6-hr accumulation grib files into 24-hr accumulation geotiffs.
     Dependencies: datetime, os, numpy, rasterio
     """
-    logging.info('\nStarting to process the GFS gribs into GeoTIFFs')
+    logging.info('\nStarting to process the ' + model + ' gribs into GeoTIFFs')
     # declare the environment
     tiffs = os.path.join(wrksppath, region, 'GeoTIFFs')
-    gribs = os.path.join(threddspath, region, 'gfs', timestamp, 'gribs')
-    netcdfs = os.path.join(threddspath, region, 'gfs', timestamp, 'netcdfs')
+    gribs = os.path.join(threddspath, region, model, timestamp, 'gribs')
+    netcdfs = os.path.join(threddspath, region, model, timestamp, 'netcdfs')
 
     # if you already have gfs netcdfs in the netcdfs folder, quit the function
     if not os.path.exists(gribs):
@@ -315,17 +315,17 @@ def resample(wrksppath, region):
     return
 
 
-def zonal_statistics(wrksppath, timestamp, region):
+def zonal_statistics(wrksppath, timestamp, region, model):
     """
     Script to calculate average precip over FFGS polygon shapefile
     Dependencies: datetime, os, pandas, rasterstats
     """
     logging.info('\nDoing Zonal Statistics on ' + region)
     # Define app workspace and sub-paths
-    resampleds = os.path.join(wrksppath, region, 'GeoTIFFs_resampled')
+    resampleds = os.path.join(wrksppath, region, model + '_GeoTIFFs_resampled')
     shp_path = os.path.join(wrksppath, region, 'shapefiles', 'ffgs_' + region + '.shp')
 
-    stat_file = os.path.join(wrksppath, region, 'gfsresults.csv')
+    stat_file = os.path.join(wrksppath, region, model + 'results.csv')
 
     # check that there are resampled tiffs to do zonal statistics on
     if not os.path.exists(resampleds):
@@ -374,7 +374,7 @@ def zonal_statistics(wrksppath, timestamp, region):
     return
 
 
-def nc_georeference(threddspath, timestamp, region):
+def nc_georeference(threddspath, timestamp, region, model):
     """
     Description: Intended to make a THREDDS data server compatible netcdf file out of an incorrectly structured
         netcdf file.
@@ -385,8 +385,8 @@ def nc_georeference(threddspath, timestamp, region):
     logging.info('\nProcessing the netCDF files')
 
     # setting the environment file paths
-    netcdfs = os.path.join(threddspath, region, 'gfs', timestamp, 'netcdfs')
-    processed = os.path.join(threddspath, region, 'gfs', timestamp, 'processed')
+    netcdfs = os.path.join(threddspath, region, model, timestamp, 'netcdfs')
+    processed = os.path.join(threddspath, region, model, timestamp, 'processed')
 
     # if you already have processed netcdfs files, skip this and quit the function
     if not os.path.exists(netcdfs):
@@ -515,10 +515,10 @@ def nc_georeference(threddspath, timestamp, region):
     return
 
 
-def new_ncml(threddspath, timestamp, region):
+def new_ncml(threddspath, timestamp, region, model):
     logging.info('\nWriting a new ncml file for this date')
     # create a new ncml file by filling in the template with the right dates and writing to a file
-    ncml = os.path.join(threddspath, region, 'gfs', 'wms.ncml')
+    ncml = os.path.join(threddspath, region, model, 'wms.ncml')
     date = datetime.datetime.strptime(timestamp, "%Y%m%d%H")
     date = datetime.datetime.strftime(date, "%Y-%m-%d %H:00:00")
     with open(ncml, 'w') as file:
@@ -538,11 +538,11 @@ def new_ncml(threddspath, timestamp, region):
     return
 
 
-def new_colorscales(wrksppath, region):
+def new_colorscales(wrksppath, region, model):
     # set the environment
-    logging.info('\nGenerating a new color scale csv for the gfs results')
-    colorscales = os.path.join(wrksppath, region, 'gfscolorscales.csv')
-    results = os.path.join(wrksppath, region, 'gfsresults.csv')
+    logging.info('\nGenerating a new color scale csv for the ' + model + ' results')
+    colorscales = os.path.join(wrksppath, region, model + 'colorscales.csv')
+    results = os.path.join(wrksppath, region, model + 'results.csv')
     logging.info(results)
     answers = pd.DataFrame(columns=['cat_id', 'cum_mean', 'mean', 'max'])
 
@@ -553,21 +553,23 @@ def new_colorscales(wrksppath, region):
         cum_mean = round(sum(df['mean'].values), 1)
         mean = max(df['mean'].values)
         maximum = max(df['max'].values)
-        answers = answers.append({'cat_id': catid, 'cum_mean': cum_mean, 'mean': mean, 'max': maximum}, ignore_index=True)
+        answers = answers.append(
+            {'cat_id': catid, 'cum_mean': cum_mean, 'mean': mean, 'max': maximum},
+            ignore_index=True)
 
     answers.to_csv(colorscales, mode='w', index=False)
     logging.info('Wrote new rules to csv')
     return
 
 
-def set_wmsbounds(threddspath, timestamp, region):
+def set_wmsbounds(threddspath, timestamp, region, model):
     """
     Dynamically defines exact boundaries for the legend and wms so that they are synchronized
     Dependencies: netcdf4, os, math, numpy
     """
     logging.info('\nSetting the WMS bounds')
     # get a list of files to
-    ncfolder = os.path.join(threddspath, region, 'gfs', timestamp, 'processed')
+    ncfolder = os.path.join(threddspath, region, model, timestamp, 'processed')
     ncs = os.listdir(ncfolder)
     files = [file for file in ncs if file.startswith('processed')][0]
 
@@ -607,10 +609,10 @@ def set_wmsbounds(threddspath, timestamp, region):
     return
 
 
-def cleanup(threddspath, timestamp, region):
+def cleanup(threddspath, timestamp, region, model):
     # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
-    logging.info('Getting rid of old gfs data folders')
-    path = os.path.join(threddspath, region, 'gfs')
+    logging.info('Getting rid of old ' + model + ' data folders')
+    path = os.path.join(threddspath, region, model)
     files = os.listdir(path)
     files.remove(timestamp)
     files.remove('wms.ncml')
@@ -619,7 +621,6 @@ def cleanup(threddspath, timestamp, region):
             shutil.rmtree(os.path.join(path, file))
         except:
             os.remove(os.path.join(path, file))
-
     logging.info('Done')
     return
 
@@ -634,6 +635,7 @@ def run_gfs_workflow():
 
     # start the workflow by setting the environment
     threddspath, wrksppath, timestamp, redundant = setenvironment()
+    model = 'gfs'
 
     # if this has already been done for the most recent forecast, abort the workflow
     if redundant:
@@ -644,20 +646,20 @@ def run_gfs_workflow():
     for region in ffgs_regions():
         logging.info('\nBeginning to process ' + region[1] + ' on ' + datetime.datetime.utcnow().strftime("%D at %R"))
         # download each forecast model, convert them to netcdfs and tiffs
-        succeeded = download_gfs(threddspath, timestamp, region[1])
+        succeeded = download_gfs(threddspath, timestamp, region[1], model)
         if not succeeded:
             return 'Workflow Aborted- Downloading Errors Occurred'
-        gfs_tiffs(threddspath, wrksppath, timestamp, region[1])
+        gfs_tiffs(threddspath, wrksppath, timestamp, region[1], model)
         resample(wrksppath, region[1])
         # the geoprocessing functions
-        zonal_statistics(wrksppath, timestamp, region[1])
-        nc_georeference(threddspath, timestamp, region[1])
+        zonal_statistics(wrksppath, timestamp, region[1], model)
+        nc_georeference(threddspath, timestamp, region[1], model)
         # generate color scales and ncml aggregation files
-        new_ncml(threddspath, timestamp, region[1])
-        new_colorscales(wrksppath, region[1])
-        set_wmsbounds(threddspath, timestamp, region[1])
+        new_ncml(threddspath, timestamp, region[1], model)
+        new_colorscales(wrksppath, region[1], model)
+        set_wmsbounds(threddspath, timestamp, region[1], model)
         # cleanup the workspace by removing old files
-        cleanup(threddspath, timestamp, region[1])
+        cleanup(threddspath, timestamp, region[1], model)
 
     logging.info('\nAll regions finished- writing the timestamp used on this run to a txt file')
     with open(os.path.join(wrksppath, 'gfs_timestamp.txt'), 'w') as file:

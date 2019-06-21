@@ -102,7 +102,7 @@ def run_workflows(request):
     logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
     # Set the clobber option so that the right folders get generated in the set_environment functions
-    if request.GET['clobber']:
+    if 'clobber' in request.GET:
         clobber = request.GET['clobber'].lower()
         if clobber in ['yes', 'true']:
             logging.info('You chose the clobber option so the timestamps and all the data folders will be overwritten')
@@ -112,7 +112,7 @@ def run_workflows(request):
             for stamp in timestamps:
                 with open(os.path.join(wrksp, stamp), 'w') as file:
                     file.write('clobbered')
-            logging.info('Clobber complete. Files Terminated.')
+            logging.info('Clobber complete. Files marked for execution')
 
     # todo make the workflows handle http errors better???
     gfs_status = run_gfs_workflow()

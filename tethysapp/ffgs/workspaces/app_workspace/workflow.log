@@ -1,3 +1,18 @@
-Workflow initiated on 06/21/19 at 04:37
-Workflow initiated on 06/21/19 at 04:37
-Workflow initiated on 06/21/19 at 04:38
+Workflow initiated on 06/21/19 at 17:17
+You chose the clobber option so the timestamps and all the data folders will be overwritten
+Clobber complete. Files will be terminated.
+
+Setting the Environment for the GFS Workflow
+determined the timestamp to download: 2019062112
+Creating APP WORKSPACE (GeoTIFF) file structure for hispaniola
+Creating THREDDS file structure for hispaniola
+Creating APP WORKSPACE (GeoTIFF) file structure for centralamerica
+Creating THREDDS file structure for centralamerica
+All done setting up folders, on to do work
+
+Beginning to process hispaniola on 06/21/19 at 17:17
+
+Starting GFS grib Downloads for hispaniola
+downloading the file 2019062118.grb
+downloading the file 2019062200.grb
+downloading the file 2019062206.grb

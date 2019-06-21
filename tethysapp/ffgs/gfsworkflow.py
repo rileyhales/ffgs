@@ -44,18 +44,21 @@ def setenvironment():
     with open(timefile, 'r') as file:
         lasttime = file.readline()
         if lasttime == timestamp:
+            # use the redundant check to exacpt the function because its already been run
             redundant = True
             logging.info('The last recorded timestamp is the timestamp we determined, aborting workflow')
             return threddspath, wrksppath, timestamp, redundant
-        else:
+        elif lasttime == 'clobbered':
+            # if you marked clobber is true, dont check for old folders from partially completed workflows
             redundant = False
-
-    # if the file structure already exists, quit
-    chk_hisp = os.path.join(wrksppath, 'hispaniola', 'GeoTIFFs_resampled')
-    chk_centr = os.path.join(wrksppath, 'centralamerica', 'GeoTIFFs_resampled')
-    if os.path.exists(chk_hisp) and os.path.exists(chk_centr):
-        logging.info('You have a file structure for this timestep but didnt complete the workflow, analyzing...')
-        return threddspath, wrksppath, timestamp, redundant
+        else:
+            # check to see if there are remnants of partially completed runs and dont destroy old folders
+            redundant = False
+            chk_hisp = os.path.join(wrksppath, 'hispaniola', 'GeoTIFFs_resampled')
+            chk_centr = os.path.join(wrksppath, 'centralamerica', 'GeoTIFFs_resampled')
+            if os.path.exists(chk_hisp) and os.path.exists(chk_centr):
+                logging.info('There are directories for this timestep but the workflow wasn\'t finished. Analyzing...')
+                return threddspath, wrksppath, timestamp, redundant
 
     # create the file structure and their permissions for the new data
     for region in ffgs_regions():

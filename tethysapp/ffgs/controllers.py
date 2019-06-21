@@ -1,13 +1,14 @@
 import logging
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import render
 from tethys_sdk.gizmos import SelectInput, RangeSlider
 
+from .options import *
 from .app import Ffgs as App
 from .gfsworkflow import run_gfs_workflow
-from .options import *
 from .wrfprworkflow import run_wrfpr_workflow
 
 
@@ -90,9 +91,28 @@ def run_workflows(request):
     """
     The controller for running the workflow to download and process data
     """
+    # Check for user permissions here rather than with a decorator so that we can log the failure
+    if not User.is_superuser:
+        logging.basicConfig(filename=app_settings()['logfile'], filemode='a', level=logging.INFO, format='%(message)s')
+        logging.info('A non-superuser tried to run this workflow on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+        logging.info('The user was ' + str(request.user))
+        return JsonResponse({'Unauthorized User': 'You do not have permission to run the workflow. Ask a superuser.'})
+
     # enable logging to track the progress of the workflow and for debugging
     logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
     logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+
+    # Set the clobber option so that the right folders get generated in the set_environment functions
+    clobber = request.GET['clobber'].lower()
+    if clobber in ['yes', 'true']:
+        logging.info('You have chosen the clobber option so the timestamps and all the data folders will be deleted')
+        wrksp = App.get_app_workspace().path
+        timestamps = os.listdir(wrksp)
+        timestamps = [stamp for stamp in timestamps if stamp.endswith('timestamp.txt')]
+        for stamp in timestamps:
+            with open(os.path.join(wrksp, stamp), 'w') as file:
+                file.write('clobbered')
+        logging.info('Clobber complete. Files Terminated.')
 
     # todo make the workflows handle http errors better???
     gfs_status = run_gfs_workflow()

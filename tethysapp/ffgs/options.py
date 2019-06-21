@@ -22,6 +22,7 @@ def wms_colors():
     Color options usable by thredds wms
     """
     return [
+        ('Precipitation', 'precipitation'),
         ('SST-36', 'sst_36'),
         ('Greyscale', 'greyscale'),
         ('Rainbow', 'rainbow'),

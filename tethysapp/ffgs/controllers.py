@@ -58,7 +58,6 @@ def home(request):
         multiple=False,
         original=True,
         options=wms_colors(),
-        initial='greyscale'
     )
 
     opacity_raster = RangeSlider(

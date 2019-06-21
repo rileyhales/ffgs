@@ -130,14 +130,15 @@ function colorScale(value) {
         ''
 }
 
-function setColor(rules, number) {
-    return rules[number + '.0']['cum_mean'] > 30 ? colorScale(30) :
-        rules[number + '.0']['cum_mean'] > 25 ? colorScale(25) :
-        rules[number + '.0']['cum_mean'] > 20 ? colorScale(20) :
-        rules[number + '.0']['cum_mean'] > 15 ? colorScale(15) :
-        rules[number + '.0']['cum_mean'] > 10 ? colorScale(10) :
-        rules[number + '.0']['cum_mean'] > 5 ? colorScale(5) :
-        rules[number + '.0']['cum_mean'] >= 0 ? colorScale(0) :
+let rules;
+function setColor(rules, number, resulttype) {
+    return rules[number + '.0'][resulttype] > 30 ? colorScale(30) :
+        rules[number + '.0'][resulttype] > 25 ? colorScale(25) :
+        rules[number + '.0'][resulttype] > 20 ? colorScale(20) :
+        rules[number + '.0'][resulttype] > 15 ? colorScale(15) :
+        rules[number + '.0'][resulttype] > 10 ? colorScale(10) :
+        rules[number + '.0'][resulttype] > 5 ? colorScale(5) :
+        rules[number + '.0'][resulttype] >= 0 ? colorScale(0) :
         '';
 }
 
@@ -153,7 +154,8 @@ function addFFGSlayer() {
         dataType: 'json',
         contentType: "application/json",
         method: 'POST',
-        success: function (rules) {
+        success: function (data) {
+            rules = data;
             watersheds_colors = L.geoJSON(geojson_sorter[region], {
                 onEachFeature: layerPopups,
                 style: (function (feature) {
@@ -162,7 +164,7 @@ function addFFGSlayer() {
                         color: 'rgba(0,0,0,0.0)',
                         opacity: 0,
                         weight: 0,
-                        fillColor: setColor(rules, number),
+                        fillColor: setColor(rules, number, $("#resulttype").val()),
                         fillOpacity: 1,
                     }
                 }),

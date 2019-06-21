@@ -52,8 +52,16 @@ def home(request):
         options=chart_options(),
     )
 
+    resulttypeoptions = SelectInput(
+        display_text='Color Regions By Result Type',
+        name='resulttype',
+        multiple=False,
+        original=True,
+        options=resulttype_options(),
+    )
+
     colorscheme = SelectInput(
-        display_text='Raster Color Scheme',
+        display_text='Forecast Model Layer Color Scheme',
         name='colorscheme',
         multiple=False,
         original=True,
@@ -61,7 +69,7 @@ def home(request):
     )
 
     opacity_raster = RangeSlider(
-        display_text='Raster Opacity',
+        display_text='Forecast Model Layer Opacity',
         name='opacity_raster',
         min=0,
         max=1,
@@ -76,6 +84,7 @@ def home(request):
         'central_models': central_models,
         'ffgsregions': ffgsregions,
         'chartoptions': chartoptions,
+        'resulttypeoptions': resulttypeoptions,
         'colorscheme': colorscheme,
         'opacity_raster': opacity_raster,
         'githublink': App.githublink,

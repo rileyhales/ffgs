@@ -23,16 +23,11 @@ def wms_colors():
     """
     return [
         ('Precipitation', 'precipitation'),
-        ('SST-36', 'sst_36'),
         ('Greyscale', 'greyscale'),
         ('Rainbow', 'rainbow'),
         ('OCCAM', 'occam'),
-        ('OCCAM Pastel', 'occam_pastel-30'),
         ('Red-Blue', 'redblue'),
-        ('NetCDF Viewer', 'ncview'),
         ('ALG', 'alg'),
-        ('ALG 2', 'alg2'),
-        ('Ferret', 'ferret'),
         ]
 
 
@@ -68,7 +63,17 @@ def chart_options():
     """
     return [
         ('Cumulative', 'cumulative'),
-        ('Forecast Interval', 'intervals')
+        ('Forecast Intervals', 'intervals')
+    ]
+
+
+def resulttype_options():
+    """
+    Choose to color the regions by the mean, max, or cumulative values
+    """
+    return [
+        ('Cumulative Accumulated Precipitation (mean value each forecast interval)', 'cum_mean'),
+        ('Largest Forecast Interval\'s Mean Precipitation (on any 1 Forecast Interval)', 'mean'),
     ]
 
 
@@ -86,7 +91,7 @@ def get_forecastdates():
     with open(path, 'r') as file:
         time = file.readline()
         if len(time) == 0:
-            wrfpr_date = 'No WRFPR Timestamp Detected'
+            wrfpr_date = 'No WRF-PR Timestamp Detected'
         else:
             time = datetime.datetime.strptime(time, "%Y%m%d%H")
             wrfpr_date = "WRF-PR data from " + time.strftime("%b %d, %I%p UTC")

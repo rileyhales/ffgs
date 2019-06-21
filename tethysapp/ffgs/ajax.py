@@ -67,6 +67,7 @@ def get_cum_floodchart(request):
     id = data['watershedID']
     model = data['model']
     region = data['region']
+
     wrksppath = app_settings()['app_wksp_path']
 
     # read the csv of results from the last workflow run

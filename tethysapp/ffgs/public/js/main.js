@@ -102,12 +102,25 @@ $("#central_models").change(function () {
 });
 
 
-$("#displaytoggle").click(function() {
+$("#displaytoggle").click(function () {
     $("#displaycontrols").toggle();
 });
 
 $("#chartoptions").change(function () {
     updateChart(id);
+});
+
+$("#resulttype").change(function () {
+    watersheds_colors.setStyle(function (feature) {
+        let number = feature.properties.cat_id;
+        return {
+            color: 'rgba(0,0,0,0.0)',
+            opacity: 0,
+            weight: 0,
+            fillColor: setColor(rules, number, $("#resulttype").val()),
+            fillOpacity: 1,
+        }
+    })
 });
 
 $('#colorscheme').change(function () {

@@ -54,8 +54,8 @@ def setenvironment():
         else:
             # check to see if there are remnants of partially completed runs and dont destroy old folders
             redundant = False
-            chk_hisp = os.path.join(wrksppath, 'hispaniola', 'GeoTIFFs_resampled')
-            chk_centr = os.path.join(wrksppath, 'centralamerica', 'GeoTIFFs_resampled')
+            chk_hisp = os.path.join(wrksppath, 'hispaniola', 'gfs_GeoTIFFs_resampled')
+            chk_centr = os.path.join(wrksppath, 'centralamerica', 'gfs_GeoTIFFs_resampled')
             if os.path.exists(chk_hisp) and os.path.exists(chk_centr):
                 logging.info('There are directories for this timestep but the workflow wasn\'t finished. Analyzing...')
                 return threddspath, wrksppath, timestamp, redundant
@@ -163,7 +163,7 @@ def gfs_tiffs(threddspath, wrksppath, timestamp, region, model):
     """
     logging.info('\nStarting to process the ' + model + ' gribs into GeoTIFFs')
     # declare the environment
-    tiffs = os.path.join(wrksppath, region, 'GeoTIFFs')
+    tiffs = os.path.join(wrksppath, region, model + '_GeoTIFFs')
     gribs = os.path.join(threddspath, region, model, timestamp, 'gribs')
     netcdfs = os.path.join(threddspath, region, model, timestamp, 'netcdfs')
 
@@ -246,15 +246,15 @@ def gfs_tiffs(threddspath, wrksppath, timestamp, region, model):
     return
 
 
-def resample(wrksppath, region):
+def resample(wrksppath, region, model):
     """
     Script to resample rasters from .25 o .0025 degree in order for rasterstats to work
     Dependencies: datetime, os, numpy, rasterio
     """
     logging.info('\nResampling the rasters for ' + region)
     # Define app workspace and sub-paths
-    tiffs = os.path.join(wrksppath, region, 'GeoTIFFs')
-    resampleds = os.path.join(wrksppath, region, 'GeoTIFFs_resampled')
+    tiffs = os.path.join(wrksppath, region, model + '_GeoTIFFs')
+    resampleds = os.path.join(wrksppath, region, model + '_GeoTIFFs_resampled')
 
     # Create directory for the resampled GeoTIFFs
     if not os.path.exists(tiffs):
@@ -653,7 +653,7 @@ def run_gfs_workflow():
         if not succeeded:
             return 'Workflow Aborted- Downloading Errors Occurred'
         gfs_tiffs(threddspath, wrksppath, timestamp, region[1], model)
-        resample(wrksppath, region[1])
+        resample(wrksppath, region[1], model)
         # the geoprocessing functions
         zonal_statistics(wrksppath, timestamp, region[1], model)
         nc_georeference(threddspath, timestamp, region[1], model)

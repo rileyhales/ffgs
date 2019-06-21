@@ -16,7 +16,7 @@ def setenvironment():
     """
     Dependencies: os, shutil, datetime, urllib.request, app_settings (options)
     """
-    logging.info('\nSetting the Environment')
+    logging.info('\nSetting the Environment for a WRFPR model run')
     # determine the most day and hour of the day timestamp of the most recent WRF-PR forecast
     now = datetime.datetime.utcnow()
     if now.hour > 20:

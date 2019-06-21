@@ -28,7 +28,7 @@ def wms_colors():
         ('OCCAM', 'occam'),
         ('Red-Blue', 'redblue'),
         ('ALG', 'alg'),
-        ]
+    ]
 
 
 def ffgs_regions():

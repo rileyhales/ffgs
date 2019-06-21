@@ -144,8 +144,9 @@ ffgs
 	---><empty directory>
 ~~~~
 The app will automatically create a file structure for each region and fill it with data. Refer to the "File Structure and Naming Convention Reference" for more information
-#### Configure Thredds' settings (if you haven't previously)
+#### Configure Thredds' settings
 You will also need to modify Thredds' settings files to enable WMS services and support for netCDF files on your server. In the folder where you installed Thredds, there should be a file called ```catalog.xml```. 
+***Changes to catalog.xml***
 ~~~~
 vim catalog.xml
 ~~~~
@@ -158,12 +159,12 @@ At the top of the document is a list of supported services. Make sure the line f
 Scroll down toward the end of the section that says ```filter```. This is the section that limits which kinds of datasets Thredds will process. We need it to accept .nc, .nc4, and .ncml file types. Make sure your ```filter``` tag includes the following lines.
 ~~~~
 <filter>
-    <include wildcard="*.nc"/>
-    <include wildcard="*.nc4"/>
     <include wildcard="*.ncml"/>
 </filter>
 ~~~~
 Press ```esc``` then type ```:x!```  and press the ```return``` key to save and quit.
+
+***Changes to threddsConfig.xml***
 ~~~~
 vim threddsConfig.xml
 ~~~~
@@ -177,6 +178,18 @@ Find the section near the top about CORS (Cross-Origin Resource Sharing). CORS a
     <allowedOrigin>*</allowedOrigin>
 </CORS>
 ~~~~
+Press ```esc``` then type ```:x!```  and press the ```return``` key to save and quit.
+
+In the app workspace, there is a custom color scale palette in the precipitation.pal file. If you already have a directory containing custom color schemes, copy the precipitation palette there. Otherwise, you need to copy this to the palettes directory created by default in your Thredds instance. If you want to create a directory containing custom color palettes, find the section about wms services in threddsConfig.xml and add a <palettesLocationDir> tag. In the tag, place the absolute file path of your new directory. WARNING: if you specify a palettes directory, the standard library of color schemes will not be available anymore.
+~~~
+<WMS>
+	<allow>true</allow>
+	<allowRemote>false</allowRemote>
+	<paletteLocationDir>/absolute/path/to/directory</paletteLocationDir>
+	<maxImageWidth>2048</maxImageWidth>
+	<maxImageHeight>2048</maxImageHeight>
+</WMS>
+~~~
 Press ```esc``` then type ```:x!```  and press the ```return``` key to save and quit.
 
 Reset the Thredds server so the catalog is regenerated with the edits that you've made. The command to reset your server will vary based on your installation method, such as ```docker reset thredds``` or ```sudo systemctl reset tomcat```.

@@ -8,7 +8,7 @@ import requests
 import xarray
 from rasterio.enums import Resampling
 
-from .gfsworkflow import nc_georeference, zonal_statistics, new_colorscales, set_wmsbounds, cleanup
+from .gfsworkflow import nc_georeference, zonal_statistics, new_colorscales, cleanup
 from .options import *
 
 
@@ -19,9 +19,9 @@ def setenvironment():
     logging.info('\nSetting the Environment for a WRFPR model run')
     # determine the most day and hour of the day timestamp of the most recent WRF-PR forecast
     now = datetime.datetime.utcnow()
-    if now.hour > 20:
+    if now.hour > 21:
         timestamp = now.strftime("%Y%m%d") + '18'
-    elif now.hour > 8:
+    elif now.hour > 9:
         timestamp = now.strftime("%Y%m%d") + '06'
     else:
         now = now - datetime.timedelta(days=1)
@@ -379,7 +379,6 @@ def run_wrfpr_workflow():
     # generate color scales and ncml aggregation files
     new_ncml_wrfpr(threddspath, timestamp, region)
     new_colorscales(wrksppath, region, model)
-    set_wmsbounds(threddspath, timestamp, region, model)
     # cleanup the workspace by removing old files
     cleanup(threddspath, timestamp, region, model)
 

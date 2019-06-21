@@ -1,5 +1,4 @@
 import logging
-import math
 import shutil
 
 import netCDF4
@@ -21,13 +20,13 @@ def setenvironment():
     logging.info('\nSetting the Environment for the GFS Workflow')
     # determine the most day and hour of the day timestamp of the most recent GFS forecast
     now = datetime.datetime.utcnow()
-    if now.hour > 20:
+    if now.hour > 21:
         timestamp = now.strftime("%Y%m%d") + '18'
-    elif now.hour > 14:
+    elif now.hour > 15:
         timestamp = now.strftime("%Y%m%d") + '12'
-    elif now.hour > 8:
+    elif now.hour > 9:
         timestamp = now.strftime("%Y%m%d") + '06'
-    elif now.hour > 2:
+    elif now.hour > 3:
         timestamp = now.strftime("%Y%m%d") + '00'
     else:
         now = now - datetime.timedelta(days=1)
@@ -565,53 +564,6 @@ def new_colorscales(wrksppath, region, model):
     return
 
 
-def set_wmsbounds(threddspath, timestamp, region, model):
-    """
-    Dynamically defines exact boundaries for the legend and wms so that they are synchronized
-    Dependencies: netcdf4, os, math, numpy
-    """
-    logging.info('\nSetting the WMS bounds')
-    # get a list of files to
-    ncfolder = os.path.join(threddspath, region, model, timestamp, 'processed')
-    ncs = os.listdir(ncfolder)
-    files = [file for file in ncs if file.startswith('processed')][0]
-
-    # setup the dictionary of values to return
-    bounds = {}
-    variables = {}  # gfs_variables()
-    for variable in variables:
-        bounds[variables[variable]] = ''
-
-    path = os.path.join(ncfolder, files)
-    dataset = netCDF4.Dataset(path, 'r')
-    logging.info('working on file ' + path)
-
-    for variable in variables:
-        logging.info('checking for variable ' + variable)
-        array = dataset[variables[variable]][:]
-        array = array.flatten()
-        array = array[~numpy.isnan(array)]
-        maximum = math.ceil(max(array))
-        if maximum == numpy.nan:
-            maximum = 0
-        logging.info('max is ' + str(maximum))
-
-        minimum = math.floor(min(array))
-        if minimum == numpy.nan:
-            minimum = 0
-        logging.info('min is ' + str(minimum))
-
-        bounds[variables[variable]] = str(minimum) + ',' + str(maximum)
-    dataset.close()
-
-    logging.info('done checking for max/min. writing the file')
-    boundsfile = os.path.join(os.path.dirname(__file__), 'public', 'js', 'bounds.js')
-    with open(boundsfile, 'w') as file:
-        file.write('const bounds = ' + str(bounds) + ';')
-    logging.info('wrote the js file')
-    return
-
-
 def cleanup(threddspath, timestamp, region, model):
     # delete anything that isn't the new folder of data (named for the timestamp) or the new wms.ncml file
     logging.info('Getting rid of old ' + model + ' data folders')
@@ -660,7 +612,6 @@ def run_gfs_workflow():
         # generate color scales and ncml aggregation files
         new_ncml(threddspath, timestamp, region[1], model)
         new_colorscales(wrksppath, region[1], model)
-        set_wmsbounds(threddspath, timestamp, region[1], model)
         # cleanup the workspace by removing old files
         cleanup(threddspath, timestamp, region[1], model)
 

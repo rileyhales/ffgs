@@ -120,7 +120,7 @@ def run_workflows(request):
     logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
     logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
-    # Set the clobber option so that the right folders get generated in the set_environment functions
+    # Set the clobber option so that the right folders get deleted/regenerated in the set_environment functions
     if 'clobber' in request.GET:
         clobber = request.GET['clobber'].lower()
         if clobber in ['yes', 'true']:
@@ -133,7 +133,6 @@ def run_workflows(request):
                     file.write('clobbered')
             logging.info('Clobber complete. Files marked for execution')
 
-    # todo make the workflows handle http errors better???
     gfs_status = run_gfs_workflow()
     wrf_status = run_wrfpr_workflow()
 

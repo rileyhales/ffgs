@@ -61,7 +61,7 @@ def home(request):
     )
 
     colorscheme = SelectInput(
-        display_text='Forecast Model Layer Color Scheme',
+        display_text='Forecast Layer Color Scheme',
         name='colorscheme',
         multiple=False,
         original=True,
@@ -69,12 +69,21 @@ def home(request):
     )
 
     opacity_raster = RangeSlider(
-        display_text='Forecast Model Layer Opacity',
+        display_text='Forecast Layer Opacity',
         name='opacity_raster',
         min=0,
         max=1,
         step=.05,
         initial=.5,
+    )
+
+    legendintervals = RangeSlider(
+        display_text='Color Scale Intervals',
+        name='legendintervals',
+        min=1,
+        max=20,
+        step=1,
+        initial=5,
     )
 
     context = {
@@ -87,6 +96,7 @@ def home(request):
         'resulttypeoptions': resulttypeoptions,
         'colorscheme': colorscheme,
         'opacity_raster': opacity_raster,
+        'legendintervals': legendintervals,
         'githublink': App.githublink,
         'version': App.version,
     }

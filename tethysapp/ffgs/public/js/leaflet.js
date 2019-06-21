@@ -48,6 +48,7 @@ function newForecastLayer() {
     let region = regionmodel[0];
     let model = regionmodel[1];
     let wmsurl = threddsbase + '/' + region + '/' + model + '/' + 'wms.ncml';
+    let max = String(parseInt($("#legendintervals").val()) * 6);
     let wmsLayer = L.tileLayer.wms(wmsurl, {
         // version: '1.3.0',
         layers: 'tp',
@@ -59,7 +60,7 @@ function newForecastLayer() {
         opacity: $("#opacity_raster").val(),
         BGCOLOR: '0x000000',
         styles: 'boxfill/' + $('#colorscheme').val(),
-        colorscalerange: '0,35'
+        colorscalerange: '0,' + max
     });
 
     return L.timeDimension.layer.wms(wmsLayer, {
@@ -70,16 +71,16 @@ function newForecastLayer() {
         cache: 20,
     }).addTo(mapObj);
 }
-
-////////////////////////////////////////////////////////////////////////  LEGEND DEFINITIONS
+////////////////////////////////////////////////////////////////////////  FORECAST LAYER LEGEND
 // the forecast layer raster legend
 let forecastLegend = L.control({position: 'topright'});
 forecastLegend.onAdd = function () {
     let regionmodel = get_regionmodel();
     let region = regionmodel[0];
     let model = regionmodel[1];
+    let max = String(parseInt($("#legendintervals").val()) * 6);
     let div = L.DomUtil.create('div', 'legend');
-    let url = threddsbase + '/' + region + '/' + model + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0,35";
+    let url = threddsbase + '/' + region + '/' + model + '/' + 'wms.ncml' + "?REQUEST=GetLegendGraphic&LAYER=tp" + "&PALETTE=" + $('#colorscheme').val() + "&COLORSCALERANGE=0," + max;
     div.innerHTML = '<img src="' + url + '" alt="legend" style="width:100%; float:right;">';
     return div
 };
@@ -87,15 +88,17 @@ forecastLegend.onAdd = function () {
 // the geojson (colored watersheds) legend
 let ffgsLegend = L.control({position: 'bottomleft'});
 ffgsLegend.onAdd = function () {
-    let div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 5, 10, 15, 20, 25, 30],
-        labels = [];
+    let div = L.DomUtil.create('div', 'info legend');
+    let interval = parseInt($("#legendintervals").val());
+    let labels = [];
+
     labels.push('<b>Precipitation (mm)</b>');
-    for (let i = 0; i < grades.length; i++) {
-        let from = grades[i];
-        let to = grades[i + 1];
-        labels.push('<i style="background:' + colorScale(from) + '"></i> ' + from + (to ? '&ndash;' + to : '+'));
+    for (let i = 0; i < 6; i++) {
+        let from = interval * i;
+        let to = interval * (i + 1);
+        labels.push('<i style="background:' + colorScale(from) + '"></i> ' + from + '&ndash;' + to);
     }
+    labels.push('<i style="background:' + colorScale((interval * 6)) + '"></i> ' + ((interval * 6)) + '+');
     div.innerHTML = labels.join('<br>');
     return div;
 };
@@ -120,24 +123,26 @@ let geojson_sorter = {
 };
 
 function colorScale(value) {
-    return value > 30 ? '#0c2c84' :
-        value > 25  ? '#225ea8' :
-        value > 20  ? '#1d91c0' :
-        value > 15  ? '#41b6c4' :
-        value > 10   ? '#7fcdbb' :
-        value > 5   ? '#c7e9b4' :
-        value >= 0   ? '#ffffcc':
-        ''
+    let interval = parseInt($("#legendintervals").val());
+    return value >= (interval * 6) ? '#0c2c84' :
+    value >= (interval * 5)  ? '#225ea8' :
+    value >= (interval * 4)  ? '#1d91c0' :
+    value >= (interval * 3)  ? '#41b6c4' :
+    value >= (interval * 2)   ? '#7fcdbb' :
+    value >= interval  ? '#c7e9b4' :
+    value >= 0   ? '#ffffcc':
+    ''
 }
 
 let rules;
 function setColor(rules, number, resulttype) {
-    return rules[number + '.0'][resulttype] > 30 ? colorScale(30) :
-        rules[number + '.0'][resulttype] > 25 ? colorScale(25) :
-        rules[number + '.0'][resulttype] > 20 ? colorScale(20) :
-        rules[number + '.0'][resulttype] > 15 ? colorScale(15) :
-        rules[number + '.0'][resulttype] > 10 ? colorScale(10) :
-        rules[number + '.0'][resulttype] > 5 ? colorScale(5) :
+    let interval = parseInt($("#legendintervals").val());
+    return rules[number + '.0'][resulttype] >= (interval * 6) ? colorScale(30) :
+        rules[number + '.0'][resulttype] >= (interval * 5) ? colorScale(25) :
+        rules[number + '.0'][resulttype] >= (interval * 4) ? colorScale(20) :
+        rules[number + '.0'][resulttype] >= (interval * 3) ? colorScale(15) :
+        rules[number + '.0'][resulttype] >= (interval * 2) ? colorScale(10) :
+        rules[number + '.0'][resulttype] >= interval ? colorScale(5) :
         rules[number + '.0'][resulttype] >= 0 ? colorScale(0) :
         '';
 }

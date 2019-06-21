@@ -130,3 +130,13 @@ $('#colorscheme').change(function () {
 $("#opacity_raster").change(function () {
     forecastLayerObj.setOpacity($("#opacity_raster").val())
 });
+
+$("#legendintervals").change(function () {
+    clearMap();
+    addFFGSlayer();
+    forecastLayerObj = newForecastLayer();
+    controlsObj = makeControls();
+    forecastLegend.addTo(mapObj);
+    ffgsLegend.addTo(mapObj);
+});
+

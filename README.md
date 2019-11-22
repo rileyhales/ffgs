@@ -146,6 +146,7 @@ ffgs
 The app will automatically create a file structure for each region and fill it with data. Refer to the "File Structure and Naming Convention Reference" for more information
 #### Configure Thredds' settings
 You will also need to modify Thredds' settings files to enable WMS services and support for netCDF files on your server. In the folder where you installed Thredds, there should be a file called ```catalog.xml```. 
+
 ***Changes to catalog.xml***
 ~~~~
 vim catalog.xml

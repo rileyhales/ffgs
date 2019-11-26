@@ -1,5 +1,8 @@
 import logging
 import shutil
+import sys
+import datetime
+import os
 
 import netCDF4
 import numpy
@@ -10,10 +13,10 @@ import requests
 import xarray
 from rasterio.enums import Resampling
 
-from .options import *
+FFGS_REGIONS = [('Hispaniola', 'hispaniola'), ('Central America', 'centralamerica')]
 
 
-def setenvironment():
+def setenvironment(threddspath, wrksppath):
     """
     Dependencies: os, shutil, datetime, urllib.request, app_settings (options)
     """
@@ -33,11 +36,6 @@ def setenvironment():
         timestamp = now.strftime("%Y%m%d") + '18'
     logging.info('determined the timestamp to download: ' + timestamp)
 
-    # set folder paths for the environment
-    configuration = app_settings()
-    threddspath = configuration['threddsdatadir']
-    wrksppath = configuration['app_wksp_path']
-
     # perform a redundancy check, if the last timestamp is the same as current, abort the workflow
     timefile = os.path.join(wrksppath, 'gfs_timestamp.txt')
     with open(timefile, 'r') as file:
@@ -46,7 +44,7 @@ def setenvironment():
             # use the redundant check to exacpt the function because its already been run
             redundant = True
             logging.info('The last recorded timestamp is the timestamp we determined, aborting workflow')
-            return threddspath, wrksppath, timestamp, redundant
+            return timestamp, redundant
         elif lasttime == 'clobbered':
             # if you marked clobber is true, dont check for old folders from partially completed workflows
             redundant = False
@@ -57,10 +55,10 @@ def setenvironment():
             chk_centr = os.path.join(wrksppath, 'centralamerica', 'gfs_GeoTIFFs_resampled')
             if os.path.exists(chk_hisp) and os.path.exists(chk_centr):
                 logging.info('There are directories for this timestep but the workflow wasn\'t finished. Analyzing...')
-                return threddspath, wrksppath, timestamp, redundant
+                return timestamp, redundant
 
     # create the file structure and their permissions for the new data
-    for region in ffgs_regions():
+    for region in FFGS_REGIONS:
         logging.info('Creating APP WORKSPACE (GeoTIFF) file structure for ' + region[1])
         new_dir = os.path.join(wrksppath, region[1], 'gfs_GeoTIFFs')
         if os.path.exists(new_dir):
@@ -91,7 +89,7 @@ def setenvironment():
             os.chmod(new_dir, 0o777)
 
     logging.info('All done setting up folders, on to do work')
-    return threddspath, wrksppath, timestamp, redundant
+    return timestamp, redundant
 
 
 def download_gfs(threddspath, timestamp, region, model):
@@ -580,16 +578,17 @@ def cleanup(threddspath, timestamp, region, model):
     return
 
 
-def run_gfs_workflow():
+def run_gfs_workflow(threddspath, wrksppath):
     """
     The controller for running the workflow to download and process data
     """
     # enable logging to track the progress of the workflow and for debugging
-    # logging.basicConfig(filename=app_settings()['logfile'], filemode='w', level=logging.INFO, format='%(message)s')
-    # logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
+    logpath = os.path.join(threddspath, 'workflow.log')
+    logging.basicConfig(filename=logpath, filemode='w', level=logging.INFO, format='%(message)s')
+    logging.info('Workflow initiated on ' + datetime.datetime.utcnow().strftime("%D at %R"))
 
     # start the workflow by setting the environment
-    threddspath, wrksppath, timestamp, redundant = setenvironment()
+    timestamp, redundant = setenvironment(threddspath, wrksppath)
     model = 'gfs'
 
     # if this has already been done for the most recent forecast, abort the workflow
@@ -598,7 +597,7 @@ def run_gfs_workflow():
         return 'Workflow Aborted- already run for most recent data'
 
     # run the workflow for each region, for each model in that region
-    for region in ffgs_regions():
+    for region in FFGS_REGIONS:
         logging.info('\nBeginning to process ' + region[1] + ' on ' + datetime.datetime.utcnow().strftime("%D at %R"))
         # download each forecast model, convert them to netcdfs and tiffs
         succeeded = download_gfs(threddspath, timestamp, region[1], model)
@@ -623,3 +622,9 @@ def run_gfs_workflow():
     logging.info('If you have configured other models, they will begin processing now.\n\n\n')
 
     return 'GFS Workflow Completed- Normal Finish'
+
+
+if __name__ == '__main__':
+    path1 = sys.argv[1]
+    path2 = sys.argv[2]
+    run_gfs_workflow(threddspath=path1, wrksppath=path2)

@@ -37,7 +37,7 @@ def setenvironment(threddspath, wrksppath):
     logging.info('determined the timestamp to download: ' + timestamp)
 
     # perform a redundancy check, if the last timestamp is the same as current, abort the workflow
-    timefile = os.path.join(wrksppath, 'gfs_timestamp.txt')
+    timefile = os.path.join(threddspath, 'gfs_timestamp.txt')
     with open(timefile, 'r') as file:
         lasttime = file.readline()
         if lasttime == timestamp:
@@ -615,7 +615,7 @@ def run_gfs_workflow(threddspath, wrksppath):
         cleanup(threddspath, timestamp, region[1], model)
 
     logging.info('\nAll regions finished- writing the timestamp used on this run to a txt file')
-    with open(os.path.join(wrksppath, 'gfs_timestamp.txt'), 'w') as file:
+    with open(os.path.join(threddspath, 'gfs_timestamp.txt'), 'w') as file:
         file.write(timestamp)
 
     logging.info('\n\nGFS Workflow completed successfully on ' + datetime.datetime.utcnow().strftime("%D at %R"))

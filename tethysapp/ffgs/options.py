@@ -78,7 +78,7 @@ def resulttype_options():
 
 
 def get_forecastdates():
-    path = os.path.join(App.get_app_workspace().path, 'gfs_timestamp.txt')
+    path = os.path.join(App.get_custom_setting('thredds_path'), 'gfs_timestamp.txt')
     with open(path, 'r') as file:
         time = file.readline()
         if len(time) == 0:
@@ -87,7 +87,7 @@ def get_forecastdates():
             time = datetime.datetime.strptime(time, "%Y%m%d%H")
             gfs_date = "GFS data from " + time.strftime("%b %d, %I%p UTC")
 
-    path = os.path.join(App.get_app_workspace().path, 'wrfpr_timestamp.txt')
+    path = os.path.join(App.get_custom_setting('thredds_path'), 'wrfpr_timestamp.txt')
     with open(path, 'r') as file:
         time = file.readline()
         if len(time) == 0:

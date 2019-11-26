@@ -68,13 +68,13 @@ class Ffgs(TethysAppBase):
     def custom_settings(self):
         CustomSettings = (
             CustomSetting(
-                name='Local Thredds Folder Path',
+                name='thredds_path',
                 type=CustomSetting.TYPE_STRING,
                 description="Local file path to datasets (same as used by Thredds) (e.g. /home/thredds/myDataFolder/)",
                 required=True,
             ),
             CustomSetting(
-                name='Thredds WMS URL',
+                name='thredds_wms',
                 type=CustomSetting.TYPE_STRING,
                 description="URL to the FFGS folder on the thredds server (e.g. http://[host]/thredds/ffgs/)",
                 required=True,

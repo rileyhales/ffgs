@@ -38,24 +38,30 @@ def setenvironment(threddspath, wrksppath):
 
     # perform a redundancy check, if the last timestamp is the same as current, abort the workflow
     timefile = os.path.join(threddspath, 'gfs_timestamp.txt')
-    with open(timefile, 'r') as file:
-        lasttime = file.readline()
-        if lasttime == timestamp:
-            # use the redundant check to exacpt the function because its already been run
-            redundant = True
-            logging.info('The last recorded timestamp is the timestamp we determined, aborting workflow')
-            return timestamp, redundant
-        elif lasttime == 'clobbered':
-            # if you marked clobber is true, dont check for old folders from partially completed workflows
-            redundant = False
-        else:
-            # check to see if there are remnants of partially completed runs and dont destroy old folders
-            redundant = False
-            chk_hisp = os.path.join(wrksppath, 'hispaniola', 'gfs_GeoTIFFs_resampled')
-            chk_centr = os.path.join(wrksppath, 'centralamerica', 'gfs_GeoTIFFs_resampled')
-            if os.path.exists(chk_hisp) and os.path.exists(chk_centr):
-                logging.info('There are directories for this timestep but the workflow wasn\'t finished. Analyzing...')
+    if not os.path.exists(timefile):
+        redundant = False
+        with open(timefile, 'w') as tf:
+            tf.write(timestamp)
+        os.chmod(timefile, 0o777)
+    else:
+        with open(timefile, 'r') as file:
+            lasttime = file.readline()
+            if lasttime == timestamp:
+                # use the redundant check to exacpt the function because its already been run
+                redundant = True
+                logging.info('The last recorded timestamp is the timestamp we determined, aborting workflow')
                 return timestamp, redundant
+            elif lasttime == 'clobbered':
+                # if you marked clobber is true, dont check for old folders from partially completed workflows
+                redundant = False
+            else:
+                # check to see if there are remnants of partially completed runs and dont destroy old folders
+                redundant = False
+                chk_hisp = os.path.join(wrksppath, 'hispaniola', 'gfs_GeoTIFFs_resampled')
+                chk_centr = os.path.join(wrksppath, 'centralamerica', 'gfs_GeoTIFFs_resampled')
+                if os.path.exists(chk_hisp) and os.path.exists(chk_centr):
+                    logging.info('There are data for this timestep but the workflow wasn\'t finished. Analyzing...')
+                    return timestamp, redundant
 
     # create the file structure and their permissions for the new data
     for region in FFGS_REGIONS:

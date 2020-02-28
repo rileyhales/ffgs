@@ -1,0 +1,11 @@
+name: workflow-ffgs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pandas
+  - numpy
+  - requests
+  - pygrib
+  - netcdf4
+  - xarray

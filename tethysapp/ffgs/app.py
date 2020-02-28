@@ -19,7 +19,7 @@ class Ffgs(TethysAppBase):
     enable_feedback = False
     feedback_emails = []
     githublink = 'https://github.com/rileyhales/ffgs'
-    version = 'v1.1 - 21 June 2019'
+    version = 'v2 Feb2020'
 
     def url_maps(self):
         """
@@ -32,13 +32,6 @@ class Ffgs(TethysAppBase):
                 name='home',
                 url='ffgs',
                 controller='ffgs.controllers.home'
-            ),
-
-            # url maps for data processing functions
-            UrlMap(
-                name='runWorkflows',
-                url='ffgs/runWorkflows',
-                controller='ffgs.controllers.run_workflows'
             ),
 
             # url maps for ajax calls
@@ -72,12 +65,14 @@ class Ffgs(TethysAppBase):
                 type=CustomSetting.TYPE_STRING,
                 description="Local file path to datasets (same as used by Thredds) (e.g. /home/thredds/myDataFolder/)",
                 required=True,
+                default='/Users/rileyhales/thredds/ffgs/',
             ),
             CustomSetting(
-                name='thredds_wms',
+                name='thredds_url',
                 type=CustomSetting.TYPE_STRING,
                 description="URL to the FFGS folder on the thredds server (e.g. http://[host]/thredds/ffgs/)",
                 required=True,
+                default='https://tethys.byu.edu/thredds/wms/testAll/ffgs/',
             ),
         )
         return CustomSettings

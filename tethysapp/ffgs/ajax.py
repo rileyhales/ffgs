@@ -2,13 +2,11 @@ import ast
 import calendar
 
 import pandas
-from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
 from .options import *
 
 
-@login_required()
 def get_customsettings(request):
     """
     returns the paths to the data/thredds services taken from the custom settings and gives it to the javascript
@@ -17,7 +15,6 @@ def get_customsettings(request):
     return JsonResponse(app_settings())
 
 
-@login_required()
 def get_floodchart(request):
     """
     creates the bar chart for the watershedID in the request by reading the csv files of data
@@ -56,7 +53,6 @@ def get_floodchart(request):
     return JsonResponse({'values': values, 'threshold': threshold, 'max': maximum})
 
 
-@login_required()
 def get_cum_floodchart(request):
     """
     creates the bar chart for the watershedID in the request by reading the csv files of data
@@ -98,7 +94,6 @@ def get_cum_floodchart(request):
     return JsonResponse({'values': values, 'threshold': threshold, 'max': maximum})
 
 
-@login_required()
 def get_colorscales(request):
     """
     creates the bar chart for the watershedID in the request by reading the csv files of data

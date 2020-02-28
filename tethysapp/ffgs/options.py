@@ -11,8 +11,8 @@ def app_settings():
     """
     return {
         'app_wksp_path': os.path.join(App.get_app_workspace().path, ''),
-        'threddsdatadir': App.get_custom_setting("Local Thredds Folder Path"),
-        'threddsurl': App.get_custom_setting("Thredds WMS URL"),
+        'threddsdatadir': App.get_custom_setting("thredds_path"),
+        'threddsurl': App.get_custom_setting("thredds_url"),
         'logfile': os.path.join(App.get_app_workspace().path, 'workflow.log')
     }
 
@@ -79,21 +79,27 @@ def resulttype_options():
 
 def get_forecastdates():
     path = os.path.join(App.get_custom_setting('thredds_path'), 'gfs_timestamp.txt')
-    with open(path, 'r') as file:
-        time = file.readline()
-        if len(time) == 0:
-            gfs_date = 'No GFS Timestamp Detected'
-        else:
-            time = datetime.datetime.strptime(time, "%Y%m%d%H")
-            gfs_date = "GFS data from " + time.strftime("%b %d, %I%p UTC")
+    if not os.path.isfile(path):
+        gfs_date = 'No GFS Timestamp Detected'
+    else:
+        with open(path, 'r') as file:
+            time = file.readline()
+            if len(time) == 0:
+                gfs_date = 'No GFS Timestamp Detected'
+            else:
+                time = datetime.datetime.strptime(time, "%Y%m%d%H")
+                gfs_date = "GFS data from " + time.strftime("%b %d, %I%p UTC")
 
     path = os.path.join(App.get_custom_setting('thredds_path'), 'wrfpr_timestamp.txt')
-    with open(path, 'r') as file:
-        time = file.readline()
-        if len(time) == 0:
-            wrfpr_date = 'No WRF-PR Timestamp Detected'
-        else:
-            time = datetime.datetime.strptime(time, "%Y%m%d%H")
-            wrfpr_date = "WRF-PR data from " + time.strftime("%b %d, %I%p UTC")
+    if not os.path.isfile(path):
+        wrfpr_date = 'No WRF-PR Timestamp Detected'
+    else:
+        with open(path, 'r') as file:
+            time = file.readline()
+            if len(time) == 0:
+                wrfpr_date = 'No WRF-PR Timestamp Detected'
+            else:
+                time = datetime.datetime.strptime(time, "%Y%m%d%H")
+                wrfpr_date = "WRF-PR data from " + time.strftime("%b %d, %I%p UTC")
 
     return gfs_date, wrfpr_date

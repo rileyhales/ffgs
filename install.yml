@@ -1,0 +1,24 @@
+# This file may be committed to your app code.
+version: 2
+# This should match the app - package name in your setup.py
+name: ffgs
+
+requirements:
+  # Putting in a skip true param will skip the entire section. Ignoring the option will assume it be set to False
+  skip: false
+  conda:
+    channels:
+      - rileyhales
+      - conda-forge
+    dependencies:
+      - geomatics
+      - netcdf4
+      - numpy
+      - pandas
+      - requests
+      - pyshp
+      - pygrib
+
+  pip:
+
+post:

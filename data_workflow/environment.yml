@@ -9,3 +9,6 @@ dependencies:
   - pygrib
   - netcdf4
   - xarray
+  - rasterio
+  - rasterstats
+  - cfgrib
